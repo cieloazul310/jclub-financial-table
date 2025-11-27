@@ -12,13 +12,16 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "test": "vitest",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
     "turbo": "^2.5.8",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "vitest": "^4.0.12"
   }
 }
