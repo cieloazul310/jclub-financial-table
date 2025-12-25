@@ -1,7 +1,7 @@
+import { ClubInfo } from "@cieloazul310/jclub-financial/types";
 import { styled } from "styled-system/jsx";
 import { List, UnorderedList } from "@/components/ui/list";
 import { Table } from "@/components/ui/table";
-import type { ClubInfo } from "@/utils/types";
 
 type ClubSummaryInfo = Pick<ClubInfo, "fullname" | "company" | "period" | "category" | "hometown" | "relatedCompanies" | "annotation">;
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import type { ClubInfo } from "@cieloazul310/jclub-financial/types";
 import { Field } from "@/components/ui/field";
-import type { ClubInfo } from "@/utils/types";
 
 export function ClubLinkClient({
   j1,

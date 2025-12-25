@@ -1,11 +1,14 @@
+import {
+  getAllClubs,
+  getClubBySlug,
+} from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
 import { FullWidthLayout } from "@/components/layout/full-width";
 import { FinancialTable } from "@/components/table";
 import { ClubSummary } from "@/components/club-summary";
-import { getAllClubs, getClubBySlug } from "@/utils/all-clubs";
 
-export async function generateStaticParams() {
-  const clubs = await getAllClubs();
+export function generateStaticParams() {
+  const clubs = getAllClubs();
   return clubs;
 }
 
@@ -15,7 +18,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const club = await getClubBySlug(slug);
+  const club = getClubBySlug(slug);
 
   if (!club) {
     return null;

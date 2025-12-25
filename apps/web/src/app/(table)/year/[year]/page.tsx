@@ -1,10 +1,10 @@
+import { getAllYears } from "@cieloazul310/jclub-financial";
 import { getDataByYear } from "@cieloazul310/jclub-financial/data";
 import { FullWidthLayout } from "@/components/layout/full-width";
 import { FinancialTable } from "@/components/table";
-import { getAllYears } from "@/utils/all-years";
 
-export async function generateStaticParams() {
-  const years = await getAllYears();
+export function generateStaticParams() {
+  const years = getAllYears();
   return years.map(({ year }) => ({ year: year.toString()}));
 }
 

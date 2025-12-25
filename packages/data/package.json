@@ -1,7 +1,21 @@
 {
   "name": "@cieloazul310/jclub-financial-data",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
+  "homepage": "https://github.com/cieloazul310/jclub-financial-table",
+  "author": {
+    "name": "cieloazul310",
+    "url": "https://cieloazul310.github.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cieloazul310/jclub-financial-table.git",
+    "directory": "packages/data"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -44,12 +58,9 @@
   },
   "scripts": {
     "build": "npm run build:template && npm run build:data && npm run build:types",
-    "build:template": "npm run build:template:mjs && npm run build:template:cjs",
-    "build:template:mjs": "tsc src/*.ts --module esnext --target esnext --skipLibCheck --moduleResolution bundler --declaration --outDir scripts/templates/mjs",
-    "build:template:cjs": "tsc src/*.ts --module nodenext --target es5 --skipLibCheck --moduleResolution nodenext --outDir scripts/templates/cjs",
+    "build:template": "tsdown",
     "build:data": "tsx ./scripts/yaml-to-json.ts",
-    "build:types": "tsx ./scripts/build-types.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:types": "tsx ./scripts/build-types.ts"
   },
   "dependencies": {
     "@cieloazul310/jclub-financial-utils": "^0.0.0"
@@ -57,10 +68,16 @@
   "devDependencies": {
     "@repo/typescript-config": "^0.0.0",
     "@types/node": "^24.9.1",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.18.2",
     "tsx": "^4.20.6",
     "typescript": "^5.9.2",
     "yaml": "^2.8.1",
     "zod": "^4.1.12"
+  },
+  "lint-staged": {
+    "**/*.{js,mjs,cjs,ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser typescript --write"
+    ]
   }
 }

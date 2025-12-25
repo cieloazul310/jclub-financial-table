@@ -99,6 +99,7 @@ export default async function Page({
         >
           {older && (
             <Button
+              size="lg"
               variant="outline"
               width="full"
               justifyContent="start"
@@ -123,6 +124,7 @@ export default async function Page({
         >
           {newer && (
             <Button
+              size="lg"
               variant="outline"
               width="full"
               justifyContent="end"

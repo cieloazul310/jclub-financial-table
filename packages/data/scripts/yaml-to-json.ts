@@ -2,12 +2,14 @@
 import * as fs from "fs/promises";
 import * as path from "path";
 import { parse } from "yaml";
+import { getAllClubs } from "@cieloazul310/jclub-financial-utils";
 import { checkData } from "./check-data";
 
 const __dirname = import.meta.dirname;
 
 const srcDir = path.resolve(__dirname, "../dataset");
 const outDir = path.resolve(__dirname, "../dist");
+const templatePath = path.resolve(__dirname, "./templates");
 
 await fs.mkdir(outDir, { recursive: true });
 
@@ -58,15 +60,15 @@ async function processDataset() {
     years.sort((a, b) => b - a);
     const replacer = indexReplacer(years);
     const mjs = await fs.readFile(
-      path.resolve(__dirname, "./templates/mjs/index.js"),
+      path.resolve(templatePath, "esm/index.mjs"),
       "utf8",
     );
     const cjs = await fs.readFile(
-      path.resolve(__dirname, "./templates/cjs/index.js"),
+      path.resolve(templatePath, "cjs/index.cjs"),
       "utf8",
     );
     const dts = await fs.readFile(
-      path.resolve(__dirname, "./templates/mjs/index.d.ts"),
+      path.resolve(templatePath, "esm/index.d.mts"),
       "utf8",
     );
 
@@ -105,20 +107,23 @@ function topLevelIndexReplacer(clubs: string[]) {
 // Generate top-level index files (sync APIs) after processing
 async function generateTopLevelIndex() {
   const dist = path.resolve("./dist");
+  /*
   const clubs = (await fs.readdir(dist, { withFileTypes: true }))
     .filter((d) => d.isDirectory())
     .map((d) => d.name);
+  */
+  const clubs = getAllClubs().map(({ slug }) => slug);
 
   const mjs = await fs.readFile(
-    path.resolve(__dirname, "./templates/mjs/top-index.js"),
+    path.resolve(templatePath, "esm/top-index.mjs"),
     "utf8",
   );
   const cjs = await fs.readFile(
-    path.resolve(__dirname, "./templates/cjs/top-index.js"),
+    path.resolve(templatePath, "cjs/top-index.cjs"),
     "utf8",
   );
   const dts = await fs.readFile(
-    path.resolve(__dirname, "./templates/mjs/top-index.d.ts"),
+    path.resolve(templatePath, "esm/top-index.d.mts"),
     "utf8",
   );
   const replacer = topLevelIndexReplacer(clubs);

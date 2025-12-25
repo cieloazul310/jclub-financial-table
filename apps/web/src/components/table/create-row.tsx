@@ -1,4 +1,4 @@
-import { getLabel } from "@cieloazul310/jclub-financial/utils";
+import { getLabel } from "@cieloazul310/jclub-financial";
 import type { FinancialDatum } from "@cieloazul310/jclub-financial/types";
 import type { Mode } from "@/utils/types";
 import { Table } from "@/components/ui/table";
