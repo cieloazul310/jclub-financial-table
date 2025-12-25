@@ -8,7 +8,7 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "next lint --max-warnings 0",
+    "lint": "eslint .",
     "snippet": "npx @cieloazul310/digital-go-pandacss-cli",
     "snippet:install": "npm run snippet -- install --all",
     "check-types": "tsc --noEmit"

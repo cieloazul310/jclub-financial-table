@@ -1,4 +1,4 @@
 import { defineConfig } from "eslint/config";
-import { config as base } from "@repo/eslint-config/base";
+import { config as baseConfig } from "@repo/eslint-config/base";
 
-export default defineConfig(...base);
+export default defineConfig(...baseConfig);

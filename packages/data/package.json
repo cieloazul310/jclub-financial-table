@@ -66,8 +66,10 @@
     "@cieloazul310/jclub-financial-utils": "^0.0.0"
   },
   "devDependencies": {
+    "@repo/eslint-config": "^0.0.0",
     "@repo/typescript-config": "^0.0.0",
     "@types/node": "^24.9.1",
+    "eslint": "^9.34.0",
     "tsdown": "^0.18.2",
     "tsx": "^4.20.6",
     "typescript": "^5.9.2",

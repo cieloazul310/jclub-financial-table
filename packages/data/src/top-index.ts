@@ -1,5 +1,5 @@
 import { readFile, readdir } from "fs/promises";
-import { resolve, join, dirname } from "path";
+import { resolve, join } from "path";
 import type { FinancialDatum } from "@cieloazul310/jclub-financial-utils/types";
 
 const base = resolve(__dirname);
