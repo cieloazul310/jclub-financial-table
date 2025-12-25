@@ -1,0 +1,15 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "jclub-financial-vercel-api": "0.0.0",
+    "jclub-financial-app": "0.0.0",
+    "@cieloazul310/jclub-financial": "0.0.0",
+    "@cieloazul310/jclub-financial-data": "0.0.0",
+    "@repo/eslint-config": "0.0.0",
+    "@cieloazul310/jclub-financial-statistics": "0.0.0",
+    "@repo/typescript-config": "0.0.0",
+    "@cieloazul310/jclub-financial-utils": "0.0.0"
+  },
+  "changesets": []
+}

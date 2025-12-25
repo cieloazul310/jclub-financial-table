@@ -23,6 +23,7 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.8",
     "@repo/eslint-config": "^0.0.0",
     "@repo/typescript-config": "^0.0.0",
     "eslint": "^9.34.0",
