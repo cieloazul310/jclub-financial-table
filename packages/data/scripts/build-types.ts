@@ -3,11 +3,14 @@ import { resolve, join } from "path";
 
 async function buildTypes() {
   const __dirname = import.meta.dirname;
-  const source = await readFile(resolve(__dirname, "../src/types/index.ts"), "utf8");
+  const source = await readFile(
+    resolve(__dirname, "../src/types/index.ts"),
+    "utf8",
+  );
   const outDir = resolve(__dirname, "../dist");
 
   try {
-    await access(outDir)
+    await access(outDir);
   } catch {
     mkdir(outDir);
   }

@@ -1,8 +1,8 @@
-import type { PropsWithChildren } from 'react';
-import type { Metadata } from 'next';
-import { notoSansJp, notoSansMono } from '@/styles/fonts';
-import { title, description } from '@/data/site-metadata';
-import '@/styles/globals.css';
+import type { PropsWithChildren } from "react";
+import type { Metadata } from "next";
+import { notoSansJp, notoSansMono } from "@/styles/fonts";
+import { title, description } from "@/data/site-metadata";
+import "@/styles/globals.css";
 
 export const metadata = {
   title,

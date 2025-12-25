@@ -3,7 +3,7 @@ import type { Mode } from "@/utils/types";
 import { TableHeadLabel } from "./label";
 import { TableHeadCell } from "./head-cell";
 
-function TableHeadHeader({ mode } : { mode: Mode }) {
+function TableHeadHeader({ mode }: { mode: Mode }) {
   return (
     <>
       <TableHeadLabel mode={mode} />

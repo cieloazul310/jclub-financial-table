@@ -1,5 +1,5 @@
 /**
- * reference: 
+ * reference:
  * https://zenn.dev/kiwichan101kg/articles/5023bb8288f720
  */
 import ogs from "open-graph-scraper";

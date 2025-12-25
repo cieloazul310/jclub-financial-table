@@ -1,4 +1,4 @@
-import { getLabel } from "@cieloazul310/jclub-financial/utils";
+import { getLabel } from "@cieloazul310/jclub-financial";
 import type { FinancialDatum } from "@cieloazul310/jclub-financial/types";
 import type { Mode } from "@/utils/types";
 import { Table } from "@/components/ui/table";
@@ -47,12 +47,8 @@ export function createRow<T extends keyof FinancialDatum>({
       <Table.Header scope="row">
         {mode === "club" ? data.year : data.name}
       </Table.Header>
-      <Table.Header scope="row">
-        {data.category}
-      </Table.Header>
-      <Table.Header scope="row">
-        {data.rank}
-      </Table.Header>
+      <Table.Header scope="row">{data.category}</Table.Header>
+      <Table.Header scope="row">{data.rank}</Table.Header>
       {fields.map((field) => (
         <Table.Cell
           key={field}

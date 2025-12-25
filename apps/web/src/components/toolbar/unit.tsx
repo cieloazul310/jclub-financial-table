@@ -1,6 +1,6 @@
 "use client";
 
-import { getLabel } from "@cieloazul310/jclub-financial/utils";
+import { getLabel } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
 import type { Mode, SortableKey, Tab } from "@/utils/types";

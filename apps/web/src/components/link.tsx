@@ -1,11 +1,11 @@
-import NextLink from 'next/link';
+import NextLink from "next/link";
 import {
   Link as LinkBase,
   type LinkProps as LinkBaseProps,
-} from '@/components/ui/link';
-import { ExternalLinkIcon } from 'lucide-react';
-import { css } from 'styled-system/css';
-import { isInternal } from '@/utils/is-internal';
+} from "@/components/ui/link";
+import { ExternalLinkIcon } from "lucide-react";
+import { css } from "styled-system/css";
+import { isInternal } from "@/utils/is-internal";
 
 export function Link({ children, href, ...props }: LinkBaseProps) {
   if (!href) return null;

@@ -26,9 +26,8 @@ export function FinancialTable({
   data: FinancialDatum[];
   mode: Mode;
 }) {
-  const { tab, sortKey, sortAsc, filterCategories, filterYears, setTab } = useTableStore(
-    (store) => store,
-  );
+  const { tab, sortKey, sortAsc, filterCategories, filterYears, setTab } =
+    useTableStore((store) => store);
   const onValueChange = (details: TabsValueChangeDetails) => {
     setTab(details.value as Tab);
   };

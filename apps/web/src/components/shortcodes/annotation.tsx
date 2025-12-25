@@ -1,4 +1,4 @@
-import { NotificationBanner } from "@/components/ui/notification-banner"; 
+import { NotificationBanner } from "@/components/ui/notification-banner";
 
 export function WorkInProgress() {
   return (

@@ -10,15 +10,33 @@
   },
   "packageManager": "npm@11.6.1",
   "scripts": {
+    "prepare": "git config --local core.hooksPath .githooks",
     "build": "turbo run build",
+    "build:package": "turbo run build --filter='./packages/*'",
     "dev": "turbo run dev",
+    "test": "vitest",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint-staged": "lint-staged",
+    "changeset": "changeset",
+    "publish-packages": "npm run build:package && changeset version && changeset publish",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.8",
+    "@repo/eslint-config": "^0.0.0",
+    "@repo/typescript-config": "^0.0.0",
+    "eslint": "^9.34.0",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
     "turbo": "^2.5.8",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "vitest": "^4.0.12"
+  },
+  "lint-staged": {
+    "**/*.{js,cjs,mjs,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser typescript --write"
+    ]
   }
 }

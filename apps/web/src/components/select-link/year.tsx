@@ -1,9 +1,9 @@
+import { getAllYears } from "@cieloazul310/jclub-financial";
 import { Field } from "@/components/ui/field";
-import { getAllYears } from "@/utils/all-years";
 import { YearLinkClient } from "./year-client";
 
-export async function YearLink() {
-  const years = await getAllYears();
+export function YearLink() {
+  const years = getAllYears();
 
   return (
     <Field.Root>

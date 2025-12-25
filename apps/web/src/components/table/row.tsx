@@ -19,13 +19,23 @@ export const row = {
   pl: {
     head: (mode: Mode) => <PLTableHeadRow mode={mode} />,
     renderRow: (datum: FinancialDatum, mode: Mode, index: number) => (
-      <PLTableRow key={`${datum.name}-${datum.year}`} node={datum} mode={mode} index={index} />
+      <PLTableRow
+        key={`${datum.name}-${datum.year}`}
+        node={datum}
+        mode={mode}
+        index={index}
+      />
     ),
   },
   bs: {
     head: (mode: Mode) => <BSTableHeadRow mode={mode} />,
     renderRow: (datum: FinancialDatum, mode: Mode, index: number) => (
-      <BSTableRow key={`${datum.name}-${datum.year}`} node={datum} mode={mode} index={index} />
+      <BSTableRow
+        key={`${datum.name}-${datum.year}`}
+        node={datum}
+        mode={mode}
+        index={index}
+      />
     ),
   },
   revenue: {

@@ -1,15 +1,63 @@
 {
   "name": "@cieloazul310/jclub-financial-statistics",
   "version": "0.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/cieloazul310/jclub-financial-table",
+  "author": {
+    "name": "cieloazul310",
+    "url": "https://cieloazul310.github.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cieloazul310/jclub-financial-table.git",
+    "directory": "packages/statistics"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:template && npm run build:statistics",
+    "build:statistics": "tsx ./scripts/build-statistics.ts",
+    "build:template": "tsdown"
   },
   "devDependencies": {
-    "@repo/typescript-config": "^0.0.0"
+    "@cieloazul310/jclub-financial-data": "^0.0.0",
+    "@repo/eslint-config": "^0.0.0",
+    "@repo/typescript-config": "^0.0.0",
+    "@types/node": "^24.9.1",
+    "eslint": "^9.34.0",
+    "tsdown": "^0.18.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.2"
+  },
+  "peerDependencies": {
+    "@cieloazul310/jclub-financial-data": "^0.0.0"
+  },
+  "lint-staged": {
+    "**/*.{js,mjs,cjs,ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser typescript --write"
+    ]
   }
 }

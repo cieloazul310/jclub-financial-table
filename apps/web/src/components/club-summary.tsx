@@ -1,9 +1,18 @@
+import { ClubInfo } from "@cieloazul310/jclub-financial/types";
 import { styled } from "styled-system/jsx";
 import { List, UnorderedList } from "@/components/ui/list";
 import { Table } from "@/components/ui/table";
-import type { ClubInfo } from "@/utils/types";
 
-type ClubSummaryInfo = Pick<ClubInfo, "fullname" | "company" | "period" | "category" | "hometown" | "relatedCompanies" | "annotation">;
+type ClubSummaryInfo = Pick<
+  ClubInfo,
+  | "fullname"
+  | "company"
+  | "period"
+  | "category"
+  | "hometown"
+  | "relatedCompanies"
+  | "annotation"
+>;
 
 const tableData: {
   title: string;
@@ -26,7 +35,7 @@ export function ClubSummary({ club }: { club: ClubSummaryInfo }) {
   return (
     <Table.Root width="full" captionSide="bottom">
       <colgroup>
-        <styled.col width={{ base: "120px", md: "180px"}} />
+        <styled.col width={{ base: "120px", md: "180px" }} />
       </colgroup>
       <Table.Body>
         {tableData.map(
@@ -39,7 +48,11 @@ export function ClubSummary({ club }: { club: ClubSummaryInfo }) {
             ),
         )}
       </Table.Body>
-      <styled.caption textAlign="left" textStyle="std-16N-170" color="solid-gray.600">
+      <styled.caption
+        textAlign="left"
+        textStyle="std-16N-170"
+        color="solid-gray.600"
+      >
         <UnorderedList>
           <List>
             2021年以前の「チーム人件費」はアカデミー指導者報酬、レディースチーム選手・指導者報酬を含む。2022年度以降はトップチームに限定した「トップチーム人件費」。

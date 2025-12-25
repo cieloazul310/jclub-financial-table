@@ -36,13 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import * as fs from "fs/promises";
 import * as path from "path";
-import { fileURLToPath } from "url";
-var __filename = typeof globalThis.__filename !== "undefined"
-    ? globalThis.__filename
-    : fileURLToPath(import.meta.url);
-var __dirname = typeof globalThis.__dirname !== "undefined"
-    ? globalThis.__dirname
-    : path.dirname(__filename);
 var base = path.resolve(__dirname);
 function loadJsonSync(file) {
     return __awaiter(this, void 0, void 0, function () {
@@ -56,7 +49,6 @@ function loadJsonSync(file) {
                 case 1: return [2 /*return*/, _b.apply(_a, [_c.sent()])];
                 case 2:
                     err_1 = _c.sent();
-                    console.error(err_1);
                     return [2 /*return*/, null];
                 case 3: return [2 /*return*/];
             }

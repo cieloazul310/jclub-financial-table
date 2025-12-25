@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import type { YearInfo } from "@cieloazul310/jclub-financial/types";
 import { Field } from "@/components/ui/field";
-import type { YearInfo } from "@/utils/types";
 
 export function YearLinkClient({ years }: { years: YearInfo[] }) {
   const { push } = useRouter();

@@ -1,0 +1,26 @@
+{
+  "extends": "@repo/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "styled-system/*": ["./styled-system/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    "next.config.mjs",
+    "eslint.config.mjs",
+    "panda.config.ts",
+    "postcss.config.cjs",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}

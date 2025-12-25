@@ -1,24 +1,18 @@
-import { readFile, writeFile } from "fs/promises";
-import { resolve } from "path";
+import { readFile, writeFile, mkdir } from "fs/promises";
+import { resolve, join } from "path";
 import { parse } from "yaml";
 
-async function buildDictonary() {
+export async function buildDictonary() {
   const __dirname = import.meta.dirname;
+  const outDir = resolve(__dirname, "../src/data");
+  await mkdir(outDir, { recursive: true });
+
   const file = await readFile(resolve(__dirname, "../dictionary.yml"), "utf8");
   const parsed = parse(file);
 
-  const hoge = `
-  import type { FinancialDatum } from "./types";
-
-  export const dictionary: Record<keyof Omit<FinancialDatum, "slug">, string> = ${JSON.stringify(parsed, null, 2)};
-  `
-  
-  await writeFile(resolve(__dirname, "../src/dictionary.ts"), hoge);
-}
-
-try {
-  await buildDictonary();
-  console.log("Build dictionary");
-} catch (e) {
-  console.error(e);
+  await writeFile(
+    join(outDir, "dictionary.json"),
+    JSON.stringify(parsed, null, 2),
+    "utf8",
+  );
 }
