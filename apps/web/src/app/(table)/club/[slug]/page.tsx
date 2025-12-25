@@ -1,7 +1,4 @@
-import {
-  getAllClubs,
-  getClubBySlug,
-} from "@cieloazul310/jclub-financial";
+import { getAllClubs, getClubBySlug } from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
 import { FullWidthLayout } from "@/components/layout/full-width";
 import { FinancialTable } from "@/components/table";

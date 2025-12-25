@@ -1,4 +1,8 @@
-import type { FinancialDatum, General, SeasonResult } from "@cieloazul310/jclub-financial";
+import type {
+  FinancialDatum,
+  General,
+  SeasonResult,
+} from "@cieloazul310/jclub-financial";
 
 export type Tab = "pl" | "bs" | "revenue" | "expense" | "attd";
 
@@ -26,4 +30,7 @@ export type YearInfo = {
   categories: Category[];
 };
 
-export type SortableKey = Exclude<keyof FinancialDatum, keyof General | "elevation">;
+export type SortableKey = Exclude<
+  keyof FinancialDatum,
+  keyof General | "elevation"
+>;

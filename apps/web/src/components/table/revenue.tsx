@@ -1,4 +1,7 @@
-import type { FinancialDatum, Revenue } from "@cieloazul310/jclub-financial/types";
+import type {
+  FinancialDatum,
+  Revenue,
+} from "@cieloazul310/jclub-financial/types";
 import { styled } from "styled-system/jsx";
 import type { Mode } from "@/utils/types";
 import { Table } from "@/components/ui/table";
@@ -59,9 +62,7 @@ export function createRevenueRow() {
 
     const rowHead = (
       <>
-        <Table.Header scope="row">
-          {mode === "club" ? year : name}
-        </Table.Header>
+        <Table.Header scope="row">{mode === "club" ? year : name}</Table.Header>
         <Table.Header scope="row">{category}</Table.Header>
         <Table.Header scope="row">{rank}</Table.Header>
       </>
@@ -69,15 +70,17 @@ export function createRevenueRow() {
     const otherRevs = (inputYear: number) => {
       if (inputYear <= 2010)
         return (
-          <Table.Cell  className={valueStyle({ centerize: true })} colSpan={4}>
+          <Table.Cell className={valueStyle({ centerize: true })} colSpan={4}>
             {other_revs}
           </Table.Cell>
         );
       if (inputYear <= 2015)
         return (
           <>
-            <Table.Cell  className={valueStyle({ centerize: true })}>{academy_rev}</Table.Cell>
-            <Table.Cell  className={valueStyle({ centerize: true })} colSpan={3}>
+            <Table.Cell className={valueStyle({ centerize: true })}>
+              {academy_rev}
+            </Table.Cell>
+            <Table.Cell className={valueStyle({ centerize: true })} colSpan={3}>
               {other_revs}
             </Table.Cell>
           </>
@@ -85,19 +88,31 @@ export function createRevenueRow() {
       if (inputYear <= 2021)
         return (
           <>
-            <Table.Cell  className={valueStyle({ centerize: true })}>{academy_rev}</Table.Cell>
-            <Table.Cell  className={valueStyle({ centerize: true })}>{goods_rev}</Table.Cell>
-            <Table.Cell colSpan={2}  className={valueStyle({ centerize: true })}>
+            <Table.Cell className={valueStyle({ centerize: true })}>
+              {academy_rev}
+            </Table.Cell>
+            <Table.Cell className={valueStyle({ centerize: true })}>
+              {goods_rev}
+            </Table.Cell>
+            <Table.Cell colSpan={2} className={valueStyle({ centerize: true })}>
               {other_revs}
             </Table.Cell>
           </>
         );
       return (
         <>
-          <Table.Cell className={valueStyle({ centerize: true })}>{academy_rev}</Table.Cell>
-          <Table.Cell  className={valueStyle({ centerize: true })}>{goods_rev}</Table.Cell>
-          <Table.Cell  className={valueStyle({ centerize: true })}>{women_rev}</Table.Cell>
-          <Table.Cell  className={valueStyle({ centerize: true })}>{other_revs}</Table.Cell>
+          <Table.Cell className={valueStyle({ centerize: true })}>
+            {academy_rev}
+          </Table.Cell>
+          <Table.Cell className={valueStyle({ centerize: true })}>
+            {goods_rev}
+          </Table.Cell>
+          <Table.Cell className={valueStyle({ centerize: true })}>
+            {women_rev}
+          </Table.Cell>
+          <Table.Cell className={valueStyle({ centerize: true })}>
+            {other_revs}
+          </Table.Cell>
         </>
       );
     };

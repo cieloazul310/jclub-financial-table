@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { getStatistics, getCategoryYearSeries, getStatsByYear } from "../dist/index.mjs";
+import {
+  getStatistics,
+  getCategoryYearSeries,
+  getStatsByYear,
+} from "../dist/index.mjs";
 
 describe("Get Statistics", () => {
   it("should get statistics for a specific category and field", async () => {

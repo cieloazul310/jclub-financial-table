@@ -3,7 +3,9 @@ import dictionary from "./data/dictionary.json";
 
 const has = Object.prototype.hasOwnProperty;
 
-function isDirectoryKey(key: string): key is keyof Omit<FinancialDatum, "slug"> {
+function isDirectoryKey(
+  key: string,
+): key is keyof Omit<FinancialDatum, "slug"> {
   return has.call(dictionary, key);
 }
 

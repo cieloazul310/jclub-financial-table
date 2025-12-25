@@ -1,6 +1,6 @@
-import { css } from 'styled-system/css';
-import { title } from '@/data/site-metadata';
-import { Link } from '../link';
+import { css } from "styled-system/css";
+import { title } from "@/data/site-metadata";
+import { Link } from "../link";
 
 export function Footer() {
   return (
@@ -9,11 +9,11 @@ export function Footer() {
         /**
          * [grid-area:footer] [&>div]:max-w-[--home-main-width] mb-6 mt-16 md:mb-10 md:mt-20
          */
-        gridArea: 'footer',
+        gridArea: "footer",
         mb: { base: 6, md: 10 },
         mt: { base: 16, md: 20 },
-        '& > div': {
-          maxWidth: 'common-main-width',
+        "& > div": {
+          maxWidth: "common-main-width",
         },
       })}
     >
@@ -22,9 +22,9 @@ export function Footer() {
           /**
            * mx-auto box-content md:px-[--content-padding]
            */
-          mx: 'auto',
+          mx: "auto",
           px: { base: 4, md: 8 },
-          boxSizing: 'content-box',
+          boxSizing: "content-box",
         })}
       >
         <div
@@ -32,9 +32,9 @@ export function Footer() {
             /**
              * flex flex-col gap-8 md:flex-row md:items-center md:gap-20 lg:gap-16 xl:gap-24
              */
-            display: 'flex',
-            flexDirection: { base: 'column', md: 'row' },
-            alignItems: { base: 'initial', md: 'center' },
+            display: "flex",
+            flexDirection: { base: "column", md: "row" },
+            alignItems: { base: "initial", md: "center" },
             gap: { base: 8, md: 20, lg: 16, xl: 24 },
           })}
         >
@@ -44,9 +44,9 @@ export function Footer() {
               /**
                * w-fit text-std-20B-150 md:p-1.5
                */
-              color: 'inherit',
-              width: 'fit-content',
-              textStyle: 'std-20B-150',
+              color: "inherit",
+              width: "fit-content",
+              textStyle: "std-20B-150",
               p: { base: 0, md: 1.5 },
             })}
           >
@@ -57,11 +57,11 @@ export function Footer() {
               /**
                * flex flex-col gap-4 md:flex-row md:gap-8
                */
-              display: 'flex',
-              flexDirection: { base: 'column', md: 'row' },
+              display: "flex",
+              flexDirection: { base: "column", md: "row" },
               gap: { base: 4, md: 8 },
-              textStyle: 'dns-16N-130',
-              color: 'solid-gray.800',
+              textStyle: "dns-16N-130",
+              color: "solid-gray.800",
             })}
           >
             <li>
@@ -87,8 +87,8 @@ export function Footer() {
             /**
              * mt-8 text-oln-16N-100 text-solid-gray-600 md:px-1.5
              */
-            textStyle: 'oln-16N-100',
-            color: 'solid-gray.600',
+            textStyle: "oln-16N-100",
+            color: "solid-gray.600",
             mt: 8,
             px: { base: 0, md: 1.5 },
           })}

@@ -35,14 +35,19 @@ export function TableHeadCell({
   };
 
   return (
-    <Table.Cell align="center" className={cx(selected && css({ bg: "keyColor.primary" }))} {...props} >
+    <Table.Cell
+      align="center"
+      className={cx(selected && css({ bg: "keyColor.primary" }))}
+      {...props}
+    >
       <button
         className={cx(
           css({
-            textWrap: "balance"
+            textWrap: "balance",
           }),
-          sortable && css({ cursor: "pointer"}),
-          (sortable && !selected) &&
+          sortable && css({ cursor: "pointer" }),
+          sortable &&
+            !selected &&
             css({
               color: {
                 _hover: "keyColor.primary",

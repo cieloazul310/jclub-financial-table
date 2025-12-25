@@ -4,12 +4,14 @@ import { getData as getAlbirexData } from "../dist/albirex";
 
 describe("Get all data", async () => {
   const data = await getData();
-  
+
   it("check data length", () => {
     const length = 20;
 
     expect(data.length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(length);
+    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(
+      length,
+    );
   });
 });
 
@@ -26,7 +28,6 @@ describe("Get specific data", async () => {
   });
 });
 
-
 describe("Get all data albirex", async () => {
   const data = await getAlbirexData();
 
@@ -35,8 +36,6 @@ describe("Get all data albirex", async () => {
 
     expect(data.length).toBe(length);
     expect(data.filter(({ slug }) => slug === "albirex").length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(
-      0
-    );
+    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(0);
   });
 });

@@ -47,12 +47,8 @@ export function createRow<T extends keyof FinancialDatum>({
       <Table.Header scope="row">
         {mode === "club" ? data.year : data.name}
       </Table.Header>
-      <Table.Header scope="row">
-        {data.category}
-      </Table.Header>
-      <Table.Header scope="row">
-        {data.rank}
-      </Table.Header>
+      <Table.Header scope="row">{data.category}</Table.Header>
+      <Table.Header scope="row">{data.rank}</Table.Header>
       {fields.map((field) => (
         <Table.Cell
           key={field}

@@ -5,7 +5,7 @@ import { FinancialTable } from "@/components/table";
 
 export function generateStaticParams() {
   const years = getAllYears();
-  return years.map(({ year }) => ({ year: year.toString()}));
+  return years.map(({ year }) => ({ year: year.toString() }));
 }
 
 export default async function Page({

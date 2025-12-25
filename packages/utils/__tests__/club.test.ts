@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { getAllClubs, getClubBySlug, getClubsByCategory } from "../dist/index.mjs";
+import {
+  getAllClubs,
+  getClubBySlug,
+  getClubsByCategory,
+} from "../dist/index.mjs";
 
 describe("getClubById", () => {
   it("should return the correct club for a valid ID", () => {

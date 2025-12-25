@@ -2,7 +2,15 @@ import * as fs from "fs/promises";
 import * as path from "path";
 
 async function copyDataset(): Promise<void> {
-  const src = path.resolve(process.cwd(), "..", "..", "packages", "data", "dist", "dataset");
+  const src = path.resolve(
+    process.cwd(),
+    "..",
+    "..",
+    "packages",
+    "data",
+    "dist",
+    "dataset",
+  );
   const dest = path.resolve(process.cwd(), "public", "dataset");
   try {
     const s = await fs.stat(src);
@@ -27,10 +35,9 @@ async function copyDataset(): Promise<void> {
         await fs.copyFile(path.join(src, e), path.join(dest, e));
       }
     }
-    
+
     console.log(`copied dataset: ${src} -> ${dest}`);
   } catch (err) {
-    
     console.error("failed to copy dataset:", err);
     throw err;
   }

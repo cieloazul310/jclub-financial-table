@@ -10,9 +10,7 @@ export function getClubBySlug(slug: string) {
   return clubs.find((club) => club.slug === slug);
 }
 
-export function getClubsByCategory(
-  category: string,
-) {
+export function getClubsByCategory(category: string) {
   const clubs = getAllClubs();
   return clubs.filter((club) =>
     ["J1", "J2", "J3"].includes(category)

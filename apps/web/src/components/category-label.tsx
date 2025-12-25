@@ -2,10 +2,7 @@ import { ChipLabel, type ChipLabelProps } from "@/components/ui/chip-label";
 
 export function J1Label(props: ChipLabelProps) {
   return (
-    <ChipLabel
-      colorPalette="red"
-      {...props}
-    >
+    <ChipLabel colorPalette="red" {...props}>
       J1
     </ChipLabel>
   );
@@ -13,10 +10,7 @@ export function J1Label(props: ChipLabelProps) {
 
 export function J2Label(props: ChipLabelProps) {
   return (
-    <ChipLabel
-      colorPalette="green"
-      {...props}
-    >
+    <ChipLabel colorPalette="green" {...props}>
       J2
     </ChipLabel>
   );
@@ -24,10 +18,7 @@ export function J2Label(props: ChipLabelProps) {
 
 export function J3Label(props: ChipLabelProps) {
   return (
-    <ChipLabel
-      colorPalette="blue"
-      {...props}
-    >
+    <ChipLabel colorPalette="blue" {...props}>
       J3
     </ChipLabel>
   );
@@ -52,10 +43,7 @@ export function CategoryLabel({
   }
 
   return (
-    <ChipLabel
-      colorPalette="solid-gray"
-      {...props}
-    >
+    <ChipLabel colorPalette="solid-gray" {...props}>
       {category}
     </ChipLabel>
   );

@@ -17,11 +17,7 @@ export function AdInSectionDividerWrapper({
 }
 
 function AdScript() {
-  return (
-    <script>
-      
-    </script>
-  );
+  return <script></script>;
 }
 
 export function AdInArticle() {

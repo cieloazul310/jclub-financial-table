@@ -19,7 +19,10 @@ import { valueStyle } from "./styles";
 type TableBodyHeaderProps = {
   mode: Mode;
   index: number;
-  node: Pick<General & SeasonResult, "category" | "rank" | "elevation" | "slug" | "year" | "name">;
+  node: Pick<
+    General & SeasonResult,
+    "category" | "rank" | "elevation" | "slug" | "year" | "name"
+  >;
   // selected?: boolean;
 };
 
@@ -27,23 +30,20 @@ function TableBodyHeader({ mode, index, node }: TableBodyHeaderProps) {
   return (
     <>
       <TableBodyLabel mode={mode} node={node} index={index} />
-      <Table.Cell
-        width="80px"
-        align="center"
-        verticalAlign="middle"
-        p={0}
-      >
+      <Table.Cell width="80px" align="center" verticalAlign="middle" p={0}>
         <CategoryLabel category={node.category ?? ""} />
       </Table.Cell>
       <Table.Cell
         className={cx(
           node.elevation && css({ fontWeight: "bold" }),
-          node.elevation === "昇格" && css({
-            color: "green.800",
-          }),
-          node.elevation === "降格" && css({
-            color: "red.900",
-          }),
+          node.elevation === "昇格" &&
+            css({
+              color: "green.800",
+            }),
+          node.elevation === "降格" &&
+            css({
+              color: "red.900",
+            }),
         )}
         width="80px"
         borderRightWidth="1px"
@@ -56,7 +56,6 @@ function TableBodyHeader({ mode, index, node }: TableBodyHeaderProps) {
     </>
   );
 }
-
 
 type DataTableCellProps = {
   value: number | null;

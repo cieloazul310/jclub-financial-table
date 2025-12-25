@@ -3,12 +3,14 @@ import { getDataByClub, getDataByYear, getDatum } from "../dist";
 
 describe("Get data by club", async () => {
   const data = await getDataByClub("mitohollyhock");
-  
+
   it("check data length", () => {
     const length = 20;
 
     expect(data.length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(length);
+    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(
+      length,
+    );
   });
 });
 
@@ -20,9 +22,7 @@ describe("Get data by year (2024)", async () => {
 
     expect(data.length).toBe(length);
     expect(data.filter(({ year }) => year === 2024).length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(
-      1
-    );
+    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(1);
   });
 });
 
