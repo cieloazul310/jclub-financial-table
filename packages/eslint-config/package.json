@@ -1,9 +1,13 @@
 {
   "name": "@repo/eslint-config",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "type": "module",
   "private": true,
-  "files": ["base.mjs", "next.mjs", "react-internal.mjs"],
+  "files": [
+    "base.mjs",
+    "next.mjs",
+    "react-internal.mjs"
+  ],
   "exports": {
     "./base": "./base.mjs",
     "./next-js": "./next.mjs",
