@@ -11,5 +11,7 @@
     "@repo/typescript-config": "0.0.0",
     "@cieloazul310/jclub-financial-utils": "0.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "public-berries-tie"
+  ]
 }

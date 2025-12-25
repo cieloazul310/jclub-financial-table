@@ -1,0 +1,7 @@
+# @repo/typescript-config
+
+## 0.0.1-alpha.0
+
+### Patch Changes
+
+- 12f9d9a: alpha version

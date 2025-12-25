@@ -1,6 +1,6 @@
 {
   "name": "jclub-financial-app",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "type": "module",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "^5.26.1",
-    "@cieloazul310/jclub-financial": "^0.0.0",
+    "@cieloazul310/jclub-financial": "^0.0.1-alpha.0",
     "@cieloazul310/regista": "^1.2.1",
     "lucide-react": "^0.546.0",
     "next": "^16.0.10",
@@ -30,8 +30,8 @@
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.0.10",
     "@pandacss/dev": "^1.4.2",
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@repo/eslint-config": "0.0.1-alpha.0",
+    "@repo/typescript-config": "0.0.1-alpha.0",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
