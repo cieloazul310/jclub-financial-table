@@ -23,7 +23,6 @@ describe("Get Statistics", () => {
 
   it("should get invalid statistics when data is missing", async () => {
     const stats = await getStatistics(2000, "J1", "revenue");
-    console.log(stats);
     expect(stats.totalCount).toEqual(0);
     expect(stats.values).toEqual([]);
     expect(stats.sum).toEqual(0);
@@ -38,7 +37,6 @@ describe("Get Statistics", () => {
 describe("Get Category Year Series", () => {
   it("should get statistics for all categories for a specific field", async () => {
     const statsArray = await getCategoryYearSeries("J2", "revenue");
-    console.log(statsArray);
     expect(Array.isArray(statsArray)).toBe(true);
     expect(statsArray.length).toBeGreaterThan(0);
   });
@@ -47,7 +45,6 @@ describe("Get Category Year Series", () => {
 describe("Get Stats By Year", () => {
   it("should get statistics for all categories for a specific year", async () => {
     const statsByCategory = await getStatsByYear(2020, "expense");
-    console.log(statsByCategory);
     expect(statsByCategory).toHaveProperty("J1");
     expect(statsByCategory).toHaveProperty("J2");
     expect(statsByCategory).toHaveProperty("J3");
