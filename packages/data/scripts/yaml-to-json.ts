@@ -60,15 +60,15 @@ async function processDataset() {
     years.sort((a, b) => b - a);
     const replacer = indexReplacer(years);
     const mjs = await fs.readFile(
-      path.resolve(templatePath, "esm/index.mjs"),
+      path.resolve(templatePath, "esm/index-for-clubs.mjs"),
       "utf8",
     );
     const cjs = await fs.readFile(
-      path.resolve(templatePath, "cjs/index.cjs"),
+      path.resolve(templatePath, "cjs/index-for-clubs.cjs"),
       "utf8",
     );
     const dts = await fs.readFile(
-      path.resolve(templatePath, "esm/index.d.mts"),
+      path.resolve(templatePath, "esm/index-for-clubs.d.mts"),
       "utf8",
     );
 
@@ -107,23 +107,19 @@ function topLevelIndexReplacer(clubs: string[]) {
 // Generate top-level index files (sync APIs) after processing
 async function generateTopLevelIndex() {
   const dist = path.resolve("./dist");
-  /*
-  const clubs = (await fs.readdir(dist, { withFileTypes: true }))
-    .filter((d) => d.isDirectory())
-    .map((d) => d.name);
-  */
+
   const clubs = getAllClubs().map(({ slug }) => slug);
 
   const mjs = await fs.readFile(
-    path.resolve(templatePath, "esm/top-index.mjs"),
+    path.resolve(templatePath, "esm/index.mjs"),
     "utf8",
   );
   const cjs = await fs.readFile(
-    path.resolve(templatePath, "cjs/top-index.cjs"),
+    path.resolve(templatePath, "cjs/index.cjs"),
     "utf8",
   );
   const dts = await fs.readFile(
-    path.resolve(templatePath, "esm/top-index.d.mts"),
+    path.resolve(templatePath, "esm/index.d.mts"),
     "utf8",
   );
   const replacer = topLevelIndexReplacer(clubs);

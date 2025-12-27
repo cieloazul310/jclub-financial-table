@@ -1,19 +1,51 @@
+import { readFile, readdir } from "fs/promises";
+import { resolve, join } from "path";
 import type { FinancialDatum } from "@cieloazul310/jclub-financial-utils/types";
 
-export async function getData(
-  from: number = -Infinity,
-  to: number = Infinity,
-): Promise<FinancialDatum[]> {
-  const years: number[] = [2020];
-  const selected = years.filter((year) => year >= from && year <= to);
-  const imports = selected.map((year) =>
-    import("./" + year + ".json").then(
-      (m) => (m.default ?? m) as FinancialDatum,
-    ),
-  );
-  return Promise.all(imports);
+const base = resolve(__dirname);
+
+async function loadJsonSync(file: string): Promise<FinancialDatum | null> {
+  try {
+    return JSON.parse(await readFile(file, "utf8"));
+  } catch (err) {
+    return null;
+  }
 }
 
-export const years: number[] = [2020];
+export const clubs = ["club-name-collection"];
 
-export default getData;
+export async function getDataByClub(club: string): Promise<FinancialDatum[]> {
+  const dir = join(base, club);
+  try {
+    const files = (await readdir(dir)).filter((filename) =>
+      filename.endsWith(".json"),
+    );
+    const data = files.map(
+      async (filename) => await loadJsonSync(join(dir, filename)),
+    );
+    return (await Promise.all(data)).filter((json): json is FinancialDatum =>
+      Boolean(json),
+    );
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+}
+
+export async function getDataByYear(year: number): Promise<FinancialDatum[]> {
+  const output = [];
+  for (const club of ["club-name-collection"]) {
+    const pathname = join(base, club, String(year) + ".json");
+    const item = await loadJsonSync(pathname);
+    if (item) output.push(item);
+  }
+  return output;
+}
+
+export async function getDatum(
+  club: string,
+  year: number,
+): Promise<FinancialDatum | null> {
+  const pathname = join(base, club, String(year) + ".json");
+  return await loadJsonSync(pathname);
+}

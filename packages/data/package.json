@@ -58,7 +58,9 @@
   },
   "scripts": {
     "build": "npm run build:template && npm run build:data && npm run build:types",
-    "build:template": "tsdown",
+    "build:template": "npm run build:template:top && npm run build:template:clubs",
+    "build:template:top": "tsdown",
+    "build:template:clubs": "tsdown --config tsdown-for-clubs.config.ts",
     "build:data": "tsx ./scripts/yaml-to-json.ts",
     "build:types": "tsx ./scripts/build-types.ts"
   },
