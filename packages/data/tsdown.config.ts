@@ -1,7 +1,7 @@
 import { defineConfig } from "tsdown";
 
 export default defineConfig({
-  entry: ["src/index.ts", "src/top-index.ts"],
+  entry: ["src/top-index.ts", "src/for-each-club/index.ts"],
   format: {
     esm: {
       target: ["esnext"],

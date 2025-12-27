@@ -10,7 +10,7 @@ async function copyData() {
   clubs.forEach(async ({ slug }) => {
     const file = join(outDir, `${slug}.ts`);
 
-    const data = `export * from "@cieloazul310/jclub-financial-data/${slug}";`;
+    const data = `export * from "@cieloazul310/jclub-financial-data/${slug}";\n`;
     await writeFile(file, data);
   });
 }

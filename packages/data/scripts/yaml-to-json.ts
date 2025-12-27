@@ -60,15 +60,15 @@ async function processDataset() {
     years.sort((a, b) => b - a);
     const replacer = indexReplacer(years);
     const mjs = await fs.readFile(
-      path.resolve(templatePath, "esm/index.mjs"),
+      path.resolve(templatePath, "esm/for-each-club/index.mjs"),
       "utf8",
     );
     const cjs = await fs.readFile(
-      path.resolve(templatePath, "cjs/index.cjs"),
+      path.resolve(templatePath, "cjs/for-each-club/index.cjs"),
       "utf8",
     );
     const dts = await fs.readFile(
-      path.resolve(templatePath, "esm/index.d.mts"),
+      path.resolve(templatePath, "esm/for-each-club/index.d.mts"),
       "utf8",
     );
 
@@ -107,11 +107,7 @@ function topLevelIndexReplacer(clubs: string[]) {
 // Generate top-level index files (sync APIs) after processing
 async function generateTopLevelIndex() {
   const dist = path.resolve("./dist");
-  /*
-  const clubs = (await fs.readdir(dist, { withFileTypes: true }))
-    .filter((d) => d.isDirectory())
-    .map((d) => d.name);
-  */
+
   const clubs = getAllClubs().map(({ slug }) => slug);
 
   const mjs = await fs.readFile(
@@ -131,6 +127,24 @@ async function generateTopLevelIndex() {
   await fs.writeFile(path.join(dist, "index.mjs"), replacer(mjs), "utf8");
   await fs.writeFile(path.join(dist, "index.cjs"), replacer(cjs), "utf8");
   await fs.writeFile(path.join(dist, "index.d.ts"), dts, "utf8");
+
+  // Copy any esm shims from templates/esm matching esm-shims-*.mjs into dist
+  try {
+    const esmTemplateDir = path.resolve(templatePath, "esm");
+    const files = await fs.readdir(esmTemplateDir);
+    const shimFiles = files.filter((f) => /^esm-shims-.*\.mjs$/i.test(f));
+    for (const f of shimFiles) {
+      const src = path.join(esmTemplateDir, f);
+      const dest = path.join(dist, f);
+      // use fs.copyFile from fs/promises
+      await fs.copyFile(src, dest);
+      console.log(
+        `copied ${path.relative(process.cwd(), src)} -> ${path.relative(process.cwd(), dest)}`,
+      );
+    }
+  } catch (e) {
+    console.warn("no esm shims copied:", e);
+  }
 
   console.log("wrote top-level index files");
 }

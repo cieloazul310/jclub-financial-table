@@ -1,4 +1,4 @@
 {
   "extends": "@repo/typescript-config/base.json",
-  "include": ["src", "eslint.config.mjs", "tsdown.config.ts"]
+  "include": ["src", "scripts", "eslint.config.mjs", "tsdown.config.ts"]
 }
