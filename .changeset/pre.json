@@ -12,6 +12,7 @@
     "@cieloazul310/jclub-financial-utils": "0.0.0"
   },
   "changesets": [
+    "eighty-schools-press",
     "public-berries-tie",
     "slow-candles-visit"
   ]
