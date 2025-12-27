@@ -46,11 +46,11 @@
     },
     "./types": {
       "import": {
-        "types": "./dist/types.d.ts",
+        "types": "./dist/types.d.mts",
         "default": "./dist/types.mjs"
       },
       "require": {
-        "types": "./dist/types.d.ts",
+        "types": "./dist/types.d.cts",
         "default": "./dist/types.cjs"
       }
     },
