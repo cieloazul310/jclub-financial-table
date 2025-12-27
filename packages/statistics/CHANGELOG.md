@@ -1,5 +1,13 @@
 # @cieloazul310/jclub-financial-statistics
 
+## 0.0.1-alpha.2
+
+### Patch Changes
+
+- ea2bf31: 修正
+- Updated dependencies [ea2bf31]
+  - @cieloazul310/jclub-financial-data@0.0.1-alpha.2
+
 ## 0.0.1-alpha.1
 
 ### Patch Changes

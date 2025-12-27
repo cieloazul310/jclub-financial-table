@@ -1,5 +1,11 @@
 # @repo/typescript-config
 
+## 0.0.1-alpha.2
+
+### Patch Changes
+
+- ea2bf31: 修正
+
 ## 0.0.1-alpha.1
 
 ### Patch Changes
