@@ -1,5 +1,13 @@
 # jclub-financial-vercel-api
 
+## 0.0.1-alpha.1
+
+### Patch Changes
+
+- 52b587f: パッケージの改善
+- Updated dependencies [52b587f]
+  - @cieloazul310/jclub-financial@0.0.1-alpha.1
+
 ## 0.0.1-alpha.0
 
 ### Patch Changes
