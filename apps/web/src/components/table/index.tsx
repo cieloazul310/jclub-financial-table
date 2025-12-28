@@ -41,7 +41,6 @@ export function FinancialTable({
 
   return (
     <>
-      <Toolbar mode={mode} tab={tab} />
       <Tabs.Root value={tab} onValueChange={onValueChange}>
         <Tabs.List>
           {options.map(({ id, label }) => (
@@ -50,6 +49,7 @@ export function FinancialTable({
             </Tabs.Trigger>
           ))}
         </Tabs.List>
+        <Toolbar mode={mode} tab={tab} />
         {options.map(({ id }) => {
           const { head, renderRow } = row[id];
           return (

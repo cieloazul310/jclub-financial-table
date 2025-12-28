@@ -7,9 +7,9 @@ import type { Category } from "@/utils/types";
 
 function VisibleChip({ children, ...props }: ChipTag.RootProps) {
   return (
-    <ChipTag.Root colorPalette="keyColor" {...props}>
+    <ChipTag.Root {...props}>
       <ChipTag.Label>{children}</ChipTag.Label>
-      <ChipTag.RemoveButton />
+      <ChipTag.RemoveButton transform="scale(0.9)" />
     </ChipTag.Root>
   );
 }
@@ -18,7 +18,7 @@ function InvisibleChip({ children, ...props }: ChipTag.RootProps) {
   return (
     <ChipTag.Root colorPalette="solid-gray" {...props}>
       <ChipTag.Label>{children}</ChipTag.Label>
-      <ChipTag.AddButton />
+      <ChipTag.AddButton transform="scale(0.9)" />
     </ChipTag.Root>
   );
 }
@@ -28,6 +28,14 @@ export function CategoryFilter() {
     (table) => table,
   );
   const categories: Category[] = ["J1", "J2", "J3", "others"];
+  const props = css.raw({
+    minHeight: "unset",
+    py: 0.5,
+    textStyle: "oln-14B-100",
+  });
+
+  const label = (category: Category) =>
+    category === "others" ? "その他" : category;
 
   return (
     <div className={css({ display: "flex", gap: 1 })}>
@@ -36,15 +44,17 @@ export function CategoryFilter() {
           <VisibleChip
             key={category}
             onClick={() => toggleFilterCategory(category)}
+            {...props}
           >
-            {category}
+            {label(category)}
           </VisibleChip>
         ) : (
           <InvisibleChip
             key={category}
             onClick={() => toggleFilterCategory(category)}
+            {...props}
           >
-            {category}
+            {label(category)}
           </InvisibleChip>
         ),
       )}

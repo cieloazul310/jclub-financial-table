@@ -55,7 +55,7 @@ export function ClubSummary({ club }: { club: ClubSummaryInfo }) {
       >
         <UnorderedList>
           <List>
-            2021年以前の「チーム人件費」はアカデミー指導者報酬、レディースチーム選手・指導者報酬を含む。2022年度以降はトップチームに限定した「トップチーム人件費」。
+            2021年以前の「チーム人件費」はアカデミー指導者報酬、レディースチーム選手・指導者報酬を含む。2022年度以降はトップチームに限定した「トップチーム人件費」。2024年以降は更に「移籍関連費用」が別項目となった。
           </List>
           {club.annotation?.map((str) => (
             <List key={str}>{str}</List>

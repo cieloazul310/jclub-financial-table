@@ -14,13 +14,22 @@ export function TableHeadCell({
   px = 0.5,
   minWidth = "6em",
   verticalAlign = "middle",
+  textAlign = "center",
   textStyle = "dns-14B-130",
   ...rest
 }: Omit<ComponentProps<typeof Table.Cell>, "align"> & {
   mode: Mode;
   sortableKey?: SortableKey;
 }) {
-  const props = { py, px, minWidth, textStyle, verticalAlign, ...rest };
+  const props = {
+    py,
+    px,
+    minWidth,
+    textStyle,
+    verticalAlign,
+    textAlign,
+    ...rest,
+  };
   const { sortKey, setSortKey, toggleSort } = useTableStore((store) => store);
   const sortable = mode === "year" && !!sortableKey;
   const selected = mode === "year" && sortKey === sortableKey;
@@ -35,7 +44,7 @@ export function TableHeadCell({
   };
 
   return (
-    <Table.Cell
+    <Table.Header
       align="center"
       className={cx(selected && css({ bg: "keyColor.primary" }))}
       {...props}
@@ -44,6 +53,8 @@ export function TableHeadCell({
         className={cx(
           css({
             textWrap: "balance",
+            minHeight: "40px",
+            width: "full",
           }),
           sortable && css({ cursor: "pointer" }),
           sortable &&
@@ -60,6 +71,6 @@ export function TableHeadCell({
       >
         {children}
       </button>
-    </Table.Cell>
+    </Table.Header>
   );
 }

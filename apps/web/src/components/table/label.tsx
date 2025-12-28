@@ -25,6 +25,7 @@ function TableHeaderLabel({
   width = "100px",
   borderRightWidth = "1px",
   borderColor = "solid-gray.200",
+  verticalAlign = "middle",
   className,
   ...rest
 }: {
@@ -36,6 +37,7 @@ function TableHeaderLabel({
     width,
     borderRightWidth,
     borderColor,
+    verticalAlign,
     ...rest,
   };
   return (
@@ -55,9 +57,10 @@ function TableHeaderIndex({
   minWidth = "36px",
   width = "36px",
   px = 0.5,
+  verticalAlign = "middle",
   ...rest
 }: ComponentProps<typeof Table.Header>) {
-  const props = { position, left, minWidth, width, px, ...rest };
+  const props = { position, left, minWidth, width, px, verticalAlign, ...rest };
   return <Table.Header {...props} />;
 }
 

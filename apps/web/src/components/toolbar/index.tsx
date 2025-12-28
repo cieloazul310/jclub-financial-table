@@ -7,7 +7,9 @@ import { Unit } from "./unit";
 export function Toolbar({ mode, tab }: { mode: Mode; tab: Tab }) {
   return (
     <div className={css({ py: 1, display: "flex" })}>
-      <div>{mode === "club" ? <YearFilter /> : <CategoryFilter />}</div>
+      <div className={css({ flexGrow: 1 })}>
+        {mode === "club" ? <YearFilter /> : <CategoryFilter />}
+      </div>
       <Unit mode={mode} tab={tab} />
     </div>
   );
