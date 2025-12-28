@@ -12,7 +12,7 @@ import type { ComponentProps } from "styled-system/types";
 import { Table } from "@/components/ui/table";
 import { val } from "@/utils/val";
 import type { Mode } from "@/utils/types";
-import { CategoryLabel } from "../category-label";
+import { CategoryLabel } from "@/components/category-label";
 import { TableBodyLabel } from "./label";
 import { valueStyle } from "./styles";
 

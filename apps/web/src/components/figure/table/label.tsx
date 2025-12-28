@@ -3,7 +3,7 @@ import { cx, css } from "styled-system/css";
 import type { ComponentProps } from "styled-system/types";
 import { Table } from "@/components/ui/table";
 import { Mode } from "@/utils/types";
-import { Link } from "../link";
+import { Link } from "@/components/link";
 
 const theadLabelStyle = css({
   textStyle: "dns-16B-120",
