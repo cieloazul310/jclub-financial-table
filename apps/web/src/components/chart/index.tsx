@@ -23,6 +23,8 @@ export async function Chart({ data }: ChartProps) {
         width: "max-content",
         maxWidth: "full",
         mx: "auto",
+        textStyle: "oln-14N-100",
+        fontFamily: "Helvetica, Arial, sans-serif",
         gridTemplateAreas: `
       "caption caption"
       "axis main"

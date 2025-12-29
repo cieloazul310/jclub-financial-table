@@ -38,8 +38,8 @@ export function Figure({ data, mode }: { data: FinancialDatum[]; mode: Mode }) {
         className={css({
           position: "sticky",
           top: "{sizes.mobile-header-height}",
-          zIndex: 10,
-          bg: "white",
+          zIndex: 5,
+          bg: "white/85",
         })}
         value={tab}
         onValueChange={onValueChange}
@@ -52,7 +52,7 @@ export function Figure({ data, mode }: { data: FinancialDatum[]; mode: Mode }) {
           ))}
         </Tabs.List>
       </Tabs.Root>
-      <div className={css()}>
+      <div className={css({ mx: "auto", maxWidth: "breakpoint-2xl" })}>
         <Toolbar mode={mode} tab={tab} />
         <FigureMain mode={mode} data={filteredData} />
       </div>

@@ -13,7 +13,7 @@ export function AxisY({ scale, chartHeight, padding }: AxisYProps) {
   return (
     <div className={css({ height, width: padding.left, flexShrink: 0 })}>
       <svg
-        className={css({ color: "solid-gray.800", textStyle: "oln-14N-100" })}
+        className={css({ color: "solid-gray.800" })}
         width={padding.left}
         height={height}
       >

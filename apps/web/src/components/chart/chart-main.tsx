@@ -30,7 +30,6 @@ export function ChartMain({
   return (
     <svg
       className={css({
-        textStyle: "oln-14N-100",
         color: "solid-gray.800",
       })}
       width={chartWidth}
