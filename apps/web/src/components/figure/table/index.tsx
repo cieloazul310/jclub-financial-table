@@ -1,4 +1,4 @@
-import type { FinancialDatum } from "@cieloazul310/jclub-financial";
+import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { Table } from "@/components/ui/table";
 import { row } from "./row";
@@ -7,7 +7,7 @@ import type { Mode, Tab } from "@/utils/types";
 type FinancialTableProps = {
   tab: Tab;
   mode: Mode;
-  data: FinancialDatum[];
+  data: ExtendedFinancialDatum[];
 };
 
 export function FinancialTable({ tab, mode, data }: FinancialTableProps) {

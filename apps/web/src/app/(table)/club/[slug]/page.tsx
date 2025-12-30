@@ -1,5 +1,5 @@
 import { getAllClubs, getClubBySlug } from "@cieloazul310/jclub-financial";
-import { getDataByClub } from "@cieloazul310/jclub-financial/data";
+import { getExtendedDataByClub } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
 import { FullWidthLayout } from "@/components/layout/full-width";
@@ -24,7 +24,7 @@ export default async function Page({
   if (!club) {
     return null;
   }
-  const data = await getDataByClub(club.slug);
+  const data = await getExtendedDataByClub(club.slug);
 
   return (
     <FullWidthLayout slug={["club", club.slug]} title={club.name}>

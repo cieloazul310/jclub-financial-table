@@ -1,7 +1,7 @@
 "use client";
 
 import type { TabsValueChangeDetails } from "@ark-ui/react";
-import type { FinancialDatum } from "@cieloazul310/jclub-financial/types";
+import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial/types";
 import { css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
 import { Tabs } from "@/components/ui/tabs";
@@ -18,7 +18,13 @@ const options: { id: Tab; label: string }[] = [
   { id: "attd", label: "入場者数" },
 ];
 
-export function Figure({ data, mode }: { data: FinancialDatum[]; mode: Mode }) {
+export function Figure({
+  data,
+  mode,
+}: {
+  data: ExtendedFinancialDatum[];
+  mode: Mode;
+}) {
   const { tab, sortKey, sortAsc, filterCategories, filterYears, setTab } =
     useTableStore((store) => store);
   const onValueChange = (details: TabsValueChangeDetails) => {
@@ -52,7 +58,13 @@ export function Figure({ data, mode }: { data: FinancialDatum[]; mode: Mode }) {
           ))}
         </Tabs.List>
       </Tabs.Root>
-      <div className={css({ mx: "auto", maxWidth: "breakpoint-2xl" })}>
+      <div
+        className={css({
+          mx: "auto",
+          maxWidth: "breakpoint-2xl",
+          width: "full",
+        })}
+      >
         <Toolbar mode={mode} tab={tab} />
         <FigureMain mode={mode} data={filteredData} />
       </div>

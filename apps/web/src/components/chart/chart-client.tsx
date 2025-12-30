@@ -1,6 +1,6 @@
 "use client";
 
-import { FinancialDatum } from "@cieloazul310/jclub-financial";
+import { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
 import { scaleLinear } from "d3";
 import { css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
@@ -13,7 +13,7 @@ type ChartClientProps = {
   itemWidth: number;
   height: number;
   padding: { top: number; left: number; right: number; bottom: number };
-  data: FinancialDatum[];
+  data: ExtendedFinancialDatum[];
   extentMap: Record<Tab, [number, number]>;
   averages: Averages;
 };

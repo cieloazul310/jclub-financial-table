@@ -4,7 +4,7 @@ import { getLabel } from "@cieloazul310/jclub-financial";
 import { cx, css } from "styled-system/css";
 import { CardTableBase, CardTableRow } from "@/components/figure/card/table";
 import { Diff } from "@/components/shortcodes/diff";
-import { val } from "@/utils/val";
+import { format } from "@/utils/format";
 import { pl } from "./card-values";
 
 const meta = {
@@ -41,8 +41,8 @@ export const Basic: Story = {
                 {getLabel(key)}
               </button>
             }
-            value={val(value, { separator: separator })}
-            diff={diff && <Diff>{diff}</Diff>}
+            value={format(value, { separator })}
+            delta={diff && <Diff>{diff}</Diff>}
             red={redIfMinus && value < 0}
             {...rest}
           />

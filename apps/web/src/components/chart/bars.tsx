@@ -2,12 +2,14 @@
 
 import type { ScaleLinear } from "d3";
 import type {
-  FinancialDatum,
+  ExtendedFinancialDatum,
+  Extended,
   General,
   PL,
   BS,
   Attd,
   Expense,
+  FinancialDatum,
 } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
@@ -52,8 +54,8 @@ function XLegend({ year, category, height, itemWidth }: XLegendProps) {
   );
 }
 
-type BarProps<T> = {
-  datum: T & Pick<General, "category">;
+type BarProps<T extends Partial<FinancialDatum>> = {
+  datum: Extended<T & Pick<General, "category">>;
   scale: ScaleLinear<number, number>;
   itemWidth: number;
   barWidth: number;
@@ -68,14 +70,14 @@ function PLBar({
   barPadding,
 }: BarProps<Pick<PL, "revenue">>) {
   const { revenue, category } = datum;
-  const fill = categoryBarFill({ category });
+  const fill = categoryBarFill({ category: category.value });
 
   return (
     <rect
       x={(itemWidth * barPadding) / 2}
-      y={scale(revenue)}
+      y={scale(revenue.value)}
       width={barWidth}
-      height={scale(0) - scale(revenue)}
+      height={scale(0) - scale(revenue.value)}
       fill={fill}
     />
   );
@@ -90,9 +92,9 @@ function BSBar({
 }: BarProps<Pick<BS, "assets" | "liabilities" | "net_worth">>) {
   const { assets, liabilities, net_worth } = datum;
   if (
-    typeof assets !== "number" ||
-    typeof liabilities !== "number" ||
-    typeof net_worth !== "number"
+    typeof assets?.value !== "number" ||
+    typeof liabilities?.value !== "number" ||
+    typeof net_worth?.value !== "number"
   )
     return null;
 
@@ -100,25 +102,27 @@ function BSBar({
     <>
       <rect
         x={(itemWidth * barPadding) / 2}
-        y={scale(assets)}
+        y={scale(assets.value)}
         width={barWidth / 2}
-        height={scale(0) - scale(assets)}
+        height={scale(0) - scale(assets.value)}
         className={css({ fill: "{colors.solid-gray.300}" })}
       />
       <rect
         x={itemWidth / 2}
-        y={scale(assets)}
+        y={scale(assets.value)}
         width={barWidth / 2}
-        height={scale(0) - scale(liabilities) - 1}
+        height={scale(0) - scale(liabilities.value) - 1}
         className={css({ fill: "{colors.solid-gray.200}" })}
       />
       <rect
         x={itemWidth / 2}
-        y={net_worth < 0 ? scale(0) : scale(net_worth)}
-        width={barWidth / (net_worth < 0 ? 4 : 2)}
-        height={(net_worth < 0 ? -1 : 1) * (scale(0) - scale(net_worth))}
+        y={net_worth.value < 0 ? scale(0) : scale(net_worth.value)}
+        width={barWidth / (net_worth.value < 0 ? 4 : 2)}
+        height={
+          (net_worth.value < 0 ? -1 : 1) * (scale(0) - scale(net_worth.value))
+        }
         className={
-          net_worth < 0
+          net_worth.value < 0
             ? css({ fill: "{colors.error.1}" })
             : css({ fill: "{colors.success.1}" })
         }
@@ -134,25 +138,25 @@ function ExpenseBar({
   barWidth,
   barPadding,
 }: BarProps<Pick<Expense, "expense" | "salary">>) {
-  const fill = categoryBarFill(datum);
+  const fill = categoryBarFill({ category: datum.category.value });
   const { expense, salary } = datum;
-  const othersExp = expense - (salary ?? 0);
+  const othersExp = expense.value - (salary?.value ?? 0);
 
   return (
     <>
       <rect
         x={(itemWidth * barPadding) / 2}
-        y={scale(expense)}
+        y={scale(expense.value)}
         width={barWidth}
         height={scale(0) - scale(othersExp) - 1}
         className={css({ fill: "{colors.solid-gray.100}" })}
       />
-      {salary && (
+      {salary?.value && (
         <rect
           x={(itemWidth * barPadding) / 2}
-          y={scale(salary)}
+          y={scale(salary.value)}
           width={barWidth}
-          height={scale(0) - scale(salary) - 1}
+          height={scale(0) - scale(salary.value) - 1}
           fill={fill}
         />
       )}
@@ -168,20 +172,20 @@ function AttdBar({
   barPadding,
 }: BarProps<Pick<Attd, "average_attd">>) {
   const { average_attd, category } = datum;
-  const fill = categoryBarFill({ category });
+  const fill = categoryBarFill({ category: category.value });
   return (
     <rect
       x={(itemWidth * barPadding) / 2}
-      y={scale(average_attd)}
+      y={scale(average_attd.value)}
       width={barWidth}
-      height={scale(0) - scale(average_attd)}
+      height={scale(0) - scale(average_attd.value)}
       fill={fill}
     />
   );
 }
 
 type BarsProps = {
-  data: FinancialDatum[];
+  data: ExtendedFinancialDatum[];
   scale: ScaleLinear<number, number>;
   height: number;
   itemWidth: number;
@@ -192,64 +196,36 @@ export function Bars({ data, scale, height, itemWidth }: BarsProps) {
   const barPadding = 0.2;
   const barWidth = itemWidth * (1 - barPadding);
 
-  function barByTab(datum: FinancialDatum) {
+  const barByTab = (datum: ExtendedFinancialDatum) => {
+    const props = {
+      datum,
+      scale,
+      itemWidth,
+      barWidth,
+      barPadding,
+    };
+
     if (tab === "bs")
-      return (
-        <BSBar
-          key={datum.year.toString()}
-          datum={datum}
-          scale={scale}
-          itemWidth={itemWidth}
-          barWidth={barWidth}
-          barPadding={barPadding}
-        />
-      );
+      return <BSBar key={datum.year.value.toString()} {...props} />;
     if (tab === "expense")
-      return (
-        <ExpenseBar
-          key={datum.year.toString()}
-          datum={datum}
-          scale={scale}
-          itemWidth={itemWidth}
-          barWidth={barWidth}
-          barPadding={barPadding}
-        />
-      );
+      return <ExpenseBar key={datum.year.value.toString()} {...props} />;
     if (tab === "attd")
-      return (
-        <AttdBar
-          key={datum.year.toString()}
-          datum={datum}
-          scale={scale}
-          itemWidth={itemWidth}
-          barWidth={barWidth}
-          barPadding={barPadding}
-        />
-      );
-    return (
-      <PLBar
-        key={datum.year.toString()}
-        datum={datum}
-        scale={scale}
-        itemWidth={itemWidth}
-        barWidth={barWidth}
-        barPadding={barPadding}
-      />
-    );
-  }
+      return <AttdBar key={datum.year.value.toString()} {...props} />;
+    return <PLBar key={datum.year.value.toString()} {...props} />;
+  };
 
   return (
     <g>
       {data.map((datum, index) => (
         <g
-          key={datum.year.toString()}
+          key={datum.year.value.toString()}
           className={css({ color: "solid-gray.300" })}
           transform={`translate(${itemWidth * index}, 0)`}
         >
           {barByTab(datum)}
           <XLegend
-            year={datum.year}
-            category={datum.category}
+            year={datum.year.value}
+            category={datum.category.value}
             height={height}
             itemWidth={itemWidth}
           />

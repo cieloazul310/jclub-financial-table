@@ -20,7 +20,7 @@ salary: チーム人件費
 transfer_exp: 移籍関連費用
 transfer_int_exp: 国外クラブからの移籍に関する費用
 transfer_dom_exp: 国内クラブからの移籍に関する費用
-manage_exp: 事業費
+manage_exp: 事業費(チーム人件費を除く)
 general_exp: 総事業費
 game_exp: 試合関連経費
 team_exp: トップチーム運営経費

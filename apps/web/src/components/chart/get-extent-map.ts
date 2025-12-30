@@ -1,4 +1,4 @@
-import type { FinancialDatum } from "@cieloazul310/jclub-financial";
+import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
 import type { Tab } from "@/utils/types";
 import { getAverageMaxByCategory, type AverageMax } from "./categories-average";
 
@@ -22,22 +22,33 @@ async function getExtentByCategory(categories: string[]) {
   return extentMap;
 }
 
-export async function getExtentMap(data: FinancialDatum[]) {
-  const categories = Array.from(new Set(data.map(({ category }) => category)));
+export async function getExtentMap(data: ExtendedFinancialDatum[]) {
+  const categories = Array.from(
+    new Set(data.map(({ category }) => category.value)),
+  );
   const extents = await getExtentByCategory(categories);
 
   const maxAssets = data.reduce(
-    (accum, d) => Math.max(accum, d.assets ?? 0),
+    (accum, d) => Math.max(accum, d.assets.value ?? 0),
     0,
   );
   const minNetWorth = data.reduce(
-    (accum, d) => Math.min(accum, d.net_worth ?? 0),
+    (accum, d) => Math.min(accum, d.net_worth.value ?? 0),
     0,
   );
 
-  const revenueMax = data.reduce((accum, d) => Math.max(accum, d.revenue), 0);
-  const expenseMax = data.reduce((accum, d) => Math.max(accum, d.expense), 0);
-  const attdMax = data.reduce((accum, d) => Math.max(accum, d.average_attd), 0);
+  const revenueMax = data.reduce(
+    (accum, d) => Math.max(accum, d.revenue.value),
+    0,
+  );
+  const expenseMax = data.reduce(
+    (accum, d) => Math.max(accum, d.expense.value),
+    0,
+  );
+  const attdMax = data.reduce(
+    (accum, d) => Math.max(accum, d.average_attd.value),
+    0,
+  );
 
   const result: Record<
     "pl" | "bs" | "revenue" | "expense" | "attd",

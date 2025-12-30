@@ -1,6 +1,6 @@
 import {
   getAllYears,
-  type FinancialDatum,
+  type ExtendedFinancialDatum,
 } from "@cieloazul310/jclub-financial";
 import { line as d3Line, Line, ScaleLinear } from "d3";
 import { css } from "styled-system/css";
@@ -85,7 +85,7 @@ function CategoryLine({
 
 type AverageLinesTypes = {
   scale: ScaleLinear<number, number>;
-  data: FinancialDatum[];
+  data: ExtendedFinancialDatum[];
   itemWidth: number;
   averages: Averages;
 };
@@ -100,11 +100,13 @@ export function AverageLines({
   averages,
 }: AverageLinesTypes) {
   const { tab } = useTableStore((store) => store);
-  const dataYears = data.map(({ year }) => year);
+  const dataYears = data.map(({ year }) => year.value);
   const line = useAverageLine(scale, dataYears, itemWidth);
   if (tab === "bs") return null;
 
-  const categories = Array.from(new Set(data.map(({ category }) => category)));
+  const categories = Array.from(
+    new Set(data.map(({ category }) => category.value)),
+  );
 
   return (
     <g strokeWidth={2} strokeDasharray="4,2">
