@@ -1,8 +1,12 @@
 import { getAllClubs, getClubBySlug } from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
+import { css } from "styled-system/css";
+import { container } from "styled-system/patterns";
 import { FullWidthLayout } from "@/components/layout/full-width";
-import { FinancialTable } from "@/components/table";
+import { Figure } from "@/components/figure";
 import { ClubSummary } from "@/components/club-summary";
+import { Chart } from "@/components/chart";
+import { Heading2 } from "@/components/article";
 
 export function generateStaticParams() {
   const clubs = getAllClubs();
@@ -24,8 +28,18 @@ export default async function Page({
 
   return (
     <FullWidthLayout slug={["club", club.slug]} title={club.name}>
-      <FinancialTable data={data} mode="club" />
-      <ClubSummary club={club} />
+      <Figure data={data} mode="club" />
+      <article className={container({ maxWidth: "common-main-width", mt: 12 })}>
+        <Heading2>{club.name}</Heading2>
+        {data.length >= 2 && (
+          <div className={css({ mb: 8 })}>
+            <Chart data={data} />
+          </div>
+        )}
+        <div className={css()}>
+          <ClubSummary club={club} />
+        </div>
+      </article>
     </FullWidthLayout>
   );
 }

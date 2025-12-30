@@ -1,7 +1,10 @@
 import { getAllYears } from "@cieloazul310/jclub-financial";
 import { getDataByYear } from "@cieloazul310/jclub-financial/data";
+import { css } from "styled-system/css";
+import { container } from "styled-system/patterns";
 import { FullWidthLayout } from "@/components/layout/full-width";
-import { FinancialTable } from "@/components/table";
+import { Figure } from "@/components/figure";
+import { Heading2 } from "@/components/article";
 
 export function generateStaticParams() {
   const years = getAllYears();
@@ -18,7 +21,11 @@ export default async function Page({
 
   return (
     <FullWidthLayout slug={["year", year]} title={`${year}年度`}>
-      <FinancialTable data={data} mode="year" />
+      <Figure data={data} mode="year" />
+      <article className={container({ maxWidth: "common-main-width", mt: 12 })}>
+        <Heading2>{year}年度の経営情報</Heading2>
+        <div className={css()}>{/*<ClubSummary club={club} />*/}</div>
+      </article>
     </FullWidthLayout>
   );
 }

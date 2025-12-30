@@ -159,3 +159,14 @@ export type FinancialDatum = General &
   Revenue &
   Expense &
   Attd;
+
+export type SortalbeKeys =
+  | keyof PL
+  | keyof BS
+  | keyof Revenue
+  | keyof Expense
+  | keyof Attd;
+
+export type ExtendedFinancialDatum = General &
+  SeasonResult &
+  Record<SortalbeKeys, { value: number | null; growth: number | null }>;

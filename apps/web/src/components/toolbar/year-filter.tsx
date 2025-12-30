@@ -22,6 +22,12 @@ export function YearFilter() {
       setFilterYearTo(parseInt(value, 10));
     }
   };
+  const selectStyle = css.raw({
+    textStyle: "oln-16N-100",
+    px: 2,
+    py: 2,
+    height: "auto",
+  });
 
   return (
     <Fieldset.Root
@@ -38,7 +44,12 @@ export function YearFilter() {
         size="sm"
       >
         <Field.Label textWrapMode="nowrap">開始年</Field.Label>
-        <Field.Select value={from} onChange={onFromChange} asChild>
+        <Field.Select
+          value={from}
+          onChange={onFromChange}
+          {...selectStyle}
+          asChild
+        >
           <select>
             {Array.from({ length: 20 }, (_, i) => i + 2005).map((year) => (
               <option key={year.toString()} value={year} disabled={year > to}>
@@ -59,7 +70,7 @@ export function YearFilter() {
         size="sm"
       >
         <Field.Label textWrapMode="nowrap">終了年</Field.Label>
-        <Field.Select value={to} onChange={onToChange} asChild>
+        <Field.Select value={to} onChange={onToChange} {...selectStyle} asChild>
           <select>
             {Array.from({ length: 20 }, (_, i) => i + 2005).map((year) => (
               <option key={year.toString()} value={year} disabled={year < from}>

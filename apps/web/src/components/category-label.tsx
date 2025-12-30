@@ -27,10 +27,12 @@ export function J3Label(props: ChipLabelProps) {
 export function CategoryLabel({
   variant = "ghost",
   textStyle = "oln-14B-100",
+  minHeight = "unset",
+  py = 1,
   category,
   ...rest
 }: { category: string } & ChipLabelProps) {
-  const props = { variant, textStyle, ...rest };
+  const props = { variant, textStyle, py, minHeight, ...rest };
 
   if (category === "J1") {
     return <J1Label {...props} />;

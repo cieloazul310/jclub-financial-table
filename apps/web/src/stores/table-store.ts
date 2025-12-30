@@ -8,6 +8,7 @@ export type TableState = {
   sortAsc: boolean;
   filterCategories: Category[];
   filterYears: [number, number];
+  cardMode: boolean;
 };
 
 export type TableActions = {
@@ -17,6 +18,7 @@ export type TableActions = {
   toggleFilterCategory: (category: Category) => void;
   setFilterYearFrom: (year: number) => void;
   setFilterYearTo: (year: number) => void;
+  toggleCardMode: () => void;
 };
 
 export type TableStore = TableState & TableActions;
@@ -27,6 +29,7 @@ export const defaultInitState: TableState = {
   sortAsc: false,
   filterCategories: ["J1", "J2", "J3", "others"],
   filterYears: [2005, 2024],
+  cardMode: false,
 };
 
 export const createTableStore = (initState: TableState = defaultInitState) =>
@@ -53,6 +56,8 @@ export const createTableStore = (initState: TableState = defaultInitState) =>
           set((prevState) => ({
             filterYears: [prevState.filterYears[0], year],
           })),
+        toggleCardMode: () =>
+          set((prevState) => ({ cardMode: !prevState.cardMode })),
       }),
       {
         name: "table-store",

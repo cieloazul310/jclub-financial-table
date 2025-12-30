@@ -2,7 +2,6 @@
 import * as fs from "fs/promises";
 import * as path from "path";
 import { parse } from "yaml";
-import { getAllClubs } from "@cieloazul310/jclub-financial-utils";
 import { checkData } from "./check-data";
 
 const __dirname = import.meta.dirname;
@@ -98,17 +97,9 @@ try {
   console.error(err);
   process.exitCode = 1;
 }
-
-function topLevelIndexReplacer(clubs: string[]) {
-  return (str: string) =>
-    str.replaceAll(`["club-name-collection"]`, `${JSON.stringify(clubs)}`);
-}
-
 // Generate top-level index files (sync APIs) after processing
 async function generateTopLevelIndex() {
   const dist = path.resolve("./dist");
-
-  const clubs = getAllClubs().map(({ slug }) => slug);
 
   const mjs = await fs.readFile(
     path.resolve(templatePath, "esm/index.mjs"),
@@ -122,10 +113,9 @@ async function generateTopLevelIndex() {
     path.resolve(templatePath, "esm/index.d.mts"),
     "utf8",
   );
-  const replacer = topLevelIndexReplacer(clubs);
 
-  await fs.writeFile(path.join(dist, "index.mjs"), replacer(mjs), "utf8");
-  await fs.writeFile(path.join(dist, "index.cjs"), replacer(cjs), "utf8");
+  await fs.writeFile(path.join(dist, "index.mjs"), mjs, "utf8");
+  await fs.writeFile(path.join(dist, "index.cjs"), cjs, "utf8");
   await fs.writeFile(path.join(dist, "index.d.ts"), dts, "utf8");
 
   console.log("wrote top-level index files");
