@@ -1,5 +1,11 @@
 # @repo/eslint-config
 
+## 0.0.1-alpha.4
+
+### Patch Changes
+
+- 0520f12: update
+
 ## 0.0.1-alpha.3
 
 ### Patch Changes
