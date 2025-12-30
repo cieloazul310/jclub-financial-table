@@ -74,18 +74,18 @@ describe("Get extended club data", async () => {
     expect(datum?.expense.delta).toBe(125);
 
     expect(datum?.average_attd.delta).toBe(680);
-    expect(datum?.unit_price.delta).toBe(232);
+    expect(datum?.unit_price?.delta).toBe(232);
   });
 
   it("verdy 2020", async () => {
     const data = await getExtendedDataByClub("verdy");
     const datum = data.find(({ year }) => year.value === 2020);
-    expect(datum?.assets.value).toBe(480);
-    expect(datum?.assets.delta).toBe(-218);
-    expect(datum?.net_worth.value).toBe(-399);
-    expect(datum?.net_worth.delta).toBe(-439);
+    expect(datum?.assets?.value).toBe(480);
+    expect(datum?.assets?.delta).toBe(-218);
+    expect(datum?.net_worth?.value).toBe(-399);
+    expect(datum?.net_worth?.delta).toBe(-439);
 
-    expect(datum?.sponsor.delta).toBe(-239);
+    expect(datum?.sponsor?.delta).toBe(-239);
     expect(datum?.all_attd.delta).toBe(-61774);
   });
 });
@@ -93,7 +93,6 @@ describe("Get extended club data", async () => {
 describe("Get extended year data", async () => {
   it("mitohollyhock 2024", async () => {
     const data = await getExtendedDataByYear(2024);
-    console.log(data.slice(0, 2));
     const datum = data.find(({ slug }) => slug.value === "mitohollyhock");
     expect(datum?.revenue.value).toBe(1224);
     expect(datum?.revenue.delta).toBe(120);
@@ -101,18 +100,18 @@ describe("Get extended year data", async () => {
     expect(datum?.expense.delta).toBe(125);
 
     expect(datum?.average_attd.delta).toBe(680);
-    expect(datum?.unit_price.delta).toBe(232);
+    expect(datum?.unit_price?.delta).toBe(232);
   });
 
   it("verdy 2020", async () => {
     const data = await getExtendedDataByYear(2020);
     const datum = data.find(({ slug }) => slug.value === "verdy");
-    expect(datum?.assets.value).toBe(480);
-    expect(datum?.assets.delta).toBe(-218);
-    expect(datum?.net_worth.value).toBe(-399);
-    expect(datum?.net_worth.delta).toBe(-439);
+    expect(datum?.assets?.value).toBe(480);
+    expect(datum?.assets?.delta).toBe(-218);
+    expect(datum?.net_worth?.value).toBe(-399);
+    expect(datum?.net_worth?.delta).toBe(-439);
 
-    expect(datum?.sponsor.delta).toBe(-239);
+    expect(datum?.sponsor?.delta).toBe(-239);
     expect(datum?.all_attd.delta).toBe(-61774);
   });
 });
