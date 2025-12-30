@@ -1,5 +1,11 @@
 # @repo/eslint-config
 
+## 0.0.1-alpha.3
+
+### Patch Changes
+
+- 12a8862: データに前年差を格納する`getExtentedDataByClub`, `getExtendedDataByYear`関数を追加
+
 ## 0.0.1-alpha.2
 
 ### Patch Changes

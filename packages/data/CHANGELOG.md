@@ -1,5 +1,13 @@
 # @cieloazul310/jclub-financial-data
 
+## 0.0.1-alpha.3
+
+### Patch Changes
+
+- 12a8862: データに前年差を格納する`getExtentedDataByClub`, `getExtendedDataByYear`関数を追加
+- Updated dependencies [12a8862]
+  - @cieloazul310/jclub-financial-utils@0.0.1-alpha.3
+
 ## 0.0.1-alpha.2
 
 ### Patch Changes
