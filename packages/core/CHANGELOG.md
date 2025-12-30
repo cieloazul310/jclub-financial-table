@@ -1,5 +1,15 @@
 # @cieloazul310/jclub-financial
 
+## 0.0.1-alpha.4
+
+### Patch Changes
+
+- 0520f12: update
+- Updated dependencies [0520f12]
+  - @cieloazul310/jclub-financial-utils@0.0.1-alpha.4
+  - @cieloazul310/jclub-financial-data@0.0.1-alpha.4
+  - @cieloazul310/jclub-financial-statistics@0.0.1-alpha.4
+
 ## 0.0.1-alpha.3
 
 ### Patch Changes
