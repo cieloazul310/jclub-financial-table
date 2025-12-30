@@ -1,10 +1,11 @@
 import { createStore } from "zustand/vanilla";
 import { persist, createJSONStorage } from "zustand/middleware";
-import type { Tab, SortableKey, Category } from "@/utils/types";
+import type { SortableKeys } from "@cieloazul310/jclub-financial";
+import type { Tab, Category } from "@/utils/types";
 
 export type TableState = {
   tab: Tab;
-  sortKey: SortableKey;
+  sortKey: SortableKeys;
   sortAsc: boolean;
   filterCategories: Category[];
   filterYears: [number, number];
@@ -13,7 +14,7 @@ export type TableState = {
 
 export type TableActions = {
   setTab: (tab: Tab) => void;
-  setSortKey: (sortKey: SortableKey) => void;
+  setSortKey: (sortKey: SortableKeys) => void;
   toggleSort: () => void;
   toggleFilterCategory: (category: Category) => void;
   setFilterYearFrom: (year: number) => void;
@@ -38,7 +39,7 @@ export const createTableStore = (initState: TableState = defaultInitState) =>
       (set) => ({
         ...initState,
         setTab: (tab: Tab) => set(() => ({ tab })),
-        setSortKey: (sortKey: SortableKey) => set(() => ({ sortKey })),
+        setSortKey: (sortKey: SortableKeys) => set(() => ({ sortKey })),
         toggleSort: () => set((prevState) => ({ sortAsc: !prevState.sortAsc })),
         toggleFilterCategory: (category) =>
           set((prevState) => ({

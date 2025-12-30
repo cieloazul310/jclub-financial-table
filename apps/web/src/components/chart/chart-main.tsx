@@ -1,4 +1,4 @@
-import type { FinancialDatum } from "@cieloazul310/jclub-financial";
+import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
 import type { ScaleLinear } from "d3";
 import { css } from "styled-system/css";
 import { Bars } from "./bars";
@@ -7,7 +7,7 @@ import { AverageLines } from "./average-lines";
 import type { Averages } from "./get-averages";
 
 type ChartMainProps = {
-  data: FinancialDatum[];
+  data: ExtendedFinancialDatum[];
   height: number;
   itemWidth: number;
   padding: { top: number; left: number; right: number; bottom: number };

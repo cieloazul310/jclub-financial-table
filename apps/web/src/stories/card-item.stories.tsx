@@ -7,7 +7,7 @@ import { CardTableBase, CardTableRow } from "@/components/figure/card/table";
 import { CategoryLabel } from "@/components/category-label";
 import { Link } from "@/components/link";
 import { Diff } from "@/components/shortcodes/diff";
-import { val } from "@/utils/val";
+import { format } from "@/utils/format";
 import { pl } from "./card-values";
 
 const meta = {
@@ -44,7 +44,7 @@ const children = (
                 {getLabel(key)}
               </button>
             }
-            value={val(value, { separator: separator })}
+            value={format(value, { separator })}
             diff={diff && <Diff>{diff}</Diff>}
             red={redIfMinus && value < 0}
             {...rest}

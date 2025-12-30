@@ -6,41 +6,45 @@ import type {
   Revenue,
   Expense,
   Attd,
+  Extended,
+  FinancialDatum,
 } from "@cieloazul310/jclub-financial/types";
 import { cx, css } from "styled-system/css";
 import type { ComponentProps } from "styled-system/types";
 import { Table } from "@/components/ui/table";
-import { val } from "@/utils/val";
-import type { Mode } from "@/utils/types";
 import { CategoryLabel } from "@/components/category-label";
+import { format } from "@/utils/format";
+import type { Mode } from "@/utils/types";
 import { TableBodyLabel } from "./label";
 import { valueStyle } from "./styles";
 
 type TableBodyHeaderProps = {
   mode: Mode;
   index: number;
-  node: Pick<
-    General & SeasonResult,
-    "category" | "rank" | "elevation" | "slug" | "year" | "name"
+  datum: Extended<
+    Pick<
+      General & SeasonResult,
+      "category" | "rank" | "elevation" | "slug" | "year" | "name"
+    >
   >;
   // selected?: boolean;
 };
 
-function TableBodyHeader({ mode, index, node }: TableBodyHeaderProps) {
+function TableBodyHeader({ mode, index, datum }: TableBodyHeaderProps) {
   return (
     <>
-      <TableBodyLabel mode={mode} node={node} index={index} />
+      <TableBodyLabel mode={mode} datum={datum} index={index} />
       <Table.Cell width="80px" align="center" verticalAlign="middle" p={0}>
-        <CategoryLabel category={node.category ?? ""} />
+        <CategoryLabel category={datum.category.value ?? ""} />
       </Table.Cell>
       <Table.Cell
         className={cx(
-          node.elevation && css({ fontWeight: "bold" }),
-          node.elevation === "昇格" &&
+          datum.elevation.value && css({ fontWeight: "bold" }),
+          datum.elevation.value === "昇格" &&
             css({
               color: "green.800",
             }),
-          node.elevation === "降格" &&
+          datum.elevation.value === "降格" &&
             css({
               color: "red.900",
             }),
@@ -51,14 +55,14 @@ function TableBodyHeader({ mode, index, node }: TableBodyHeaderProps) {
         align="center"
         padding="none"
       >
-        {node.rank}
+        {datum.rank.value}
       </Table.Cell>
     </>
   );
 }
 
 type DataTableCellProps = {
-  value: number | null;
+  value: { value: number | undefined | null } | undefined | null;
   emphasized?: boolean;
   separator?: boolean;
   strong?: boolean;
@@ -82,242 +86,264 @@ function DataTableCell({
       align={align}
       {...props}
     >
-      {val(value, { separator })}
+      {format(value?.value ?? null, { separator })}
     </Table.Cell>
   );
 }
 
-type TableRowProps<T> = {
+type TableRowProps<T extends Partial<FinancialDatum>> = {
   mode: Mode;
   index: number;
-  node: Pick<
-    General & SeasonResult,
-    "category" | "rank" | "elevation" | "slug" | "year" | "name"
-  > &
-    T;
+  datum: Extended<
+    Pick<
+      General & SeasonResult,
+      "category" | "rank" | "elevation" | "slug" | "year" | "name"
+    > &
+      T
+  >;
 };
 
-export function PLTableRow({ node, mode, index }: TableRowProps<PL>) {
+export function PLTableRow({ datum, mode, index }: TableRowProps<PL>) {
   return (
     <Table.Row>
-      <TableBodyHeader mode={mode} node={node} index={index} />
-      <DataTableCell value={node.revenue} strong />
-      <DataTableCell value={node.expense} strong />
-      <DataTableCell value={node.op_profit} emphasized />
-      <DataTableCell value={node.no_rev} />
-      <DataTableCell value={node.no_exp} />
-      <DataTableCell value={node.ordinary_profit} emphasized />
-      <DataTableCell value={node.sp_rev} />
-      <DataTableCell value={node.sp_exp} />
-      <DataTableCell value={node.profit_before_tax} emphasized />
-      <DataTableCell value={node.tax} />
-      <DataTableCell value={node.profit} emphasized />
-      <DataTableCell value={node.related_revenue} />
+      <TableBodyHeader mode={mode} datum={datum} index={index} />
+      <DataTableCell value={datum.revenue} strong />
+      <DataTableCell value={datum.expense} strong />
+      <DataTableCell value={datum.op_profit} emphasized />
+      <DataTableCell value={datum.no_rev} />
+      <DataTableCell value={datum.no_exp} />
+      <DataTableCell value={datum.ordinary_profit} emphasized />
+      <DataTableCell value={datum.sp_rev} />
+      <DataTableCell value={datum.sp_exp} />
+      <DataTableCell value={datum.profit_before_tax} emphasized />
+      <DataTableCell value={datum.tax} />
+      <DataTableCell value={datum.profit} emphasized />
+      <DataTableCell value={datum.related_revenue} />
     </Table.Row>
   );
 }
 
-export function BSTableRow({ node, mode, index }: TableRowProps<BS>) {
+export function BSTableRow({ datum, mode, index }: TableRowProps<BS>) {
   return (
     <Table.Row>
-      <TableBodyHeader mode={mode} node={node} index={index} />
-      <DataTableCell value={node.assets} emphasized />
-      <DataTableCell value={node.curr_assets} />
-      <DataTableCell value={node.fixed_assets} />
-      <DataTableCell value={node.liabilities} emphasized />
-      <DataTableCell value={node.curr_liabilities} />
-      <DataTableCell value={node.fixed_liabilities} />
-      <DataTableCell value={node.net_worth} emphasized redIfMinus />
-      <DataTableCell value={node.capital_stock} />
-      <DataTableCell value={node.capital_surplus} />
-      <DataTableCell value={node.retained_earnings} />
-      <DataTableCell value={node.profit} />
+      <TableBodyHeader mode={mode} datum={datum} index={index} />
+      <DataTableCell value={datum.assets} emphasized />
+      <DataTableCell value={datum.curr_assets} />
+      <DataTableCell value={datum.fixed_assets} />
+      <DataTableCell value={datum.liabilities} emphasized />
+      <DataTableCell value={datum.curr_liabilities} />
+      <DataTableCell value={datum.fixed_liabilities} />
+      <DataTableCell value={datum.net_worth} emphasized redIfMinus />
+      <DataTableCell value={datum.capital_stock} />
+      <DataTableCell value={datum.capital_surplus} />
+      <DataTableCell value={datum.retained_earnings} />
+      <DataTableCell value={datum.profit} />
     </Table.Row>
   );
 }
 
-export function RevenueTableRow({ node, mode, index }: TableRowProps<Revenue>) {
+export function RevenueTableRow({
+  datum,
+  mode,
+  index,
+}: TableRowProps<Revenue>) {
   const otherRevs = (year: number) => {
     if (year <= 2010)
       return (
-        <DataTableCell value={node.other_revs} align="center" colSpan={6} />
+        <DataTableCell value={datum.other_revs} align="center" colSpan={6} />
       );
     if (year <= 2015)
       return (
         <>
-          <DataTableCell value={node.academy_rev} align="center" />
-          <DataTableCell value={node.other_revs} align="center" colSpan={5} />
+          <DataTableCell value={datum.academy_rev} align="center" />
+          <DataTableCell value={datum.other_revs} align="center" colSpan={5} />
         </>
       );
     if (year <= 2021)
       return (
         <>
-          <DataTableCell value={node.academy_rev} align="center" />
-          <DataTableCell value={node.goods_rev} align="center" />
-          <DataTableCell value={node.other_revs} colSpan={4} align="center" />
+          <DataTableCell value={datum.academy_rev} align="center" />
+          <DataTableCell value={datum.goods_rev} align="center" />
+          <DataTableCell value={datum.other_revs} colSpan={4} align="center" />
         </>
       );
     if (year <= 2023)
       return (
         <>
-          <DataTableCell value={node.academy_rev} align="center" />
-          <DataTableCell value={node.goods_rev} align="center" />
-          <DataTableCell value={node.women_rev} align="center" />
-          <DataTableCell value={node.other_revs} colSpan={3} align="center" />
+          <DataTableCell value={datum.academy_rev} align="center" />
+          <DataTableCell value={datum.goods_rev} align="center" />
+          <DataTableCell value={datum.women_rev} align="center" />
+          <DataTableCell value={datum.other_revs} colSpan={3} align="center" />
         </>
       );
-    if (node.transfer_int_rev === null && node.transfer_dom_rev === null) {
+    if (datum.transfer_int_rev === null && datum.transfer_dom_rev === null) {
       return (
         <>
-          <DataTableCell value={node.academy_rev} align="center" />
-          <DataTableCell value={node.goods_rev} align="center" />
-          <DataTableCell value={node.women_rev} align="center" />
-          <DataTableCell value={node.transfer_rev} colSpan={2} align="center" />
-          <DataTableCell value={node.other_revs} align="center" />
+          <DataTableCell value={datum.academy_rev} align="center" />
+          <DataTableCell value={datum.goods_rev} align="center" />
+          <DataTableCell value={datum.women_rev} align="center" />
+          <DataTableCell
+            value={datum.transfer_rev}
+            colSpan={2}
+            align="center"
+          />
+          <DataTableCell value={datum.other_revs} align="center" />
         </>
       );
     }
 
     return (
       <>
-        <DataTableCell value={node.academy_rev} align="center" />
-        <DataTableCell value={node.goods_rev} align="center" />
-        <DataTableCell value={node.women_rev} align="center" />
-        <DataTableCell value={node.transfer_int_rev} align="center" />
-        <DataTableCell value={node.transfer_dom_rev} align="center" />
-        <DataTableCell value={node.other_revs} align="center" />
+        <DataTableCell value={datum.academy_rev} align="center" />
+        <DataTableCell value={datum.goods_rev} align="center" />
+        <DataTableCell value={datum.women_rev} align="center" />
+        <DataTableCell value={datum.transfer_int_rev} align="center" />
+        <DataTableCell value={datum.transfer_dom_rev} align="center" />
+        <DataTableCell value={datum.other_revs} align="center" />
       </>
     );
   };
 
   return (
     <Table.Row>
-      <TableBodyHeader mode={mode} node={node} index={index} />
-      <DataTableCell value={node.revenue} emphasized />
-      <DataTableCell value={node.sponsor} />
-      <DataTableCell value={node.ticket} />
-      <DataTableCell value={node.broadcast} />
-      {otherRevs(node.year)}
-      <DataTableCell value={node.related_revenue} />
+      <TableBodyHeader mode={mode} datum={datum} index={index} />
+      <DataTableCell value={datum.revenue} emphasized />
+      <DataTableCell value={datum.sponsor} />
+      <DataTableCell value={datum.ticket} />
+      <DataTableCell value={datum.broadcast} />
+      {otherRevs(datum.year.value)}
+      <DataTableCell value={datum.related_revenue} />
     </Table.Row>
   );
 }
 
-export function ExpenseTableRow({ node, mode, index }: TableRowProps<Expense>) {
+export function ExpenseTableRow({
+  datum,
+  mode,
+  index,
+}: TableRowProps<Expense>) {
   const expenseData = (year: number) => {
-    if (year <= 2005 && !node.salary)
+    if (year <= 2005 && !datum.salary)
       return (
         <>
-          <DataTableCell value={node.general_exp} align="center" colSpan={10} />
-          <DataTableCell value={node.sga} align="center" />
+          <DataTableCell
+            value={datum.general_exp}
+            align="center"
+            colSpan={10}
+          />
+          <DataTableCell value={datum.sga} align="center" />
         </>
       );
     if (year <= 2010)
       return (
         <>
-          <DataTableCell value={node.salary} colSpan={3} align="center" />
-          <DataTableCell value={node.manage_exp} align="center" colSpan={7} />
-          <DataTableCell value={node.sga} align="center" />
+          <DataTableCell value={datum.salary} colSpan={3} align="center" />
+          <DataTableCell value={datum.manage_exp} align="center" colSpan={7} />
+          <DataTableCell value={datum.sga} align="center" />
         </>
       );
     if (year <= 2015)
       return (
         <>
-          <DataTableCell value={node.salary} colSpan={3} align="center" />
-          <DataTableCell value={node.game_exp} />
-          <DataTableCell value={node.team_exp} />
-          <DataTableCell value={node.academy_exp} />
-          <DataTableCell value={node.women_exp} />
-          <DataTableCell value={node.sga} align="center" colSpan={4} />
+          <DataTableCell value={datum.salary} colSpan={3} align="center" />
+          <DataTableCell value={datum.game_exp} />
+          <DataTableCell value={datum.team_exp} />
+          <DataTableCell value={datum.academy_exp} />
+          <DataTableCell value={datum.women_exp} />
+          <DataTableCell value={datum.sga} align="center" colSpan={4} />
         </>
       );
     if (year <= 2021)
       return (
         <>
-          <DataTableCell value={node.salary} colSpan={3} align="center" />
-          <DataTableCell value={node.game_exp} />
-          <DataTableCell value={node.team_exp} />
-          <DataTableCell value={node.academy_exp} />
-          <DataTableCell value={node.women_exp} />
-          <DataTableCell value={node.goods_exp} />
-          <DataTableCell value={node.sga} align="center" colSpan={3} />
+          <DataTableCell value={datum.salary} colSpan={3} align="center" />
+          <DataTableCell value={datum.game_exp} />
+          <DataTableCell value={datum.team_exp} />
+          <DataTableCell value={datum.academy_exp} />
+          <DataTableCell value={datum.women_exp} />
+          <DataTableCell value={datum.goods_exp} />
+          <DataTableCell value={datum.sga} align="center" colSpan={3} />
         </>
       );
     if (year <= 2023)
       return (
         <>
-          <DataTableCell value={node.salary} colSpan={3} align="center" />
-          <DataTableCell value={node.game_exp} />
-          <DataTableCell value={node.team_exp} />
-          <DataTableCell value={node.academy_exp} />
-          <DataTableCell value={node.women_exp} />
-          <DataTableCell value={node.goods_exp} />
-          <DataTableCell value={node.other_cost} />
-          <DataTableCell value={node.sga} align="center" colSpan={2} />
+          <DataTableCell value={datum.salary} colSpan={3} align="center" />
+          <DataTableCell value={datum.game_exp} />
+          <DataTableCell value={datum.team_exp} />
+          <DataTableCell value={datum.academy_exp} />
+          <DataTableCell value={datum.women_exp} />
+          <DataTableCell value={datum.goods_exp} />
+          <DataTableCell value={datum.other_cost} />
+          <DataTableCell value={datum.sga} align="center" colSpan={2} />
         </>
       );
 
-    if (node.transfer_int_exp === null && node.transfer_dom_exp === null) {
+    if (datum.transfer_int_exp === null && datum.transfer_dom_exp === null) {
       return (
         <>
-          <DataTableCell value={node.salary} />
-          <DataTableCell value={node.transfer_exp} align="center" colSpan={2} />
-          <DataTableCell value={node.game_exp} />
-          <DataTableCell value={node.team_exp} />
-          <DataTableCell value={node.academy_exp} />
-          <DataTableCell value={node.women_exp} />
-          <DataTableCell value={node.goods_exp} />
-          <DataTableCell value={node.other_cost} />
-          <DataTableCell value={node.sga} align="center" colSpan={2} />
+          <DataTableCell value={datum.salary} />
+          <DataTableCell
+            value={datum.transfer_exp}
+            align="center"
+            colSpan={2}
+          />
+          <DataTableCell value={datum.game_exp} />
+          <DataTableCell value={datum.team_exp} />
+          <DataTableCell value={datum.academy_exp} />
+          <DataTableCell value={datum.women_exp} />
+          <DataTableCell value={datum.goods_exp} />
+          <DataTableCell value={datum.other_cost} />
+          <DataTableCell value={datum.sga} align="center" colSpan={2} />
         </>
       );
     }
 
     return (
       <>
-        <DataTableCell value={node.salary} />
-        <DataTableCell value={node.transfer_int_exp} />
-        <DataTableCell value={node.transfer_dom_exp} />
-        <DataTableCell value={node.game_exp} />
-        <DataTableCell value={node.team_exp} />
-        <DataTableCell value={node.academy_exp} />
-        <DataTableCell value={node.women_exp} />
-        <DataTableCell value={node.goods_exp} />
-        <DataTableCell value={node.other_cost} />
-        <DataTableCell value={node.sga} align="center" colSpan={2} />
+        <DataTableCell value={datum.salary} />
+        <DataTableCell value={datum.transfer_int_exp} />
+        <DataTableCell value={datum.transfer_dom_exp} />
+        <DataTableCell value={datum.game_exp} />
+        <DataTableCell value={datum.team_exp} />
+        <DataTableCell value={datum.academy_exp} />
+        <DataTableCell value={datum.women_exp} />
+        <DataTableCell value={datum.goods_exp} />
+        <DataTableCell value={datum.other_cost} />
+        <DataTableCell value={datum.sga} align="center" colSpan={2} />
       </>
     );
   };
 
   return (
     <Table.Row>
-      <TableBodyHeader mode={mode} node={node} index={index} />
-      <DataTableCell value={node.expense} emphasized />
-      {expenseData(node.year)}
+      <TableBodyHeader mode={mode} datum={datum} index={index} />
+      <DataTableCell value={datum.expense} emphasized />
+      {expenseData(datum.year.value)}
     </Table.Row>
   );
 }
 
-export function AttdTableRow({ node, mode, index }: TableRowProps<Attd>) {
+export function AttdTableRow({ datum, mode, index }: TableRowProps<Attd>) {
   // const { displayFullAttd } = useAppState();
   return (
     <Table.Row>
-      <TableBodyHeader mode={mode} node={node} index={index} />
-      <DataTableCell value={node.ticket} emphasized />
-      <DataTableCell value={node.league_games} />
-      <DataTableCell value={node.average_attd} emphasized separator />
-      <DataTableCell value={node.league_attd} separator />
+      <TableBodyHeader mode={mode} datum={datum} index={index} />
+      <DataTableCell value={datum.ticket} emphasized />
+      <DataTableCell value={datum.league_games} />
+      <DataTableCell value={datum.average_attd} emphasized separator />
+      <DataTableCell value={datum.league_attd} separator />
       {/*displayFullAttd && (
         <>
-          <DataTableCell value={node.leaguecup_attd} separator />
-          <DataTableCell value={node.acl_attd} separator />
-          <DataTableCell value={node.po_attd} separator />
-          <DataTableCell value={node.second_attd} separator />
+          <DataTableCell value={datum.leaguecup_attd} separator />
+          <DataTableCell value={datum.acl_attd} separator />
+          <DataTableCell value={datum.po_attd} separator />
+          <DataTableCell value={datum.second_attd} separator />
         </>
       )*/}
-      <DataTableCell value={node.all_games} />
-      <DataTableCell value={node.all_attd} emphasized separator />
-      <DataTableCell value={node.unit_price} separator />
+      <DataTableCell value={datum.all_games} />
+      <DataTableCell value={datum.all_attd} emphasized separator />
+      <DataTableCell value={datum.unit_price} separator />
     </Table.Row>
   );
 }

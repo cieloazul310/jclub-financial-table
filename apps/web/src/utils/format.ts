@@ -1,5 +1,5 @@
-export function val(
-  value: number | null,
+export function format(
+  value: number | undefined | null,
   {
     separator = false,
     decimal = 0,

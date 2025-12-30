@@ -1,4 +1,4 @@
-import type { FinancialDatum } from "@cieloazul310/jclub-financial";
+import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { ChartTitle } from "./title";
 import { ChartClient } from "./chart-client";
@@ -6,7 +6,7 @@ import { getExtentMap } from "./get-extent-map";
 import { getAverages } from "./get-averages";
 
 type ChartProps = {
-  data: FinancialDatum[];
+  data: ExtendedFinancialDatum[];
 };
 
 export async function Chart({ data }: ChartProps) {

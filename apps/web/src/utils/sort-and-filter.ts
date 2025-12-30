@@ -1,8 +1,8 @@
-import type { FinancialDatum } from "@cieloazul310/jclub-financial";
+import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
 import type { Category, Mode, SortableKey } from "./types";
 
 export function getRank(
-  data: Pick<FinancialDatum, "category" | "rank">,
+  data: Pick<ExtendedFinancialDatum, "category" | "rank">,
 ): number {
   const addition = (category: string) => {
     if (category === "J1") return 0;
@@ -11,23 +11,27 @@ export function getRank(
     if (category === "JFL") return 300;
     return 400;
   };
-  return addition(data.category) + data.rank;
+  return addition(data.category.value) + data.rank.value;
 }
 
-function getCategory({ category }: Pick<FinancialDatum, "category">): Category {
-  return category !== "J1" && category !== "J2" && category !== "J3"
+function getCategory({
+  category,
+}: Pick<ExtendedFinancialDatum, "category">): Category {
+  return category.value !== "J1" &&
+    category.value !== "J2" &&
+    category.value !== "J3"
     ? "others"
-    : category;
+    : category.value;
 }
 
 export function categoryFilter(filterCategories: Category[]) {
-  return ({ category }: Pick<FinancialDatum, "category">) => {
+  return ({ category }: Pick<ExtendedFinancialDatum, "category">) => {
     return filterCategories.includes(getCategory({ category }));
   };
 }
 
 export function sortAndFilter(
-  data: FinancialDatum[],
+  data: ExtendedFinancialDatum[],
   {
     sortKey,
     sortAsc,
@@ -41,12 +45,12 @@ export function sortAndFilter(
     filterYears: [number, number];
     mode: Mode;
   },
-): FinancialDatum[] {
+): ExtendedFinancialDatum[] {
   if (mode === "club") {
     const [from, to] = filterYears;
     return data
-      .filter(({ year }) => year >= from && year <= to)
-      .sort((a, b) => a.year - b.year);
+      .filter(({ year }) => year.value >= from && year.value <= to)
+      .sort((a, b) => a.year.value - b.year.value);
   }
 
   const filter = categoryFilter(filterCategories);
@@ -61,7 +65,7 @@ export function sortAndFilter(
     .filter(filter)
     .sort(
       (a, b) =>
-        ((a[sortKey] ?? -Infinity) - (b[sortKey] ?? -Infinity)) *
+        ((a[sortKey]?.value ?? -Infinity) - (b[sortKey]?.value ?? -Infinity)) *
         (sortAsc ? 1 : -1),
     );
 }

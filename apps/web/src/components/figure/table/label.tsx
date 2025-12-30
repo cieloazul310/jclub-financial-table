@@ -1,4 +1,4 @@
-import type { General } from "@cieloazul310/jclub-financial/types";
+import type { Extended, General } from "@cieloazul310/jclub-financial/types";
 import { cx, css } from "styled-system/css";
 import type { ComponentProps } from "styled-system/types";
 import { Table } from "@/components/ui/table";
@@ -89,10 +89,10 @@ export function TableHeadLabel({ mode }: { mode: Mode }) {
 interface TableBodyLabelProps {
   mode: Mode;
   index: number;
-  node: Pick<General, "name" | "slug" | "year">;
+  datum: Extended<Pick<General, "name" | "slug" | "year">>;
 }
 
-export function TableBodyLabel({ mode, index, node }: TableBodyLabelProps) {
+export function TableBodyLabel({ mode, index, datum }: TableBodyLabelProps) {
   if (mode === "club")
     return (
       <TableHeaderLabel
@@ -100,8 +100,8 @@ export function TableBodyLabel({ mode, index, node }: TableBodyLabelProps) {
         className={cx(tbodyLabelStyle, css({ textAlign: "center" }))}
         scope="row"
       >
-        <Link href={`/year/${node.year}/`} color="inherit">
-          {node.year}
+        <Link href={`/year/${datum.year.value}/`} color="inherit">
+          {datum.year.value}
         </Link>
       </TableHeaderLabel>
     );
@@ -119,8 +119,8 @@ export function TableBodyLabel({ mode, index, node }: TableBodyLabelProps) {
         className={cx(tbodyLabelStyle, css({ textAlign: "right" }))}
         scope="row"
       >
-        <Link href={`/club/${node.slug}/`} color="inherit">
-          {node.name}
+        <Link href={`/club/${datum.slug.value}/`} color="inherit">
+          {datum.name.value}
         </Link>
       </TableHeaderLabel>
     </>

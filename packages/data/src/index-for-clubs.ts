@@ -1,6 +1,10 @@
 import { readFile } from "fs/promises";
 import { resolve } from "path";
-import type { FinancialDatum } from "@cieloazul310/jclub-financial-utils/types";
+import { extendClubData } from "@cieloazul310/jclub-financial-utils";
+import type {
+  FinancialDatum,
+  ExtendedFinancialDatum,
+} from "@cieloazul310/jclub-financial-utils/types";
 
 export async function getData(
   from: number = -Infinity,
@@ -26,5 +30,16 @@ export async function getData(
 }
 
 export const years: number[] = [2020];
+
+export async function getExtendedData(
+  from: number = -Infinity,
+  to: number = Infinity,
+): Promise<ExtendedFinancialDatum[]> {
+  const data = await getData();
+  const extendedData = extendClubData(data);
+  return extendedData.filter(
+    ({ year }) => year.value >= from && year.value <= to,
+  );
+}
 
 export default getData;

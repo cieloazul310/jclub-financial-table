@@ -1,5 +1,5 @@
 import { getAllYears } from "@cieloazul310/jclub-financial";
-import { getDataByYear } from "@cieloazul310/jclub-financial/data";
+import { getExtendedDataByYear } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
 import { FullWidthLayout } from "@/components/layout/full-width";
@@ -17,7 +17,7 @@ export default async function Page({
   params: Promise<{ year: string }>;
 }) {
   const { year } = await params;
-  const data = await getDataByYear(parseInt(year, 10));
+  const data = await getExtendedDataByYear(parseInt(year, 10));
 
   return (
     <FullWidthLayout slug={["year", year]} title={`${year}年度`}>
