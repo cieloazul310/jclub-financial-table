@@ -1,5 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { getDataByClub, getDataByYear, getDatum } from "../dist";
+import {
+  getDataByClub,
+  getDataByYear,
+  getDatum,
+  getExtendedDataByClub,
+  getExtendedDataByYear,
+} from "../dist";
 
 describe("Get data by club", async () => {
   const data = await getDataByClub("mitohollyhock");
@@ -55,5 +61,57 @@ describe("Get datum", async () => {
     expect(datum.revenue).toBe(200);
     expect(datum.ticket).toBe(20);
     expect(datum.average_attd).toBe(2272);
+  });
+});
+
+describe("Get extended club data", async () => {
+  it("mitohollyhock 2024", async () => {
+    const data = await getExtendedDataByClub("mitohollyhock");
+    const datum = data.find(({ year }) => year === 2024);
+    expect(datum?.revenue.value).toBe(1224);
+    expect(datum?.revenue.growth).toBe(120);
+    expect(datum?.expense.value).toBe(1224);
+    expect(datum?.expense.growth).toBe(125);
+
+    expect(datum?.average_attd.growth).toBe(680);
+    expect(datum?.unit_price.growth).toBe(232);
+  });
+
+  it("verdy 2020", async () => {
+    const data = await getExtendedDataByClub("verdy");
+    const datum = data.find(({ year }) => year === 2020);
+    expect(datum?.assets.value).toBe(480);
+    expect(datum?.assets.growth).toBe(-218);
+    expect(datum?.net_worth.value).toBe(-399);
+    expect(datum?.net_worth.growth).toBe(-439);
+
+    expect(datum?.sponsor.growth).toBe(-239);
+    expect(datum?.all_attd.growth).toBe(-61774);
+  });
+});
+
+describe("Get extended year data", async () => {
+  it("mitohollyhock 2024", async () => {
+    const data = await getExtendedDataByYear(2024);
+    const datum = data.find(({ slug }) => slug === "mitohollyhock");
+    expect(datum?.revenue.value).toBe(1224);
+    expect(datum?.revenue.growth).toBe(120);
+    expect(datum?.expense.value).toBe(1224);
+    expect(datum?.expense.growth).toBe(125);
+
+    expect(datum?.average_attd.growth).toBe(680);
+    expect(datum?.unit_price.growth).toBe(232);
+  });
+
+  it("verdy 2020", async () => {
+    const data = await getExtendedDataByYear(2020);
+    const datum = data.find(({ slug }) => slug === "verdy");
+    expect(datum?.assets.value).toBe(480);
+    expect(datum?.assets.growth).toBe(-218);
+    expect(datum?.net_worth.value).toBe(-399);
+    expect(datum?.net_worth.growth).toBe(-439);
+
+    expect(datum?.sponsor.growth).toBe(-239);
+    expect(datum?.all_attd.growth).toBe(-61774);
   });
 });
