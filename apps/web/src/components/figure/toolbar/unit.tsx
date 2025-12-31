@@ -27,12 +27,12 @@ export function useSortStateString(): SortStateString {
 }
 
 export function useFilterStateString(): string {
-  const { filterCategories } = useTableStore((store) => store);
+  const { visibleCategories } = useTableStore((store) => store);
 
   return `フィルタ: ${
-    filterCategories.length === 4
+    visibleCategories.length === 4
       ? "なし"
-      : filterCategories
+      : visibleCategories
           .map((category) => (category === "others" ? "その他" : category))
           .join(",")
   }`;

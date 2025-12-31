@@ -1,4 +1,4 @@
-import type { PropsWithChildren, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { cx, css } from "styled-system/css";
 import { styled } from "styled-system/jsx";
 import type { ComponentProps, StyledComponent } from "styled-system/types";
@@ -71,6 +71,7 @@ export function SummaryTableRow({
   emphasizedIfMinus?: boolean;
 }) {
   const { isMinus, displayValue } = createDisplayValue(val);
+  const red = emphasizedIfMinus && isMinus;
 
   return (
     <Table.Row {...props}>
@@ -80,9 +81,7 @@ export function SummaryTableRow({
       <Table.Cell
         align="right"
         whiteSpace="nowrap"
-        className={cx(
-          emphasizedIfMinus && isMinus ? css({ color: "red.900" }) : undefined,
-        )}
+        className={cx(red && css({ color: "red.900" }))}
       >
         {isMinus && <span className={css({ srOnly: true })}>マイナス</span>}
         {displayValue}

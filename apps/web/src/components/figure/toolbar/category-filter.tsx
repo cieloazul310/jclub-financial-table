@@ -24,7 +24,7 @@ function InvisibleChip({ children, ...props }: ChipTag.RootProps) {
 }
 
 export function CategoryFilter() {
-  const { filterCategories, toggleFilterCategory } = useTableStore(
+  const { visibleCategories, toggleVisibleCategory } = useTableStore(
     (table) => table,
   );
   const categories: Category[] = ["J1", "J2", "J3", "others"];
@@ -38,12 +38,18 @@ export function CategoryFilter() {
     category === "others" ? "その他" : category;
 
   return (
-    <div className={css({ display: "flex", gap: 1 })}>
+    <div
+      className={css({
+        display: "flex",
+        flexDirection: { base: "column", sm: "row" },
+        gap: { base: 2, sm: 1 },
+      })}
+    >
       {categories.map((category) =>
-        filterCategories.includes(category) ? (
+        visibleCategories.includes(category) ? (
           <VisibleChip
             key={category}
-            onClick={() => toggleFilterCategory(category)}
+            onClick={() => toggleVisibleCategory(category)}
             {...props}
           >
             {label(category)}
@@ -51,7 +57,7 @@ export function CategoryFilter() {
         ) : (
           <InvisibleChip
             key={category}
-            onClick={() => toggleFilterCategory(category)}
+            onClick={() => toggleVisibleCategory(category)}
             {...props}
           >
             {label(category)}

@@ -50,14 +50,14 @@ export function CardTableRow({
           strong ? css({ fontWeight: "bold" }) : undefined,
           red ? css({ color: "red.900" }) : undefined,
         )}
-        py={1}
+        p={1}
         align="right"
       >
         {value}
       </Table.Cell>
       <Table.Cell
         className={css({ fontFamily: "Helvetica, Arial, sans-serif" })}
-        py={1}
+        p={1}
         align="right"
       >
         {delta}

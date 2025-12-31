@@ -2,6 +2,7 @@ import { defineConfig } from "@pandacss/dev";
 import { createPreset } from "@cieloazul310/digital-go-pandacss-preset";
 import { tokens } from "./src/theme/tokens";
 import { semanticTokens } from "./src/theme/semantic-tokens";
+import { recipes } from "./src/theme/recipes";
 
 export default defineConfig({
   // Whether to use css reset
@@ -19,6 +20,7 @@ export default defineConfig({
   theme: {
     extend: {
       tokens,
+      recipes,
       semanticTokens,
     },
   },

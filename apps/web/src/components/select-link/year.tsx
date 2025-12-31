@@ -3,7 +3,7 @@ import { Field } from "@/components/ui/field";
 import { YearLinkClient } from "./year-client";
 
 export function YearLink() {
-  const years = getAllYears();
+  const years = getAllYears().sort((a, b) => b.year - a.year);
 
   return (
     <Field.Root>
