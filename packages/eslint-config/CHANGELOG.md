@@ -1,5 +1,12 @@
 # @repo/eslint-config
 
+## 0.0.1-alpha.5
+
+### Patch Changes
+
+- 5af8fea: - 依存パッケージの更新
+  - クラブのデータを2026シーズンのものに更新
+
 ## 0.0.1-alpha.4
 
 ### Patch Changes
