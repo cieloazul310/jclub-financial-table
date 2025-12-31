@@ -1,5 +1,14 @@
 # @cieloazul310/jclub-financial-statistics
 
+## 0.0.1-alpha.5
+
+### Patch Changes
+
+- 5af8fea: - 依存パッケージの更新
+  - クラブのデータを2026シーズンのものに更新
+- Updated dependencies [5af8fea]
+  - @cieloazul310/jclub-financial-data@0.0.1-alpha.5
+
 ## 0.0.1-alpha.4
 
 ### Patch Changes
