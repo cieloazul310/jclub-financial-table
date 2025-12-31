@@ -4,6 +4,7 @@ import { cx, css } from "styled-system/css";
 import { Card } from "@/components/ui/card";
 import { Link } from "@/components/link";
 import { CategoryLabel } from "@/components/category-label";
+import { useTableStore } from "@/providers/table-store-provider";
 import type { Mode, Tab } from "@/utils/types";
 import { CardTable } from "./table";
 
@@ -26,43 +27,68 @@ type CardItemHeaderProps = {
   title: ReactNode;
   header?: ReactNode;
   footer?: ReactNode;
+  page?: ReactNode;
 };
 
-export function CardItemHeader({ title, header, footer }: CardItemHeaderProps) {
+export function CardItemHeader({
+  title,
+  header,
+  footer,
+  page,
+}: CardItemHeaderProps) {
   return (
-    <hgroup className={css({ display: "flex", flexDirection: "column" })}>
-      {header}
-      <Card.Title>{title}</Card.Title>
-      {footer}
-    </hgroup>
+    <div className={css({ display: "flex", alignItems: "start" })}>
+      <hgroup
+        className={css({
+          display: "flex",
+          flexDirection: "column",
+          flexGrow: 1,
+        })}
+      >
+        {header}
+        <Card.Title>{title}</Card.Title>
+        {footer}
+      </hgroup>
+      {page && (
+        <small className={css({ textStyle: "oln-16B-100" })}>{page}</small>
+      )}
+    </div>
   );
 }
 
-function tabToLabel(tab: Tab) {
-  switch (tab) {
-    case "pl":
-      return "損益計算書 (P/L)";
-    case "bs":
-      return "貸借対照表 (B/S)";
-    case "revenue":
-      return "営業収入";
-    case "expense":
-      return "営業費用";
-    case "attd":
-      return "入場者数";
-    default:
-      return "";
-  }
-}
+const tabLabelMap = {
+  pl: "損益計算書 (P/L)",
+  bs: "貸借対照表 (B/S)",
+  revenue: "営業収入",
+  expense: "営業費用",
+  attd: "入場者数",
+};
 
 type CardItemProps = {
   datum: ExtendedFinancialDatum;
   mode: Mode;
   tab: Tab;
+  index: number;
+  totalCount: number;
 };
 
-export function CardItem({ datum, mode, tab }: CardItemProps) {
+export function CardItem({
+  datum,
+  mode,
+  tab,
+  index,
+  totalCount,
+}: CardItemProps) {
   const { year, slug, fullname, name, category, rank, elevation } = datum;
+  const { sortKey, setSortKey, toggleSort } = useTableStore((store) => store);
+  const onRankClick = () => {
+    if (mode === "club") return;
+    if (sortKey === "rank") {
+      toggleSort();
+    } else {
+      setSortKey("rank");
+    }
+  };
 
   const cardTitle =
     mode === "club" ? (
@@ -74,13 +100,35 @@ export function CardItem({ datum, mode, tab }: CardItemProps) {
         {fullname.value}
       </Link>
     );
+
+  const rankButton = (
+    <button
+      className={cx(
+        css({ textAlign: "start" }),
+        mode === "year" &&
+          css({
+            cursor: "pointer",
+            color: {
+              _hover: "keyColor.primary.100",
+              _active: "keyColor.secondary",
+            },
+            textDecoration: { _hover: "underline" },
+          }),
+        sortKey === "rank" &&
+          css({
+            color: "keyColor.secondary",
+          }),
+      )}
+      onClick={onRankClick}
+    >
+      {category.value} {rank.value}位
+    </button>
+  );
   const cardHeader = (
     <span className={css({ display: "flex", gap: 2, mb: 1 })}>
       <CategoryLabel category={category.value} />
       <span>{mode === "club" ? name.value : `${year.value}年`}</span>
-      <span>
-        {category.value} {rank.value}位
-      </span>
+      {rankButton}
       {elevation?.value && (
         <span
           className={cx(
@@ -93,7 +141,8 @@ export function CardItem({ datum, mode, tab }: CardItemProps) {
       )}
     </span>
   );
-  const cardFooter = <span>{tabToLabel(tab)}</span>;
+  const cardFooter = <span>{tabLabelMap[tab]}</span>;
+  const page = mode === "year" ? `${index + 1}/${totalCount}` : undefined;
 
   return (
     <CardItemBase minWidth="320px">
@@ -101,6 +150,7 @@ export function CardItem({ datum, mode, tab }: CardItemProps) {
         title={cardTitle}
         header={cardHeader}
         footer={cardFooter}
+        page={page}
       />
       <CardTable datum={datum} mode={mode} />
     </CardItemBase>

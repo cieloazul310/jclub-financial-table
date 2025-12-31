@@ -1,5 +1,8 @@
-import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
-import type { Category, Mode, SortableKey } from "./types";
+import type {
+  ExtendedFinancialDatum,
+  SortableKeys,
+} from "@cieloazul310/jclub-financial";
+import type { Category, Mode } from "./types";
 
 export function getRank(
   data: Pick<ExtendedFinancialDatum, "category" | "rank">,
@@ -39,7 +42,7 @@ export function sortAndFilter(
     visibleYears,
     mode,
   }: {
-    sortKey: SortableKey;
+    sortKey: SortableKeys;
     sortAsc: boolean;
     visibleCategories: Category[];
     visibleYears: [number, number];

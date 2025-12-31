@@ -1,9 +1,11 @@
 import { ArrowDownIcon, ArrowUpIcon, ArrowRightIcon } from "lucide-react";
 import { css } from "styled-system/css";
 
+type DiffType = "up" | "down" | "even";
+
 export function createDiff(input: string | number): {
   value: string | number;
-  type: "up" | "down" | "even";
+  type: DiffType;
 } {
   if (typeof input === "number") {
     const value = Math.abs(input);
@@ -19,27 +21,27 @@ export function createDiff(input: string | number): {
   return { type, value };
 }
 
+function DiffIcon({ type }: { type: DiffType }) {
+  if (type === "up")
+    return (
+      <>
+        <ArrowUpIcon className={css({ color: "lime.700" })} />
+        <span className={css({ srOnly: true })}>+</span>
+      </>
+    );
+  if (type === "down")
+    return (
+      <>
+        <ArrowDownIcon className={css({ color: "red.900" })} />
+        <span className={css({ srOnly: true })}>-</span>
+      </>
+    );
+
+  return <ArrowRightIcon className={css({ color: "solid-gray.536" })} />;
+}
+
 export function Diff({ children }: { children: string | number }) {
   const { value, type } = createDiff(children);
-
-  const DiffIcon = () => {
-    if (type === "up")
-      return (
-        <>
-          <ArrowUpIcon className={css({ color: "lime.700" })} />
-          <span className={css({ srOnly: true })}>プラス</span>
-        </>
-      );
-    if (type === "down")
-      return (
-        <>
-          <ArrowDownIcon className={css({ color: "red.900" })} />
-          <span className={css({ srOnly: true })}>マイナス</span>
-        </>
-      );
-
-    return <ArrowRightIcon className={css({ color: "solid-gray.536" })} />;
-  };
 
   return (
     <span
@@ -51,7 +53,7 @@ export function Diff({ children }: { children: string | number }) {
         verticalAlign: "bottom",
       })}
     >
-      <DiffIcon />
+      <DiffIcon type={type} />
       {value}
     </span>
   );

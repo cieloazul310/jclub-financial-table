@@ -11,7 +11,7 @@ import type {
   Expense,
   FinancialDatum,
 } from "@cieloazul310/jclub-financial";
-import { css } from "styled-system/css";
+import { cx, css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
 import { categoryBarFill } from "./bar-gradient";
 
@@ -73,13 +73,25 @@ function PLBar({
   const fill = categoryBarFill({ category: category.value });
 
   return (
-    <rect
-      x={(itemWidth * barPadding) / 2}
-      y={scale(revenue.value)}
-      width={barWidth}
-      height={scale(0) - scale(revenue.value)}
-      fill={fill}
-    />
+    <>
+      <rect
+        x={(itemWidth * barPadding) / 2}
+        y={scale(revenue.value)}
+        width={barWidth}
+        height={scale(0) - scale(revenue.value)}
+        fill={fill}
+      />
+      <text
+        className={css({ display: { base: "none", _groupHover: "block" } })}
+        x={itemWidth / 2}
+        y={scale(revenue.value)}
+        dy="-.4em"
+        textAnchor="middle"
+        fontWeight="bold"
+      >
+        {revenue.value}
+      </text>
+    </>
   );
 }
 
@@ -111,7 +123,7 @@ function BSBar({
         x={itemWidth / 2}
         y={scale(assets.value)}
         width={barWidth / 2}
-        height={scale(0) - scale(liabilities.value) - 1}
+        height={scale(0) - scale(liabilities.value)}
         className={css({ fill: "{colors.solid-gray.200}" })}
       />
       <rect
@@ -127,6 +139,16 @@ function BSBar({
             : css({ fill: "{colors.success.1}" })
         }
       />
+      <text
+        className={css({ display: { base: "none", _groupHover: "block" } })}
+        x={itemWidth / 2}
+        y={net_worth.value < 0 ? scale(0) : scale(net_worth.value)}
+        dy="-.4em"
+        textAnchor="middle"
+        fontWeight="bold"
+      >
+        {net_worth.value}
+      </text>
     </>
   );
 }
@@ -152,14 +174,40 @@ function ExpenseBar({
         className={css({ fill: "{colors.solid-gray.100}" })}
       />
       {salary?.value && (
-        <rect
-          x={(itemWidth * barPadding) / 2}
-          y={scale(salary.value)}
-          width={barWidth}
-          height={scale(0) - scale(salary.value) - 1}
-          fill={fill}
-        />
+        <>
+          <rect
+            x={(itemWidth * barPadding) / 2}
+            y={scale(salary.value)}
+            width={barWidth}
+            height={scale(0) - scale(salary.value) - 1}
+            fill={fill}
+          />
+          <text
+            className={css({ display: { base: "none", _groupHover: "block" } })}
+            x={itemWidth / 2}
+            y={scale(salary.value)}
+            dy="-.4em"
+            textAnchor="middle"
+            fontWeight="bold"
+          >
+            {salary.value}
+          </text>
+        </>
       )}
+      <text
+        className={css({
+          display: { base: "none", _groupHover: "block" },
+          color: "solid-gray.600",
+        })}
+        x={itemWidth / 2}
+        y={scale(expense.value)}
+        dy="-.4em"
+        textAnchor="middle"
+        fontWeight="bold"
+        fill="currentColor"
+      >
+        {expense.value}
+      </text>
     </>
   );
 }
@@ -174,13 +222,25 @@ function AttdBar({
   const { average_attd, category } = datum;
   const fill = categoryBarFill({ category: category.value });
   return (
-    <rect
-      x={(itemWidth * barPadding) / 2}
-      y={scale(average_attd.value)}
-      width={barWidth}
-      height={scale(0) - scale(average_attd.value)}
-      fill={fill}
-    />
+    <>
+      <rect
+        x={(itemWidth * barPadding) / 2}
+        y={scale(average_attd.value)}
+        width={barWidth}
+        height={scale(0) - scale(average_attd.value)}
+        fill={fill}
+      />
+      <text
+        className={css({ display: { base: "none", _groupHover: "block" } })}
+        x={itemWidth / 2}
+        y={scale(average_attd.value)}
+        dy="-.4em"
+        textAnchor="middle"
+        fontWeight="bold"
+      >
+        {average_attd.value}
+      </text>
+    </>
   );
 }
 
@@ -219,7 +279,7 @@ export function Bars({ data, scale, height, itemWidth }: BarsProps) {
       {data.map((datum, index) => (
         <g
           key={datum.year.value.toString()}
-          className={css({ color: "solid-gray.300" })}
+          className={cx("group", css({ color: "solid-gray.300" }))}
           transform={`translate(${itemWidth * index}, 0)`}
         >
           {barByTab(datum)}

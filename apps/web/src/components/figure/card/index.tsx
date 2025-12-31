@@ -14,6 +14,22 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/free-mode";
 
+function useInitialIndex(data: ExtendedFinancialDatum[], mode: Mode) {
+  if (mode === "club") {
+    const storaged = window.sessionStorage.getItem("currentYear");
+    if (!storaged) return data.length - 1;
+    const currentYear = parseInt(storaged, 10);
+    const index = data.findIndex(({ year }) => year.value === currentYear);
+    if (index < 0) return data.length - 1;
+    return index;
+  }
+  const storaged = window.sessionStorage.getItem("currentClub");
+  if (!storaged) return 0;
+  const index = data.findIndex(({ slug }) => slug.value === storaged);
+  if (index < 0) return 0;
+  return index;
+}
+
 type FinancialCardProps = {
   mode: Mode;
   data: ExtendedFinancialDatum[];
@@ -21,8 +37,9 @@ type FinancialCardProps = {
 
 export function FinancialCard({ mode, data }: FinancialCardProps) {
   const { tab, sortAsc, sortKey } = useTableStore((store) => store);
-  // let timer: NodeJS.Timeout;
+  const [timer, setTimer] = useState<NodeJS.Timeout>();
   const [swiper, setSwiper] = useState<SwiperCore | null>(null);
+  const initialIndex = useInitialIndex(data, mode);
 
   useLayoutEffect(() => {
     if (mode !== "year") return;
@@ -31,6 +48,33 @@ export function FinancialCard({ mode, data }: FinancialCardProps) {
 
   const onSwiper = (currentSwiper: SwiperCore) => {
     setSwiper(currentSwiper);
+  };
+  /**
+   * スクロール終了時に表示中の年度、クラブをsessionStorage に保存
+   */
+  const onSlideChange = (currentSwiper: SwiperCore) => {
+    clearTimeout(timer);
+    setTimer(
+      setTimeout(() => {
+        const { activeIndex } = currentSwiper;
+
+        if (mode === "club") {
+          const currentYear = data[activeIndex]?.year.value;
+          if (currentYear) {
+            window.sessionStorage.setItem(
+              "currentYear",
+              currentYear.toString(),
+            );
+          }
+        }
+        if (mode === "year") {
+          const currentClub = data[activeIndex]?.slug.value;
+          if (currentClub) {
+            window.sessionStorage.setItem("currentClub", currentClub);
+          }
+        }
+      }, 250),
+    );
   };
 
   return (
@@ -50,7 +94,7 @@ export function FinancialCard({ mode, data }: FinancialCardProps) {
           centeredSlides
           freeMode
           simulateTouch={false}
-          // initialSlide={initialIndex}
+          initialSlide={initialIndex}
           scrollbar={{
             draggable: true,
           }}
@@ -67,11 +111,17 @@ export function FinancialCard({ mode, data }: FinancialCardProps) {
             },
           }}
           onSwiper={onSwiper}
-          // onSlideChange={onSlideChange}
+          onSlideChange={onSlideChange}
         >
-          {data.map((datum) => (
+          {data.map((datum, index) => (
             <SwiperSlide key={`${datum.slug.value}${datum.year.value}`}>
-              <CardItem datum={datum} mode={mode} tab={tab} />
+              <CardItem
+                datum={datum}
+                mode={mode}
+                tab={tab}
+                index={index}
+                totalCount={data.length}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
