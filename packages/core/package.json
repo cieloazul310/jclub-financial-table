@@ -99,7 +99,7 @@
   "devDependencies": {
     "@repo/eslint-config": "^0.0.1-alpha.4",
     "@repo/typescript-config": "^0.0.1-alpha.4",
-    "eslint": "^9.34.0",
+    "eslint": "^9.39.2",
     "tsdown": "^0.18.2",
     "tsx": "^4.20.6"
   }
