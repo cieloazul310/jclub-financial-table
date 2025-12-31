@@ -88,8 +88,8 @@ export function MobileHeader({
                 <Drawer.CloseTrigger
                   asChild
                   position="absolute"
-                  top="5"
-                  right="4"
+                  top="3"
+                  right={{ base: "6", md: "8" }}
                 >
                   <HamburgerMenuButton>
                     <CloseIcon />

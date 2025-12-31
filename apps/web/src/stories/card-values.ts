@@ -1,6 +1,4 @@
-import type { CardValue } from "@/components/figure/card/table";
-
-export const pl: CardValue[] = [
+export const pl = [
   {
     value: 1224,
     diff: 120,

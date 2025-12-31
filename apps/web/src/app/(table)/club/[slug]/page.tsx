@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getAllClubs, getClubBySlug } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByClub } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
@@ -13,11 +14,21 @@ export function generateStaticParams() {
   return clubs;
 }
 
-export default async function Page({
-  params,
-}: {
+type Props = {
   params: Promise<{ slug: string }>;
-}) {
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const club = getClubBySlug(slug);
+
+  return {
+    title: `${club?.name}の経営情報`,
+    description: `${club?.name}の経営情報`,
+  };
+}
+
+export default async function Page({ params }: Props) {
   const { slug } = await params;
   const club = getClubBySlug(slug);
 

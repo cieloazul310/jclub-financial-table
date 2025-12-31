@@ -6,20 +6,20 @@ import { Field } from "@/components/ui/field";
 import { useTableStore } from "@/providers/table-store-provider";
 
 export function YearFilter() {
-  const { filterYears, setFilterYearFrom, setFilterYearTo } = useTableStore(
+  const { visibleYears, setVisibleYearFrom, setVisibleYearTo } = useTableStore(
     (store) => store,
   );
-  const [from, to] = filterYears;
+  const [from, to] = visibleYears;
   const onFromChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     if (value) {
-      setFilterYearFrom(parseInt(value, 10));
+      setVisibleYearFrom(parseInt(value, 10));
     }
   };
   const onToChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     if (value) {
-      setFilterYearTo(parseInt(value, 10));
+      setVisibleYearTo(parseInt(value, 10));
     }
   };
   const selectStyle = css.raw({

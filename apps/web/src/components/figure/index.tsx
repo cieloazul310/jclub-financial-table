@@ -5,10 +5,10 @@ import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial/types
 import { css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
 import { Tabs } from "@/components/ui/tabs";
-import { Toolbar } from "@/components/toolbar";
 import { sortAndFilter } from "@/utils/sort-and-filter";
 import type { Mode, Tab } from "@/utils/types";
 import { FigureMain } from "./main";
+import { Toolbar } from "./toolbar";
 
 const options: { id: Tab; label: string }[] = [
   { id: "pl", label: "損益計算書" },
@@ -25,7 +25,7 @@ export function Figure({
   data: ExtendedFinancialDatum[];
   mode: Mode;
 }) {
-  const { tab, sortKey, sortAsc, filterCategories, filterYears, setTab } =
+  const { tab, sortKey, sortAsc, visibleCategories, visibleYears, setTab } =
     useTableStore((store) => store);
   const onValueChange = (details: TabsValueChangeDetails) => {
     setTab(details.value as Tab);
@@ -34,8 +34,8 @@ export function Figure({
     sortAsc,
     sortKey,
     mode,
-    filterCategories,
-    filterYears,
+    visibleCategories,
+    visibleYears,
   });
 
   return (

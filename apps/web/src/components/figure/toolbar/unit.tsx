@@ -1,13 +1,13 @@
 "use client";
 
-import { getLabel } from "@cieloazul310/jclub-financial";
+import { getLabel, type SortableKeys } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
-import type { Mode, SortableKey, Tab } from "@/utils/types";
+import type { Mode, Tab } from "@/utils/types";
 
 type SortStateString = {
   field: string | null | undefined;
-  sortKey: SortableKey;
+  sortKey: SortableKeys;
   sortType: string;
 };
 
@@ -15,7 +15,7 @@ export function useSortStateString(): SortStateString {
   const { sortAsc, sortKey } = useTableStore((store) => store);
   const field = getLabel(sortKey);
 
-  const rankSort = sortAsc ? "高い順" : "低い順";
+  const rankSort = sortAsc ? "低い順" : "高い順";
   const valueSort = sortAsc ? "少ない順" : "多い順";
   const sortType = sortKey === "rank" ? rankSort : valueSort;
 
@@ -27,12 +27,12 @@ export function useSortStateString(): SortStateString {
 }
 
 export function useFilterStateString(): string {
-  const { filterCategories } = useTableStore((store) => store);
+  const { visibleCategories } = useTableStore((store) => store);
 
   return `フィルタ: ${
-    filterCategories.length === 4
+    visibleCategories.length === 4
       ? "なし"
-      : filterCategories
+      : visibleCategories
           .map((category) => (category === "others" ? "その他" : category))
           .join(",")
   }`;

@@ -1,8 +1,9 @@
 import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { Table } from "@/components/ui/table";
-import { row } from "./row";
 import type { Mode, Tab } from "@/utils/types";
+import { row } from "./row";
+import { useTableId } from "../utils/use-table-id";
 
 type FinancialTableProps = {
   tab: Tab;
@@ -11,6 +12,7 @@ type FinancialTableProps = {
 };
 
 export function FinancialTable({ tab, mode, data }: FinancialTableProps) {
+  const tableId = useTableId();
   const { head, renderRow } = row[tab];
   return (
     <div
@@ -21,7 +23,7 @@ export function FinancialTable({ tab, mode, data }: FinancialTableProps) {
         overflowY: "auto",
       })}
     >
-      <Table.Root dense hovered width="full">
+      <Table.Root id={tableId} dense hovered width="full">
         <Table.Head
           className={css({
             position: "sticky",

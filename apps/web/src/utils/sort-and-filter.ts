@@ -1,5 +1,8 @@
-import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
-import type { Category, Mode, SortableKey } from "./types";
+import type {
+  ExtendedFinancialDatum,
+  SortableKeys,
+} from "@cieloazul310/jclub-financial";
+import type { Category, Mode } from "./types";
 
 export function getRank(
   data: Pick<ExtendedFinancialDatum, "category" | "rank">,
@@ -24,9 +27,9 @@ function getCategory({
     : category.value;
 }
 
-export function categoryFilter(filterCategories: Category[]) {
+export function categoryFilter(visibleCategories: Category[]) {
   return ({ category }: Pick<ExtendedFinancialDatum, "category">) => {
-    return filterCategories.includes(getCategory({ category }));
+    return visibleCategories.includes(getCategory({ category }));
   };
 }
 
@@ -35,25 +38,25 @@ export function sortAndFilter(
   {
     sortKey,
     sortAsc,
-    filterCategories,
-    filterYears,
+    visibleCategories,
+    visibleYears,
     mode,
   }: {
-    sortKey: SortableKey;
+    sortKey: SortableKeys;
     sortAsc: boolean;
-    filterCategories: Category[];
-    filterYears: [number, number];
+    visibleCategories: Category[];
+    visibleYears: [number, number];
     mode: Mode;
   },
 ): ExtendedFinancialDatum[] {
   if (mode === "club") {
-    const [from, to] = filterYears;
+    const [from, to] = visibleYears;
     return data
       .filter(({ year }) => year.value >= from && year.value <= to)
       .sort((a, b) => a.year.value - b.year.value);
   }
 
-  const filter = categoryFilter(filterCategories);
+  const filter = categoryFilter(visibleCategories);
 
   if (sortKey === "rank") {
     return data

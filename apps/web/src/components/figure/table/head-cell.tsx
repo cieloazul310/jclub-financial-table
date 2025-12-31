@@ -1,10 +1,11 @@
 "use client";
 
+import type { SortableKeys } from "@cieloazul310/jclub-financial";
 import { cx, css } from "styled-system/css";
 import type { ComponentProps } from "styled-system/types";
 import { Table } from "@/components/ui/table";
 import { useTableStore } from "@/providers/table-store-provider";
-import type { Mode, SortableKey } from "@/utils/types";
+import type { Mode } from "@/utils/types";
 
 export function TableHeadCell({
   sortableKey,
@@ -19,7 +20,7 @@ export function TableHeadCell({
   ...rest
 }: Omit<ComponentProps<typeof Table.Cell>, "align"> & {
   mode: Mode;
-  sortableKey?: SortableKey;
+  sortableKey?: SortableKeys;
 }) {
   const props = {
     py,

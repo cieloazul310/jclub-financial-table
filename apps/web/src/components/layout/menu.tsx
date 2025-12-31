@@ -12,24 +12,32 @@ type MenuProps = {
 export function Menu({ slug = [] }: MenuProps) {
   const categories: Category[] = ["J1", "J2", "J3", "others"];
   const menuCollection = categories.map((category) => {
-    const children = getClubsByCategory(category).map((club) => ({
+    const categoriesClub = getClubsByCategory(category);
+    const children = categoriesClub.map((club) => ({
       title: club.name,
       href: `/club/${club.slug}`,
-      selected: slug.join("/") === club.slug,
+      selected: slug.join("/") === `club/${club.slug}`,
     }));
 
     return {
       title: category === "others" ? "JFL・地域" : category,
       children,
-      open: slug.includes(category),
-      selected: slug.join("/") === category,
+      open: children.some(({ selected }) => selected),
     };
   });
+  const defaultValue =
+    slug?.[0] === "year"
+      ? ["year"]
+      : [
+          ...menuCollection
+            .filter(({ open }) => open)
+            .map(({ title }) => title),
+        ];
 
   return (
     <nav className={css({ p: 1 })}>
       <ul>
-        <Accordion.Root multiple>
+        <Accordion.Root multiple defaultValue={defaultValue}>
           {menuCollection.map((menuGroup) => (
             <Accordion.Item value={menuGroup.title} key={menuGroup.title}>
               <Accordion.ItemTrigger>
@@ -71,7 +79,7 @@ export function Menu({ slug = [] }: MenuProps) {
                       className={menuItem({ variant: "boxed" })}
                       href={`/year/${item.year}`}
                       data-selected={
-                        slug.join("/") === `/year/${item.year.toString()}` ||
+                        slug.join("/") === `year/${item.year.toString()}` ||
                         undefined
                       }
                     >

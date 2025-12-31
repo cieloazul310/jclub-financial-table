@@ -39,14 +39,14 @@ function TableBodyHeader({ mode, index, datum }: TableBodyHeaderProps) {
       </Table.Cell>
       <Table.Cell
         className={cx(
-          datum.elevation.value && css({ fontWeight: "bold" }),
-          datum.elevation.value === "昇格" &&
+          datum.elevation?.value && css({ fontWeight: "bold" }),
+          datum.elevation?.value === "昇格" &&
             css({
-              color: "green.800",
+              color: "success.2",
             }),
-          datum.elevation.value === "降格" &&
+          datum.elevation?.value === "降格" &&
             css({
-              color: "red.900",
+              color: "error.2",
             }),
         )}
         width="80px"
