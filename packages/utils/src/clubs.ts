@@ -2,7 +2,8 @@ import type { ClubInfo } from "./types";
 import clubs from "./data/clubs.json";
 
 export function getAllClubs() {
-  return clubs as ClubInfo[];
+  const allClubs = clubs;
+  return [...allClubs] as ClubInfo[];
 }
 
 export function getClubBySlug(slug: string) {

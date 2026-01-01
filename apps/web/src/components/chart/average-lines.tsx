@@ -26,7 +26,9 @@ function useAverageLine(
   dataYears: number[],
   itemWidth: number,
 ) {
-  const allYears = getAllYears().map(({ year }) => year);
+  const allYears = getAllYears()
+    .map(({ year }) => year)
+    .sort((a, b) => a - b);
   const diff = (dataYears[0] ?? 2005) - (allYears[0] ?? 2005);
 
   return d3Line<AverageValues>()

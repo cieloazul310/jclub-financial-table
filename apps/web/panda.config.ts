@@ -31,6 +31,14 @@ export default defineConfig({
           type: ["warning", "info1", "info2", "success", "error"],
         },
       ],
+      /*
+      layout: [
+        {
+          breakpoint: ["md", "lg", "xl", "2xl", "none"],
+          headerAlways: ["false", "true"],
+        },
+      ],
+      */
     },
   },
 

@@ -27,7 +27,7 @@ export const Heading2 = ({
   ...props
 }: JsxHTMLProps<ComponentProps<"h2">, JsxStyleProps>) => (
   <styled.h2
-    textStyle={{ base: "std-24B-150", md: "std-32B-150" }}
+    textStyle={{ base: "std-22B-150", md: "std-28B-150" }}
     mt={{ base: 10, md: 16 }}
     mb={6}
     className={cx(className, withArticle)}

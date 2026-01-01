@@ -19,16 +19,18 @@ describe("getClubById", () => {
 });
 
 describe("getClubsByCategory", () => {
-  it("should return clubs for a valid category", () => {
-    const clubs = getClubsByCategory("J1");
-    expect(clubs.length).toBeGreaterThan(0);
-    expect(clubs.length).toEqual(20);
-    expect(clubs.every((club) => club.category === "J1")).toBe(true);
+  ["J1", "J2", "J3"].forEach((category) => {
+    it("should return clubs for a valid category", () => {
+      const clubs = getClubsByCategory(category);
+      expect(clubs.length).toBeGreaterThan(0);
+      expect(clubs.length).toEqual(20);
+      expect(clubs.every((club) => club.category === category)).toBe(true);
+    });
   });
 
   it("should return an empty array for an invalid category", () => {
     const clubs = getClubsByCategory("others");
-    expect(clubs.length).toEqual(2);
+    expect(clubs.length).toEqual(3);
   });
 });
 
@@ -36,5 +38,6 @@ describe("getAllClubs", () => {
   it("should return all clubs", () => {
     const clubs = getAllClubs();
     expect(clubs.length).toBeGreaterThan(0);
+    expect(clubs.length).toBeGreaterThan(60);
   });
 });

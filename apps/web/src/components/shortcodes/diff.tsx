@@ -25,14 +25,14 @@ function DiffIcon({ type }: { type: DiffType }) {
   if (type === "up")
     return (
       <>
-        <ArrowUpIcon className={css({ color: "lime.700" })} />
+        <ArrowUpIcon className={css({ color: "success.2" })} />
         <span className={css({ srOnly: true })}>+</span>
       </>
     );
   if (type === "down")
     return (
       <>
-        <ArrowDownIcon className={css({ color: "red.900" })} />
+        <ArrowDownIcon className={css({ color: "error.2" })} />
         <span className={css({ srOnly: true })}>-</span>
       </>
     );

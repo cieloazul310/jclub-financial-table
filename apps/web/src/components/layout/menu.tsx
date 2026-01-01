@@ -33,6 +33,7 @@ export function Menu({ slug = [] }: MenuProps) {
             .filter(({ open }) => open)
             .map(({ title }) => title),
         ];
+  const allYears = getAllYears().sort((a, b) => b.year - a.year);
 
   return (
     <nav className={css({ p: 1 })}>
@@ -73,7 +74,7 @@ export function Menu({ slug = [] }: MenuProps) {
             </Accordion.ItemTrigger>
             <Accordion.ItemContent pt={0} pr={0} pb={4} pl={{ base: 4, md: 6 }}>
               <ul>
-                {getAllYears().map((item) => (
+                {allYears.map((item) => (
                   <li key={item.year.toString()}>
                     <NextLink
                       className={menuItem({ variant: "boxed" })}
@@ -83,7 +84,7 @@ export function Menu({ slug = [] }: MenuProps) {
                         undefined
                       }
                     >
-                      {item.year}年
+                      {item.year}年度
                     </NextLink>
                   </li>
                 ))}

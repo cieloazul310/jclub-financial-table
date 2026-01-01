@@ -13,3 +13,5 @@ export const siteMetadata = {
   description,
   siteUrl,
 };
+
+export const postsPerPage = 40;
