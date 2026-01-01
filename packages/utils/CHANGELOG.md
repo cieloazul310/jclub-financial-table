@@ -1,5 +1,11 @@
 # @cieloazul310/jclub-financial-utils
 
+## 0.0.1-alpha.6
+
+### Patch Changes
+
+- 5294d70: `getAllClubs`と`getAllYears`の挙動を修正
+
 ## 0.0.1-alpha.5
 
 ### Patch Changes

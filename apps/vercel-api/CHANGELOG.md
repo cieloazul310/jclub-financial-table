@@ -1,5 +1,13 @@
 # jclub-financial-vercel-api
 
+## 0.0.1-alpha.6
+
+### Patch Changes
+
+- 5294d70: `getAllClubs`と`getAllYears`の挙動を修正
+- Updated dependencies [5294d70]
+  - @cieloazul310/jclub-financial@0.0.1-alpha.6
+
 ## 0.0.1-alpha.5
 
 ### Patch Changes
