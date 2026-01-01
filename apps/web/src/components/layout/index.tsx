@@ -1,21 +1,23 @@
 import type { PropsWithChildren, ReactNode } from "react";
-import { css } from "styled-system/css";
 import { layout, type LayoutVariantProps } from "styled-system/recipes";
-import { title } from "@/data/site-metadata";
-import { MobileHeader } from "./mobile-header";
+import { Header } from "./header";
+import { SidebarTitle } from "./sidebar-title";
 import { Menu } from "./menu";
 import { Footer } from "./footer";
 
 export function Layout({
   children,
-  slug,
   breakpoint,
   headerAlways,
   contentWidth,
-  headerContent,
-  sidebarContent,
+  headerContent = <Header />,
+  sidebarContent = (
+    <>
+      <SidebarTitle />
+      <Menu />
+    </>
+  ),
 }: PropsWithChildren<{
-  slug?: string[];
   headerContent?: ReactNode;
   sidebarContent?: ReactNode;
 }> &
@@ -27,25 +29,9 @@ export function Layout({
   });
   return (
     <div className={root}>
-      <header className={header}>
-        <MobileHeader slug={slug} />
-      </header>
+      <header className={header}>{headerContent}</header>
       <div className={grid}>
-        <header className={sidebar}>
-          <a
-            href="/"
-            className={css({
-              alignSelf: "center",
-              width: 48,
-              color: "inherit",
-              textStyle: "std-20B-150",
-              my: 2,
-            })}
-          >
-            {title}
-          </a>
-          <Menu slug={slug} />
-        </header>
+        <header className={sidebar}>{sidebarContent}</header>
         <main className={main}>
           <div className={content}>{children}</div>
         </main>

@@ -20,3 +20,21 @@ export function createDate(date: Date) {
     datetime: datetime(date),
   };
 }
+
+export function parseFrontmatterDate(frontmatter: {
+  date: Date;
+  lastmod: Date;
+}): {
+  date: { datestring: string; datetime: string };
+  lastmod: { datestring: string; datetime: string };
+  isModified: boolean;
+} {
+  const date = createDate(frontmatter.date);
+  const lastmod = createDate(frontmatter.lastmod);
+  const isModified =
+    (frontmatter.lastmod &&
+      frontmatter.date.getTime() !== frontmatter.lastmod.getTime()) ||
+    false;
+
+  return { date, lastmod, isModified };
+}

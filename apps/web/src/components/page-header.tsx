@@ -20,7 +20,7 @@ export function PageHeader({
       >
         <h1
           className={css({
-            textStyle: { base: "std-28B-150", md: "std-45B-140" },
+            textStyle: { base: "std-28B-150", md: "std-32B-150" },
             ml: -0.5,
           })}
         >
@@ -29,7 +29,7 @@ export function PageHeader({
         {children && (
           <span
             className={css({
-              textStyle: { base: "std-18N-160", md: "std-22N-150" },
+              textStyle: { base: "std-18N-160", md: "std-20N-150" },
               my: 4,
             })}
           >

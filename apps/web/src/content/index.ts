@@ -7,6 +7,7 @@ export const post = defineMdx({
   basePath: "/posts",
   schema: {
     club: z.array(z.string()).nullish(),
+    tag: z.string().nullish(),
   },
 });
 export type PostFrontmatter = z.infer<typeof post.schema>;
