@@ -4,7 +4,7 @@ import remarkGfm from "remark-gfm";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { css } from "styled-system/css";
 import { Button } from "@/components/ui/button";
-import { BaseLayout } from "@/components/layout/base";
+import { Layout } from "@/components/layout";
 import { PageHeader } from "@/components/page-header";
 import { useMDXComponents } from "@/mdx-components";
 import { post } from "@/content";
@@ -53,7 +53,7 @@ export default async function Page({
   const lastmodString = createDate(lastmod);
 
   return (
-    <BaseLayout>
+    <Layout>
       <article>
         <PageHeader title={title}>
           <span
@@ -140,6 +140,6 @@ export default async function Page({
           )}
         </div>
       </nav>
-    </BaseLayout>
+    </Layout>
   );
 }

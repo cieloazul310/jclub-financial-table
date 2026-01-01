@@ -44,8 +44,11 @@ export function Figure({
         className={css({
           position: "sticky",
           top: "{sizes.mobile-header-height}",
-          zIndex: 5,
+          zIndex: "calc({zIndex.docked} - 1)",
           bg: "white/85",
+          backdropFilter: "blur(2px)",
+          maxWidth: "90em",
+          mx: "auto",
         })}
         value={tab}
         onValueChange={onValueChange}

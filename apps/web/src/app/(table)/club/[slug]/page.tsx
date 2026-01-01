@@ -3,7 +3,7 @@ import { getAllClubs, getClubBySlug } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByClub } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
-import { FullWidthLayout } from "@/components/layout/full-width";
+import { Layout } from "@/components/layout";
 import { Figure } from "@/components/figure";
 import { ClubSummary } from "@/components/club-summary";
 import { Chart } from "@/components/chart";
@@ -38,7 +38,12 @@ export default async function Page({ params }: Props) {
   const data = await getExtendedDataByClub(club.slug);
 
   return (
-    <FullWidthLayout slug={["club", club.slug]} title={club.name}>
+    <Layout
+      slug={["club", club.slug]}
+      breakpoint="2xl"
+      headerAlways
+      contentWidth="full"
+    >
       <Figure data={data} mode="club" />
       <article className={container({ maxWidth: "common-main-width", mt: 12 })}>
         <Heading2>{club.name}</Heading2>
@@ -51,6 +56,6 @@ export default async function Page({ params }: Props) {
           <ClubSummary club={club} />
         </div>
       </article>
-    </FullWidthLayout>
+    </Layout>
   );
 }

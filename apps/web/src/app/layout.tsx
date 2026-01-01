@@ -4,10 +4,10 @@ import { notoSansJp, notoSansMono } from "@/styles/fonts";
 import { title, description } from "@/data/site-metadata";
 import "@/styles/globals.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   title,
   description,
-} satisfies Metadata;
+};
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (

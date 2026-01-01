@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import { css } from "styled-system/css";
 import { styled } from "styled-system/jsx";
 import type { ComponentProps, StyledComponent } from "styled-system/types";
@@ -6,12 +5,13 @@ import type { ComponentProps, StyledComponent } from "styled-system/types";
 export function PageHeader({
   title,
   children,
+  pt = { base: 0, lg: 10 },
   ...props
 }: ComponentProps<StyledComponent<"header">> & {
   title: string;
 }) {
   return (
-    <styled.header {...props}>
+    <styled.header pt={pt} {...props}>
       <hgroup
         className={css({
           mt: { base: 4, md: 6, lg: 0 },
