@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import remarkGfm from "remark-gfm";
 import { css } from "styled-system/css";
 import { Layout } from "@/components/layout";
-import { SidebarTitle } from "@/components/layout/sidebar-title";
-import { Menu } from "@/components/layout/menu";
 import { PageHeader } from "@/components/page-header";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { PostListItemBase } from "@/components/post/list-item";
@@ -58,33 +56,8 @@ export default async function Page({ params }: { params: Promise<Props> }) {
   const { older, newer } = context;
   const { date, lastmod, isModified } = parseFrontmatterDate(frontmatter);
 
-  const sidebarContent = (
-    <>
-      <SidebarTitle />
-      <nav className={css({ display: "grid", gridTemplateColumns: "1fr" })}>
-        {newer && (
-          <PostListItemBase
-            borderWidth="0"
-            title={newer.frontmatter.title}
-            href={newer.href}
-            headerText={<span>次の記事</span>}
-          />
-        )}
-        {older && (
-          <PostListItemBase
-            borderWidth="0"
-            title={older.frontmatter.title}
-            href={older.href}
-            headerText={<span>前の記事</span>}
-          />
-        )}
-      </nav>
-      <Menu slug={joinedSlug} />
-    </>
-  );
-
   return (
-    <Layout sidebarContent={sidebarContent}>
+    <Layout contentWidth="full">
       <article>
         <PageHeader title={title}>
           <span
@@ -108,7 +81,46 @@ export default async function Page({ params }: { params: Promise<Props> }) {
             )}
           </span>
         </PageHeader>
-        <section>{content}</section>
+        <div
+          className={css({
+            display: "grid",
+            gridTemplateColumns: { base: "1fr", lg: "1fr auto" },
+          })}
+        >
+          <section className={css({ px: { base: 2, sm: 4 } })}>
+            {content}
+          </section>
+          <aside
+            className={css({
+              display: { base: "none", lg: "block" },
+              position: "sticky",
+              top: 0,
+              maxWidth: "sidebar-width",
+              maxHeight: "100vh",
+            })}
+          >
+            <nav
+              className={css({ display: "grid", gridTemplateColumns: "1fr" })}
+            >
+              {newer && (
+                <PostListItemBase
+                  borderWidth="0"
+                  title={newer.frontmatter.title}
+                  href={newer.href}
+                  headerText={<span>次の記事</span>}
+                />
+              )}
+              {older && (
+                <PostListItemBase
+                  borderWidth="0"
+                  title={older.frontmatter.title}
+                  href={older.href}
+                  headerText={<span>前の記事</span>}
+                />
+              )}
+            </nav>
+          </aside>
+        </div>
       </article>
       <PrevNextLink
         left={{ href: newer?.href, title: newer?.frontmatter.title }}

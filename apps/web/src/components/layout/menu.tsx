@@ -1,48 +1,41 @@
 import NextLink from "next/link";
-import { getClubsByCategory, getAllYears } from "@cieloazul310/jclub-financial";
-import { css } from "styled-system/css";
+import { cx, css } from "styled-system/css";
 import { menuItem } from "styled-system/recipes";
 import { Accordion } from "@/components/ui/accordion";
-import type { Category } from "@/utils/types";
+import { menuWithSelection, postMenu, contentMenu } from "@/data/menu";
 
 type MenuProps = {
+  /**
+   * @deprecated
+   */
   slug?: string[];
+  pathname?: string;
 };
 
-export function Menu({ slug = [] }: MenuProps) {
-  const categories: Category[] = ["J1", "J2", "J3", "others"];
-  const menuCollection = categories.map((category) => {
-    const categoriesClub = getClubsByCategory(category);
-    const children = categoriesClub.map((club) => ({
-      title: club.name,
-      href: `/club/${club.slug}`,
-      selected: slug.join("/") === `club/${club.slug}`,
-    }));
-
-    return {
-      title: category === "others" ? "JFL・地域" : category,
-      children,
-      open: children.some(({ selected }) => selected),
-    };
-  });
-  const defaultValue =
-    slug?.[0] === "year"
-      ? ["year"]
-      : [
-          ...menuCollection
-            .filter(({ open }) => open)
-            .map(({ title }) => title),
-        ];
-  const allYears = getAllYears().sort((a, b) => b.year - a.year);
+export function Menu({ slug = [], pathname }: MenuProps) {
+  const tmpPathname = pathname ?? `/${slug.join("/")}`;
+  const menuCollection = menuWithSelection(tmpPathname);
+  const defaultValue = menuCollection
+    .filter(({ selected }) => selected)
+    .map(({ id }) => id);
 
   return (
     <nav className={css({ p: 1 })}>
-      <ul>
+      <h3
+        className={css({
+          textStyle: "oln-16N-100",
+          px: { base: 0, md: 2 },
+          mb: 2,
+        })}
+      >
+        経営情報
+      </h3>
+      <ul className={css({ mb: 12 })}>
         <Accordion.Root multiple defaultValue={defaultValue}>
           {menuCollection.map((menuGroup) => (
-            <Accordion.Item value={menuGroup.title} key={menuGroup.title}>
+            <Accordion.Item value={menuGroup.id} key={menuGroup.id}>
               <Accordion.ItemTrigger>
-                <h3>{menuGroup.title}</h3>
+                <h4>{menuGroup.title}</h4>
                 <Accordion.ItemIndicator />
               </Accordion.ItemTrigger>
               <Accordion.ItemContent
@@ -52,7 +45,7 @@ export function Menu({ slug = [] }: MenuProps) {
                 pl={{ base: 4, md: 6 }}
               >
                 <ul>
-                  {menuGroup.children.map((item) => (
+                  {menuGroup.items.map((item) => (
                     <li key={item.href}>
                       <NextLink
                         className={menuItem({ variant: "boxed" })}
@@ -67,31 +60,36 @@ export function Menu({ slug = [] }: MenuProps) {
               </Accordion.ItemContent>
             </Accordion.Item>
           ))}
-          <Accordion.Item value="year">
-            <Accordion.ItemTrigger>
-              <h3>年度別</h3>
-              <Accordion.ItemIndicator />
-            </Accordion.ItemTrigger>
-            <Accordion.ItemContent pt={0} pr={0} pb={4} pl={{ base: 4, md: 6 }}>
-              <ul>
-                {allYears.map((item) => (
-                  <li key={item.year.toString()}>
-                    <NextLink
-                      className={menuItem({ variant: "boxed" })}
-                      href={`/year/${item.year}`}
-                      data-selected={
-                        slug.join("/") === `year/${item.year.toString()}` ||
-                        undefined
-                      }
-                    >
-                      {item.year}年度
-                    </NextLink>
-                  </li>
-                ))}
-              </ul>
-            </Accordion.ItemContent>
-          </Accordion.Item>
         </Accordion.Root>
+      </ul>
+      <h3
+        className={css({
+          textStyle: "oln-16N-100",
+          px: { base: 0, md: 2 },
+          mb: 2,
+        })}
+      >
+        コンテンツ
+      </h3>
+      <ul>
+        {[...postMenu, ...contentMenu].map(({ id, title, href }) => (
+          <li key={id}>
+            <NextLink
+              className={cx(
+                menuItem({ variant: "boxed" }),
+                css({ pl: { base: 4, md: 6 } }),
+              )}
+              href={href}
+              data-selected={
+                tmpPathname !== "/" && new RegExp(tmpPathname).test(href)
+                  ? true
+                  : undefined
+              }
+            >
+              {title}
+            </NextLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

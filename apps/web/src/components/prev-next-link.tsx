@@ -17,11 +17,11 @@ export function PrevNextLink({
   left?: {
     title?: ReactNode;
     href?: NextLinkProps["href"];
-  };
+  } | null;
   right?: {
     title?: ReactNode;
     href?: NextLinkProps["href"];
-  };
+  } | null;
 } & Omit<ComponentProps<typeof styled.nav>, "children" | "left" | "right">) {
   const props = { display, gridTemplateColumns, gap, ...rest };
 
