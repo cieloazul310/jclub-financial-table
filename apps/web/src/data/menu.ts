@@ -87,15 +87,19 @@ export const contentMenu = [
     id: "docs",
     title: "経営情報の見方",
     href: "/docs",
+    description: "経営情報の項目と用語の簡易な解説",
   },
   {
     id: "series",
     title: "項目別表示",
     href: "/series",
+    description:
+      "営業収入や入場者数など特定の項目を、縦軸にクラブ、横軸に年度で表したページ",
   },
   {
     id: "download",
     title: "データダウンロード",
     href: "/download",
+    description: "経営情報のデータをJSONやCSV形式でダウンロードできるページ",
   },
 ];

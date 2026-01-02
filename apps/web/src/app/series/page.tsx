@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { getAllClubs, getAllYears } from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
-import { css } from "styled-system/css";
 import { SeriesClient } from "@/components/series/client";
 import { Loading } from "@/components/loading";
+import { SeriesStoreProvider } from "@/providers/series-store-provider";
 
 export default async function Page() {
   const allClubs = getAllClubs();
@@ -28,7 +28,9 @@ export default async function Page() {
 
   return (
     <Suspense fallback={<Loading />}>
-      <SeriesClient dataset={dataset} />
+      <SeriesStoreProvider>
+        <SeriesClient dataset={dataset} />
+      </SeriesStoreProvider>
     </Suspense>
   );
 }

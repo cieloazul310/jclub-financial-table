@@ -19,6 +19,7 @@ export type TableStoreProviderProps = PropsWithChildren;
 export function TableStoreProvider({ children }: TableStoreProviderProps) {
   const storeRef = useRef<StoreApi<TableStore>>(createTableStore());
   /*
+  const storeRef = useRef<StoreApi<TableStore>>(null);
   if (!storeRef.current) {
     storeRef.current = createTableStore();
   }

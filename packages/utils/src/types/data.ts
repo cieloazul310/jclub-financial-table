@@ -169,7 +169,6 @@ export const AllExpenseFields = [
   "women_exp",
   "goods_exp",
   "other_cost",
-  "manage_exp",
   "sga",
 ] as const;
 export type ExpenseFields = (typeof AllExpenseFields)[number];
