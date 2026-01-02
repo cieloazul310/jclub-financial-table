@@ -1,9 +1,11 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { getAllClubs, getClubBySlug } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByClub } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
 import { Figure } from "@/components/figure";
+import { Loading } from "@/components/loading";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { ClubSummary } from "@/components/club-summary";
 import { Chart } from "@/components/chart";
@@ -50,10 +52,12 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <Figure data={data} mode="club" />
+      <Suspense fallback={<Loading />}>
+        <Figure data={data} mode="club" />
+      </Suspense>
       <PrevNextLink
-        left={{ href: `/club/${prev?.slug}`, title: prev?.name }}
-        right={{ href: `/club/${next?.slug}`, title: next?.name }}
+        leftSlot={{ href: `/club/${prev?.slug}`, title: prev?.name }}
+        rightSlot={{ href: `/club/${next?.slug}`, title: next?.name }}
         mt={12}
       />
       <article className={container({ maxWidth: "common-main-width", mt: 12 })}>

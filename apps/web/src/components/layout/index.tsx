@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactNode } from "react";
-import { layout, type LayoutVariantProps } from "styled-system/recipes";
+import { layout, type LayoutSlot } from "styled-system/recipes";
 import { Header } from "./header";
 import { SidebarTitle } from "./sidebar-title";
 import { Menu } from "./menu";
@@ -7,9 +7,7 @@ import { Footer } from "./footer";
 
 export function Layout({
   children,
-  breakpoint,
-  headerAlways,
-  contentWidth,
+  classes = layout(),
   headerContent = <Header />,
   sidebarContent = (
     <>
@@ -18,24 +16,19 @@ export function Layout({
     </>
   ),
 }: PropsWithChildren<{
+  classes?: Partial<Record<LayoutSlot, string>>;
   headerContent?: ReactNode;
   sidebarContent?: ReactNode;
-}> &
-  LayoutVariantProps) {
-  const { root, header, grid, sidebar, main, content, footer } = layout({
-    breakpoint,
-    headerAlways,
-    contentWidth,
-  });
+}>) {
   return (
-    <div className={root}>
-      <header className={header}>{headerContent}</header>
-      <div className={grid}>
-        <header className={sidebar}>{sidebarContent}</header>
-        <main className={main}>
-          <div className={content}>{children}</div>
+    <div className={classes?.root}>
+      <header className={classes?.header}>{headerContent}</header>
+      <div className={classes?.grid}>
+        <header className={classes?.sidebar}>{sidebarContent}</header>
+        <main className={classes?.main}>
+          <div className={classes?.content}>{children}</div>
         </main>
-        <footer className={footer}>
+        <footer className={classes?.footer}>
           <Footer />
         </footer>
       </div>

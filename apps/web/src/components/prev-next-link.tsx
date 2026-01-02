@@ -3,28 +3,27 @@ import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { css } from "styled-system/css";
 import { styled } from "styled-system/jsx";
-import type { ComponentProps } from "styled-system/types";
+import type { HTMLStyledProps } from "styled-system/types";
 import { Button } from "@/components/ui/button";
 
 export function PrevNextLink({
-  left,
-  right,
+  leftSlot,
+  rightSlot,
   display = "grid",
   gridTemplateColumns = { base: "1fr", sm: "repeat(2, 1fr)" },
   gap = { base: 2, sm: 4 },
   ...rest
 }: {
-  left?: {
+  leftSlot?: {
     title?: ReactNode;
     href?: NextLinkProps["href"];
   } | null;
-  right?: {
+  rightSlot?: {
     title?: ReactNode;
     href?: NextLinkProps["href"];
   } | null;
-} & Omit<ComponentProps<typeof styled.nav>, "children" | "left" | "right">) {
+} & Omit<HTMLStyledProps<"nav">, "children">) {
   const props = { display, gridTemplateColumns, gap, ...rest };
-
   return (
     <styled.nav {...props}>
       <div
@@ -35,7 +34,7 @@ export function PrevNextLink({
           alignItems: "start",
         })}
       >
-        {left?.title && left?.href && (
+        {leftSlot?.title && leftSlot?.href && (
           <Button
             size="lg"
             variant="outline"
@@ -45,9 +44,9 @@ export function PrevNextLink({
             textAlign="left"
             asChild
           >
-            <NextLink href={left.href}>
+            <NextLink href={leftSlot.href}>
               <ChevronLeft />
-              {left.title}
+              {leftSlot.title}
             </NextLink>
           </Button>
         )}
@@ -60,7 +59,7 @@ export function PrevNextLink({
           alignItems: "end",
         })}
       >
-        {right?.title && right?.href && (
+        {rightSlot?.title && rightSlot?.href && (
           <Button
             size="lg"
             variant="outline"
@@ -70,8 +69,8 @@ export function PrevNextLink({
             textAlign="left"
             asChild
           >
-            <NextLink href={right.href}>
-              {right.title}
+            <NextLink href={rightSlot.href}>
+              {rightSlot.title}
               <ChevronRight />
             </NextLink>
           </Button>

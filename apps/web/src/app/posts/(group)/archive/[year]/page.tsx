@@ -48,11 +48,11 @@ export default async function Page({ params }: Props) {
   const prev =
     allYears.findIndex((value) => value === year) !== allYears.length
       ? { title: `${year - 1}年の記事一覧`, href: `/posts/archive/${year - 1}` }
-      : null;
+      : undefined;
   const next =
     allYears.findIndex((value) => value === year) !== 0
       ? { title: `${year + 1}年の記事一覧`, href: `/posts/archive/${year + 1}` }
-      : null;
+      : undefined;
   const postsByMonth = getPostsByMonths(postsByYear);
 
   return (
@@ -68,7 +68,7 @@ export default async function Page({ params }: Props) {
           </PostList>
         </section>
       ))}
-      <PrevNextLink left={next} right={prev} />
+      <PrevNextLink leftSlot={next} rightSlot={prev} />
     </>
   );
 }

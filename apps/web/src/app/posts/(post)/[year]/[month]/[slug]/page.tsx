@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import remarkGfm from "remark-gfm";
 import { css } from "styled-system/css";
-import { Layout } from "@/components/layout";
 import { PageHeader } from "@/components/page-header";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { PostListItemBase } from "@/components/post/list-item";
@@ -57,7 +56,7 @@ export default async function Page({ params }: { params: Promise<Props> }) {
   const { date, lastmod, isModified } = parseFrontmatterDate(frontmatter);
 
   return (
-    <Layout contentWidth="full">
+    <>
       <article>
         <PageHeader title={title}>
           <span
@@ -123,10 +122,10 @@ export default async function Page({ params }: { params: Promise<Props> }) {
         </div>
       </article>
       <PrevNextLink
-        left={{ href: newer?.href, title: newer?.frontmatter.title }}
-        right={{ href: older?.href, title: older?.frontmatter.title }}
+        leftSlot={{ href: newer?.href, title: newer?.frontmatter.title }}
+        rightSlot={{ href: older?.href, title: older?.frontmatter.title }}
         mt={8}
       />
-    </Layout>
+    </>
   );
 }

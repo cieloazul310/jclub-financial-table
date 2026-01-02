@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cx, css } from "styled-system/css";
 import { styled } from "styled-system/jsx";
-import type { ComponentProps, StyledComponent } from "styled-system/types";
+import type { ComponentProps, HTMLStyledProps } from "styled-system/types";
 import { Table } from "@/components/ui/table";
 import { Diff } from "./diff";
 
@@ -12,7 +12,7 @@ export function SummaryTable({
   maxWidth = "full",
   overflowX = "auto",
   ...rest
-}: ComponentProps<StyledComponent<"div">> & {
+}: HTMLStyledProps<"div"> & {
   disableDiff?: boolean;
   caption?: ReactNode;
 }) {

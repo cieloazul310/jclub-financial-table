@@ -1,13 +1,11 @@
 import type { PropsWithChildren } from "react";
 import type { MDXComponents } from "mdx/types";
 import { cx, css } from "styled-system/css";
-import type {
-  ComponentProps,
-  JsxHTMLProps,
-  JsxStyleProps,
-} from "styled-system/types";
-import { Link } from "@/components/link";
+import { styled } from "styled-system/jsx";
+import type { HTMLStyledProps } from "styled-system/types";
 import { NotificationBanner } from "@/components/ui/notification-banner";
+import { Paragraph } from "@/components/article";
+import { Link } from "@/components/link";
 import { withArticle } from "@/styles/with-article";
 import { Blockquote } from "./blockquote";
 import { Diff } from "./diff";
@@ -23,12 +21,12 @@ export const Ad = () => (
   </div>
 );
 
-const Red = ({ children }: PropsWithChildren) => (
-  <span className={css({ color: "red.primary" })}>{children}</span>
+const Red = ({ color = "error.2", ...props }: HTMLStyledProps<"span">) => (
+  <styled.span color={color} {...props} />
 );
 
-const Green = ({ children }: PropsWithChildren) => (
-  <span className={css({ color: "green.primary" })}>{children}</span>
+const Green = ({ color = "success.2", ...props }: HTMLStyledProps<"span">) => (
+  <styled.span color={color} {...props} />
 );
 
 export const Alert = ({
@@ -53,6 +51,9 @@ export const Alert = ({
 export const shortcodes = {
   Ad,
   Alert,
+  /**
+   * @deprecated
+   */
   AppLink: (props) => <Link {...props} />,
   Blockquote: ({ className, ...props }) => (
     <Blockquote {...props} my={8} className={cx(className, withArticle)} />
@@ -74,4 +75,12 @@ export const shortcodes = {
   SummaryTableRow,
   WorkInProgress,
   Written,
+  /**
+   * @deprecated
+   */
+  Typography: () => null,
+  SimpleTable: () => null,
+  SubParagraph: ({ ...props }) => (
+    <Paragraph textStyle="std-16N-170" {...props} />
+  ),
 } satisfies MDXComponents;

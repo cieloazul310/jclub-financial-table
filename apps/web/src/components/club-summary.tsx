@@ -1,5 +1,5 @@
-import { ClubInfo } from "@cieloazul310/jclub-financial/types";
-import { styled } from "styled-system/jsx";
+import type { ClubInfo } from "@cieloazul310/jclub-financial/types";
+import { css } from "styled-system/css";
 import { List, UnorderedList } from "@/components/ui/list";
 import { Table } from "@/components/ui/table";
 
@@ -35,7 +35,7 @@ export function ClubSummary({ club }: { club: ClubSummaryInfo }) {
   return (
     <Table.Root width="full" captionSide="bottom">
       <colgroup>
-        <styled.col width={{ base: "120px", md: "180px" }} />
+        <col className={css({ width: { base: "120px", md: "180px" } })} />
       </colgroup>
       <Table.Body>
         {tableData.map(
@@ -48,10 +48,12 @@ export function ClubSummary({ club }: { club: ClubSummaryInfo }) {
             ),
         )}
       </Table.Body>
-      <styled.caption
-        textAlign="left"
-        textStyle="std-16N-170"
-        color="solid-gray.600"
+      <caption
+        className={css({
+          color: "solid-gray.600",
+          textAlign: "left",
+          textStyle: "std-16N-170",
+        })}
       >
         <UnorderedList>
           <List>
@@ -61,7 +63,7 @@ export function ClubSummary({ club }: { club: ClubSummaryInfo }) {
             <List key={str}>{str}</List>
           ))}
         </UnorderedList>
-      </styled.caption>
+      </caption>
     </Table.Root>
   );
 }

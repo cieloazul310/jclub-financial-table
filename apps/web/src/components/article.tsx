@@ -1,22 +1,15 @@
 import { cx, css } from "styled-system/css";
 import { styled } from "styled-system/jsx";
-import type {
-  ComponentProps,
-  JsxHTMLProps,
-  JsxStyleProps,
-} from "styled-system/types";
+import type { HTMLStyledProps } from "styled-system/types";
 import { withArticle } from "@/styles/with-article";
 
 export const Paragraph = ({
   className,
+  my = 4,
+  mb = { md: 6 },
   ...props
-}: JsxHTMLProps<ComponentProps<"p">, JsxStyleProps>) => (
-  <styled.p
-    my={4}
-    mb={{ md: 6 }}
-    className={cx(className, withArticle)}
-    {...props}
-  />
+}: HTMLStyledProps<"p">) => (
+  <styled.p my={my} mb={mb} className={cx(className, withArticle)} {...props} />
 );
 
 /**
@@ -24,13 +17,16 @@ export const Paragraph = ({
  */
 export const Heading2 = ({
   className,
+  mt = { base: 10, md: 16 },
+  mb = 6,
+  textStyle = { base: "std-22B-150", md: "std-28B-150" },
   ...props
-}: JsxHTMLProps<ComponentProps<"h2">, JsxStyleProps>) => (
+}: HTMLStyledProps<"h2">) => (
   <styled.h2
-    textStyle={{ base: "std-22B-150", md: "std-28B-150" }}
-    mt={{ base: 10, md: 16 }}
-    mb={6}
     className={cx(className, withArticle)}
+    mt={mt}
+    mb={mb}
+    textStyle={textStyle}
     {...props}
   />
 );
@@ -41,12 +37,15 @@ export const Heading2 = ({
  */
 export const Heading3 = ({
   className,
+  mt = { base: 8, md: 12 },
+  mb = { base: 4, md: 6 },
+  textStyle = { base: "std-22B-150", md: "std-24B-150" },
   ...props
-}: JsxHTMLProps<ComponentProps<"h3">, JsxStyleProps>) => (
+}: HTMLStyledProps<"h3">) => (
   <styled.h3
-    textStyle={{ base: "std-22B-150", md: "std-24B-150" }}
-    mt={{ base: 8, md: 12 }}
-    mb={{ base: 4, md: 6 }}
+    mt={mt}
+    mb={mb}
+    textStyle={textStyle}
     className={cx(className, withArticle)}
     {...props}
   />
@@ -57,13 +56,16 @@ export const Heading3 = ({
  */
 export const Heading4 = ({
   className,
+  mt = { base: 6, md: 10 },
+  mb = 4,
+  textStyle = { base: "std-18B-160", md: "std-20B-150" },
   ...props
-}: JsxHTMLProps<ComponentProps<"h4">, JsxStyleProps>) => (
+}: HTMLStyledProps<"h4">) => (
   <styled.h4
-    textStyle={{ base: "std-18B-160", md: "std-20B-150" }}
-    mt={{ base: 6, md: 10 }}
-    mb={4}
     className={cx(className, withArticle)}
+    textStyle={textStyle}
+    mt={mt}
+    mb={mb}
     {...props}
   />
 );
@@ -74,38 +76,43 @@ export const Heading4 = ({
  */
 export const Heading5 = ({
   className,
+  mt = 4,
+  textStyle = "std-18B-160",
   ...props
-}: JsxHTMLProps<ComponentProps<"h5">, JsxStyleProps>) => (
+}: HTMLStyledProps<"h5">) => (
   <styled.h5
-    textStyle="std-18B-160"
-    mt={4}
     className={cx(className, withArticle)}
+    mt={mt}
+    textStyle={textStyle}
     {...props}
   />
 );
 
 export const Pre = ({
   className,
+  bg = "solid-gray.100",
+  my = 8,
+  p = 8,
+  rounded = 8,
+  overflowX = "auto",
+  textStyle = "mono-16N-150",
   ...props
-}: JsxHTMLProps<ComponentProps<"pre">, JsxStyleProps>) => {
+}: HTMLStyledProps<"pre">) => {
   return (
     <styled.pre
-      bg="solid-gray.100"
-      textStyle="mono-16N-150"
-      rounded={8}
-      overflowX="auto"
-      p={8}
-      my={8}
       className={cx(className, withArticle)}
+      bg={bg}
+      my={my}
+      p={p}
+      rounded={rounded}
+      overflowX={overflowX}
+      textStyle={textStyle}
       {...props}
     />
   );
 };
 
-export const Code = ({
-  className,
-  ...props
-}: JsxHTMLProps<ComponentProps<"code">, JsxStyleProps>) => (
+export const Code = ({ className, ...props }: HTMLStyledProps<"code">) => (
   <styled.code
     className={cx(
       className,

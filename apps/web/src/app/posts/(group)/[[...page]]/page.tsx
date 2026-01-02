@@ -61,7 +61,7 @@ export default async function Page({ params }: Props) {
           <PostListItem key={post.href} post={post} />
         ))}
       </PostList>
-      <PrevNextLink left={prev} right={next} />
+      <PrevNextLink leftSlot={prev} rightSlot={next} />
     </>
   );
 }
