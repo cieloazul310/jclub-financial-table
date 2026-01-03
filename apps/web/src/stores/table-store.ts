@@ -5,7 +5,7 @@ import type { Tab, Category } from "@/utils/types";
 
 export type TableState = {
   tab: Tab;
-  sortKey: SortableKeys;
+  sortField: SortableKeys;
   sortAsc: boolean;
   visibleCategories: Category[];
   visibleClubs: string[];
@@ -15,10 +15,12 @@ export type TableState = {
 
 export type TableActions = {
   setTab: (tab: Tab) => void;
-  setSortKey: (sortKey: SortableKeys) => void;
+  setSortKey: (sortField: SortableKeys) => void;
   toggleSort: () => void;
   toggleVisibleCategory: (category: Category) => void;
   toggleVisibleClub: (club: string) => void;
+  setVisibleClubs: (clubs: string[]) => void;
+  setInvisibleClubs: (clubs: string[]) => void;
   setVisibleYearFrom: (year: number) => void;
   setVisibleYearTo: (year: number) => void;
   toggleCardMode: () => void;
@@ -28,7 +30,7 @@ export type TableStore = TableState & TableActions;
 
 export const defaultInitState: TableState = {
   tab: "pl",
-  sortKey: "revenue",
+  sortField: "revenue",
   sortAsc: false,
   visibleCategories: ["J1", "J2", "J3", "others"],
   visibleClubs: getAllClubs().map(({ slug }) => slug),
@@ -42,7 +44,7 @@ export const createTableStore = (initState: TableState = defaultInitState) =>
       (set) => ({
         ...initState,
         setTab: (tab: Tab) => set(() => ({ tab })),
-        setSortKey: (sortKey: SortableKeys) => set(() => ({ sortKey })),
+        setSortKey: (sortField: SortableKeys) => set(() => ({ sortField })),
         toggleSort: () => set((prevState) => ({ sortAsc: !prevState.sortAsc })),
         toggleVisibleCategory: (category) =>
           set((prevState) => ({
@@ -57,6 +59,18 @@ export const createTableStore = (initState: TableState = defaultInitState) =>
             visibleClubs: prevState.visibleClubs.includes(club)
               ? prevState.visibleClubs.filter((prevClub) => prevClub !== club)
               : [...prevState.visibleClubs, club],
+          })),
+        setVisibleClubs: (clubs) =>
+          set((prevState) => ({
+            visibleClubs: Array.from(
+              new Set([...prevState.visibleClubs, ...clubs]),
+            ),
+          })),
+        setInvisibleClubs: (clubs) =>
+          set((prevState) => ({
+            visibleClubs: [...prevState.visibleClubs].filter(
+              (club) => !clubs.includes(club),
+            ),
           })),
         setVisibleYearFrom: (year) =>
           set((prevState) => ({

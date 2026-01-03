@@ -23,7 +23,7 @@ export function FinancialTable({ tab, mode, data }: FinancialTableProps) {
         overflowY: "auto",
       })}
     >
-      <Table.Root id={tableId} dense hovered width="full">
+      <Table.Root id={tableId} dense hovered width="full" fontFamily="table">
         <Table.Head
           className={css({
             position: "sticky",
@@ -34,7 +34,7 @@ export function FinancialTable({ tab, mode, data }: FinancialTableProps) {
         >
           {head(mode)}
         </Table.Head>
-        <Table.Body fontFamily="Helvetica, Arial, sans-serif">
+        <Table.Body>
           {data.map((datum, index) => renderRow(datum, mode, index))}
         </Table.Body>
       </Table.Root>

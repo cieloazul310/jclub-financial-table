@@ -80,10 +80,10 @@ export function CardItem({
   totalCount,
 }: CardItemProps) {
   const { year, slug, fullname, name, category, rank, elevation } = datum;
-  const { sortKey, setSortKey, toggleSort } = useTableStore((store) => store);
+  const { sortField, setSortKey, toggleSort } = useTableStore((store) => store);
   const onRankClick = () => {
     if (mode === "club") return;
-    if (sortKey === "rank") {
+    if (sortField === "rank") {
       toggleSort();
     } else {
       setSortKey("rank");
@@ -114,7 +114,7 @@ export function CardItem({
             },
             textDecoration: { _hover: "underline" },
           }),
-        sortKey === "rank" &&
+        sortField === "rank" &&
           css({
             color: "keyColor.secondary",
           }),

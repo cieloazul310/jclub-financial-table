@@ -31,9 +31,9 @@ export function TableHeadCell({
     textAlign,
     ...rest,
   };
-  const { sortKey, setSortKey, toggleSort } = useTableStore((store) => store);
+  const { sortField, setSortKey, toggleSort } = useTableStore((store) => store);
   const sortable = mode === "year" && !!sortableKey;
-  const selected = mode === "year" && sortKey === sortableKey;
+  const selected = mode === "year" && sortField === sortableKey;
 
   const onClick = () => {
     if (!sortable) return;

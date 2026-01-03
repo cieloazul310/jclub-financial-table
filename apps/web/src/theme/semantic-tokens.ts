@@ -1,6 +1,9 @@
 import { defineSemanticTokens } from "@pandacss/dev";
 
 export const semanticTokens = defineSemanticTokens({
+  fonts: {
+    table: { value: ["Helvetica", "Arial", "{fonts.body}"] },
+  },
   sizes: {
     "common-main-width": {
       value: {

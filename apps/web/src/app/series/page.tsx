@@ -18,8 +18,11 @@ export default async function Page() {
         name,
         short_name,
         data: allYears.map(({ year }) => {
-          const datum = data.find((d) => d.year === year);
-          return datum ?? null;
+          const datum = data.find((d) => d.year === year) ?? null;
+          return {
+            year,
+            datum,
+          };
         }),
       };
     },

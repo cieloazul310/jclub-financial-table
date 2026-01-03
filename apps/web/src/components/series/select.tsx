@@ -40,7 +40,7 @@ const optionGroup = [
   },
 ];
 
-export function SeriesSelect() {
+export function SeriesSelect({ ...props }: Field.RootProps) {
   const { currentField, setField } = useSeriesStore((store) => store);
   const onFieldChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
@@ -50,8 +50,8 @@ export function SeriesSelect() {
   };
 
   return (
-    <Field.Root>
-      <Field.Label>表示する項目</Field.Label>
+    <Field.Root {...props}>
+      <Field.Label>表示中の項目</Field.Label>
       <Field.Select asChild>
         <select defaultValue={currentField} onChange={onFieldChange}>
           <option value="">項目を選択</option>

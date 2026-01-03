@@ -25,15 +25,23 @@ export function Figure({
   data: ExtendedFinancialDatum[];
   mode: Mode;
 }) {
-  const { tab, sortKey, sortAsc, visibleCategories, visibleYears, setTab } =
-    useTableStore((store) => store);
+  const {
+    tab,
+    sortField,
+    sortAsc,
+    visibleClubs,
+    visibleCategories,
+    visibleYears,
+    setTab,
+  } = useTableStore((store) => store);
   const onValueChange = (details: TabsValueChangeDetails) => {
     setTab(details.value as Tab);
   };
   const filteredData = sortAndFilter(data, {
     sortAsc,
-    sortKey,
+    sortField,
     mode,
+    visibleClubs,
     visibleCategories,
     visibleYears,
   });

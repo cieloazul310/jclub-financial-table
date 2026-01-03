@@ -36,14 +36,16 @@ export function categoryFilter(visibleCategories: Category[]) {
 export function sortAndFilter(
   data: ExtendedFinancialDatum[],
   {
-    sortKey,
+    sortField,
     sortAsc,
+    visibleClubs,
     visibleCategories,
     visibleYears,
     mode,
   }: {
-    sortKey: SortableKeys;
+    sortField: SortableKeys;
     sortAsc: boolean;
+    visibleClubs: string[];
     visibleCategories: Category[];
     visibleYears: [number, number];
     mode: Mode;
@@ -58,17 +60,20 @@ export function sortAndFilter(
 
   const filter = categoryFilter(visibleCategories);
 
-  if (sortKey === "rank") {
+  if (sortField === "rank") {
     return data
+      .filter(({ slug }) => visibleClubs.includes(slug.value))
       .filter(filter)
       .sort((a, b) => (getRank(a) - getRank(b)) * (sortAsc ? -1 : 1));
   }
 
   return data
+    .filter(({ slug }) => visibleClubs.includes(slug.value))
     .filter(filter)
     .sort(
       (a, b) =>
-        ((a[sortKey]?.value ?? -Infinity) - (b[sortKey]?.value ?? -Infinity)) *
+        ((a[sortField]?.value ?? -Infinity) -
+          (b[sortField]?.value ?? -Infinity)) *
         (sortAsc ? 1 : -1),
     );
 }

@@ -1,14 +1,41 @@
 "use client";
 
-import { css } from "styled-system/css";
+import { getAllYears } from "@cieloazul310/jclub-financial";
+import { cx, css } from "styled-system/css";
 import { Fieldset } from "@/components/ui/fieldset";
 import { Field } from "@/components/ui/field";
-import { useTableStore } from "@/providers/table-store-provider";
 
-export function YearFilter() {
-  const { visibleYears, setVisibleYearFrom, setVisibleYearTo } = useTableStore(
-    (store) => store,
-  );
+type YearFilterProps = {
+  visibleYears: [number, number];
+  setVisibleYearFrom: (year: number) => void;
+  setVisibleYearTo: (year: number) => void;
+  selectSize?: Field.RootProps["size"];
+  classes?: Partial<{
+    root: string;
+    item: string;
+    select: string;
+  }>;
+} & Fieldset.RootProps;
+
+export function YearFilter({
+  visibleYears,
+  setVisibleYearFrom,
+  setVisibleYearTo,
+  selectSize = "md",
+  className,
+  classes = {
+    root: css({ display: "flex", alignItems: "center", gap: 2 }),
+    item: css({
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 1,
+    }),
+    select: css({ textStyle: "oln-16N-100", px: 2, py: 2, height: "auto" }),
+  },
+  ...props
+}: YearFilterProps) {
+  const allYears = getAllYears().map(({ year }) => year);
   const [from, to] = visibleYears;
   const onFromChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
@@ -22,36 +49,23 @@ export function YearFilter() {
       setVisibleYearTo(parseInt(value, 10));
     }
   };
-  const selectStyle = css.raw({
-    textStyle: "oln-16N-100",
-    px: 2,
-    py: 2,
-    height: "auto",
-  });
 
   return (
-    <Fieldset.Root
-      className={css({ display: "flex", alignItems: "center", gap: 4 })}
-    >
+    <Fieldset.Root className={cx(classes.root, className)} {...props}>
       <Field.Root
         id="filter-year-from"
-        className={css({
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          gap: 1,
-        })}
-        size="sm"
+        className={classes.item}
+        size={selectSize}
       >
         <Field.Label textWrapMode="nowrap">開始年</Field.Label>
         <Field.Select
+          className={classes.select}
           value={from}
           onChange={onFromChange}
-          {...selectStyle}
           asChild
         >
           <select>
-            {Array.from({ length: 20 }, (_, i) => i + 2005).map((year) => (
+            {allYears.map((year) => (
               <option key={year.toString()} value={year} disabled={year > to}>
                 {year}
               </option>
@@ -61,18 +75,18 @@ export function YearFilter() {
       </Field.Root>
       <Field.Root
         id="filter-year-to"
-        className={css({
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          gap: 1,
-        })}
-        size="sm"
+        className={classes.item}
+        size={selectSize}
       >
         <Field.Label textWrapMode="nowrap">終了年</Field.Label>
-        <Field.Select value={to} onChange={onToChange} {...selectStyle} asChild>
+        <Field.Select
+          className={classes.select}
+          value={to}
+          onChange={onToChange}
+          asChild
+        >
           <select>
-            {Array.from({ length: 20 }, (_, i) => i + 2005).map((year) => (
+            {allYears.map((year) => (
               <option key={year.toString()} value={year} disabled={year < from}>
                 {year}
               </option>
