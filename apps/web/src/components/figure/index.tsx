@@ -51,7 +51,7 @@ export function Figure({
       <Tabs.Root
         className={css({
           position: "sticky",
-          top: "{sizes.mobile-header-height}",
+          top: "{sizes.header-height}",
           zIndex: "calc({zIndex.docked} - 1)",
           bg: "white/85",
           backdropFilter: "blur(2px)",

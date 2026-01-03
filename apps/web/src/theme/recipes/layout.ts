@@ -3,7 +3,7 @@ import { defineSlotRecipe } from "@pandacss/dev";
 function createBeakpointStyle(breakpoint: "sm" | "md" | "lg" | "xl" | "2xl") {
   return {
     root: {
-      pt: { base: "{sizes.mobile-header-height}", [breakpoint]: 0 },
+      pt: { base: "{sizes.header-height}", [breakpoint]: 0 },
     },
     header: {
       display: { base: "block", [breakpoint]: "none" },
@@ -40,7 +40,7 @@ export const layout = defineSlotRecipe({
       top: 0,
       zIndex: "docked",
       width: "full",
-      height: "mobile-header-height",
+      height: "header-height",
       bg: "white/85",
       backdropFilter: "blur(4px)",
       borderBottomWidth: "1px",
@@ -49,7 +49,7 @@ export const layout = defineSlotRecipe({
     grid: {
       display: "grid",
       gridTemplateRows: "1fr auto",
-      minHeight: "calc(100vh - {sizes.mobile-header-height})",
+      minHeight: "calc(100vh - {sizes.header-height})",
     },
     sidebar: {
       gridArea: "sidebar",
@@ -105,7 +105,7 @@ export const layout = defineSlotRecipe({
           borderRightWidth: 0,
         },
         main: {
-          pt: "{sizes.mobile-header-height}",
+          pt: "{sizes.header-height}",
         },
       },
     },
@@ -117,7 +117,7 @@ export const layout = defineSlotRecipe({
       },
       true: {
         sidebar: {
-          top: "{sizez.mobile-header-height}",
+          top: "{sizez.header-height}",
         },
       },
     },
@@ -140,7 +140,7 @@ export const layout = defineSlotRecipe({
       headerAlways: true,
       css: {
         root: {
-          pt: "{sizes.mobile-header-height}",
+          pt: "{sizes.header-height}",
         },
         header: {
           display: "block",

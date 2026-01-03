@@ -1,6 +1,7 @@
 import { createStore } from "zustand/vanilla";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { getAllClubs, type SortableKeys } from "@cieloazul310/jclub-financial";
+import { AllCategories } from "@/utils/category";
 import type { Tab, Category } from "@/utils/types";
 
 export type TableState = {
@@ -32,7 +33,7 @@ export const defaultInitState: TableState = {
   tab: "pl",
   sortField: "revenue",
   sortAsc: false,
-  visibleCategories: ["J1", "J2", "J3", "others"],
+  visibleCategories: [...AllCategories],
   visibleClubs: getAllClubs().map(({ slug }) => slug),
   visibleYears: [2005, 2024],
   cardMode: false,
