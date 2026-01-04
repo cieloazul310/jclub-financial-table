@@ -1,5 +1,5 @@
 slug: ardija
-name: 大宮
+short_name: 大宮
 id: ardija2021
 year: 2021
 category: J2
@@ -51,4 +51,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 90527
 all_games: 21
-fullname: 大宮アルディージャ
+name: 大宮アルディージャ

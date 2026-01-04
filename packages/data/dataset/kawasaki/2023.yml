@@ -1,5 +1,5 @@
 slug: kawasaki
-name: 川崎
+short_name: 川崎
 id: kawasaki2023
 year: 2023
 category: J1
@@ -53,4 +53,4 @@ acl_attd: 28097
 acl_games: 3
 all_attd: 413763
 all_games: 23
-fullname: 川崎フロンターレ
+name: 川崎フロンターレ

@@ -1,5 +1,5 @@
 slug: vortis
-name: 徳島
+short_name: 徳島
 id: vortis2022
 year: 2022
 category: J2
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 95100
 all_games: 24
-fullname: 徳島ヴォルティス
+name: 徳島ヴォルティス
 related_revenue: 43

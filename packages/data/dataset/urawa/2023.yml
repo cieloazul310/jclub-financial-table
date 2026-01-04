@@ -1,5 +1,5 @@
 slug: urawa
-name: 浦和
+short_name: 浦和
 id: urawa2023
 year: 2023
 category: J1
@@ -54,4 +54,4 @@ acl_attd: 106570
 acl_games: 5
 all_attd: 709902
 all_games: 27
-fullname: 浦和レッズ
+name: 浦和レッズ

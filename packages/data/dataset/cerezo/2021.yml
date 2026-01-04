@@ -1,5 +1,5 @@
 slug: cerezo
-name: C大阪
+short_name: C大阪
 id: cerezo2021
 year: 2021
 category: J1
@@ -52,4 +52,4 @@ acl_attd: 3156
 acl_games: 1
 all_attd: 112345
 all_games: 22
-fullname: セレッソ大阪
+name: セレッソ大阪

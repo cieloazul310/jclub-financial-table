@@ -1,5 +1,5 @@
 slug: tegevajaro
-name: 宮崎
+short_name: 宮崎
 id: tegevajaro2022
 year: 2022
 category: J3
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 21562
 all_games: 17
-fullname: テゲバジャーロ宮崎
+name: テゲバジャーロ宮崎

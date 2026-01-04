@@ -1,5 +1,5 @@
 slug: fufc
-name: 福島
+short_name: 福島
 id: fufc2023
 year: 2023
 category: J3
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 23349
 all_games: 19
-fullname: 福島ユナイテッドFC
+name: 福島ユナイテッドFC
 related_revenue: 14

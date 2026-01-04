@@ -1,5 +1,5 @@
 slug: vortis
-name: 徳島
+short_name: 徳島
 id: vortis2020
 year: 2020
 category: J2
@@ -54,5 +54,5 @@ second_attd: 0
 second_games: 0
 all_attd: 65117
 all_games: 21
-fullname: 徳島ヴォルティス
+name: 徳島ヴォルティス
 elevation: 昇格

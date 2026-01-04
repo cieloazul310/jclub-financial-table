@@ -1,5 +1,5 @@
 slug: jubilo
-name: 磐田
+short_name: 磐田
 id: jubilo2022
 year: 2022
 category: J1
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 183062
 all_games: 20
-fullname: ジュビロ磐田
+name: ジュビロ磐田
 elevation: 降格

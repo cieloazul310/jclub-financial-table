@@ -1,5 +1,5 @@
 slug: ventforet
-name: 甲府
+short_name: 甲府
 id: ventforet2023
 year: 2023
 category: J2
@@ -53,5 +53,5 @@ acl_attd: 39935
 acl_games: 3
 all_attd: 197119
 all_games: 24
-fullname: ヴァンフォーレ甲府
+name: ヴァンフォーレ甲府
 related_revenue: 63

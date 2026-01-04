@@ -89,7 +89,7 @@ export function TableHeadLabel({ mode }: { mode: Mode }) {
 interface TableBodyLabelProps {
   mode: Mode;
   index: number;
-  datum: Extended<Pick<General, "name" | "slug" | "year">>;
+  datum: Extended<Pick<General, "short_name" | "slug" | "year">>;
 }
 
 export function TableBodyLabel({ mode, index, datum }: TableBodyLabelProps) {
@@ -120,7 +120,7 @@ export function TableBodyLabel({ mode, index, datum }: TableBodyLabelProps) {
         scope="row"
       >
         <Link href={`/club/${datum.slug.value}/`} color="inherit">
-          {datum.name.value}
+          {datum.short_name.value}
         </Link>
       </TableHeaderLabel>
     </>

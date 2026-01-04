@@ -1,5 +1,5 @@
 slug: fagiano
-name: 岡山
+short_name: 岡山
 id: fagiano2024
 year: 2024
 category: J2
@@ -59,6 +59,6 @@ acl_attd: 0
 acl_games: 0
 all_attd: 192072
 all_games: 21
-fullname: ファジアーノ岡山
+name: ファジアーノ岡山
 elevation: 昇格
 related_revenue: 452

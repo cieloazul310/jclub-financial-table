@@ -1,5 +1,5 @@
 slug: kataller
-name: 富山
+short_name: 富山
 id: kataller2023
 year: 2023
 category: J3
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 65443
 all_games: 19
-fullname: カターレ富山
+name: カターレ富山

@@ -1,5 +1,5 @@
 slug: parceiro
-name: 長野
+short_name: 長野
 id: parceiro2021
 year: 2021
 category: J3
@@ -51,4 +51,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 35250
 all_games: 14
-fullname: AC長野パルセイロ
+name: AC長野パルセイロ

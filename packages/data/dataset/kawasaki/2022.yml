@@ -1,5 +1,5 @@
 slug: kawasaki
-name: 川崎
+short_name: 川崎
 id: kawasaki2022
 year: 2022
 category: J1
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 318848
 all_games: 18
-fullname: 川崎フロンターレ
+name: 川崎フロンターレ

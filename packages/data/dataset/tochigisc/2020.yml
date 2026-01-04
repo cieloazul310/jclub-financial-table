@@ -1,5 +1,5 @@
 slug: tochigisc
-name: 栃木
+short_name: 栃木
 id: tochigisc2020
 year: 2020
 category: J2
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 52970
 all_games: 21
-fullname: 栃木SC
+name: 栃木SC

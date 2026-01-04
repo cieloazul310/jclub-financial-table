@@ -1,5 +1,5 @@
 slug: verdy
-name: 東京V
+short_name: 東京V
 id: verdy2020
 year: 2020
 category: J2
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 51015
 all_games: 21
-fullname: 東京ヴェルディ
+name: 東京ヴェルディ

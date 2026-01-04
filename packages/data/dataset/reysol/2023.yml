@@ -1,5 +1,5 @@
 slug: reysol
-name: 柏
+short_name: 柏
 id: reysol2023
 year: 2023
 category: J1
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 205524
 all_games: 20
-fullname: 柏レイソル
+name: 柏レイソル

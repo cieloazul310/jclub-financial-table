@@ -1,5 +1,5 @@
 slug: fcryukyu
-name: 琉球
+short_name: 琉球
 id: fcryukyu2022
 year: 2022
 category: J2
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 41916
 all_games: 21
-fullname: FC琉球
+name: FC琉球
 elevation: 降格

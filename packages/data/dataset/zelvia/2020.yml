@@ -1,5 +1,5 @@
 slug: zelvia
-name: 町田
+short_name: 町田
 id: zelvia2020
 year: 2020
 category: J2
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 27358
 all_games: 21
-fullname: FC町田ゼルビア
+name: FC町田ゼルビア

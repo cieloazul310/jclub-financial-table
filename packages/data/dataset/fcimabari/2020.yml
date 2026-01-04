@@ -1,5 +1,5 @@
 slug: fcimabari
-name: 今治
+short_name: 今治
 id: fcimabari2020
 year: 2020
 category: J3
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 23042
 all_games: 17
-fullname: FC今治
+name: FC今治

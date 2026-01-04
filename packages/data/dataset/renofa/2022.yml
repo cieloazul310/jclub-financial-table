@@ -1,5 +1,5 @@
 slug: renofa
-name: 山口
+short_name: 山口
 id: renofa2022
 year: 2022
 category: J2
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 76879
 all_games: 21
-fullname: レノファ山口FC
+name: レノファ山口FC
 related_revenue: 107

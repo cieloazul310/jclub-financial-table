@@ -1,5 +1,5 @@
 slug: fctokyo
-name: FC東京
+short_name: FC東京
 id: fctokyo2024
 year: 2024
 category: J1
@@ -59,4 +59,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 638538
 all_games: 20
-fullname: FC東京
+name: FC東京

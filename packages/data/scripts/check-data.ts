@@ -18,9 +18,9 @@ function createUnitPrice({
 export function checkData(input: any) {
   const RequiredSchema = z.object({
     id: z.string(),
-    name: z.string(),
     slug: z.string(),
-    fullname: z.string(),
+    name: z.string(),
+    short_name: z.string(),
     year: z.int().gte(2005).lte(2024),
     category: z.string(),
     rank: z.int().positive(),

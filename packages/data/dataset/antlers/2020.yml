@@ -1,5 +1,5 @@
 slug: antlers
-name: 鹿島
+short_name: 鹿島
 id: antlers2020
 year: 2020
 category: J1
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 111268
 all_games: 19
-fullname: 鹿島アントラーズ
+name: 鹿島アントラーズ

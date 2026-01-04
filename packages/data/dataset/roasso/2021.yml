@@ -1,5 +1,5 @@
 slug: roasso
-name: 熊本
+short_name: 熊本
 id: roasso2021
 year: 2021
 category: J3
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 46783
 all_games: 14
-fullname: ロアッソ熊本
+name: ロアッソ熊本

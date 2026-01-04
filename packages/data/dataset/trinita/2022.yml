@@ -1,5 +1,5 @@
 slug: trinita
-name: 大分
+short_name: 大分
 id: trinita2022
 year: 2022
 category: J2
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 148226
 all_games: 24
-fullname: 大分トリニータ
+name: 大分トリニータ

@@ -40,12 +40,12 @@ export function createRow<T extends keyof FinancialDatum>({
     </Table.Row>
   );
   const renderRow = (
-    data: Pick<FinancialDatum, "name" | "year" | "category" | "rank" | T>,
+    data: Pick<FinancialDatum, "short_name" | "year" | "category" | "rank" | T>,
     mode: Mode,
   ) => (
-    <Table.Row key={`${data.name}${data.year.toString()}`}>
+    <Table.Row key={`${data.short_name}${data.year.toString()}`}>
       <Table.Header scope="row">
-        {mode === "club" ? data.year : data.name}
+        {mode === "club" ? data.year : data.short_name}
       </Table.Header>
       <Table.Header scope="row">{data.category}</Table.Header>
       <Table.Header scope="row">{data.rank}</Table.Header>

@@ -1,5 +1,5 @@
 slug: vvaren
-name: 長崎
+short_name: 長崎
 id: vvaren2024
 year: 2024
 category: J2
@@ -59,4 +59,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 223429
 all_games: 23
-fullname: V・ファーレン長崎
+name: V・ファーレン長崎

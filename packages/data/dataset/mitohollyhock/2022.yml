@@ -1,5 +1,5 @@
 slug: mitohollyhock
-name: 水戸
+short_name: 水戸
 id: mitohollyhock2022
 year: 2022
 category: J2
@@ -54,4 +54,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 65941
 all_games: 21
-fullname: 水戸ホーリーホック
+name: 水戸ホーリーホック

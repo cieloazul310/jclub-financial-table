@@ -1,5 +1,5 @@
 slug: albirex
-name: 新潟
+short_name: 新潟
 id: albirex2022
 year: 2022
 category: J2
@@ -54,5 +54,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 314039
 all_games: 21
-fullname: アルビレックス新潟
+name: アルビレックス新潟
 elevation: 昇格

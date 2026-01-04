@@ -2,7 +2,7 @@ export const AllGeneralFields = [
   "id",
   "slug",
   "name",
-  "fullname",
+  "short_name",
   "year",
   "category",
   "license",
@@ -11,8 +11,16 @@ export type GeneralFields = (typeof AllGeneralFields)[number];
 export type General = {
   id: string;
   slug: string;
+  /**
+   * 略称
+   * name => short_name
+   */
+  short_name: string;
+  /**
+   * 呼称
+   * fullname => name
+   */
   name: string;
-  fullname: string;
   year: number;
   category: string;
   license?: string | null;

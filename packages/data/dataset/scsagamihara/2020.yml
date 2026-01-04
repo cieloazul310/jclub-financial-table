@@ -1,5 +1,5 @@
 slug: scsagamihara
-name: 相模原
+short_name: 相模原
 id: scsagamihara2020
 year: 2020
 category: J3
@@ -54,5 +54,5 @@ second_attd: 0
 second_games: 0
 all_attd: 15609
 all_games: 17
-fullname: SC相模原
+name: SC相模原
 elevation: 昇格

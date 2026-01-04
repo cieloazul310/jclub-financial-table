@@ -1,5 +1,5 @@
 slug: consadole
-name: 札幌
+short_name: 札幌
 id: consadole2024
 year: 2024
 category: J1
@@ -59,6 +59,6 @@ acl_attd: 0
 acl_games: 0
 all_attd: 340477
 all_games: 21
-fullname: 北海道コンサドーレ札幌
+name: 北海道コンサドーレ札幌
 elevation: 降格
 related_revenue: 256

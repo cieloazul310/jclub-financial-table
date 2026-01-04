@@ -1,5 +1,5 @@
 slug: ehimefc
-name: 愛媛
+short_name: 愛媛
 id: ehimefc2021
 year: 2021
 category: J2
@@ -52,4 +52,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 38935
 all_games: 21
-fullname: 愛媛FC
+name: 愛媛FC

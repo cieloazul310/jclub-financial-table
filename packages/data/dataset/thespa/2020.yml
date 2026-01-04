@@ -1,5 +1,5 @@
 slug: thespa
-name: 群馬
+short_name: 群馬
 id: thespa2020
 year: 2020
 category: J2
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 32773
 all_games: 21
-fullname: ザスパクサツ群馬
+name: ザスパクサツ群馬

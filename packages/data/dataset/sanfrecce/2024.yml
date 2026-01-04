@@ -1,5 +1,5 @@
 slug: sanfrecce
-name: 広島
+short_name: 広島
 id: sanfrecce2024
 year: 2024
 category: J1
@@ -59,4 +59,4 @@ acl_attd: 28709
 acl_games: 3
 all_attd: 554205
 all_games: 24
-fullname: サンフレッチェ広島
+name: サンフレッチェ広島

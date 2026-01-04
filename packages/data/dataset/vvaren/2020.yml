@@ -1,5 +1,5 @@
 slug: vvaren
-name: 長崎
+short_name: 長崎
 id: vvaren2020
 year: 2020
 category: J2
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 89582
 all_games: 21
-fullname: V・ファーレン長崎
+name: V・ファーレン長崎

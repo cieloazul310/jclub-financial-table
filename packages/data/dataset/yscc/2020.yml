@@ -1,5 +1,5 @@
 slug: yscc
-name: YS横浜
+short_name: YS横浜
 id: yscc2020
 year: 2020
 category: J3
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 10597
 all_games: 17
-fullname: Y.S.C.C.横浜
+name: Y.S.C.C.横浜

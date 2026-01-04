@@ -1,5 +1,5 @@
 slug: sagan
-name: 鳥栖
+short_name: 鳥栖
 id: sagan2023
 year: 2023
 category: J1
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 188294
 all_games: 20
-fullname: サガン鳥栖
+name: サガン鳥栖

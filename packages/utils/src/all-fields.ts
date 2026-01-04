@@ -15,8 +15,8 @@ export function getGeneral<T extends FinancialDatum | ExtendedFinancialDatum>(
 ): {
   [key in GeneralFields]: T[key];
 } {
-  const { id, name, slug, fullname, year, license, category } = datum;
-  return { id, name, slug, fullname, year, license, category };
+  const { id, slug, name, short_name, year, license, category } = datum;
+  return { id, name, slug, short_name, year, license, category };
 }
 
 export function getSeasonResult<
