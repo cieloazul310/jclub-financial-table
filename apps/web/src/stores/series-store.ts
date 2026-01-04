@@ -1,10 +1,13 @@
 import { createStore } from "zustand/vanilla";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { getAllClubs, type SortableKeys } from "@cieloazul310/jclub-financial";
+import {
+  getAllClubs,
+  type SortableFields,
+} from "@cieloazul310/jclub-financial";
 
 export type SeriesState = {
-  currentField: SortableKeys;
-  sortField: SortableKeys;
+  currentField: SortableFields;
+  sortField: SortableFields;
   sortYear: number;
   sortAsc: boolean;
   visibleClubs: string[];
@@ -12,8 +15,8 @@ export type SeriesState = {
 };
 
 export type SeriesActions = {
-  setField: (field: SortableKeys) => void;
-  setSortField: (field: SortableKeys) => void;
+  setField: (field: SortableFields) => void;
+  setSortField: (field: SortableFields) => void;
   setSortYear: (year: number) => void;
   toggleSort: () => void;
   toggleVisibleClub: (club: string) => void;
@@ -39,8 +42,9 @@ export const createSeriesStore = (initState: SeriesState = defaultInitState) =>
     persist(
       (set) => ({
         ...initState,
-        setField: (field: SortableKeys) => set(() => ({ currentField: field })),
-        setSortField: (field: SortableKeys) =>
+        setField: (field: SortableFields) =>
+          set(() => ({ currentField: field })),
+        setSortField: (field: SortableFields) =>
           set(() => ({ sortField: field })),
         setSortYear: (year: number) => set(() => ({ sortYear: year })),
         toggleSort: () => set((prevState) => ({ sortAsc: !prevState.sortAsc })),

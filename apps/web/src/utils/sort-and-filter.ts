@@ -1,6 +1,6 @@
 import type {
   ExtendedFinancialDatum,
-  SortableKeys,
+  SortableFields,
 } from "@cieloazul310/jclub-financial";
 import type { Category, Mode } from "./types";
 
@@ -43,7 +43,7 @@ export function sortAndFilter(
     visibleYears,
     mode,
   }: {
-    sortField: SortableKeys;
+    sortField: SortableFields;
     sortAsc: boolean;
     visibleClubs: string[];
     visibleCategories: Category[];

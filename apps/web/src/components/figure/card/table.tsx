@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import {
   getLabel,
   type ExtendedFinancialDatum,
-  type SortableKeys,
+  type SortableFields,
 } from "@cieloazul310/jclub-financial";
 import { cx, css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
@@ -71,8 +71,8 @@ export const renderRow = ({
   tab: Tab;
   mode: Mode;
   datum: ExtendedFinancialDatum;
-  sortField: SortableKeys;
-  onClick: (id: SortableKeys) => () => void;
+  sortField: SortableFields;
+  onClick: (id: SortableFields) => () => void;
 }) => {
   const values = cardValues[tab];
   return values.map(({ id, label, separator, redIfMinus, ...rest }) => {
@@ -153,7 +153,7 @@ export function CardTable({ datum, mode }: CardTableProps) {
   const { tab, sortField, sortAsc, setSortKey, toggleSort } = useTableStore(
     (store) => store,
   );
-  const onClick = (id: SortableKeys) => () => {
+  const onClick = (id: SortableFields) => () => {
     if (mode === "club") return;
     if (sortField === id) {
       toggleSort();

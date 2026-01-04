@@ -7,7 +7,7 @@ import {
   AllExpenseFields,
   AllAttdFields,
   getLabel,
-  type SortableKeys,
+  type SortableFields,
 } from "@cieloazul310/jclub-financial";
 import { Field } from "@/components/ui/field";
 import { useSeriesStore } from "@/providers/series-store-provider";
@@ -45,7 +45,7 @@ export function SeriesSelect({ ...props }: Field.RootProps) {
   const onFieldChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     if (value) {
-      setField(value as SortableKeys);
+      setField(value as SortableFields);
     }
   };
 

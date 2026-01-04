@@ -1,6 +1,9 @@
 "use client";
 
-import { ClubInfo, getClubsByCategory } from "@cieloazul310/jclub-financial";
+import {
+  getClubsByCategory,
+  type ClubInfo,
+} from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { styled, type HTMLStyledProps } from "styled-system/jsx";
 import { Checkbox } from "@/components/ui/checkbox";

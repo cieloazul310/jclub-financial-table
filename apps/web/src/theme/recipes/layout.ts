@@ -117,7 +117,7 @@ export const layout = defineSlotRecipe({
       },
       true: {
         sidebar: {
-          top: "{sizez.header-height}",
+          top: "{sizes.header-height}",
         },
       },
     },

@@ -1,12 +1,15 @@
 import { createStore } from "zustand/vanilla";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { getAllClubs, type SortableKeys } from "@cieloazul310/jclub-financial";
+import {
+  getAllClubs,
+  type SortableFields,
+} from "@cieloazul310/jclub-financial";
 import { AllCategories } from "@/utils/category";
 import type { Tab, Category } from "@/utils/types";
 
 export type TableState = {
   tab: Tab;
-  sortField: SortableKeys;
+  sortField: SortableFields;
   sortAsc: boolean;
   visibleCategories: Category[];
   visibleClubs: string[];
@@ -16,7 +19,7 @@ export type TableState = {
 
 export type TableActions = {
   setTab: (tab: Tab) => void;
-  setSortKey: (sortField: SortableKeys) => void;
+  setSortKey: (sortField: SortableFields) => void;
   toggleSort: () => void;
   toggleVisibleCategory: (category: Category) => void;
   toggleVisibleClub: (club: string) => void;
@@ -45,7 +48,7 @@ export const createTableStore = (initState: TableState = defaultInitState) =>
       (set) => ({
         ...initState,
         setTab: (tab: Tab) => set(() => ({ tab })),
-        setSortKey: (sortField: SortableKeys) => set(() => ({ sortField })),
+        setSortKey: (sortField: SortableFields) => set(() => ({ sortField })),
         toggleSort: () => set((prevState) => ({ sortAsc: !prevState.sortAsc })),
         toggleVisibleCategory: (category) =>
           set((prevState) => ({

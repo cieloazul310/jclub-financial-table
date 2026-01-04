@@ -1,0 +1,3 @@
+import type { ClubInfo, FinancialDatum } from "@cieloazul310/jclub-financial";
+
+export type DownloadDataset = ClubInfo & { data: FinancialDatum[] };

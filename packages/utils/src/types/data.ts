@@ -1,7 +1,7 @@
 export const AllGeneralFields = [
   "id",
-  "name",
   "slug",
+  "name",
   "fullname",
   "year",
   "category",
@@ -10,8 +10,8 @@ export const AllGeneralFields = [
 export type GeneralFields = (typeof AllGeneralFields)[number];
 export type General = {
   id: string;
-  name: string;
   slug: string;
+  name: string;
   fullname: string;
   year: number;
   category: string;
@@ -254,15 +254,17 @@ export type Attd = {
   unit_price?: number | null;
 };
 
-export const AllFields = [
-  ...AllGeneralFields,
-  ...AllSeasonResultFields,
-  ...AllPLFields,
-  ...AllBSFields,
-  ...AllRevenueFields,
-  ...AllExpenseFields,
-  ...AllAttdFields,
-];
+export const AllFinancialDatumFields = Array.from(
+  new Set([
+    ...AllGeneralFields,
+    ...AllSeasonResultFields,
+    ...AllPLFields,
+    ...AllBSFields,
+    ...AllRevenueFields,
+    ...AllExpenseFields,
+    ...AllAttdFields,
+  ]),
+);
 
 export type FinancialDatum = General &
   SeasonResult &
@@ -271,8 +273,21 @@ export type FinancialDatum = General &
   Revenue &
   Expense &
   Attd;
+export type FinancialDatumFields = keyof FinancialDatum;
 
+/**
+ * @deprecated
+ * use `SortableFields`
+ */
 export type SortableKeys =
+  | "rank"
+  | PLFields
+  | BSFields
+  | RevenueFields
+  | ExpenseFields
+  | AttdFields;
+
+export type SortableFields =
   | "rank"
   | PLFields
   | BSFields

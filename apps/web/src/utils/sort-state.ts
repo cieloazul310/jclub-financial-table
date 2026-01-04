@@ -1,7 +1,7 @@
 import {
   getLabel,
   AllAttdFields,
-  type SortableKeys,
+  type SortableFields,
 } from "@cieloazul310/jclub-financial";
 
 export function getSortState({
@@ -9,7 +9,7 @@ export function getSortState({
   sortField,
 }: {
   sortAsc: boolean;
-  sortField: SortableKeys;
+  sortField: SortableFields;
 }) {
   const label = getLabel(sortField);
 
@@ -24,7 +24,7 @@ export function getSortState({
   };
 }
 
-export function getUnit(field: SortableKeys) {
+export function getUnit(field: SortableFields) {
   if (AllAttdFields.every((value) => value !== field)) {
     return "百万円";
   }

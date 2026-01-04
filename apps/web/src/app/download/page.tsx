@@ -3,6 +3,7 @@ import { getAllClubs } from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
 import { Loading } from "@/components/loading";
 import { DownloadClient } from "@/components/download/client";
+import { DownloadStoreProvider } from "@/providers/download-store-provider";
 
 export default async function Page() {
   const allClubs = getAllClubs();
@@ -19,7 +20,9 @@ export default async function Page() {
 
   return (
     <Suspense fallback={<Loading />}>
-      <DownloadClient dataset={dataset} />
+      <DownloadStoreProvider>
+        <DownloadClient dataset={dataset} />
+      </DownloadStoreProvider>
     </Suspense>
   );
 }
