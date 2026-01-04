@@ -14,12 +14,16 @@ import { styled, type HTMLStyledProps } from "styled-system/jsx";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ActiveChip, InactiveChip } from "@/components/filter/chips";
 import { useDownloadStore } from "@/providers/download-store-provider";
+import { RequiredFields } from "./types";
 
 const fieldsByTab = [
   {
     id: "general",
     title: "一般",
-    items: [...AllGeneralFields],
+    items: [...AllGeneralFields].filter(
+      (field) =>
+        !RequiredFields.some((requiredField) => requiredField === field),
+    ),
   },
   {
     id: "season-result",
