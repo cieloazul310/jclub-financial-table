@@ -1,5 +1,13 @@
 # @repo/typescript-config
 
+## 0.0.1-alpha.7
+
+### Patch Changes
+
+- 160e1e7: - (data): 呼称を`fullname`から`name`に、略称を`name`から`short_name`に変更
+  - (utils): クラブの`id`を変更、クラブに`code`を追加
+  - (utils): クラブのラベルを取得する関数を追加
+
 ## 0.0.1-alpha.6
 
 ### Patch Changes
