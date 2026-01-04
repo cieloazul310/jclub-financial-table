@@ -1,5 +1,5 @@
 slug: zelvia
-name: 町田
+short_name: 町田
 id: zelvia2021
 year: 2021
 category: J2
@@ -52,4 +52,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 54128
 all_games: 21
-fullname: FC町田ゼルビア
+name: FC町田ゼルビア

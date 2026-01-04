@@ -1,5 +1,5 @@
 slug: naraclub
-name: 奈良
+short_name: 奈良
 id: naraclub2021
 year: 2021
 category: JFL
@@ -30,4 +30,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 8967
 all_games: 16
-fullname: 奈良クラブ
+name: 奈良クラブ

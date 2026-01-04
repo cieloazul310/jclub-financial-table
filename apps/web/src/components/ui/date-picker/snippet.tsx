@@ -1,4 +1,4 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.0 (commit: c8809a4c14c2008b2e0301bac7e5bf6f9df8f80f)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.1 (commit: f4833b6c4447a8e5eeac4e4c8491960122be65be)
 /**
  * source:
  * https://github.com/cschroeter/park-ui/blob/main/components/react/src/components/ui/styled/date-picker.tsx
@@ -86,3 +86,10 @@ export const ViewTrigger = withContext(DatePicker.ViewTrigger, "viewTrigger");
 export const YearSelect = withContext(DatePicker.YearSelect, "yearSelect");
 
 export { DatePickerContext as Context } from "@ark-ui/react/date-picker";
+
+export type {
+  DatePickerFocusChangeDetails as FocusChangeDetails,
+  DatePickerOpenChangeDetails as OpenChangeDetails,
+  DatePickerValueChangeDetails as ValueChangeDetails,
+  DatePickerViewChangeDetails as ViewChangeDetails,
+} from "@ark-ui/react/date-picker";

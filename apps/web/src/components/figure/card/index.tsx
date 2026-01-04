@@ -36,7 +36,7 @@ type FinancialCardProps = {
 };
 
 export function FinancialCard({ mode, data }: FinancialCardProps) {
-  const { tab, sortAsc, sortKey } = useTableStore((store) => store);
+  const { tab, sortAsc, sortField } = useTableStore((store) => store);
   const [timer, setTimer] = useState<NodeJS.Timeout>();
   const [swiper, setSwiper] = useState<SwiperCore | null>(null);
   const initialIndex = useInitialIndex(data, mode);
@@ -44,7 +44,7 @@ export function FinancialCard({ mode, data }: FinancialCardProps) {
   useLayoutEffect(() => {
     if (mode !== "year") return;
     swiper?.slideTo(0);
-  }, [sortAsc, sortKey]);
+  }, [sortAsc, sortField]);
 
   const onSwiper = (currentSwiper: SwiperCore) => {
     setSwiper(currentSwiper);

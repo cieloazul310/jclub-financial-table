@@ -1,5 +1,5 @@
 slug: yamaga
-name: 松本
+short_name: 松本
 id: yamaga2021
 year: 2021
 category: J2
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 129226
 all_games: 21
-fullname: 松本山雅FC
+name: 松本山雅FC

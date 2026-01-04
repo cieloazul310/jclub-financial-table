@@ -1,30 +1,9 @@
 "use client";
 
-import { getLabel, type SortableKeys } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
+import { getSortState } from "@/utils/sort-state";
 import type { Mode, Tab } from "@/utils/types";
-
-type SortStateString = {
-  field: string | null | undefined;
-  sortKey: SortableKeys;
-  sortType: string;
-};
-
-export function useSortStateString(): SortStateString {
-  const { sortAsc, sortKey } = useTableStore((store) => store);
-  const field = getLabel(sortKey);
-
-  const rankSort = sortAsc ? "低い順" : "高い順";
-  const valueSort = sortAsc ? "少ない順" : "多い順";
-  const sortType = sortKey === "rank" ? rankSort : valueSort;
-
-  return {
-    field,
-    sortKey,
-    sortType,
-  };
-}
 
 export function useFilterStateString(): string {
   const { visibleCategories } = useTableStore((store) => store);
@@ -38,22 +17,14 @@ export function useFilterStateString(): string {
   }`;
 }
 
-export function useStateString(): {
-  sortString: SortStateString;
-  filterString: string;
-} {
-  const sortString = useSortStateString();
-  const filterString = useFilterStateString();
-  return { sortString, filterString };
-}
-
 export function useUnitString(tab: Tab): string {
   const unit = tab === "attd" ? "入場料収入のみ百万円" : "百万円";
   return `単位: ${unit}`;
 }
 
 export function Unit({ mode, tab }: { mode: Mode; tab: Tab }) {
-  const { field, sortType } = useSortStateString();
+  const { sortAsc, sortField } = useTableStore((store) => store);
+  const { label, sortState } = getSortState({ sortAsc, sortField });
   const unitString = useUnitString(tab);
 
   return (
@@ -68,7 +39,7 @@ export function Unit({ mode, tab }: { mode: Mode; tab: Tab }) {
     >
       {mode === "year" && (
         <span>
-          <strong>{field}</strong> {sortType}
+          <strong>{label}</strong> {sortState}
         </span>
       )}
       <span>{unitString}</span>

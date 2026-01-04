@@ -1,5 +1,5 @@
 slug: fcryukyu
-name: 琉球
+short_name: 琉球
 id: fcryukyu2023
 year: 2023
 category: J3
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 48144
 all_games: 19
-fullname: FC琉球
+name: FC琉球

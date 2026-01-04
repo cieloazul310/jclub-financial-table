@@ -1,6 +1,7 @@
 [
   {
-    "id": "3",
+    "id": "1",
+    "code": "030801",
     "slug": "antlers",
     "name": "鹿島アントラーズ",
     "fullname": "鹿島アントラーズ",
@@ -16,7 +17,8 @@
     ]
   },
   {
-    "id": "20",
+    "id": "28",
+    "code": "030802",
     "slug": "mitohollyhock",
     "name": "水戸ホーリーホック",
     "fullname": "水戸ホーリーホック",
@@ -33,7 +35,8 @@
     ]
   },
   {
-    "id": "4",
+    "id": "3",
+    "code": "031101",
     "slug": "urawa",
     "name": "浦和レッズ",
     "fullname": "浦和レッドダイヤモンズ",
@@ -50,7 +53,8 @@
     ]
   },
   {
-    "id": "22",
+    "id": "2",
+    "code": "031201",
     "slug": "jefunited",
     "name": "ジェフユナイテッド千葉",
     "fullname": "ジェフユナイテッド市原・千葉",
@@ -63,7 +67,8 @@
     "website": "https://jefunited.co.jp"
   },
   {
-    "id": "6",
+    "id": "13",
+    "code": "031202",
     "slug": "reysol",
     "name": "柏レイソル",
     "fullname": "柏レイソル",
@@ -77,7 +82,8 @@
     "settlement": "https://www.reysol.co.jp/club/clubinfo/koukoku.php"
   },
   {
-    "id": "7",
+    "id": "22",
+    "code": "031301",
     "slug": "fctokyo",
     "name": "FC東京",
     "fullname": "FC東京",
@@ -90,7 +96,8 @@
     "website": "https://www.fctokyo.co.jp"
   },
   {
-    "id": "23",
+    "id": "4",
+    "code": "031302",
     "slug": "verdy",
     "name": "東京ヴェルディ",
     "fullname": "東京ヴェルディ1969",
@@ -106,7 +113,8 @@
     ]
   },
   {
-    "id": "24",
+    "id": "40",
+    "code": "031303",
     "slug": "zelvia",
     "name": "FC町田ゼルビア",
     "fullname": "FC町田ゼルビア",
@@ -122,7 +130,8 @@
     ]
   },
   {
-    "id": "8",
+    "id": "23",
+    "code": "031401",
     "slug": "kawasaki",
     "name": "川崎フロンターレ",
     "fullname": "川崎フロンターレ",
@@ -136,7 +145,8 @@
     "settlement": "https://www.frontale.co.jp/about/kk/"
   },
   {
-    "id": "9",
+    "id": "5",
+    "code": "031402",
     "slug": "fmarinos",
     "name": "横浜F・マリノス",
     "fullname": "横浜F・マリノス",
@@ -155,7 +165,8 @@
     ]
   },
   {
-    "id": "12",
+    "id": "7",
+    "code": "052101",
     "slug": "shimizu",
     "name": "清水エスパルス",
     "fullname": "清水エスパルス",
@@ -168,7 +179,8 @@
     "website": "https://www.s-pulse.co.jp"
   },
   {
-    "id": "29",
+    "id": "8",
+    "code": "052201",
     "slug": "nagoya",
     "name": "名古屋グランパス",
     "fullname": "名古屋グランパスエイト",
@@ -181,7 +193,8 @@
     "website": "https://nagoya-grampus.jp"
   },
   {
-    "id": "31",
+    "id": "15",
+    "code": "062601",
     "slug": "sanga",
     "name": "京都サンガF.C.",
     "fullname": "京都サンガF.C.",
@@ -195,7 +208,8 @@
     "settlement": "https://www.sanga-fc.jp/club/"
   },
   {
-    "id": "14",
+    "id": "9",
+    "code": "062701",
     "slug": "gamba",
     "name": "ガンバ大阪",
     "fullname": "ガンバ大阪",
@@ -208,7 +222,8 @@
     "website": "https://www.gamba-osaka.net"
   },
   {
-    "id": "15",
+    "id": "14",
+    "code": "062702",
     "slug": "cerezo",
     "name": "セレッソ大阪",
     "fullname": "セレッソ大阪",
@@ -224,7 +239,8 @@
     ]
   },
   {
-    "id": "16",
+    "id": "17",
+    "code": "062801",
     "slug": "vissel",
     "name": "ヴィッセル神戸",
     "fullname": "ヴィッセル神戸",
@@ -240,7 +256,8 @@
     ]
   },
   {
-    "id": "32",
+    "id": "37",
+    "code": "073301",
     "slug": "fagiano",
     "name": "ファジアーノ岡山",
     "fullname": "ファジアーノ岡山FC",
@@ -262,7 +279,8 @@
     ]
   },
   {
-    "id": "17",
+    "id": "10",
+    "code": "073401",
     "slug": "sanfrecce",
     "name": "サンフレッチェ広島",
     "fullname": "サンフレッチェ広島F.C",
@@ -275,7 +293,8 @@
     "website": "https://www.sanfrecce.co.jp"
   },
   {
-    "id": "37",
+    "id": "16",
+    "code": "094001",
     "slug": "avispa",
     "name": "アビスパ福岡",
     "fullname": "アビスパ福岡",
@@ -288,7 +307,8 @@
     "website": "https://www.avispa.co.jp"
   },
   {
-    "id": "38",
+    "id": "42",
+    "code": "094201",
     "slug": "vvaren",
     "name": "V・ファーレン長崎",
     "fullname": "V・ファーレン長崎",
@@ -301,7 +321,8 @@
     "website": "https://www.v-varen.com"
   },
   {
-    "id": "1",
+    "id": "18",
+    "code": "010101",
     "slug": "consadole",
     "name": "北海道コンサドーレ札幌",
     "fullname": "北海道コンサドーレ札幌",
@@ -320,7 +341,8 @@
     ]
   },
   {
-    "id": "55",
+    "id": "56",
+    "code": "020201",
     "slug": "vanraure",
     "name": "ヴァンラーレ八戸",
     "fullname": "ヴァンラーレ八戸フットボールクラブ",
@@ -336,7 +358,8 @@
     ]
   },
   {
-    "id": "2",
+    "id": "19",
+    "code": "020401",
     "slug": "vegalta",
     "name": "ベガルタ仙台",
     "fullname": "ベガルタ仙台",
@@ -350,7 +373,8 @@
     "settlement": "https://www.vegalta.co.jp/club/financial-results.html"
   },
   {
-    "id": "42",
+    "id": "45",
+    "code": "020501",
     "slug": "blaublitz",
     "name": "ブラウブリッツ秋田",
     "fullname": "ブラウブリッツ秋田",
@@ -366,7 +390,8 @@
     ]
   },
   {
-    "id": "19",
+    "id": "20",
+    "code": "020601",
     "slug": "montedio",
     "name": "モンテディオ山形",
     "fullname": "モンテディオ山形",
@@ -386,7 +411,8 @@
     ]
   },
   {
-    "id": "58",
+    "id": "59",
+    "code": "020702",
     "slug": "iwakifc",
     "name": "いわきFC",
     "fullname": "いわきFC",
@@ -399,7 +425,8 @@
     "website": "https://iwakifc.com"
   },
   {
-    "id": "61",
+    "id": "62",
+    "code": "030902",
     "slug": "tochigicity",
     "name": "栃木シティ",
     "fullname": "栃木シティフットボールクラブ",
@@ -412,7 +439,8 @@
     "website": "https://tochigi-city.com/"
   },
   {
-    "id": "5",
+    "id": "21",
+    "code": "031102",
     "slug": "ardija",
     "name": "RB大宮アルディージャ",
     "fullname": "RB大宮アルディージャ",
@@ -425,7 +453,8 @@
     "website": "https://www.rbomiya.com"
   },
   {
-    "id": "25",
+    "id": "29",
+    "code": "031403",
     "slug": "yokohamafc",
     "name": "横浜FC",
     "fullname": "横浜FC",
@@ -441,7 +470,8 @@
     ]
   },
   {
-    "id": "26",
+    "id": "11",
+    "code": "031405",
     "slug": "bellmare",
     "name": "湘南ベルマーレ",
     "fullname": "湘南ベルマーレ",
@@ -458,7 +488,8 @@
     ]
   },
   {
-    "id": "10",
+    "id": "24",
+    "code": "031501",
     "slug": "ventforet",
     "name": "ヴァンフォーレ甲府",
     "fullname": "ヴァンフォーレ甲府",
@@ -474,7 +505,8 @@
     ]
   },
   {
-    "id": "11",
+    "id": "25",
+    "code": "041701",
     "slug": "albirex",
     "name": "アルビレックス新潟",
     "fullname": "アルビレックス新潟",
@@ -490,7 +522,8 @@
     ]
   },
   {
-    "id": "48",
+    "id": "36",
+    "code": "041801",
     "slug": "kataller",
     "name": "カターレ富山",
     "fullname": "カターレ富山",
@@ -503,7 +536,8 @@
     "website": "https://www.kataller.co.jp"
   },
   {
-    "id": "13",
+    "id": "12",
+    "code": "052102",
     "slug": "jubilo",
     "name": "ジュビロ磐田",
     "fullname": "ジュビロ磐田",
@@ -519,7 +553,8 @@
     ]
   },
   {
-    "id": "49",
+    "id": "51",
+    "code": "052103",
     "slug": "myfc",
     "name": "藤枝MYFC",
     "fullname": "藤枝MYFC",
@@ -532,7 +567,8 @@
     "website": "https://myfc.co.jp"
   },
   {
-    "id": "35",
+    "id": "31",
+    "code": "083701",
     "slug": "vortis",
     "name": "徳島ヴォルティス",
     "fullname": "徳島ヴォルティス",
@@ -549,7 +585,8 @@
     ]
   },
   {
-    "id": "56",
+    "id": "57",
+    "code": "083802",
     "slug": "fcimabari",
     "name": "FC今治",
     "fullname": "FC今治",
@@ -565,7 +602,8 @@
     ]
   },
   {
-    "id": "18",
+    "id": "26",
+    "code": "094101",
     "slug": "sagan",
     "name": "サガン鳥栖",
     "fullname": "サガン鳥栖",
@@ -578,7 +616,8 @@
     "website": "https://www.sagan-tosu.net"
   },
   {
-    "id": "40",
+    "id": "27",
+    "code": "094401",
     "slug": "trinita",
     "name": "大分トリニータ",
     "fullname": "大分トリニータ",
@@ -591,7 +630,8 @@
     "website": "https://www.oita-trinita.co.jp"
   },
   {
-    "id": "57",
+    "id": "58",
+    "code": "094501",
     "slug": "tegevajaro",
     "name": "テゲバジャーロ宮崎",
     "fullname": "テゲバジャーロ宮崎",
@@ -604,7 +644,8 @@
     "website": "https://www.tegevajaro.com"
   },
   {
-    "id": "43",
+    "id": "46",
+    "code": "020701",
     "slug": "fufc",
     "name": "福島ユナイテッドFC",
     "fullname": "福島ユナイテッドフットボールクラブ",
@@ -620,7 +661,8 @@
     ]
   },
   {
-    "id": "44",
+    "id": "35",
+    "code": "030901",
     "slug": "tochigisc",
     "name": "栃木SC",
     "fullname": "栃木サッカークラブ",
@@ -633,7 +675,8 @@
     "website": "https://www.tochigisc.jp"
   },
   {
-    "id": "21",
+    "id": "30",
+    "code": "031001",
     "slug": "thespa",
     "name": "ザスパ群馬",
     "fullname": "ザスパクサツ群馬",
@@ -649,7 +692,8 @@
     ]
   },
   {
-    "id": "46",
+    "id": "48",
+    "code": "031407",
     "slug": "scsagamihara",
     "name": "SC相模原",
     "fullname": "SC相模原",
@@ -665,7 +709,8 @@
     ]
   },
   {
-    "id": "27",
+    "id": "41",
+    "code": "041601",
     "slug": "yamaga",
     "name": "松本山雅FC",
     "fullname": "松本山雅フットボールクラブ",
@@ -683,7 +728,8 @@
     ]
   },
   {
-    "id": "47",
+    "id": "49",
+    "code": "041602",
     "slug": "parceiro",
     "name": "AC長野パルセイロ",
     "fullname": "AC長野パルセイロ",
@@ -696,7 +742,8 @@
     "website": "https://parceiro.co.jp"
   },
   {
-    "id": "28",
+    "id": "50",
+    "code": "041901",
     "slug": "zweigen",
     "name": "ツエーゲン金沢",
     "fullname": "ツエーゲン金沢",
@@ -712,20 +759,8 @@
     ]
   },
   {
-    "id": "63",
-    "slug": "reilac",
-    "name": "レイラック滋賀FC",
-    "fullname": "レイラック滋賀",
-    "short_name": "滋賀",
-    "company": "株式会社 Mi-Oスポーツ",
-    "category": "J3",
-    "hometown": "滋賀県 草津市・東近江市・彦根市を中心とする全県",
-    "area": "滋賀県",
-    "period": 1,
-    "website": "https://reilac-shiga.co.jp/"
-  },
-  {
-    "id": "30",
+    "id": "33",
+    "code": "052401",
     "slug": "fcgifu",
     "name": "FC岐阜",
     "fullname": "FC岐阜",
@@ -738,7 +773,22 @@
     "website": "https://www.fc-gifu.com"
   },
   {
-    "id": "59",
+    "id": "64",
+    "code": "062501",
+    "slug": "reilac",
+    "name": "レイラック滋賀FC",
+    "fullname": "レイラック滋賀",
+    "short_name": "滋賀",
+    "company": "株式会社 Mi-Oスポーツ",
+    "category": "J3",
+    "hometown": "滋賀県 草津市・東近江市・彦根市を中心とする全県",
+    "area": "滋賀県",
+    "period": 1,
+    "website": "https://reilac-shiga.co.jp/"
+  },
+  {
+    "id": "60",
+    "code": "062703",
     "slug": "fcosaka",
     "name": "FC大阪",
     "fullname": "FC大阪",
@@ -751,7 +801,8 @@
     "website": "https://fc-osaka.com"
   },
   {
-    "id": "60",
+    "id": "61",
+    "code": "062901",
     "slug": "naraclub",
     "name": "奈良クラブ",
     "fullname": "奈良クラブ",
@@ -767,7 +818,8 @@
     ]
   },
   {
-    "id": "51",
+    "id": "39",
+    "code": "073101",
     "slug": "gainare",
     "name": "ガイナーレ鳥取",
     "fullname": "ガイナーレ鳥取",
@@ -780,7 +832,8 @@
     "website": "https://www.gainare.co.jp"
   },
   {
-    "id": "33",
+    "id": "53",
+    "code": "073501",
     "slug": "renofa",
     "name": "レノファ山口FC",
     "fullname": "レノファ山口FC",
@@ -799,7 +852,8 @@
     ]
   },
   {
-    "id": "34",
+    "id": "43",
+    "code": "083601",
     "slug": "kamatamare",
     "name": "カマタマーレ讃岐",
     "fullname": "カマタマーレ讃岐",
@@ -815,7 +869,8 @@
     ]
   },
   {
-    "id": "36",
+    "id": "32",
+    "code": "083801",
     "slug": "ehimefc",
     "name": "愛媛FC",
     "fullname": "愛媛FC",
@@ -828,7 +883,8 @@
     "website": "https://www.ehimefc.com"
   },
   {
-    "id": "62",
+    "id": "63",
+    "code": "083901",
     "slug": "kochi",
     "name": "高知ユナイテッドSC",
     "fullname": "高知ユナイテッドSC",
@@ -841,7 +897,8 @@
     "website": "http://kochi-usc.jp/"
   },
   {
-    "id": "52",
+    "id": "38",
+    "code": "094002",
     "slug": "giravanz",
     "name": "ギラヴァンツ北九州",
     "fullname": "ギラヴァンツ北九州",
@@ -854,7 +911,8 @@
     "website": "https://www.giravanz.jp"
   },
   {
-    "id": "39",
+    "id": "34",
+    "code": "094301",
     "slug": "roasso",
     "name": "ロアッソ熊本",
     "fullname": "ロアッソ熊本",
@@ -877,7 +935,8 @@
     ]
   },
   {
-    "id": "53",
+    "id": "54",
+    "code": "094601",
     "slug": "kufc",
     "name": "鹿児島ユナイテッドFC",
     "fullname": "鹿児島ユナイテッドFC",
@@ -895,7 +954,8 @@
     ]
   },
   {
-    "id": "54",
+    "id": "52",
+    "code": "094701",
     "slug": "fcryukyu",
     "name": "FC琉球",
     "fullname": "FC琉球OKINAWA",
@@ -911,7 +971,8 @@
     ]
   },
   {
-    "id": "41",
+    "id": "44",
+    "code": "020301",
     "slug": "gurulla",
     "name": "いわてグルージャ盛岡",
     "fullname": "いわてグルージャ盛岡",
@@ -924,7 +985,8 @@
     "website": "https://grulla-morioka.jp"
   },
   {
-    "id": "45",
+    "id": "47",
+    "code": "031404",
     "slug": "yscc",
     "name": "Y.S.C.C.横浜",
     "fullname": "横浜スポーツ&カルチャークラブ",
@@ -944,7 +1006,8 @@
     ]
   },
   {
-    "id": "50",
+    "id": "55",
+    "code": "052104",
     "slug": "azulclaro",
     "name": "アスルクラロ沼津",
     "fullname": "アスルクラロ沼津",

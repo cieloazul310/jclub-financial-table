@@ -1,4 +1,4 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.0 (commit: c8809a4c14c2008b2e0301bac7e5bf6f9df8f80f)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.1 (commit: f4833b6c4447a8e5eeac4e4c8491960122be65be)
 /**
  * reference:
  * https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/components/select/select.tsx
@@ -94,4 +94,10 @@ export const ValueText = withContext(Select.ValueText, "valueText");
 export {
   SelectContext as Context,
   SelectHiddenSelect as HiddenSelect,
+} from "@ark-ui/react/select";
+
+export type {
+  SelectHighlightChangeDetails as HighlightChangeDetails,
+  SelectOpenChangeDetails as OpenChangeDetails,
+  SelectValueChangeDetails as ValueChangeDetails,
 } from "@ark-ui/react/select";

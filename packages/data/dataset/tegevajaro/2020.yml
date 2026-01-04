@@ -1,5 +1,5 @@
 slug: tegevajaro
-name: 宮崎
+short_name: 宮崎
 id: tegevajaro2020
 year: 2020
 category: JFL
@@ -53,5 +53,5 @@ second_attd: 0
 second_games: 0
 all_attd: 4698
 all_games: 7
-fullname: テゲバジャーロ宮崎
+name: テゲバジャーロ宮崎
 elevation: 昇格

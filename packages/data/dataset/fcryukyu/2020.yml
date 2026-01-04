@@ -1,5 +1,5 @@
 slug: fcryukyu
-name: 琉球
+short_name: 琉球
 id: fcryukyu2020
 year: 2020
 category: J2
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 23409
 all_games: 21
-fullname: FC琉球
+name: FC琉球

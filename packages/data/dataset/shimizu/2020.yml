@@ -1,5 +1,5 @@
 slug: shimizu
-name: 清水
+short_name: 清水
 id: shimizu2020
 year: 2020
 category: J1
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 93688
 all_games: 19
-fullname: 清水エスパルス
+name: 清水エスパルス

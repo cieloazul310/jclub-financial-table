@@ -1,5 +1,5 @@
 slug: ardija
-name: 大宮
+short_name: 大宮
 id: ardija2023
 year: 2023
 category: J2
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 141912
 all_games: 21
-fullname: 大宮アルディージャ
+name: 大宮アルディージャ
 elevation: 降格

@@ -1,5 +1,5 @@
 slug: vvaren
-name: 長崎
+short_name: 長崎
 id: vvaren2021
 year: 2021
 category: J2
@@ -51,4 +51,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 104072
 all_games: 21
-fullname: V・ファーレン長崎
+name: V・ファーレン長崎

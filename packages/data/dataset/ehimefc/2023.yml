@@ -1,5 +1,5 @@
 slug: ehimefc
-name: 愛媛
+short_name: 愛媛
 id: ehimefc2023
 year: 2023
 category: J3
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 69811
 all_games: 19
-fullname: 愛媛FC
+name: 愛媛FC
 elevation: 昇格

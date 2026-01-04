@@ -1,5 +1,5 @@
 slug: zweigen
-name: 金沢
+short_name: 金沢
 id: zweigen2020
 year: 2020
 category: J2
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 39188
 all_games: 21
-fullname: ツエーゲン金沢
+name: ツエーゲン金沢

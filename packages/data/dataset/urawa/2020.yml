@@ -1,5 +1,5 @@
 slug: urawa
-name: 浦和
+short_name: 浦和
 id: urawa2020
 year: 2020
 category: J1
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 153369
 all_games: 18
-fullname: 浦和レッズ
+name: 浦和レッズ

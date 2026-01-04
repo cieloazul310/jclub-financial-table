@@ -1,5 +1,5 @@
 slug: trinita
-name: 大分
+short_name: 大分
 id: trinita2023
 year: 2023
 category: J2
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 193232
 all_games: 21
-fullname: 大分トリニータ
+name: 大分トリニータ

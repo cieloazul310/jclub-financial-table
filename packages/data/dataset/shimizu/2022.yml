@@ -1,5 +1,5 @@
 slug: shimizu
-name: 清水
+short_name: 清水
 id: shimizu2022
 year: 2022
 category: J1
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 276126
 all_games: 20
-fullname: 清水エスパルス
+name: 清水エスパルス
 elevation: 降格

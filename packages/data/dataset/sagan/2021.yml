@@ -1,5 +1,5 @@
 slug: sagan
-name: 鳥栖
+short_name: 鳥栖
 id: sagan2021
 year: 2021
 category: J1
@@ -51,4 +51,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 150272
 all_games: 22
-fullname: サガン鳥栖
+name: サガン鳥栖

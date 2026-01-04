@@ -1,5 +1,5 @@
 slug: antlers
-name: 鹿島
+short_name: 鹿島
 id: antlers2023
 year: 2023
 category: J1
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 410188
 all_games: 21
-fullname: 鹿島アントラーズ
+name: 鹿島アントラーズ
 related_revenue: 94

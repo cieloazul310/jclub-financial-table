@@ -25,15 +25,23 @@ export function Figure({
   data: ExtendedFinancialDatum[];
   mode: Mode;
 }) {
-  const { tab, sortKey, sortAsc, visibleCategories, visibleYears, setTab } =
-    useTableStore((store) => store);
+  const {
+    tab,
+    sortField,
+    sortAsc,
+    visibleClubs,
+    visibleCategories,
+    visibleYears,
+    setTab,
+  } = useTableStore((store) => store);
   const onValueChange = (details: TabsValueChangeDetails) => {
     setTab(details.value as Tab);
   };
   const filteredData = sortAndFilter(data, {
     sortAsc,
-    sortKey,
+    sortField,
     mode,
+    visibleClubs,
     visibleCategories,
     visibleYears,
   });
@@ -43,7 +51,7 @@ export function Figure({
       <Tabs.Root
         className={css({
           position: "sticky",
-          top: "{sizes.mobile-header-height}",
+          top: "{sizes.header-height}",
           zIndex: "calc({zIndex.docked} - 1)",
           bg: "white/85",
           backdropFilter: "blur(2px)",

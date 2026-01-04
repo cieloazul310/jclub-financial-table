@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import {
   getLabel,
   type ExtendedFinancialDatum,
-  type SortableKeys,
+  type SortableFields,
 } from "@cieloazul310/jclub-financial";
 import { cx, css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
@@ -46,7 +46,6 @@ export function CardTableRow({
       </Table.Header>
       <Table.Cell
         className={cx(
-          css({ fontFamily: "Helvetica, Arial, sans-serif" }),
           strong ? css({ fontWeight: "bold" }) : undefined,
           red ? css({ color: "red.900" }) : undefined,
         )}
@@ -55,11 +54,7 @@ export function CardTableRow({
       >
         {value}
       </Table.Cell>
-      <Table.Cell
-        className={css({ fontFamily: "Helvetica, Arial, sans-serif" })}
-        p={1}
-        align="right"
-      >
+      <Table.Cell p={1} align="right">
         {delta}
       </Table.Cell>
     </Table.Row>
@@ -70,21 +65,21 @@ export const renderRow = ({
   tab,
   datum,
   mode,
-  sortKey,
+  sortField,
   onClick,
 }: {
   tab: Tab;
   mode: Mode;
   datum: ExtendedFinancialDatum;
-  sortKey: SortableKeys;
-  onClick: (id: SortableKeys) => () => void;
+  sortField: SortableFields;
+  onClick: (id: SortableFields) => () => void;
 }) => {
   const values = cardValues[tab];
   return values.map(({ id, label, separator, redIfMinus, ...rest }) => {
     if (typeof datum[id]?.value !== "number") return null;
     const { value, delta } = datum[id];
     const sortable = mode === "year";
-    const selected = sortable && sortKey === id;
+    const selected = sortable && sortField === id;
     const red = redIfMinus && value < 0;
     return (
       <CardTableRow
@@ -127,9 +122,15 @@ export function CardTableBase({
   children,
   dense = true,
   textStyle = "std-16N-170",
+  fontFamily = "table",
   ...rest
 }: CardTableBaseProps) {
-  const props = { dense, textStyle, ...rest } satisfies Table.RootProps;
+  const props = {
+    dense,
+    textStyle,
+    fontFamily,
+    ...rest,
+  } satisfies Table.RootProps;
 
   return (
     <Table.Root {...props}>
@@ -149,12 +150,12 @@ type CardTableProps = {
 };
 
 export function CardTable({ datum, mode }: CardTableProps) {
-  const { tab, sortKey, sortAsc, setSortKey, toggleSort } = useTableStore(
+  const { tab, sortField, sortAsc, setSortKey, toggleSort } = useTableStore(
     (store) => store,
   );
-  const onClick = (id: SortableKeys) => () => {
+  const onClick = (id: SortableFields) => () => {
     if (mode === "club") return;
-    if (sortKey === id) {
+    if (sortField === id) {
       toggleSort();
     } else {
       setSortKey(id);
@@ -166,7 +167,7 @@ export function CardTable({ datum, mode }: CardTableProps) {
 
   return (
     <CardTableBase>
-      {renderRow({ tab, datum, mode, sortKey, onClick })}
+      {renderRow({ tab, datum, mode, sortField, onClick })}
     </CardTableBase>
   );
 }

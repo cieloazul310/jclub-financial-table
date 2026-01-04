@@ -1,5 +1,5 @@
 slug: fmarinos
-name: 横浜FM
+short_name: 横浜FM
 id: fmarinos2022
 year: 2022
 category: J1
@@ -54,4 +54,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 346037
 all_games: 18
-fullname: 横浜F・マリノス
+name: 横浜F・マリノス

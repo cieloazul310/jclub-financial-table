@@ -1,5 +1,5 @@
 import {
-  AllFields,
+  AllFinancialDatumFields,
   AllGeneralFields,
   AllSeasonResultFields,
   type GeneralFields,
@@ -18,7 +18,7 @@ function isSeasonResultFields(key: string): key is SeasonResultFields {
 function processDatum(datum: FinancialDatum, prev?: FinancialDatum | null) {
   const obj = {} as any;
 
-  for (const key of AllFields) {
+  for (const key of AllFinancialDatumFields) {
     const value = datum[key];
     if (isGeneralFields(key) || isSeasonResultFields(key)) {
       if (value) {

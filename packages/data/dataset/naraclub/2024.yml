@@ -1,5 +1,5 @@
 slug: naraclub
-name: 奈良
+short_name: 奈良
 id: naraclub2024
 year: 2024
 category: J3
@@ -59,5 +59,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 38521
 all_games: 20
-fullname: 奈良クラブ
+name: 奈良クラブ
 related_revenue: 64

@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/page-header";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
-import { siteMetadata, postsPerPage } from "@/data/site-metadata";
+import { postsPerPage } from "@/data/site-metadata";
 import { post } from "@/content";
 
 export async function generateStaticParams() {
@@ -61,7 +61,7 @@ export default async function Page({ params }: Props) {
           <PostListItem key={post.href} post={post} />
         ))}
       </PostList>
-      <PrevNextLink left={prev} right={next} />
+      <PrevNextLink leftSlot={prev} rightSlot={next} />
     </>
   );
 }

@@ -1,5 +1,6 @@
 export type ClubInfo = {
   id: string;
+  code: string;
   slug: string;
   name: string;
   fullname: string;

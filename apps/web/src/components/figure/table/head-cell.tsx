@@ -1,6 +1,6 @@
 "use client";
 
-import type { SortableKeys } from "@cieloazul310/jclub-financial";
+import type { SortableFields } from "@cieloazul310/jclub-financial";
 import { cx, css } from "styled-system/css";
 import type { ComponentProps } from "styled-system/types";
 import { Table } from "@/components/ui/table";
@@ -20,7 +20,7 @@ export function TableHeadCell({
   ...rest
 }: Omit<ComponentProps<typeof Table.Cell>, "align"> & {
   mode: Mode;
-  sortableKey?: SortableKeys;
+  sortableKey?: SortableFields;
 }) {
   const props = {
     py,
@@ -31,9 +31,9 @@ export function TableHeadCell({
     textAlign,
     ...rest,
   };
-  const { sortKey, setSortKey, toggleSort } = useTableStore((store) => store);
+  const { sortField, setSortKey, toggleSort } = useTableStore((store) => store);
   const sortable = mode === "year" && !!sortableKey;
-  const selected = mode === "year" && sortKey === sortableKey;
+  const selected = mode === "year" && sortField === sortableKey;
 
   const onClick = () => {
     if (!sortable) return;

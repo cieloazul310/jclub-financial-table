@@ -79,11 +79,11 @@ export function CardItem({
   index,
   totalCount,
 }: CardItemProps) {
-  const { year, slug, fullname, name, category, rank, elevation } = datum;
-  const { sortKey, setSortKey, toggleSort } = useTableStore((store) => store);
+  const { year, slug, name, short_name, category, rank, elevation } = datum;
+  const { sortField, setSortKey, toggleSort } = useTableStore((store) => store);
   const onRankClick = () => {
     if (mode === "club") return;
-    if (sortKey === "rank") {
+    if (sortField === "rank") {
       toggleSort();
     } else {
       setSortKey("rank");
@@ -97,7 +97,7 @@ export function CardItem({
       </Link>
     ) : (
       <Link href={`/club/${slug.value}/`} color="inherit">
-        {fullname.value}
+        {name.value}
       </Link>
     );
 
@@ -114,7 +114,7 @@ export function CardItem({
             },
             textDecoration: { _hover: "underline" },
           }),
-        sortKey === "rank" &&
+        sortField === "rank" &&
           css({
             color: "keyColor.secondary",
           }),
@@ -127,7 +127,7 @@ export function CardItem({
   const cardHeader = (
     <span className={css({ display: "flex", gap: 2, mb: 1 })}>
       <CategoryLabel category={category.value} />
-      <span>{mode === "club" ? name.value : `${year.value}年`}</span>
+      <span>{mode === "club" ? short_name.value : `${year.value}年`}</span>
       {rankButton}
       {elevation?.value && (
         <span

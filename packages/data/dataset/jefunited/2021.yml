@@ -1,5 +1,5 @@
 slug: jefunited
-name: 千葉
+short_name: 千葉
 id: jefunited2021
 year: 2021
 category: J2
@@ -51,4 +51,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 85437
 all_games: 21
-fullname: ジェフユナイテッド千葉
+name: ジェフユナイテッド千葉
