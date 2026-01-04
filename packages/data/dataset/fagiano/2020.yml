@@ -1,5 +1,5 @@
 slug: fagiano
-name: 岡山
+short_name: 岡山
 id: fagiano2020
 year: 2020
 category: J2
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 64516
 all_games: 21
-fullname: ファジアーノ岡山
+name: ファジアーノ岡山

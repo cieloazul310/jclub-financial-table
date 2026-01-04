@@ -1,5 +1,5 @@
 slug: gamba
-name: G大阪
+short_name: G大阪
 id: gamba2022
 year: 2022
 category: J1
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 319548
 all_games: 20
-fullname: ガンバ大阪
+name: ガンバ大阪

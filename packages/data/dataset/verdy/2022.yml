@@ -1,5 +1,5 @@
 slug: verdy
-name: 東京V
+short_name: 東京V
 id: verdy2022
 year: 2022
 category: J2
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 104054
 all_games: 21
-fullname: 東京ヴェルディ
+name: 東京ヴェルディ
 related_revenue: 103

@@ -1,5 +1,5 @@
 slug: kawasaki
-name: 川崎
+short_name: 川崎
 id: kawasaki2020
 year: 2020
 category: J1
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 157351
 all_games: 19
-fullname: 川崎フロンターレ
+name: 川崎フロンターレ

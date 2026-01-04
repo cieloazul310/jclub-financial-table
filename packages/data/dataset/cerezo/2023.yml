@@ -1,5 +1,5 @@
 slug: cerezo
-name: C大阪
+short_name: C大阪
 id: cerezo2023
 year: 2023
 category: J1
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 325644
 all_games: 20
-fullname: セレッソ大阪
+name: セレッソ大阪
 related_revenue: 1478

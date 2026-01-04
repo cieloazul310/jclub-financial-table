@@ -1,5 +1,5 @@
 slug: giravanz
-name: 北九州
+short_name: 北九州
 id: giravanz2024
 year: 2024
 category: J3
@@ -59,4 +59,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 96972
 all_games: 21
-fullname: ギラヴァンツ北九州
+name: ギラヴァンツ北九州

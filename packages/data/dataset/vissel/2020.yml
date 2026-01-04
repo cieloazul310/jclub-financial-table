@@ -1,5 +1,5 @@
 slug: vissel
-name: 神戸
+short_name: 神戸
 id: vissel2020
 year: 2020
 category: J1
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 113894
 all_games: 19
-fullname: ヴィッセル神戸
+name: ヴィッセル神戸

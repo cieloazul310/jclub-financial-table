@@ -1,5 +1,5 @@
 slug: albirex
-name: 新潟
+short_name: 新潟
 id: albirex2024
 year: 2024
 category: J1
@@ -60,4 +60,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 455132
 all_games: 22
-fullname: アルビレックス新潟
+name: アルビレックス新潟

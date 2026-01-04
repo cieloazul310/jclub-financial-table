@@ -1,5 +1,5 @@
 slug: renofa
-name: 山口
+short_name: 山口
 id: renofa2020
 year: 2020
 category: J2
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 44231
 all_games: 21
-fullname: レノファ山口FC
+name: レノファ山口FC

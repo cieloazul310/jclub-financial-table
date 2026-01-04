@@ -1,5 +1,5 @@
 slug: yokohamafc
-name: 横浜FC
+short_name: 横浜FC
 id: yokohamafc2024
 year: 2024
 category: J2
@@ -59,6 +59,6 @@ acl_attd: 0
 acl_games: 0
 all_attd: 135717
 all_games: 20
-fullname: 横浜FC
+name: 横浜FC
 elevation: 昇格
 related_revenue: 176

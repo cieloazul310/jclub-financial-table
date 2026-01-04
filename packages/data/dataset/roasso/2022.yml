@@ -1,5 +1,5 @@
 slug: roasso
-name: 熊本
+short_name: 熊本
 id: roasso2022
 year: 2022
 category: J2
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 110064
 all_games: 23
-fullname: ロアッソ熊本
+name: ロアッソ熊本
 related_revenue: 73

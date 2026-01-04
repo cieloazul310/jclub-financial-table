@@ -1,5 +1,5 @@
 slug: azulclaro
-name: 沼津
+short_name: 沼津
 id: azulclaro2020
 year: 2020
 category: J3
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 15720
 all_games: 17
-fullname: アスルクラロ沼津
+name: アスルクラロ沼津

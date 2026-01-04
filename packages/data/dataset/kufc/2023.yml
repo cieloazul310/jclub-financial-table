@@ -1,5 +1,5 @@
 slug: kufc
-name: 鹿児島
+short_name: 鹿児島
 id: kufc2023
 year: 2023
 category: J3
@@ -54,5 +54,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 112184
 all_games: 19
-fullname: 鹿児島ユナイテッドFC
+name: 鹿児島ユナイテッドFC
 elevation: 昇格

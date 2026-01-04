@@ -1,5 +1,5 @@
 slug: roasso
-name: 熊本
+short_name: 熊本
 id: roasso2020
 year: 2020
 category: J3
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 29111
 all_games: 17
-fullname: ロアッソ熊本
+name: ロアッソ熊本

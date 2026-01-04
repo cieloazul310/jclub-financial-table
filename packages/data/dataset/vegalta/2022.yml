@@ -1,5 +1,5 @@
 slug: vegalta
-name: 仙台
+short_name: 仙台
 id: vegalta2022
 year: 2022
 category: J2
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 188810
 all_games: 21
-fullname: ベガルタ仙台
+name: ベガルタ仙台

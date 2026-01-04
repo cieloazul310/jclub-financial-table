@@ -1,5 +1,5 @@
 slug: myfc
-name: 藤枝
+short_name: 藤枝
 id: myfc2023
 year: 2023
 category: J2
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 66048
 all_games: 21
-fullname: 藤枝MYFC
+name: 藤枝MYFC

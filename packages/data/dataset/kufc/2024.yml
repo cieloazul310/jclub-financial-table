@@ -1,5 +1,5 @@
 slug: kufc
-name: 鹿児島
+short_name: 鹿児島
 id: kufc2024
 year: 2024
 category: J2
@@ -60,5 +60,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 133241
 all_games: 21
-fullname: 鹿児島ユナイテッドFC
+name: 鹿児島ユナイテッドFC
 elevation: 降格

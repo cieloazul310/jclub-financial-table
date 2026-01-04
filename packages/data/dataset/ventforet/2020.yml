@@ -1,5 +1,5 @@
 slug: ventforet
-name: 甲府
+short_name: 甲府
 id: ventforet2020
 year: 2020
 category: J2
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 52182
 all_games: 21
-fullname: ヴァンフォーレ甲府
+name: ヴァンフォーレ甲府

@@ -1,5 +1,5 @@
 slug: montedio
-name: 山形
+short_name: 山形
 id: montedio2021
 year: 2021
 category: J2
@@ -52,4 +52,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 106722
 all_games: 21
-fullname: モンテディオ山形
+name: モンテディオ山形

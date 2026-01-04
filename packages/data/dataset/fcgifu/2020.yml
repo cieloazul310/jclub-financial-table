@@ -1,5 +1,5 @@
 slug: fcgifu
-name: 岐阜
+short_name: 岐阜
 id: fcgifu2020
 year: 2020
 category: J3
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 44942
 all_games: 17
-fullname: FC岐阜
+name: FC岐阜

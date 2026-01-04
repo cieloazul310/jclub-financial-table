@@ -1,5 +1,5 @@
 slug: fmarinos
-name: 横浜FM
+short_name: 横浜FM
 id: fmarinos2024
 year: 2024
 category: J1
@@ -60,4 +60,4 @@ acl_attd: 116261
 acl_games: 7
 all_attd: 606796
 all_games: 28
-fullname: 横浜F・マリノス
+name: 横浜F・マリノス

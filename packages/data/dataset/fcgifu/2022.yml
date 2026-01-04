@@ -1,5 +1,5 @@
 slug: fcgifu
-name: 岐阜
+short_name: 岐阜
 id: fcgifu2022
 year: 2022
 category: J3
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 71291
 all_games: 17
-fullname: FC岐阜
+name: FC岐阜

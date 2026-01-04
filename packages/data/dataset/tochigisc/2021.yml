@@ -1,5 +1,5 @@
 slug: tochigisc
-name: 栃木
+short_name: 栃木
 id: tochigisc2021
 year: 2021
 category: J2
@@ -51,4 +51,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 81078
 all_games: 21
-fullname: 栃木SC
+name: 栃木SC

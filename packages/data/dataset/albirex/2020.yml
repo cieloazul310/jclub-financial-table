@@ -1,5 +1,5 @@
 slug: albirex
-name: 新潟
+short_name: 新潟
 id: albirex2020
 year: 2020
 category: J2
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 112571
 all_games: 21
-fullname: アルビレックス新潟
+name: アルビレックス新潟

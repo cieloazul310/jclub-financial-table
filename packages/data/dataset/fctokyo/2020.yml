@@ -1,5 +1,5 @@
 slug: fctokyo
-name: FC東京
+short_name: FC東京
 id: fctokyo2020
 year: 2020
 category: J1
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 118465
 all_games: 20
-fullname: FC東京
+name: FC東京

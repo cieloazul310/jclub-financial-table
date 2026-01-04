@@ -1,5 +1,5 @@
 slug: vegalta
-name: 仙台
+short_name: 仙台
 id: vegalta2020
 year: 2020
 category: J1
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 72613
 all_games: 18
-fullname: ベガルタ仙台
+name: ベガルタ仙台

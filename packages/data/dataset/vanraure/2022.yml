@@ -1,5 +1,5 @@
 slug: vanraure
-name: 八戸
+short_name: 八戸
 id: vanraure2022
 year: 2022
 category: J3
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 25553
 all_games: 17
-fullname: ヴァンラーレ八戸
+name: ヴァンラーレ八戸
 related_revenue: 42

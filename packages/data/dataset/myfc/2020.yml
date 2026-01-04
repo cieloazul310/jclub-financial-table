@@ -1,5 +1,5 @@
 slug: myfc
-name: 藤枝
+short_name: 藤枝
 id: myfc2020
 year: 2020
 category: J3
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 11617
 all_games: 17
-fullname: 藤枝MYFC
+name: 藤枝MYFC

@@ -1,7 +1,7 @@
 {
-  "name": "クラブ",
-  "fullname": "呼称",
   "id": "id",
+  "name": "呼称",
+  "short_name": "略称",
   "year": "年",
   "category": "所属",
   "license": "ライセンス",

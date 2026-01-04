@@ -1,5 +1,5 @@
 slug: consadole
-name: 札幌
+short_name: 札幌
 id: consadole2020
 year: 2020
 category: J1
@@ -54,4 +54,4 @@ second_attd: 0
 second_games: 0
 all_attd: 81029
 all_games: 20
-fullname: 北海道コンサドーレ札幌
+name: 北海道コンサドーレ札幌

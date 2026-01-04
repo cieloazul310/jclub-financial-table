@@ -1,5 +1,5 @@
 slug: kamatamare
-name: 讃岐
+short_name: 讃岐
 id: kamatamare2023
 year: 2023
 category: J3
@@ -53,5 +53,5 @@ acl_attd: 0
 acl_games: 0
 all_attd: 39187
 all_games: 19
-fullname: カマタマーレ讃岐
+name: カマタマーレ讃岐
 related_revenue: 11

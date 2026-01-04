@@ -1,5 +1,5 @@
 slug: kataller
-name: 富山
+short_name: 富山
 id: kataller2020
 year: 2020
 category: J3
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 20681
 all_games: 17
-fullname: カターレ富山
+name: カターレ富山

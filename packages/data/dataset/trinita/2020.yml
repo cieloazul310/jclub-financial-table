@@ -1,5 +1,5 @@
 slug: trinita
-name: 大分
+short_name: 大分
 id: trinita2020
 year: 2020
 category: J1
@@ -53,4 +53,4 @@ second_attd: 0
 second_games: 0
 all_attd: 90237
 all_games: 18
-fullname: 大分トリニータ
+name: 大分トリニータ

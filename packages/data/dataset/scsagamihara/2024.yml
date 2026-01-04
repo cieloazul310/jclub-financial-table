@@ -1,5 +1,5 @@
 slug: scsagamihara
-name: 相模原
+short_name: 相模原
 id: scsagamihara2024
 year: 2024
 category: J3
@@ -59,4 +59,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 53574
 all_games: 19
-fullname: SC相模原
+name: SC相模原

@@ -1,5 +1,5 @@
 slug: zelvia
-name: 町田
+short_name: 町田
 id: zelvia2023
 year: 2023
 category: J2
@@ -53,6 +53,6 @@ acl_attd: 0
 acl_games: 0
 all_attd: 155956
 all_games: 21
-fullname: FC町田ゼルビア
+name: FC町田ゼルビア
 elevation: 昇格
 related_revenue: 116

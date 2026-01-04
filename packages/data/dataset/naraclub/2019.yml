@@ -1,5 +1,5 @@
 slug: naraclub
-name: 奈良
+short_name: 奈良
 id: naraclub2019
 year: 2019
 category: JFL
@@ -29,4 +29,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 30308
 all_games: 15
-fullname: 奈良クラブ
+name: 奈良クラブ

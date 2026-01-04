@@ -1,5 +1,5 @@
 slug: gamba
-name: G大阪
+short_name: G大阪
 id: gamba2020
 year: 2020
 category: J1
@@ -53,4 +53,4 @@ second_attd: 10120
 second_games: 17
 all_attd: 152469
 all_games: 35
-fullname: ガンバ大阪
+name: ガンバ大阪

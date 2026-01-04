@@ -1,5 +1,5 @@
 slug: bellmare
-name: 湘南
+short_name: 湘南
 id: bellmare2022
 year: 2022
 category: J1
@@ -54,4 +54,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 174002
 all_games: 21
-fullname: 湘南ベルマーレ
+name: 湘南ベルマーレ

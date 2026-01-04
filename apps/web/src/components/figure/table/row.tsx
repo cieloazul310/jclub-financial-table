@@ -20,7 +20,7 @@ export const row = {
     head: (mode: Mode) => <PLTableHeadRow mode={mode} />,
     renderRow: (datum: ExtendedFinancialDatum, mode: Mode, index: number) => (
       <PLTableRow
-        key={`${datum.name.value}-${datum.year.value}`}
+        key={`${datum.short_name.value}-${datum.year.value}`}
         datum={datum}
         mode={mode}
         index={index}
@@ -31,7 +31,7 @@ export const row = {
     head: (mode: Mode) => <BSTableHeadRow mode={mode} />,
     renderRow: (datum: ExtendedFinancialDatum, mode: Mode, index: number) => (
       <BSTableRow
-        key={`${datum.name.value}-${datum.year.value}`}
+        key={`${datum.short_name.value}-${datum.year.value}`}
         datum={datum}
         mode={mode}
         index={index}
@@ -42,7 +42,7 @@ export const row = {
     head: (mode: Mode) => <RevenueTableHeadRow mode={mode} />,
     renderRow: (datum: ExtendedFinancialDatum, mode: Mode, index: number) => (
       <RevenueTableRow
-        key={`${datum.name.value}-${datum.year.value}`}
+        key={`${datum.short_name.value}-${datum.year.value}`}
         datum={datum}
         mode={mode}
         index={index}
@@ -53,7 +53,7 @@ export const row = {
     head: (mode: Mode) => <ExpenseTableHeadRow mode={mode} />,
     renderRow: (datum: ExtendedFinancialDatum, mode: Mode, index: number) => (
       <ExpenseTableRow
-        key={`${datum.name.value}-${datum.year.value}`}
+        key={`${datum.short_name.value}-${datum.year.value}`}
         datum={datum}
         mode={mode}
         index={index}
@@ -64,7 +64,7 @@ export const row = {
     head: (mode: Mode) => <AttdTableHeadRow mode={mode} />,
     renderRow: (datum: ExtendedFinancialDatum, mode: Mode, index: number) => (
       <AttdTableRow
-        key={`${datum.name.value}-${datum.year.value}`}
+        key={`${datum.short_name.value}-${datum.year.value}`}
         datum={datum}
         mode={mode}
         index={index}

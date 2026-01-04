@@ -1,5 +1,5 @@
 slug: myfc
-name: 藤枝
+short_name: 藤枝
 id: myfc2024
 year: 2024
 category: J2
@@ -59,4 +59,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 81210
 all_games: 19
-fullname: 藤枝MYFC
+name: 藤枝MYFC

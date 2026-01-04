@@ -1,5 +1,5 @@
 slug: scsagamihara
-name: 相模原
+short_name: 相模原
 id: scsagamihara2021
 year: 2021
 category: J2
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 49802
 all_games: 21
-fullname: SC相模原
+name: SC相模原

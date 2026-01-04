@@ -1,5 +1,5 @@
 slug: gurulla
-name: 岩手
+short_name: 岩手
 id: gurulla2023
 year: 2023
 category: J3
@@ -53,4 +53,4 @@ acl_attd: 0
 acl_games: 0
 all_attd: 23820
 all_games: 19
-fullname: いわてグルージャ盛岡
+name: いわてグルージャ盛岡
