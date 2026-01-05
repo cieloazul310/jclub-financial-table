@@ -1,11 +1,12 @@
 "use client";
 
-import { useId } from "react";
+import { Suspense, useId } from "react";
 import { Copy } from "lucide-react";
 import { css } from "styled-system/css";
 import { Button } from "@/components/ui/button";
 import { Toast, toaster } from "@/components/toast";
 import { Tooltip } from "@/components/tooltip";
+import { Loading } from "@/components/loading";
 import { useCopyTable } from "@/utils/use-copy";
 import { Filter } from "./filter";
 import { SeriesSelect } from "./select";
@@ -57,7 +58,9 @@ export function SeriesClient({ dataset }: SeriesClientProps) {
         <Toast />
         <Filter />
       </div>
-      <SeriesTable tableId={id} dataset={dataset} />
+      <Suspense fallback={<Loading />}>
+        <SeriesTable tableId={id} dataset={dataset} />
+      </Suspense>
     </div>
   );
 }

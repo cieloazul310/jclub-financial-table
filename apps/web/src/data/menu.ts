@@ -53,11 +53,14 @@ export const yearTableMenu = {
 
 export const tableMenu = [...clubTableMenu, yearTableMenu];
 
-export function menuWithSelection(pathname?: string) {
+export function menuWithSelection(currentPathname?: string) {
   return tableMenu.map(({ id, title, items }) => {
     const selectedItems = items.map((item) => ({
       ...item,
-      selected: pathname && new RegExp(item.id).test(pathname) ? true : false,
+      selected:
+        currentPathname && new RegExp(item.id).test(currentPathname)
+          ? true
+          : false,
     }));
 
     return {

@@ -4,22 +4,18 @@ import { getAllClubs, getClubById } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByClub } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
-import { Figure } from "@/components/figure";
+import { Link } from "@/components/link";
 import { Loading } from "@/components/loading";
+import { Figure } from "@/components/figure";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { ClubSummary } from "@/components/club-summary";
 import { Chart } from "@/components/chart";
-import { Heading2 } from "@/components/article";
-
-function getPrevNext(id: string) {
-  const allClubs = getAllClubs();
-  const index = allClubs.findIndex((club) => club.id === id);
-
-  return {
-    prev: allClubs[index - 1],
-    next: allClubs[index + 1],
-  };
-}
+import { Heading2, Heading3 } from "@/components/article";
+import { PostList } from "@/components/post/list";
+import { PostListItem } from "@/components/post/list-item";
+import { SelectLink } from "@/components/select-link";
+import { post } from "@/content";
+import { getPrevNext } from "@/utils/clubs";
 
 export function generateStaticParams() {
   const clubs = getAllClubs();
@@ -44,11 +40,19 @@ export default async function Page({ params }: Props) {
   const { id } = await params;
   const club = getClubById(id);
 
-  if (!club) {
-    return null;
-  }
+  if (!club) return null;
+
   const data = await getExtendedDataByClub(club.id);
   const { prev, next } = getPrevNext(id);
+
+  const allPosts = await post.getAll();
+  const posts = allPosts
+    .filter(({ frontmatter }) =>
+      frontmatter.club?.some((clubTag) => clubTag === club.short_name),
+    )
+    .sort(
+      (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
+    );
 
   return (
     <>
@@ -71,6 +75,33 @@ export default async function Page({ params }: Props) {
           <ClubSummary club={club} />
         </div>
       </article>
+      {posts.length && (
+        <section
+          className={container({ maxWidth: "common-main-width", mt: 16 })}
+        >
+          <Heading3>{club.name}の最新記事</Heading3>
+          <PostList mb={8}>
+            {posts.slice(0, 4).map((post) => (
+              <PostListItem key={post.href} post={post} />
+            ))}
+          </PostList>
+          {posts.length > 4 && (
+            <div className={css({ textAlign: "right" })}>
+              <Link href={`/club/${club.id}/posts`}>
+                {club.name}の記事一覧へ
+              </Link>
+            </div>
+          )}
+        </section>
+      )}
+      <section className={container({ maxWidth: "common-main-width", mt: 16 })}>
+        <SelectLink />
+        <PrevNextLink
+          leftSlot={{ href: `/club/${prev?.id}`, title: prev?.name }}
+          rightSlot={{ href: `/club/${next?.id}`, title: next?.name }}
+          mt={12}
+        />
+      </section>
     </>
   );
 }

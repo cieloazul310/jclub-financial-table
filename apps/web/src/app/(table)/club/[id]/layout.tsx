@@ -15,7 +15,7 @@ export default async function Layout({
 }: PropsWithChildren<{ params: Promise<{ id: string }> }>) {
   const { id } = await params;
   const club = getClubById(id);
-  const pathname = `/club/${id}`;
+  const currentPathname = `/club/${id}`;
 
   const headerContent = (
     <Header
@@ -33,13 +33,13 @@ export default async function Layout({
           <span>{club?.name}</span>
         </span>
       }
-      drawerContent={<Menu pathname={pathname} />}
+      drawerContent={<Menu currentPathname={currentPathname} />}
     />
   );
   const sidebarContent = (
     <>
       <SidebarTitle />
-      <Menu pathname={pathname} />
+      <Menu currentPathname={currentPathname} />
     </>
   );
 

@@ -1,7 +1,9 @@
 "use client";
 
+import { Suspense } from "react";
 import { css } from "styled-system/css";
 import { Tabs } from "@/components/ui/tabs";
+import { Loading } from "@/components/loading";
 import { DataFilter } from "./data-filter";
 import { FieldHandler } from "./field-handler";
 import { Preview } from "./preview";
@@ -59,13 +61,19 @@ export function DownloadClient({ dataset }: DownloadClientProps) {
           })}
         >
           <Tabs.Content value="item-filter" pb={16}>
-            <DataFilter p={2} />
+            <Suspense fallback={<Loading />}>
+              <DataFilter p={2} />
+            </Suspense>
           </Tabs.Content>
           <Tabs.Content value="fields" pb={16}>
-            <FieldHandler p={2} />
+            <Suspense fallback={<Loading />}>
+              <FieldHandler p={2} />
+            </Suspense>
           </Tabs.Content>
           <Tabs.Content value="preview" display={{ md: "none" }}>
-            <Preview p={2} dataset={dataset} />
+            <Suspense fallback={<Loading />}>
+              <Preview p={2} dataset={dataset} />
+            </Suspense>
           </Tabs.Content>
         </div>
         <div
@@ -74,7 +82,9 @@ export function DownloadClient({ dataset }: DownloadClientProps) {
             gridArea: "preview",
           })}
         >
-          <Preview pt={4} px={4} dataset={dataset} />
+          <Suspense fallback={<Loading />}>
+            <Preview pt={4} px={4} dataset={dataset} />
+          </Suspense>
         </div>
       </div>
     </Tabs.Root>

@@ -5,11 +5,11 @@ import { Accordion } from "@/components/ui/accordion";
 import { menuWithSelection, postMenu, contentMenu } from "@/data/menu";
 
 type MenuProps = {
-  pathname?: string;
+  currentPathname?: string;
 };
 
-export function Menu({ pathname = "/" }: MenuProps) {
-  const menuCollection = menuWithSelection(pathname);
+export function Menu({ currentPathname = "/" }: MenuProps) {
+  const menuCollection = menuWithSelection(currentPathname);
   const defaultValue = menuCollection
     .filter(({ selected }) => selected)
     .map(({ id }) => id);
@@ -76,7 +76,8 @@ export function Menu({ pathname = "/" }: MenuProps) {
               )}
               href={href}
               data-selected={
-                pathname !== "/" && new RegExp(pathname).test(href)
+                currentPathname !== "/" &&
+                new RegExp(currentPathname).test(href)
                   ? true
                   : undefined
               }
