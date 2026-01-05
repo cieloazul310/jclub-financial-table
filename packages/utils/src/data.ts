@@ -53,7 +53,7 @@ export function extendYearData(
   prevData: FinancialDatum[] | null,
 ): ExtendedFinancialDatum[] {
   return data.map((datum) => {
-    const prev = prevData?.find(({ slug }) => slug === datum.slug);
+    const prev = prevData?.find(({ clubId }) => clubId === datum.clubId);
 
     return processDatum(datum, prev);
   });

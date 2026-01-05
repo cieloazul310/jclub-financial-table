@@ -25,7 +25,7 @@ function useInitialIndex(data: ExtendedFinancialDatum[], mode: Mode) {
   }
   const storaged = window.sessionStorage.getItem("currentClub");
   if (!storaged) return 0;
-  const index = data.findIndex(({ slug }) => slug.value === storaged);
+  const index = data.findIndex(({ clubId }) => clubId.value === storaged);
   if (index < 0) return 0;
   return index;
 }
@@ -68,7 +68,7 @@ export function FinancialCard({ mode, data }: FinancialCardProps) {
           }
         }
         if (mode === "year") {
-          const currentClub = data[activeIndex]?.slug.value;
+          const currentClub = data[activeIndex]?.clubId.value;
           if (currentClub) {
             window.sessionStorage.setItem("currentClub", currentClub);
           }
@@ -114,7 +114,7 @@ export function FinancialCard({ mode, data }: FinancialCardProps) {
           onSlideChange={onSlideChange}
         >
           {data.map((datum, index) => (
-            <SwiperSlide key={`${datum.slug.value}${datum.year.value}`}>
+            <SwiperSlide key={`${datum.clubId.value}${datum.year.value}`}>
               <CardItem
                 datum={datum}
                 mode={mode}

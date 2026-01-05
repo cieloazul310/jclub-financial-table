@@ -37,7 +37,7 @@ export const defaultInitState: TableState = {
   sortField: "revenue",
   sortAsc: false,
   visibleCategories: [...AllCategories],
-  visibleClubs: getAllClubs().map(({ slug }) => slug),
+  visibleClubs: getAllClubs().map(({ id }) => id),
   visibleYears: [2005, 2024],
   cardMode: false,
 };

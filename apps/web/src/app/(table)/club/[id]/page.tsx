@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { getAllClubs, getClubBySlug } from "@cieloazul310/jclub-financial";
+import { getAllClubs, getClubById } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByClub } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
@@ -11,9 +11,9 @@ import { ClubSummary } from "@/components/club-summary";
 import { Chart } from "@/components/chart";
 import { Heading2 } from "@/components/article";
 
-function getPrevNext(slug: string) {
+function getPrevNext(id: string) {
   const allClubs = getAllClubs();
-  const index = allClubs.findIndex((club) => club.slug === slug);
+  const index = allClubs.findIndex((club) => club.id === id);
 
   return {
     prev: allClubs[index - 1],
@@ -27,12 +27,12 @@ export function generateStaticParams() {
 }
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const club = getClubBySlug(slug);
+  const { id } = await params;
+  const club = getClubById(id);
 
   return {
     title: `${club?.name}の経営情報`,
@@ -41,14 +41,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
-  const { slug } = await params;
-  const club = getClubBySlug(slug);
+  const { id } = await params;
+  const club = getClubById(id);
 
   if (!club) {
     return null;
   }
-  const data = await getExtendedDataByClub(club.slug);
-  const { prev, next } = getPrevNext(slug);
+  const data = await getExtendedDataByClub(club.id);
+  const { prev, next } = getPrevNext(id);
 
   return (
     <>
@@ -56,8 +56,8 @@ export default async function Page({ params }: Props) {
         <Figure data={data} mode="club" />
       </Suspense>
       <PrevNextLink
-        leftSlot={{ href: `/club/${prev?.slug}`, title: prev?.name }}
-        rightSlot={{ href: `/club/${next?.slug}`, title: next?.name }}
+        leftSlot={{ href: `/club/${prev?.id}`, title: prev?.name }}
+        rightSlot={{ href: `/club/${next?.id}`, title: next?.name }}
         mt={12}
       />
       <article className={container({ maxWidth: "common-main-width", mt: 12 })}>

@@ -61,7 +61,7 @@ export function PostListItem({ post }: { post: PostMetadata }) {
           textStyle="dns-14B-130"
           asChild
         >
-          <NextLink href={`/club/${club.slug}`}>{club.short_name}</NextLink>
+          <NextLink href={`/club/${club.id}`}>{club.short_name}</NextLink>
         </ChipLabel>
       )}
       {tag && (

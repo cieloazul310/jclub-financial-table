@@ -1,7 +1,7 @@
 import type { FinancialDatum } from "@cieloazul310/jclub-financial";
 
 export type SeriesData = {
-  slug: string;
+  id: string;
   category: string;
   name: string;
   short_name: string;

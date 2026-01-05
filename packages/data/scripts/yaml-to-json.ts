@@ -20,9 +20,9 @@ async function processDataset() {
   const ids = await fs.readdir(srcDir, { withFileTypes: true });
   for (const idEnt of ids) {
     if (!idEnt.isDirectory()) continue;
-    const id = idEnt.name;
-    const srcIdDir = path.join(srcDir, id);
-    const distIdDir = path.join(outDir, id);
+    const clubId = idEnt.name;
+    const srcIdDir = path.join(srcDir, clubId);
+    const distIdDir = path.join(outDir, clubId);
     await fs.mkdir(distIdDir, { recursive: true });
 
     const entries = await fs.readdir(srcIdDir, { withFileTypes: true });
@@ -35,15 +35,15 @@ async function processDataset() {
       const contents = await fs.readFile(p, "utf8");
       const parsed = parse(contents) as any;
 
-      const out = checkData(parsed);
+      const datum = checkData(parsed);
       // 年をファイル名またはデータから決める
       const yearFromName = Number(
         path.basename(ent.name, path.extname(ent.name)),
       );
       const year = Number.isFinite(yearFromName)
         ? yearFromName
-        : out.year
-          ? Number(out.year)
+        : datum.year
+          ? Number(datum.year)
           : NaN;
       const fileName = Number.isFinite(year)
         ? `${year}.json`
@@ -51,7 +51,7 @@ async function processDataset() {
       if (Number.isFinite(year)) years.push(year);
 
       const jsonPath = path.join(distIdDir, fileName);
-      await fs.writeFile(jsonPath, JSON.stringify(out, null, 2), "utf8");
+      await fs.writeFile(jsonPath, JSON.stringify(datum, null, 2), "utf8");
       console.log(`wrote ${path.relative(process.cwd(), jsonPath)}`);
     }
 

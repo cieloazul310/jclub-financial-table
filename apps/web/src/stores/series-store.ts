@@ -33,7 +33,7 @@ export const defaultInitState: SeriesState = {
   sortField: "revenue",
   sortYear: 2024,
   sortAsc: false,
-  visibleClubs: getAllClubs().map(({ slug }) => slug),
+  visibleClubs: getAllClubs().map(({ id }) => id),
   visibleYears: [2015, 2024],
 };
 

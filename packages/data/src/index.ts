@@ -20,10 +20,10 @@ async function loadJsonSync(file: string): Promise<FinancialDatum | null> {
   }
 }
 
-export const clubs = getAllClubs().map(({ slug }) => slug);
+export const clubIds = getAllClubs().map(({ id }) => id);
 
-export async function getDataByClub(club: string): Promise<FinancialDatum[]> {
-  const dir = join(base, club);
+export async function getDataByClub(clubId: string): Promise<FinancialDatum[]> {
+  const dir = join(base, clubId);
   try {
     const files = (await readdir(dir)).filter((filename) =>
       filename.endsWith(".json"),
@@ -41,16 +41,16 @@ export async function getDataByClub(club: string): Promise<FinancialDatum[]> {
 }
 
 export async function getExtendedDataByClub(
-  club: string,
+  clubId: string,
 ): Promise<ExtendedFinancialDatum[]> {
-  const data = await getDataByClub(club);
+  const data = await getDataByClub(clubId);
   return extendClubData(data);
 }
 
 export async function getDataByYear(year: number): Promise<FinancialDatum[]> {
   const output = [];
-  for (const club of clubs) {
-    const pathname = join(base, club, String(year) + ".json");
+  for (const clubId of clubIds) {
+    const pathname = join(base, clubId, String(year) + ".json");
     const item = await loadJsonSync(pathname);
     if (item) output.push(item);
   }
@@ -67,9 +67,9 @@ export async function getExtendedDataByYear(
 }
 
 export async function getDatum(
-  club: string,
+  clubId: string,
   year: number,
 ): Promise<FinancialDatum | null> {
-  const pathname = join(base, club, String(year) + ".json");
+  const pathname = join(base, clubId, String(year) + ".json");
   return await loadJsonSync(pathname);
 }

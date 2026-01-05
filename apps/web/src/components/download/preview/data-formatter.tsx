@@ -19,7 +19,7 @@ type FieldAndLabel = {
   label: string;
 };
 
-type OutputDatum = { _slug: string; _year: number } & Record<
+type OutputDatum = { __clubId: string; __year: number } & Record<
   string,
   string | number
 >;
@@ -30,7 +30,7 @@ type DownloadDatasetOutput = Omit<DownloadDataset, "data"> & {
 
 const sortedClubs = getAllClubs()
   .sort((a, b) => parseInt(a.code, 10) - parseInt(b.code, 10))
-  .map(({ slug }) => slug);
+  .map(({ id }) => id);
 
 function createDataFields({
   visibleFields,
@@ -71,7 +71,7 @@ function createDataFilter({
   visibleYears,
 }: Omit<DownloadFilterState, "visibleFields">) {
   const clubsFilter = (datasetItem: DownloadDataset) =>
-    visibleClubs.some((club) => datasetItem.slug === club);
+    visibleClubs.some((club) => datasetItem.id === club);
   const categoriesFilter = (datum: FinancialDatum) =>
     visibleCategories.some((category) => category === datum.category);
   const yearsFilter = (datum: FinancialDatum) =>
@@ -82,8 +82,8 @@ function createDataFilter({
 
 function pickAndLabeled(datum: FinancialDatum, dataFields: FieldAndLabel[]) {
   const newDatum: OutputDatum = {
-    _slug: datum.slug,
-    _year: datum.year,
+    __clubId: datum.id,
+    __year: datum.year,
   };
 
   dataFields.forEach(({ field, label }) => {
@@ -134,12 +134,12 @@ export function flatDataSort({
 }: Pick<DownloadFormatState, "groupBy">) {
   if (groupBy === "year") {
     return (a: OutputDatum, b: OutputDatum) =>
-      a._year - b._year ||
-      sortedClubs.indexOf(a._slug) - sortedClubs.indexOf(b._slug);
+      a.__year - b.__year ||
+      sortedClubs.indexOf(a.__clubId) - sortedClubs.indexOf(b.__clubId);
   }
   return (a: OutputDatum, b: OutputDatum) =>
-    sortedClubs.indexOf(a._slug) - sortedClubs.indexOf(b._slug) ||
-    a._year - b._year;
+    sortedClubs.indexOf(a.__clubId) - sortedClubs.indexOf(b.__clubId) ||
+    a.__year - b.__year;
 }
 
 export function useFormatter(
@@ -158,16 +158,15 @@ export function useFormatter(
 
           return dataset
             .sort(
-              (a, b) =>
-                sortedClubs.indexOf(a.slug) - sortedClubs.indexOf(b.slug),
+              (a, b) => sortedClubs.indexOf(a.id) - sortedClubs.indexOf(b.id),
             )
             .map(({ data, ...club }) => {
               const converted = clubLabelConverter(club);
               return {
                 ...converted,
                 data: data
-                  .sort((a, b) => a._year - b._year)
-                  .map(({ _slug, _year, ...datum }) => datum),
+                  .sort((a, b) => a.__year - b.__year)
+                  .map(({ __clubId, __year, ...datum }) => datum),
               };
             });
         }
@@ -180,12 +179,12 @@ export function useFormatter(
             .map(({ year }) => ({
               year,
               data: flatten
-                .filter((datum) => datum._year === year)
-                .map(({ _slug, _year, ...datum }) => datum),
+                .filter((datum) => datum.__year === year)
+                .map(({ __clubId, __year, ...datum }) => datum),
             }))
             .filter(({ data }) => data.length);
         }
-        return flatten.map(({ _slug, _year, ...datum }) => datum);
+        return flatten.map(({ __clubId, __year, ...datum }) => datum);
       };
 
       return JSON.stringify(json(), null, 2);
@@ -194,7 +193,7 @@ export function useFormatter(
     const flatten = dataset.map(({ data }) => data).flat();
     const data = flatten
       .sort(flatDataSort({ groupBy }))
-      .map(({ _slug, _year, ...datum }) => datum);
+      .map(({ __clubId, __year, ...datum }) => datum);
 
     return csvFormat(
       data,

@@ -5,10 +5,18 @@ export function getAllClubs() {
   const allClubs = clubs;
   return [...allClubs] as ClubInfo[];
 }
-
+/**
+ * @deprecated
+ * use `getClubById`
+ */
 export function getClubBySlug(slug: string) {
   const clubs = getAllClubs();
-  return clubs.find((club) => club.slug === slug);
+  return clubs.find((club) => club.id === slug);
+}
+
+export function getClubById(id: string) {
+  const clubs = getAllClubs();
+  return clubs.find((club) => club.id === id);
 }
 
 export function getClubsByCategory(category: string) {
