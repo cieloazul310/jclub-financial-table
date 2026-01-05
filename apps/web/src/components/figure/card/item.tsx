@@ -79,7 +79,7 @@ export function CardItem({
   index,
   totalCount,
 }: CardItemProps) {
-  const { year, slug, name, short_name, category, rank, elevation } = datum;
+  const { year, clubId, name, short_name, category, rank, elevation } = datum;
   const { sortField, setSortKey, toggleSort } = useTableStore((store) => store);
   const onRankClick = () => {
     if (mode === "club") return;
@@ -96,7 +96,7 @@ export function CardItem({
         {year.value}年度決算
       </Link>
     ) : (
-      <Link href={`/club/${slug.value}/`} color="inherit">
+      <Link href={`/club/${clubId.value}/`} color="inherit">
         {name.value}
       </Link>
     );

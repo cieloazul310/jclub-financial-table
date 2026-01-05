@@ -5,7 +5,7 @@ const has = Object.prototype.hasOwnProperty;
 
 function isDirectoryKey(
   key: string,
-): key is keyof Omit<FinancialDatum, "clubId" | "slug"> {
+): key is keyof Omit<FinancialDatum, "clubId"> {
   return has.call(dictionary, key);
 }
 
@@ -26,7 +26,7 @@ export function getLabel(key: string): string {
  * @returns 日本語ラベル
  */
 export function getLabelWithOptions(
-  key: keyof Omit<FinancialDatum, "clubId" | "slug">,
+  key: keyof Omit<FinancialDatum, "clubId">,
   options?: {
     /** キーが未定義の場合のフォールバック。省略時はキー名を返す */
     fallback?: string;

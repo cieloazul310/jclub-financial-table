@@ -12,10 +12,6 @@ export type General = {
   id: string;
   clubId: string;
   /**
-   * @deprecated
-   */
-  slug?: string;
-  /**
    * 略称
    * name => short_name
    */

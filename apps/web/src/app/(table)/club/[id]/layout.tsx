@@ -15,7 +15,7 @@ export default async function Layout({
 }: PropsWithChildren<{ params: Promise<{ id: string }> }>) {
   const { id } = await params;
   const club = getClubById(id);
-  const pathname = `/club/${id}}`;
+  const pathname = `/club/${id}`;
 
   const headerContent = (
     <Header

@@ -52,9 +52,9 @@ export type DownloadActions = {
 export type DownloadStore = DownloadState & DownloadActions;
 
 export const defaultInitState: DownloadState = {
-  visibleFields: ["name", "slug", "year", "category", ...AllPLFields],
+  visibleFields: ["name", "clubId", "year", "category", ...AllPLFields],
   visibleCategories: [...AllCategories],
-  visibleClubs: getAllClubs().map(({ slug }) => slug),
+  visibleClubs: getAllClubs().map(({ id }) => id),
   visibleYears: [2024],
 
   dataFormat: "json",

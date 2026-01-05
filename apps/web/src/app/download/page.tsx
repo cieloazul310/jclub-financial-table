@@ -7,11 +7,11 @@ import { DownloadStoreProvider } from "@/providers/download-store-provider";
 
 export default async function Page() {
   const allClubs = getAllClubs();
-  const allDataset = allClubs.map(async ({ slug, ...clubInfo }) => {
-    const data = await getDataByClub(slug);
+  const allDataset = allClubs.map(async ({ id, ...clubInfo }) => {
+    const data = await getDataByClub(id);
 
     return {
-      slug,
+      id,
       ...clubInfo,
       data,
     };

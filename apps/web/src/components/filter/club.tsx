@@ -34,11 +34,11 @@ const clubsByCategories = [
 
 type ClubFilterProps = {
   visibleClubs: string[];
-  toggleVisibleClubs: (slug: string) => void;
-  setVisibleClubs: (clubs: string[]) => void;
-  setInvisibleClubs: (clubs: string[]) => void;
+  toggleVisibleClubs: (id: string) => void;
+  setVisibleClubs: (clubIds: string[]) => void;
+  setInvisibleClubs: (clubIds: string[]) => void;
   chipClassName?: string;
-  chipLabel?: (slug: string) => string;
+  chipLabel?: (id: string) => string;
 } & HTMLStyledProps<"div">;
 
 export function ClubFilter({
@@ -61,18 +61,18 @@ export function ClubFilter({
   ...rest
 }: ClubFilterProps) {
   const props = { display, gap, gridTemplateColumns, ...rest };
-  const onClubClick = (slug: string) => () => {
-    toggleVisibleClubs(slug);
+  const onClubClick = (id: string) => () => {
+    toggleVisibleClubs(id);
   };
   const selectedClubs = (clubs: ClubInfo[]) => {
-    return clubs.filter(({ slug }) => visibleClubs.includes(slug));
+    return clubs.filter(({ id }) => visibleClubs.includes(id));
   };
   const onCheckedChange = (clubs: ClubInfo[]) => () => {
     const selected = selectedClubs(clubs);
     if (selected.length === clubs.length) {
-      setInvisibleClubs(clubs.map(({ slug }) => slug));
+      setInvisibleClubs(clubs.map(({ id }) => id));
     } else {
-      setVisibleClubs(clubs.map(({ slug }) => slug));
+      setVisibleClubs(clubs.map(({ id }) => id));
     }
   };
 
@@ -104,20 +104,20 @@ export function ClubFilter({
               flexWrap: "wrap",
             })}
           >
-            {clubs.map(({ slug, short_name }) =>
-              visibleClubs.includes(slug) ? (
+            {clubs.map(({ id, short_name }) =>
+              visibleClubs.includes(id) ? (
                 <ActiveChip
-                  key={slug}
+                  key={id}
                   className={chipClassName}
-                  onClick={onClubClick(slug)}
+                  onClick={onClubClick(id)}
                 >
                   {short_name}
                 </ActiveChip>
               ) : (
                 <InactiveChip
-                  key={slug}
+                  key={id}
                   className={chipClassName}
-                  onClick={onClubClick(slug)}
+                  onClick={onClubClick(id)}
                 >
                   {short_name}
                 </InactiveChip>

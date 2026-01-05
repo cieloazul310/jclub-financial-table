@@ -24,7 +24,7 @@ type TableBodyHeaderProps = {
   datum: Extended<
     Pick<
       General & SeasonResult,
-      "category" | "rank" | "elevation" | "slug" | "year" | "name"
+      "category" | "rank" | "elevation" | "clubId" | "year" | "short_name"
     >
   >;
   // selected?: boolean;
@@ -97,7 +97,7 @@ type TableRowProps<T extends Partial<FinancialDatum>> = {
   datum: Extended<
     Pick<
       General & SeasonResult,
-      "category" | "rank" | "elevation" | "slug" | "year" | "name"
+      "category" | "rank" | "elevation" | "clubId" | "year" | "short_name"
     > &
       T
   >;

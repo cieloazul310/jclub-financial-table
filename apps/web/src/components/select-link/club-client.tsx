@@ -24,28 +24,28 @@ export function ClubLinkClient({
         <option value="">クラブを選択</option>
         <optgroup label="J1">
           {j1.map((club) => (
-            <option key={club.slug} value={club.slug}>
+            <option key={club.id} value={club.id}>
               {club.name}
             </option>
           ))}
         </optgroup>
         <optgroup label="J2">
           {j2.map((club) => (
-            <option key={club.slug} value={club.slug}>
+            <option key={club.id} value={club.id}>
               {club.name}
             </option>
           ))}
         </optgroup>
         <optgroup label="J3">
           {j3.map((club) => (
-            <option key={club.slug} value={club.slug}>
+            <option key={club.id} value={club.id}>
               {club.name}
             </option>
           ))}
         </optgroup>
         <optgroup label="JFL・地域">
           {others.map((club) => (
-            <option key={club.slug} value={club.slug}>
+            <option key={club.id} value={club.id}>
               {club.name}
             </option>
           ))}

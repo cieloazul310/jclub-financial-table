@@ -9,11 +9,11 @@ export default async function Page() {
   const allClubs = getAllClubs();
   const allYears = getAllYears();
   const allDataset = allClubs.map(
-    async ({ slug, category, name, short_name }) => {
-      const data = await getDataByClub(slug);
+    async ({ id, category, name, short_name }) => {
+      const data = await getDataByClub(id);
 
       return {
-        slug,
+        id,
         category,
         name,
         short_name,
