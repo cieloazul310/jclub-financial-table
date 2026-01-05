@@ -14,7 +14,7 @@ describe("Get data by club", async () => {
     const length = 20;
 
     expect(data.length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(
+    expect(data.filter(({ clubId }) => clubId === "mitohollyhock").length).toBe(
       length,
     );
   });
@@ -28,7 +28,9 @@ describe("Get data by year (2024)", async () => {
 
     expect(data.length).toBe(length);
     expect(data.filter(({ year }) => year === 2024).length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(1);
+    expect(data.filter(({ clubId }) => clubId === "mitohollyhock").length).toBe(
+      1,
+    );
   });
 });
 
@@ -40,7 +42,9 @@ describe("Get data by year (2023)", async () => {
 
     expect(data.length).toBe(length);
     expect(data.filter(({ year }) => year === 2023).length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(1);
+    expect(data.filter(({ clubId }) => clubId === "mitohollyhock").length).toBe(
+      1,
+    );
   });
 });
 
@@ -93,7 +97,7 @@ describe("Get extended club data", async () => {
 describe("Get extended year data", async () => {
   it("mitohollyhock 2024", async () => {
     const data = await getExtendedDataByYear(2024);
-    const datum = data.find(({ slug }) => slug.value === "mitohollyhock");
+    const datum = data.find(({ clubId }) => clubId.value === "mitohollyhock");
     expect(datum?.revenue.value).toBe(1224);
     expect(datum?.revenue.delta).toBe(120);
     expect(datum?.expense.value).toBe(1224);
@@ -105,7 +109,7 @@ describe("Get extended year data", async () => {
 
   it("verdy 2020", async () => {
     const data = await getExtendedDataByYear(2020);
-    const datum = data.find(({ slug }) => slug.value === "verdy");
+    const datum = data.find(({ clubId }) => clubId.value === "verdy");
     expect(datum?.assets?.value).toBe(480);
     expect(datum?.assets?.delta).toBe(-218);
     expect(datum?.net_worth?.value).toBe(-399);

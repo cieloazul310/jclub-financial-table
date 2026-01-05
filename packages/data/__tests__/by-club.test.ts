@@ -10,7 +10,7 @@ describe("Get all data", async () => {
     const length = 20;
 
     expect(data.length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(
+    expect(data.filter(({ clubId }) => clubId === "mitohollyhock").length).toBe(
       length,
     );
   });
@@ -23,7 +23,7 @@ describe("Get specific data", async () => {
     const length = 10;
 
     expect(data.length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(
+    expect(data.filter(({ clubId }) => clubId === "mitohollyhock").length).toBe(
       length,
     );
   });
@@ -37,7 +37,7 @@ describe("Get specific extended data", async () => {
 
     expect(data.length).toBe(length);
     expect(
-      data.filter(({ slug }) => slug.value === "mitohollyhock").length,
+      data.filter(({ clubId }) => clubId.value === "mitohollyhock").length,
     ).toBe(length);
   });
 
@@ -59,8 +59,12 @@ describe("Get all data albirex", async () => {
     const length = 20;
 
     expect(data.length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "albirex").length).toBe(length);
-    expect(data.filter(({ slug }) => slug === "mitohollyhock").length).toBe(0);
+    expect(data.filter(({ clubId }) => clubId === "albirex").length).toBe(
+      length,
+    );
+    expect(data.filter(({ clubId }) => clubId === "mitohollyhock").length).toBe(
+      0,
+    );
   });
 });
 
@@ -70,11 +74,11 @@ describe("Get specific tegevajaro extended data", async () => {
   it("check data length", () => {
     const length = 5;
     expect(data.length).toBe(length);
-    expect(data.filter(({ slug }) => slug.value === "tegevajaro").length).toBe(
-      length,
-    );
     expect(
-      data.filter(({ slug }) => slug.value === "mitohollyhock").length,
+      data.filter(({ clubId }) => clubId.value === "tegevajaro").length,
+    ).toBe(length);
+    expect(
+      data.filter(({ clubId }) => clubId.value === "mitohollyhock").length,
     ).toBe(0);
   });
 

@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 import NextLink from "next/link";
 import { HomeIcon } from "lucide-react";
-import { getClubBySlug } from "@cieloazul310/jclub-financial";
+import { getClubById } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { layout } from "styled-system/recipes";
 import { Layout as BaseLayout } from "@/components/layout";
@@ -12,10 +12,10 @@ import { SidebarTitle } from "@/components/layout/sidebar-title";
 export default async function Layout({
   children,
   params,
-}: PropsWithChildren<{ params: Promise<{ slug: string }> }>) {
-  const { slug } = await params;
-  const club = getClubBySlug(slug);
-  const pathname = `/club/${slug}}`;
+}: PropsWithChildren<{ params: Promise<{ id: string }> }>) {
+  const { id } = await params;
+  const club = getClubById(id);
+  const pathname = `/club/${id}}`;
 
   const headerContent = (
     <Header

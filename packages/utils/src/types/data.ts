@@ -1,6 +1,6 @@
 export const AllGeneralFields = [
   "id",
-  "slug",
+  "clubId",
   "name",
   "short_name",
   "year",
@@ -10,7 +10,11 @@ export const AllGeneralFields = [
 export type GeneralFields = (typeof AllGeneralFields)[number];
 export type General = {
   id: string;
-  slug: string;
+  clubId: string;
+  /**
+   * @deprecated
+   */
+  slug?: string;
   /**
    * 略称
    * name => short_name
@@ -231,7 +235,7 @@ export const AllAttdFields = [
 export type AttdFields = (typeof AllAttdFields)[number];
 export type Attd = {
   /** 入場料収入 */
-  ticket: number | null;
+  ticket?: number | null;
   /** リーグ戦入場者数 */
   league_attd: number;
   /** リーグ戦ホーム試合数 */
