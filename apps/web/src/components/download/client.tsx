@@ -5,10 +5,10 @@ import { Tabs } from "@/components/ui/tabs";
 import { DataFilter } from "./data-filter";
 import { FieldHandler } from "./field-handler";
 import { Preview } from "./preview";
-import type { DownloadDataset } from "./types";
+import type { Dataset } from "./utils/types";
 
 type DownloadClientProps = {
-  dataset: DownloadDataset[];
+  dataset: Dataset[];
 };
 
 export function DownloadClient({ dataset }: DownloadClientProps) {

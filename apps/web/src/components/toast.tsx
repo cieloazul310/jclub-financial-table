@@ -32,7 +32,13 @@ export function Toast() {
               )}
             </div>
             <UIToast.CloseTrigger asChild>
-              <Button variant="text" size="sm" px={4} minWidth="auto">
+              <Button
+                variant="text"
+                size="sm"
+                px={4}
+                minWidth="auto"
+                flexShrink={0}
+              >
                 OK
               </Button>
             </UIToast.CloseTrigger>

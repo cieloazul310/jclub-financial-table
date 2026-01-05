@@ -4,6 +4,7 @@ import { getDataByClub } from "@cieloazul310/jclub-financial/data";
 import { Loading } from "@/components/loading";
 import { DownloadClient } from "@/components/download/client";
 import { DownloadStoreProvider } from "@/providers/download-store-provider";
+import type { Dataset } from "@/components/download/utils/types";
 
 export default async function Page() {
   const allClubs = getAllClubs();
@@ -16,7 +17,7 @@ export default async function Page() {
       data,
     };
   });
-  const dataset = await Promise.all(allDataset);
+  const dataset = (await Promise.all(allDataset)) satisfies Dataset[];
 
   return (
     <Suspense fallback={<Loading />}>

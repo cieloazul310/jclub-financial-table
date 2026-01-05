@@ -1,6 +1,6 @@
-export function useCopy(id: string, callback?: () => void) {
+export function useCopyTable(tableId: string, callback?: () => void) {
   return () => {
-    const table = document.querySelector(`#${id}`);
+    const table = document.querySelector(`#${tableId}`);
     if (table) {
       const range = document.createRange();
       const selection = document.getSelection();

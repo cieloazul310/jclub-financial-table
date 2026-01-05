@@ -45,9 +45,8 @@ export function DataFormatHandler({
         <RadioGroup.Root
           value={dataFormat}
           flexWrap="wrap"
-          mt="1"
+          mt={1}
           orientation="horizontal"
-          size="sm"
           onValueChange={onFormatChange("dataFormat")}
         >
           {dataFormatItems.map(({ title, value }) => (
@@ -64,9 +63,9 @@ export function DataFormatHandler({
         <RadioGroup.Root
           value={groupBy}
           flexWrap="wrap"
-          mt="1"
+          mt={1}
+          rowGap={0}
           orientation="horizontal"
-          size="sm"
           onValueChange={onFormatChange("groupBy")}
         >
           {groupByItems.map(({ title, value }) => (

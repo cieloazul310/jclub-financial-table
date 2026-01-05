@@ -16,7 +16,7 @@ import { styled, type HTMLStyledProps } from "styled-system/jsx";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ActiveChip, InactiveChip } from "@/components/filter/chips";
 import { useDownloadStore } from "@/providers/download-store-provider";
-import { RequiredFields } from "../types";
+import { RequiredFields } from "../utils/required-fields";
 
 const fieldsByTab = [
   {
