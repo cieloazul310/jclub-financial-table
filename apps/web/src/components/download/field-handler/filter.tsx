@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AllGeneralFields,
   AllSeasonResultFields,
@@ -14,7 +16,7 @@ import { styled, type HTMLStyledProps } from "styled-system/jsx";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ActiveChip, InactiveChip } from "@/components/filter/chips";
 import { useDownloadStore } from "@/providers/download-store-provider";
-import { RequiredFields } from "./types";
+import { RequiredFields } from "../types";
 
 const fieldsByTab = [
   {
@@ -69,7 +71,7 @@ export function FieldFilter({
     textStyle: "oln-14B-100",
   }),
   ...rest
-}: HTMLStyledProps<"div"> & {
+}: HTMLStyledProps<"section"> & {
   chipClassName?: string;
 }) {
   const props = { display, gridTemplateColumns, gap, ...rest };
@@ -92,7 +94,7 @@ export function FieldFilter({
   };
 
   return (
-    <styled.div {...props}>
+    <styled.section {...props}>
       {fieldsByTab.map(({ id, title, items }) => (
         <section key={id}>
           <Checkbox.Root
@@ -141,6 +143,6 @@ export function FieldFilter({
           </div>
         </section>
       ))}
-    </styled.div>
+    </styled.section>
   );
 }

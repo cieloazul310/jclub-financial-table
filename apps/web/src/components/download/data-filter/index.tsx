@@ -8,14 +8,13 @@ import { useDownloadStore } from "@/providers/download-store-provider";
 import type { Category } from "@/utils/types";
 import { YearFilter } from "./year-filter";
 
-export function ItemFilter({
+export function DataFilter({
   display = "flex",
   flexDirection = "column",
   gap = 8,
-  p = 2,
   ...rest
 }: HTMLStyledProps<"div">) {
-  const props = { display, flexDirection, gap, p, ...rest };
+  const props = { display, flexDirection, gap, ...rest };
   const { visibleCategories, visibleClubs, visibleYears, set, remove, toggle } =
     useDownloadStore((store) => store);
 

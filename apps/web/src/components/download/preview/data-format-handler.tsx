@@ -23,11 +23,6 @@ const groupByItems = [
 ];
 
 export function DataFormatHandler({
-  /**
-   * display: "flex",
-          flexDirection: { base: "column", md: "row" },
-          gap: { base: 4, md: 12 },
-   */
   display = "flex",
   flexDirection = { base: "column", md: "row" },
   gap = { base: 4, md: 12 },

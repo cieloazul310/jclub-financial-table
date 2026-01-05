@@ -2,8 +2,8 @@
 
 import { css } from "styled-system/css";
 import { Tabs } from "@/components/ui/tabs";
-import { ItemFilter } from "./item-filter";
-import { FieldFilter } from "./field-filter";
+import { DataFilter } from "./data-filter";
+import { FieldHandler } from "./field-handler";
 import { Preview } from "./preview";
 import type { DownloadDataset } from "./types";
 
@@ -22,47 +22,50 @@ export function DownloadClient({ dataset }: DownloadClientProps) {
             md: "1fr 2fr",
           },
           gridTemplateAreas: {
-            base: `"tabs"`,
-            md: `"tabs preview"`,
+            base: `
+            "tabs"
+            "tabContent"
+            `,
+            md: `
+            "tabs preview"
+            "tabContent preview"
+            `,
           },
         })}
       >
+        <Tabs.List
+          bg="white"
+          position="sticky"
+          top={0}
+          zIndex="calc({zIndex.docked} - 1)"
+          gridArea="tabs"
+        >
+          <Tabs.Trigger py={4} value="item-filter">
+            フィルタ
+          </Tabs.Trigger>
+          <Tabs.Trigger py={4} value="fields">
+            項目
+          </Tabs.Trigger>
+          <Tabs.Trigger py={4} value="preview" display={{ md: "none" }}>
+            プレビュー
+          </Tabs.Trigger>
+        </Tabs.List>
         <div
           className={css({
-            gridArea: "tabs",
+            gridArea: "tabContent",
             maxHeight: "calc(100vh - {sizes.header-height})",
             overflowY: "auto",
+            position: "relative",
           })}
         >
-          <Tabs.List
-            bg="white"
-            position="sticky"
-            top={0}
-            zIndex="calc({zIndex.docked} - 1)"
-          >
-            <Tabs.Trigger py={4} value="item-filter">
-              フィルタ
-            </Tabs.Trigger>
-            <Tabs.Trigger py={4} value="fields">
-              項目
-            </Tabs.Trigger>
-            <Tabs.Trigger py={4} value="preview" display={{ md: "none" }}>
-              プレビュー
-            </Tabs.Trigger>
-          </Tabs.List>
           <Tabs.Content value="item-filter" pb={16}>
-            <ItemFilter />
+            <DataFilter p={2} />
           </Tabs.Content>
           <Tabs.Content value="fields" pb={16}>
-            <div className={css({ p: 2 })}>
-              <h3 className={css({ mb: 2, textStyle: "std-17B-170" })}>
-                表示項目
-              </h3>
-              <FieldFilter />
-            </div>
+            <FieldHandler p={2} />
           </Tabs.Content>
           <Tabs.Content value="preview" display={{ md: "none" }}>
-            <Preview dataset={dataset} />
+            <Preview p={2} dataset={dataset} />
           </Tabs.Content>
         </div>
         <div
@@ -71,7 +74,7 @@ export function DownloadClient({ dataset }: DownloadClientProps) {
             gridArea: "preview",
           })}
         >
-          <Preview dataset={dataset} />
+          <Preview pt={4} px={4} dataset={dataset} />
         </div>
       </div>
     </Tabs.Root>

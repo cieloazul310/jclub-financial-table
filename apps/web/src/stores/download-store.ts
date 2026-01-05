@@ -16,6 +16,8 @@ export type DownloadState = {
 
   dataFormat: "json" | "csv";
   groupBy: "none" | "club" | "year";
+
+  convertFieldLabel: boolean;
 };
 
 export type DownloadFilterState = Pick<
@@ -43,6 +45,8 @@ export type DownloadActions = {
     key: K,
     value: DownloadFormatState[K],
   ) => void;
+
+  toggleConvertFieldLabel: () => void;
 };
 
 export type DownloadStore = DownloadState & DownloadActions;
@@ -52,8 +56,11 @@ export const defaultInitState: DownloadState = {
   visibleCategories: [...AllCategories],
   visibleClubs: getAllClubs().map(({ slug }) => slug),
   visibleYears: [2024],
+
   dataFormat: "json",
   groupBy: "none",
+
+  convertFieldLabel: true,
 };
 
 export const createDownloadStore = (
@@ -88,6 +95,11 @@ export const createDownloadStore = (
         setFormat: (key, value) =>
           set(() => ({
             [key]: value,
+          })),
+
+        toggleConvertFieldLabel: () =>
+          set((prevState) => ({
+            convertFieldLabel: !prevState.convertFieldLabel,
           })),
       }),
       {
