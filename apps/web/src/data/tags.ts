@@ -11,4 +11,12 @@ export const tags = [
     id: "license",
     title: "クラブライセンス",
   },
+  {
+    id: "broadcast",
+    title: "配分金",
+  },
+  {
+    id: "others",
+    title: "その他",
+  },
 ];

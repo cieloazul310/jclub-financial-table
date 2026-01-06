@@ -29,11 +29,11 @@ export async function getExtentMap(data: ExtendedFinancialDatum[]) {
   const extents = await getExtentByCategory(categories);
 
   const maxAssets = data.reduce(
-    (accum, d) => Math.max(accum, d.assets.value ?? 0),
+    (accum, d) => Math.max(accum, d.assets?.value ?? 0),
     0,
   );
   const minNetWorth = data.reduce(
-    (accum, d) => Math.min(accum, d.net_worth.value ?? 0),
+    (accum, d) => Math.min(accum, d.net_worth?.value ?? 0),
     0,
   );
 

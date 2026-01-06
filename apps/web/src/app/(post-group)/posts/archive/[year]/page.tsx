@@ -46,7 +46,7 @@ export default async function Page({ params }: Props) {
   );
   const allYears = await getAllPostYears();
   const prev =
-    allYears.findIndex((value) => value === year) !== allYears.length
+    allYears.findIndex((value) => value === year) !== allYears.length - 1
       ? { title: `${year - 1}年の記事一覧`, href: `/posts/archive/${year - 1}` }
       : undefined;
   const next =

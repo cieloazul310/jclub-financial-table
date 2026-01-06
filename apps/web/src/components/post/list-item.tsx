@@ -7,6 +7,7 @@ import { ResourceList } from "@/components/ui/resource-list";
 import type { PostMetadata } from "@/content";
 import { parseFrontmatterDate } from "@/utils/datestring";
 import { getSpecificClub } from "@/utils/get-clubinfo";
+import { tags } from "@/data/tags";
 
 type PostListItemBaseProps = {
   title: string;
@@ -48,6 +49,7 @@ export function PostListItem({ post }: { post: PostMetadata }) {
   const { title, tag } = frontmatter;
   const { date, lastmod, isModified } = parseFrontmatterDate(frontmatter);
   const club = getSpecificClub(frontmatter.club, "short_name");
+  const currentTag = tags.find((tagItem) => tagItem.title === tag);
 
   const headerText = (
     <span
@@ -64,14 +66,16 @@ export function PostListItem({ post }: { post: PostMetadata }) {
           <NextLink href={`/club/${club.id}`}>{club.short_name}</NextLink>
         </ChipLabel>
       )}
-      {tag && (
+      {currentTag && (
         <ChipLabel
           variant="ghost"
           colorPalette="solid-gray"
           zIndex={1}
           textStyle="dns-14B-130"
         >
-          {tag}
+          <NextLink href={`/posts/tag/${currentTag.id}`}>
+            {currentTag.title}
+          </NextLink>
         </ChipLabel>
       )}
     </span>
