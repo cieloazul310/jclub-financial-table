@@ -58,7 +58,7 @@ export default async function Page({ params }: { params: Promise<Props> }) {
   return (
     <>
       <article>
-        <PageHeader title={title}>
+        <PageHeader title={title} px={{ base: 2, md: 4 }}>
           <span
             className={css({
               display: "flex",
@@ -83,7 +83,10 @@ export default async function Page({ params }: { params: Promise<Props> }) {
         <div
           className={css({
             display: "grid",
-            gridTemplateColumns: { base: "1fr", lg: "1fr auto" },
+            gridTemplateColumns: {
+              base: "1fr",
+              lg: "1fr minmax(auto, {sizes.sidebar-width})",
+            },
           })}
         >
           <section className={css({ px: { base: 2, sm: 4 } })}>
