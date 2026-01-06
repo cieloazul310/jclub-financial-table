@@ -1,10 +1,11 @@
 import { stat, readFile } from "fs/promises";
 import { resolve, join } from "path";
-import { CATEGORIES, type Category, type Fields, type ValueItem } from "./type";
+import { getAllYears } from "@cieloazul310/jclub-financial-utils";
+import type { StatsCategory, Fields, ValueItem } from "./type";
 
 export type StatsResult = {
   year: number;
-  category: Category;
+  category: StatsCategory;
   key: Fields;
   totalCount: number;
   values: ValueItem[];
@@ -47,7 +48,7 @@ async function loadStatsFile(year: number, category: string) {
 
 export async function getStatistics(
   year: number,
-  category: Category,
+  category: StatsCategory,
   key: Fields,
 ): Promise<StatsResult> {
   const file = await loadStatsFile(year, category);
@@ -110,14 +111,14 @@ export async function getStatistics(
 
 export type Year = number;
 
-const DEFAULT_YEARS: Year[] = Array.from({ length: 20 }, (_, i) => 2005 + i);
+const DEFAULT_YEARS: Year[] = getAllYears().map(({ year }) => year);
 
 /**
  * Returns an array of statistics for a single category across multiple years.
  * Example: getCategoryYearSeries("J2", key) -> [Stats|null for 2005, 2006, ...]
  */
 export async function getCategoryYearSeries(
-  category: Category,
+  category: StatsCategory,
   key: Fields,
 ): Promise<(StatsResult | null)[]> {
   const result: (StatsResult | null)[] = [];
@@ -132,18 +133,51 @@ export async function getCategoryYearSeries(
  * Returns statistics for a single year as an object keyed by category.
  * If a category has no data, its value will be null.
  */
-export async function getStatsByYear(
+export function getStatsByYear(
   year: Year,
-  key: Fields,
-): Promise<Record<Category, StatsResult | null>> {
-  const out: Record<Category, StatsResult | null> = {
+  keys: Fields,
+): Promise<Record<StatsCategory, StatsResult | null> | null>;
+
+export function getStatsByYear(
+  year: Year,
+  keys: Fields[],
+): Promise<Record<StatsCategory, Record<Fields, StatsResult | null>> | null>;
+
+export async function getStatsByYear(year: Year, keys: Fields | Fields[]) {
+  const allYears = getAllYears();
+  const categories = allYears.find(
+    (yearInfo) => yearInfo.year === year,
+  )?.categories;
+  if (!categories) return null;
+
+  if (typeof keys === "string") {
+    const out: Record<StatsCategory, StatsResult | null> = {
+      J1: null,
+      J2: null,
+      J3: null,
+    } as any;
+
+    for (const cat of categories) {
+      const stats = await getStatistics(year, cat as StatsCategory, keys);
+      out[cat] = stats.totalCount === 0 ? null : stats;
+    }
+    return out;
+  }
+
+  const out: Record<StatsCategory, Record<Fields, StatsResult | null>> = {
     J1: null,
     J2: null,
     J3: null,
   } as any;
-  for (const cat of CATEGORIES) {
-    const stats = await getStatistics(year, cat as Category, key);
-    out[cat] = stats.totalCount === 0 ? null : stats;
+
+  for (const cat of categories) {
+    const statsByCategory: Record<Fields, StatsResult | null> = {} as any;
+
+    for (const key of keys) {
+      const stats = await getStatistics(year, cat as StatsCategory, key);
+      statsByCategory[key] = stats.totalCount === 0 ? null : stats;
+    }
+    out[cat] = statsByCategory;
   }
   return out;
 }
