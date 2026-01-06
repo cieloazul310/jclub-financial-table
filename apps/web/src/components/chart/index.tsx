@@ -1,5 +1,5 @@
 import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
-import { css } from "styled-system/css";
+import { styled, type HTMLStyledProps } from "styled-system/jsx";
 import { ChartTitle } from "./title";
 import { ChartClient } from "./chart-client";
 import { getExtentMap } from "./get-extent-map";
@@ -7,9 +7,21 @@ import { getAverages } from "./get-averages";
 
 type ChartProps = {
   data: ExtendedFinancialDatum[];
-};
+} & Omit<
+  HTMLStyledProps<"figure">,
+  "display" | "gridTemplateAreas" | "gridTemplateColumns"
+>;
 
-export async function Chart({ data }: ChartProps) {
+export async function Chart({
+  data,
+  width = "max-content",
+  maxWidth = "full",
+  mx = "auto",
+  textStyle = "oln-14N-100",
+  fontFamily = "table",
+  ...rest
+}: ChartProps) {
+  const props = { width, maxWidth, mx, textStyle, fontFamily, ...rest };
   const height = 400;
   const itemWidth = 40;
   const padding = { top: 20, right: 48, bottom: 40, left: 50 };
@@ -17,20 +29,14 @@ export async function Chart({ data }: ChartProps) {
   const averages = await getAverages();
 
   return (
-    <figure
-      className={css({
-        display: "grid",
-        width: "max-content",
-        maxWidth: "full",
-        mx: "auto",
-        textStyle: "oln-14N-100",
-        fontFamily: "table",
-        gridTemplateAreas: `
+    <styled.figure
+      display="grid"
+      gridTemplateAreas={`
       "caption caption"
       "axis main"
-    `,
-        gridTemplateColumns: `${padding.left}px 1fr`,
-      })}
+    `}
+      gridTemplateColumns={`${padding.left}px 1fr`}
+      {...props}
     >
       <ChartTitle />
       <ChartClient
@@ -41,6 +47,6 @@ export async function Chart({ data }: ChartProps) {
         extentMap={extentMap}
         averages={averages}
       />
-    </figure>
+    </styled.figure>
   );
 }

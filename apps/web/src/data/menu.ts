@@ -4,37 +4,37 @@ export const clubTableMenu = [
   {
     id: "j1",
     title: "J1",
-    items: getClubsByCategory("J1").map(({ slug, name }) => ({
-      id: slug,
+    items: getClubsByCategory("J1").map(({ id, name }) => ({
+      id: id,
       title: name,
-      href: `/club/${slug}`,
+      href: `/club/${id}`,
     })),
   },
   {
     id: "j2",
     title: "J2",
-    items: getClubsByCategory("J2").map(({ slug, name }) => ({
-      id: slug,
+    items: getClubsByCategory("J2").map(({ id, name }) => ({
+      id: id,
       title: name,
-      href: `/club/${slug}`,
+      href: `/club/${id}`,
     })),
   },
   {
     id: "j3",
     title: "J3",
-    items: getClubsByCategory("J3").map(({ slug, name }) => ({
-      id: slug,
+    items: getClubsByCategory("J3").map(({ id, name }) => ({
+      id: id,
       title: name,
-      href: `/club/${slug}`,
+      href: `/club/${id}`,
     })),
   },
   {
     id: "others",
     title: "JFL・地域",
-    items: getClubsByCategory("others").map(({ slug, name }) => ({
-      id: slug,
+    items: getClubsByCategory("others").map(({ id, name }) => ({
+      id: id,
       title: name,
-      href: `/club/${slug}`,
+      href: `/club/${id}`,
     })),
   },
 ];
@@ -53,11 +53,14 @@ export const yearTableMenu = {
 
 export const tableMenu = [...clubTableMenu, yearTableMenu];
 
-export function menuWithSelection(pathname?: string) {
+export function menuWithSelection(currentPathname?: string) {
   return tableMenu.map(({ id, title, items }) => {
     const selectedItems = items.map((item) => ({
       ...item,
-      selected: pathname && new RegExp(item.id).test(pathname) ? true : false,
+      selected:
+        currentPathname && new RegExp(item.id).test(currentPathname)
+          ? true
+          : false,
     }));
 
     return {

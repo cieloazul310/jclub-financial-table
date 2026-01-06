@@ -6,6 +6,7 @@ import { layout } from "styled-system/recipes";
 import { Layout as BaseLayout } from "@/components/layout";
 import { Header } from "@/components/layout/header";
 import { Menu } from "@/components/layout/menu";
+import { DownloadStoreProvider } from "@/providers/download-store-provider";
 
 export default function Layout({ children }: PropsWithChildren) {
   const headerContent = (
@@ -37,7 +38,7 @@ export default function Layout({ children }: PropsWithChildren) {
         contentWidth: "full",
       })}
     >
-      {children}
+      <DownloadStoreProvider>{children}</DownloadStoreProvider>
     </BaseLayout>
   );
 }

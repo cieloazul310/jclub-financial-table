@@ -48,5 +48,32 @@ describe("Get Stats By Year", () => {
     expect(statsByCategory).toHaveProperty("J1");
     expect(statsByCategory).toHaveProperty("J2");
     expect(statsByCategory).toHaveProperty("J3");
+
+    const stats = statsByCategory?.["J1"];
+    expect(stats).toHaveProperty("sum");
+    expect(stats).toHaveProperty("average");
+    expect(stats).toHaveProperty("variance");
+
+    expect(stats?.average).toBe(4459);
+  });
+});
+
+describe("Get Stats By Year with Array arguments", () => {
+  it("should get statistics for all categories for a specific year", async () => {
+    const statsByCategory = await getStatsByYear(2024, [
+      "revenue",
+      "average_attd",
+    ]);
+    expect(statsByCategory).toHaveProperty("J1");
+    expect(statsByCategory).toHaveProperty("J2");
+    expect(statsByCategory).toHaveProperty("J3");
+
+    const stats_j2 = statsByCategory?.["J2"];
+    expect(stats_j2).toHaveProperty("revenue");
+    expect(stats_j2).toHaveProperty("average_attd");
+    expect(stats_j2).not.toHaveProperty("expense");
+
+    expect(stats_j2?.average_attd?.average).toBe(7667);
+    expect(stats_j2?.average_attd?.max).toBe(17750);
   });
 });

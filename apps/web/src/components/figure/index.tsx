@@ -74,6 +74,7 @@ export function Figure({
           mx: "auto",
           maxWidth: "breakpoint-2xl",
           width: "full",
+          px: { base: 4, md: 8 },
         })}
       >
         <Toolbar mode={mode} tab={tab} />

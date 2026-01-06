@@ -14,7 +14,7 @@ export default async function Layout({
 }: PropsWithChildren<{ params: Promise<{ year: string }> }>) {
   const { year } = await params;
   const title = `${year}年度の経営情報`;
-  const pathname = `/year/${year}`;
+  const currentPathname = `/year/${year}`;
   const headerContent = (
     <Header
       title={
@@ -31,13 +31,13 @@ export default async function Layout({
           <span>{title}</span>
         </span>
       }
-      drawerContent={<Menu pathname={pathname} />}
+      drawerContent={<Menu currentPathname={currentPathname} />}
     />
   );
   const sidebarContent = (
     <>
       <SidebarTitle />
-      <Menu pathname={pathname} />
+      <Menu currentPathname={currentPathname} />
     </>
   );
 
@@ -47,6 +47,7 @@ export default async function Layout({
         breakpoint: "2xl",
         headerAlways: true,
         contentWidth: "full",
+        disableContentGutter: true,
       })}
       headerContent={headerContent}
       sidebarContent={sidebarContent}

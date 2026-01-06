@@ -133,6 +133,18 @@ export const layout = defineSlotRecipe({
         },
       },
     },
+    disableContentGutter: {
+      false: {
+        content: {
+          px: { base: 4, md: 8 },
+        },
+      },
+      true: {
+        content: {
+          px: 0,
+        },
+      },
+    },
   },
   compoundVariants: [
     {
@@ -152,5 +164,6 @@ export const layout = defineSlotRecipe({
     breakpoint: "lg",
     headerAlways: false,
     contentWidth: "auto",
+    disableContentGutter: false,
   },
 });

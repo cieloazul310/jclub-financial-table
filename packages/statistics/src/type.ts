@@ -1,5 +1,5 @@
 export const CATEGORIES = ["J1", "J2", "J3"] as const;
-export type Category = (typeof CATEGORIES)[number];
+export type StatsCategory = (typeof CATEGORIES)[number];
 
 export const Fields = [
   "revenue",
@@ -34,6 +34,6 @@ export type CreateStatsResult = {
 
 export type DatasetFile = {
   year: number;
-  category: Category;
+  category: StatsCategory;
   stats: Record<string, CreateStatsResult>;
 };

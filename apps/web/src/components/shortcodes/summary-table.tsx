@@ -19,7 +19,7 @@ export function SummaryTable({
   const props = { maxWidth, overflowX };
   return (
     <styled.div {...props} {...rest}>
-      <Table.Root>
+      <Table.Root dense>
         <colgroup>
           <col className={css({ minWidth: "180px" })} />
           <col span={2} />

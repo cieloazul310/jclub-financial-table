@@ -82,12 +82,15 @@ function PLBar({
         fill={fill}
       />
       <text
-        className={css({ display: { base: "none", _groupHover: "block" } })}
+        className={css({
+          color: { base: "solid-gray.300", _groupHover: "solid-gray.900" },
+        })}
         x={itemWidth / 2}
         y={scale(revenue.value)}
         dy="-.4em"
         textAnchor="middle"
         fontWeight="bold"
+        fill="currentColor"
       >
         {revenue.value}
       </text>
@@ -183,12 +186,15 @@ function ExpenseBar({
             fill={fill}
           />
           <text
-            className={css({ display: { base: "none", _groupHover: "block" } })}
+            className={css({
+              color: { base: "solid-gray.420", _groupHover: "solid-gray.900" },
+            })}
             x={itemWidth / 2}
             y={scale(salary.value)}
             dy="-.4em"
             textAnchor="middle"
             fontWeight="bold"
+            fill="currentColor"
           >
             {salary.value}
           </text>
@@ -196,8 +202,7 @@ function ExpenseBar({
       )}
       <text
         className={css({
-          display: { base: "none", _groupHover: "block" },
-          color: "solid-gray.600",
+          color: { base: "solid-gray.300", _groupHover: "solid-gray.900" },
         })}
         x={itemWidth / 2}
         y={scale(expense.value)}

@@ -1,3 +1,8 @@
+/**
+ * @see
+ * https://zenn.dev/ncdc/articles/react_window_size_subscription
+ */
+
 "use client";
 
 import { useSyncExternalStore } from "react";

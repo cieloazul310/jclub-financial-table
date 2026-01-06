@@ -3,7 +3,6 @@ import type { ClubInfo } from "./types";
 export const clubInfoDictionary: Record<keyof ClubInfo, string> = {
   id: "id",
   code: "code",
-  slug: "slug",
   name: "呼称",
   fullname: "正式名称",
   short_name: "略称",
@@ -15,7 +14,7 @@ export const clubInfoDictionary: Record<keyof ClubInfo, string> = {
   website: "公式サイト",
   settlement: "決算情報",
   relatedCompanies: "関連する法人",
-  annotation: "注釈",
+  annotation: "注記",
 };
 
 const has = Object.prototype.hasOwnProperty;

@@ -5,16 +5,11 @@ import { Accordion } from "@/components/ui/accordion";
 import { menuWithSelection, postMenu, contentMenu } from "@/data/menu";
 
 type MenuProps = {
-  /**
-   * @deprecated
-   */
-  slug?: string[];
-  pathname?: string;
+  currentPathname?: string;
 };
 
-export function Menu({ slug = [], pathname }: MenuProps) {
-  const tmpPathname = pathname ?? `/${slug.join("/")}`;
-  const menuCollection = menuWithSelection(tmpPathname);
+export function Menu({ currentPathname = "/" }: MenuProps) {
+  const menuCollection = menuWithSelection(currentPathname);
   const defaultValue = menuCollection
     .filter(({ selected }) => selected)
     .map(({ id }) => id);
@@ -81,7 +76,8 @@ export function Menu({ slug = [], pathname }: MenuProps) {
               )}
               href={href}
               data-selected={
-                tmpPathname !== "/" && new RegExp(tmpPathname).test(href)
+                currentPathname !== "/" &&
+                new RegExp(currentPathname).test(href)
                   ? true
                   : undefined
               }

@@ -62,13 +62,13 @@ export function sortAndFilter(
 
   if (sortField === "rank") {
     return data
-      .filter(({ slug }) => visibleClubs.includes(slug.value))
+      .filter(({ clubId }) => visibleClubs.includes(clubId.value))
       .filter(filter)
       .sort((a, b) => (getRank(a) - getRank(b)) * (sortAsc ? -1 : 1));
   }
 
   return data
-    .filter(({ slug }) => visibleClubs.includes(slug.value))
+    .filter(({ clubId }) => visibleClubs.includes(clubId.value))
     .filter(filter)
     .sort(
       (a, b) =>

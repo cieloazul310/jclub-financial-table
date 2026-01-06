@@ -6,7 +6,9 @@ import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
 import { Figure } from "@/components/figure";
 import { Loading } from "@/components/loading";
+import { YearSummary } from "@/components/year-summary";
 import { PrevNextLink } from "@/components/prev-next-link";
+import { SelectLink } from "@/components/select-link";
 import { Heading2 } from "@/components/article";
 
 function getPrevNext(currentYear: number) {
@@ -58,11 +60,26 @@ export default async function Page({ params }: Props) {
           next && { href: `/year/${next.year}`, title: `${next.year}年度` }
         }
         mt={12}
+        px={{ base: 4, md: 8 }}
       />
-      <article className={container({ maxWidth: "common-main-width", mt: 12 })}>
-        <Heading2>{title}</Heading2>
-        <div className={css()}>{/*<ClubSummary club={club} />*/}</div>
-      </article>
+      <div className={container({ maxWidth: "common-main-width", mt: 12 })}>
+        <article className={css({ mb: 12 })}>
+          <Heading2>{title}</Heading2>
+          <YearSummary year={parseInt(year, 10)} />
+        </article>
+        <section className={css({ mb: 12 })}>
+          <SelectLink />
+          <PrevNextLink
+            leftSlot={
+              prev && { href: `/year/${prev.year}`, title: `${prev.year}年度` }
+            }
+            rightSlot={
+              next && { href: `/year/${next.year}`, title: `${next.year}年度` }
+            }
+            mt={12}
+          />
+        </section>
+      </div>
     </>
   );
 }

@@ -1,11 +1,13 @@
 "use client";
 
-import { useId } from "react";
+import { Suspense, useId } from "react";
 import { Copy } from "lucide-react";
 import { css } from "styled-system/css";
 import { Button } from "@/components/ui/button";
+import { Toast, toaster } from "@/components/toast";
 import { Tooltip } from "@/components/tooltip";
-import { useCopy } from "@/utils/use-copy";
+import { Loading } from "@/components/loading";
+import { useCopyTable } from "@/utils/use-copy";
 import { Filter } from "./filter";
 import { SeriesSelect } from "./select";
 import { SeriesTable } from "./table";
@@ -17,7 +19,12 @@ type SeriesClientProps = {
 
 export function SeriesClient({ dataset }: SeriesClientProps) {
   const id = useId();
-  const onCopy = useCopy(id);
+  const onClick = useCopyTable(id, () => {
+    toaster.create({
+      description: "表をクリップボードにコピーしました",
+      type: "info",
+    });
+  });
 
   return (
     <div
@@ -43,14 +50,17 @@ export function SeriesClient({ dataset }: SeriesClientProps) {
             variant="outline"
             colorPalette="solid-gray"
             size="sm"
-            onClick={onCopy}
+            onClick={onClick}
           >
             <Copy />
           </Button>
         </Tooltip>
+        <Toast />
         <Filter />
       </div>
-      <SeriesTable tableId={id} dataset={dataset} />
+      <Suspense fallback={<Loading />}>
+        <SeriesTable tableId={id} dataset={dataset} />
+      </Suspense>
     </div>
   );
 }

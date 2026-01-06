@@ -63,7 +63,7 @@ export function SeriesTable({
   );
   const yearIndex = filteredYears.findIndex(({ year }) => year === sortYear);
   const filteredDataset = dataset
-    .filter(({ slug }) => visibleClubs.includes(slug))
+    .filter(({ id }) => visibleClubs.includes(id))
     .map(({ data, ...props }) => ({
       ...props,
       data: data.filter(({ year }) => year >= from && year <= to),
@@ -160,8 +160,8 @@ export function SeriesTable({
             </Table.Row>
           </Table.Head>
           <Table.Body>
-            {filteredDataset.map(({ slug, short_name, data }) => (
-              <Table.Row key={slug}>
+            {filteredDataset.map(({ id, short_name, data }) => (
+              <Table.Row key={id}>
                 <Table.Header
                   scope="row"
                   bg="white"
@@ -173,7 +173,7 @@ export function SeriesTable({
                 </Table.Header>
                 {data.map(({ year, datum }) => (
                   <Table.Cell
-                    key={`${slug}-${year}`}
+                    key={`${id}-${year}`}
                     className={tableCellStyle(datum?.category)}
                     align="right"
                   >

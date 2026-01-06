@@ -1,0 +1,48 @@
+---
+title: 開発者向けツール
+---
+
+Jクラブ経営情報ポータルでは開発者向けにデータをダウンロードするサービスを開始しました。
+
+## NPMパッケージ
+
+```sh
+npm install @cieloazul310/jclub-financial
+```
+
+または
+
+```sh
+npm install @cieloazul310/jclub-financial-data
+```
+
+## 関数
+
+### データの取得
+
+#### クラブ別
+
+```ts
+import { getDataByClub } from "@cieloazul310/jclub-financial/data";
+
+// データパッケージのみインストールしている場合
+// import { getDataByClub } from "@cieloazul310/jclub-financial-data";
+
+const data = await getDataByClub("clubId");
+// => Array or undefined
+```
+
+#### 年別
+
+```ts
+import { getDataByYear } from "@cieloazul310/jclub-financial/data";
+
+// データパッケージのみインストールしている場合
+// import { getDataByClub } from "@cieloazul310/jclub-financial-data";
+
+const data = await getDataByYear(2024);
+// => Array or undefined
+```
+
+### クラブ、年の情報の取得
+
