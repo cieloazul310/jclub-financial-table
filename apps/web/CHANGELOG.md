@@ -1,5 +1,13 @@
 # jclub-financial-app
 
+## 0.0.1-alpha.8
+
+### Patch Changes
+
+- d6d0dab: Update
+- Updated dependencies [d6d0dab]
+  - @cieloazul310/jclub-financial@0.0.1-alpha.8
+
 ## 0.0.1-alpha.7
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @cieloazul310/jclub-financial-statistics
 
+## 0.0.1-alpha.8
+
+### Patch Changes
+
+- d6d0dab: Update
+- Updated dependencies [d6d0dab]
+  - @cieloazul310/jclub-financial-utils@0.0.1-alpha.8
+  - @cieloazul310/jclub-financial-data@0.0.1-alpha.8
+
 ## 0.0.1-alpha.7
 
 ### Patch Changes
