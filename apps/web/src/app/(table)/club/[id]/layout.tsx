@@ -49,6 +49,7 @@ export default async function Layout({
         breakpoint: "2xl",
         headerAlways: true,
         contentWidth: "full",
+        disableContentGutter: true,
       })}
       headerContent={headerContent}
       sidebarContent={sidebarContent}

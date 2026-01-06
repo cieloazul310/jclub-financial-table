@@ -6,6 +6,7 @@ import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
 import { Figure } from "@/components/figure";
 import { Loading } from "@/components/loading";
+import { YearSummary } from "@/components/year-summary";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { Heading2 } from "@/components/article";
 
@@ -58,11 +59,14 @@ export default async function Page({ params }: Props) {
           next && { href: `/year/${next.year}`, title: `${next.year}年度` }
         }
         mt={12}
+        px={{ base: 4, md: 8 }}
       />
-      <article className={container({ maxWidth: "common-main-width", mt: 12 })}>
-        <Heading2>{title}</Heading2>
-        <div className={css()}>{/*<ClubSummary club={club} />*/}</div>
-      </article>
+      <div className={container({ maxWidth: "common-main-width", mt: 12 })}>
+        <article>
+          <Heading2>{title}</Heading2>
+          <YearSummary year={parseInt(year, 10)} />
+        </article>
+      </div>
     </>
   );
 }

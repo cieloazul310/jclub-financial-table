@@ -10,7 +10,7 @@ import { Figure } from "@/components/figure";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { ClubSummary } from "@/components/club-summary";
 import { Chart } from "@/components/chart";
-import { Heading2, Heading3 } from "@/components/article";
+import { Heading3 } from "@/components/article";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { SelectLink } from "@/components/select-link";
@@ -63,45 +63,43 @@ export default async function Page({ params }: Props) {
         leftSlot={{ href: `/club/${prev?.id}`, title: prev?.name }}
         rightSlot={{ href: `/club/${next?.id}`, title: next?.name }}
         mt={12}
+        px={{ base: 4, md: 8 }}
       />
-      <article className={container({ maxWidth: "common-main-width", mt: 12 })}>
-        <Heading2>{club.name}</Heading2>
-        {data.length >= 2 && (
-          <div className={css({ mb: 8 })}>
-            <Chart data={data} />
-          </div>
-        )}
-        <div className={css()}>
-          <ClubSummary club={club} />
-        </div>
-      </article>
-      {posts.length && (
-        <section
-          className={container({ maxWidth: "common-main-width", mt: 16 })}
-        >
-          <Heading3>{club.name}の最新記事</Heading3>
-          <PostList mb={8}>
-            {posts.slice(0, 4).map((post) => (
-              <PostListItem key={post.href} post={post} />
-            ))}
-          </PostList>
-          {posts.length > 4 && (
-            <div className={css({ textAlign: "right" })}>
-              <Link href={`/club/${club.id}/posts`}>
-                {club.name}の記事一覧へ
-              </Link>
+      <div className={container({ maxWidth: "common-main-width", mt: 12 })}>
+        <article className={css({ mb: 12 })}>
+          {data.length >= 2 && (
+            <div className={css({ mb: 8 })}>
+              <Chart data={data} />
             </div>
           )}
+          <ClubSummary club={club} />
+        </article>
+        {posts.length > 0 && (
+          <section className={css({ mb: 12 })}>
+            <Heading3>{club.name}の最新記事</Heading3>
+            <PostList mb={4}>
+              {posts.slice(0, 4).map((post) => (
+                <PostListItem key={post.href} post={post} />
+              ))}
+            </PostList>
+            {posts.length > 4 && (
+              <div className={css({ textAlign: "right" })}>
+                <Link href={`/club/${club.id}/posts`}>
+                  {club.name}の記事一覧へ
+                </Link>
+              </div>
+            )}
+          </section>
+        )}
+        <section className={css({ mb: 12 })}>
+          <SelectLink />
+          <PrevNextLink
+            leftSlot={{ href: `/club/${prev?.id}`, title: prev?.name }}
+            rightSlot={{ href: `/club/${next?.id}`, title: next?.name }}
+            mt={12}
+          />
         </section>
-      )}
-      <section className={container({ maxWidth: "common-main-width", mt: 16 })}>
-        <SelectLink />
-        <PrevNextLink
-          leftSlot={{ href: `/club/${prev?.id}`, title: prev?.name }}
-          rightSlot={{ href: `/club/${next?.id}`, title: next?.name }}
-          mt={12}
-        />
-      </section>
+      </div>
     </>
   );
 }
