@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: Promise<Props> }) {
 
   return (
     <>
-      <article>
+      <article className={css({ maxWidth: "60em", mx: "auto" })}>
         <PageHeader title={title} px={{ base: 2, md: 4 }}>
           <>
             <span

@@ -9,7 +9,7 @@ export function ArticleGrid({
   display = "grid",
   gridTemplateColumns = {
     base: "1fr",
-    lg: "1fr minmax(auto, {sizes.sidebar-width})",
+    xl: "1fr minmax(auto, {sizes.sidebar-width})",
   },
   ...rest
 }: HTMLStyledProps<"div"> & {
@@ -40,10 +40,9 @@ export function ArticleGrid({
         <div
           className={cx(
             css({
-              display: { base: "none", lg: "block" },
+              display: { base: "none", xl: "block" },
               position: "sticky",
               top: 8,
-              maxWidth: "sidebar-width",
               maxHeight: "calc(100vh - {spacing.8})",
               containerName: "article-sidebar",
               containerType: "inline-size",

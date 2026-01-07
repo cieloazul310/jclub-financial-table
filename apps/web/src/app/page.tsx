@@ -1,4 +1,5 @@
 import { css } from "styled-system/css";
+import { cq } from "styled-system/patterns";
 import { Layout } from "@/components/layout";
 import { Link } from "@/components/link";
 import { PageHeader } from "@/components/page-header";
@@ -62,7 +63,7 @@ export default async function Home() {
         </PostList>
       </section>
       <section className={css({ mb: 12 })}>
-        <article>
+        <article className={cq()}>
           <Attribution />
           <AboutArticle />
           <Reference />

@@ -8,7 +8,11 @@ import {
 } from "react";
 import { useStore, type StoreApi } from "zustand";
 
-import { createTableStore, type TableStore } from "@/stores/table-store";
+import {
+  defaultInitState,
+  createTableStore,
+  type TableStore,
+} from "@/stores/table-store";
 
 export const TableStoreContext = createContext<StoreApi<TableStore> | null>(
   null,
@@ -17,6 +21,11 @@ export const TableStoreContext = createContext<StoreApi<TableStore> | null>(
 export type TableStoreProviderProps = PropsWithChildren;
 
 export function TableStoreProvider({ children }: TableStoreProviderProps) {
+  const initialState = {
+    ...defaultInitState,
+    cardMode: true,
+  };
+
   const storeRef = useRef<StoreApi<TableStore>>(createTableStore());
   /*
   const storeRef = useRef<StoreApi<TableStore>>(null);

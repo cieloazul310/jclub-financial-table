@@ -51,7 +51,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <article>
+      <article className={css({ maxWidth: "60em", mx: "auto" })}>
         <PageHeader title={title} px={{ base: 2, md: 4 }}>
           {groupMenu?.title}
         </PageHeader>

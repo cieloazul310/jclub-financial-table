@@ -8,15 +8,15 @@
 import { useSyncExternalStore } from "react";
 
 type WindowSize = {
-  windowWidth: number;
-  windowHeight: number;
+  windowWidth?: number;
+  windowHeight?: number;
 };
 
 const getWindowWidth = () => {
-  return window.innerWidth;
+  return typeof window !== "object" ? undefined : window.innerWidth;
 };
 const getWindowHeight = () => {
-  return window.innerHeight;
+  return typeof window !== "object" ? undefined : window.innerHeight;
 };
 
 const subscribeWindowSizeChange = (callback: () => void) => {
@@ -25,10 +25,15 @@ const subscribeWindowSizeChange = (callback: () => void) => {
 };
 
 export const useWindowSize = (): WindowSize => {
-  const width = useSyncExternalStore(subscribeWindowSizeChange, getWindowWidth);
+  const width = useSyncExternalStore(
+    subscribeWindowSizeChange,
+    getWindowWidth,
+    () => undefined,
+  );
   const height = useSyncExternalStore(
     subscribeWindowSizeChange,
     getWindowHeight,
+    () => undefined,
   );
   return { windowWidth: width, windowHeight: height };
 };

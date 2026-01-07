@@ -16,14 +16,20 @@ import "swiper/css/free-mode";
 
 function useInitialIndex(data: ExtendedFinancialDatum[], mode: Mode) {
   if (mode === "club") {
-    const storaged = window.sessionStorage.getItem("currentYear");
+    const storaged =
+      typeof window === "object"
+        ? window.sessionStorage.getItem("currentYear")
+        : undefined;
     if (!storaged) return data.length - 1;
     const currentYear = parseInt(storaged, 10);
     const index = data.findIndex(({ year }) => year.value === currentYear);
     if (index < 0) return data.length - 1;
     return index;
   }
-  const storaged = window.sessionStorage.getItem("currentClub");
+  const storaged =
+    typeof window === "object"
+      ? window.sessionStorage.getItem("currentClub")
+      : undefined;
   if (!storaged) return 0;
   const index = data.findIndex(({ clubId }) => clubId.value === storaged);
   if (index < 0) return 0;

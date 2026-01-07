@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { css } from "styled-system/css";
+import { cx, css } from "styled-system/css";
 import { Link } from "@/components/link";
 import { ResourceList } from "@/components/ui/resource-list";
 import type { PostMetadata } from "@/content";
@@ -49,7 +49,7 @@ export function PostListItemBase({
 
 export function PostListItem({ post }: { post: PostMetadata }) {
   const { frontmatter, href } = post;
-  const { title, tag } = frontmatter;
+  const { title, tag, draft } = frontmatter;
   const { date, lastmod, isModified } = parseFrontmatterDate(frontmatter);
   const club = getSpecifiedClub("short_name", frontmatter.club);
   const currentTag = getCurrentTag("title", tag);
@@ -63,14 +63,18 @@ export function PostListItem({ post }: { post: PostMetadata }) {
 
   const footerText = (
     <span
-      className={css({
-        display: "flex",
-        flexDirection: { base: "column", sm: "row" },
-        gap: { base: 0, sm: 2 },
-        alignItems: { base: "start", sm: "baseline" },
-        textStyle: "dns-16N-130",
-      })}
+      className={cx(
+        css({
+          display: "flex",
+          flexDirection: { base: "column", sm: "row" },
+          gap: { base: 0, sm: 2 },
+          alignItems: { base: "start", sm: "baseline" },
+          textStyle: "dns-16N-130",
+        }),
+        draft && css({ color: "error.2" }),
+      )}
     >
+      {draft && <span>下書き</span>}
       <time dateTime={date.datetime}>{date.datestring}</time>
       {isModified && (
         <small className={css({ color: "solid-gray.600" })}>

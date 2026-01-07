@@ -30,6 +30,7 @@ export function PreviewActions({
   };
 
   const download = useMemo(() => {
+    if (typeof window !== "object") return undefined;
     const blob = new Blob([content], {
       type: dataFormat === "csv" ? "text/csv" : "application/json",
     });
