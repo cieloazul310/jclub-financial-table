@@ -31,7 +31,14 @@ export function useMDXComponents(
     li: (props) => <List {...props} />,
     hr: (props) => <Divider {...props} my={8} />,
     table: (props) => (
-      <div className={css({ maxWidth: "full", overflowX: "auto", my: 8 })}>
+      <div
+        className={css({
+          position: "relative",
+          maxWidth: "full",
+          overflowX: "auto",
+          my: 8,
+        })}
+      >
         <Table.Root dense={{ base: true, sm: false }} {...props} />
       </div>
     ),

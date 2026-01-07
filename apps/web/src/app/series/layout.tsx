@@ -6,6 +6,7 @@ import { layout } from "styled-system/recipes";
 import { Layout as BaseLayout } from "@/components/layout";
 import { Header } from "@/components/layout/header";
 import { Menu } from "@/components/layout/menu";
+import { PageBottomNav } from "@/components/page-bottom-nav";
 import { SeriesStoreProvider } from "@/providers/series-store-provider";
 
 export default function Layout({ children }: PropsWithChildren) {
@@ -39,6 +40,7 @@ export default function Layout({ children }: PropsWithChildren) {
       })}
     >
       <SeriesStoreProvider>{children}</SeriesStoreProvider>
+      <PageBottomNav mt={12} mx="auto" maxWidth="common-main-width" />
     </BaseLayout>
   );
 }

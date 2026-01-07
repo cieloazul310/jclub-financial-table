@@ -11,6 +11,7 @@ export function PrevNextLink({
   rightSlot,
   display = "grid",
   gridTemplateColumns = { base: "1fr", sm: "repeat(2, 1fr)" },
+  gridTemplateAreas = { base: `"left" "right"`, sm: `"left right"` },
   gap = { base: 2, sm: 4 },
   ...rest
 }: {
@@ -23,59 +24,51 @@ export function PrevNextLink({
     href?: NextLinkProps["href"];
   } | null;
 } & Omit<HTMLStyledProps<"nav">, "children">) {
-  const props = { display, gridTemplateColumns, gap, ...rest };
+  const props = {
+    display,
+    gridTemplateColumns,
+    gridTemplateAreas,
+    gap,
+    ...rest,
+  };
   return (
     <styled.nav {...props}>
-      <div
-        className={css({
-          display: "flex",
-          flexDirection: "column",
-          gap: 2,
-          alignItems: "start",
-        })}
-      >
-        {leftSlot?.title && leftSlot?.href && (
-          <Button
-            size="lg"
-            variant="outline"
-            width="full"
-            justifyContent="start"
-            alignItems="center"
-            textAlign="left"
-            asChild
-          >
-            <NextLink href={leftSlot.href}>
-              <ChevronLeft />
-              {leftSlot.title}
-            </NextLink>
-          </Button>
-        )}
-      </div>
-      <div
-        className={css({
-          display: "flex",
-          flexDirection: "column",
-          gap: 2,
-          alignItems: "end",
-        })}
-      >
-        {rightSlot?.title && rightSlot?.href && (
-          <Button
-            size="lg"
-            variant="outline"
-            width="full"
-            justifyContent="end"
-            alignItems="center"
-            textAlign="left"
-            asChild
-          >
-            <NextLink href={rightSlot.href}>
-              {rightSlot.title}
-              <ChevronRight />
-            </NextLink>
-          </Button>
-        )}
-      </div>
+      {leftSlot?.title && leftSlot?.href && (
+        <Button
+          gridArea="left"
+          size="lg"
+          variant="outline"
+          width="full"
+          justifyContent="start"
+          alignItems="center"
+          textAlign="left"
+          textStyle="dns-16B-130"
+          asChild
+        >
+          <NextLink href={leftSlot.href}>
+            <ChevronLeft className={css({ flexShrink: "0" })} />
+            {leftSlot.title}
+          </NextLink>
+        </Button>
+      )}
+      {rightSlot?.title && rightSlot?.href && (
+        <Button
+          gridArea="right"
+          size="lg"
+          variant="outline"
+          width="full"
+          justifyContent="end"
+          alignItems="center"
+          textAlign="left"
+          textStyle="dns-16B-130"
+          asChild
+        >
+          <NextLink href={rightSlot.href}>
+            {rightSlot.title}
+            <ChevronRight className={css({ flexShrink: "0" })} />
+          </NextLink>
+        </Button>
+      )}
     </styled.nav>
   );
 }

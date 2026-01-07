@@ -7,11 +7,12 @@ import { Table } from "@/components/ui/table";
 
 export async function YearSummary({
   year,
+  position = "relative",
   maxWidth = "full",
   overflowX = "auto",
   ...rest
 }: { year: number } & HTMLStyledProps<"div">) {
-  const props = { maxWidth, overflowX, ...rest };
+  const props = { position, maxWidth, overflowX, ...rest };
   const fields = [
     "revenue",
     "expense",

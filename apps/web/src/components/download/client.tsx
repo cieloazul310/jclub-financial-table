@@ -62,17 +62,17 @@ export function DownloadClient({ dataset }: DownloadClientProps) {
         >
           <Tabs.Content value="item-filter" pb={16}>
             <Suspense fallback={<Loading />}>
-              <DataFilter p={2} />
+              <DataFilter p={4} />
             </Suspense>
           </Tabs.Content>
           <Tabs.Content value="fields" pb={16}>
             <Suspense fallback={<Loading />}>
-              <FieldHandler p={2} />
+              <FieldHandler p={4} />
             </Suspense>
           </Tabs.Content>
           <Tabs.Content value="preview" display={{ md: "none" }}>
             <Suspense fallback={<Loading />}>
-              <Preview p={2} dataset={dataset} />
+              <Preview p={4} dataset={dataset} />
             </Suspense>
           </Tabs.Content>
         </div>
@@ -83,7 +83,7 @@ export function DownloadClient({ dataset }: DownloadClientProps) {
           })}
         >
           <Suspense fallback={<Loading />}>
-            <Preview pt={4} px={4} dataset={dataset} />
+            <Preview pt={4} px={8} dataset={dataset} />
           </Suspense>
         </div>
       </div>

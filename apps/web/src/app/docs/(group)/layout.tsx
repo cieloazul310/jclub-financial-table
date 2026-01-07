@@ -1,3 +1,12 @@
-import { Layout } from "@/components/layout";
+import type { PropsWithChildren } from "react";
+import { Layout as BaseLayout } from "@/components/layout";
+import { PageBottomNav } from "@/components/page-bottom-nav";
 
-export default Layout;
+export default function Layout({ children }: PropsWithChildren) {
+  return (
+    <BaseLayout>
+      {children}
+      <PageBottomNav />
+    </BaseLayout>
+  );
+}

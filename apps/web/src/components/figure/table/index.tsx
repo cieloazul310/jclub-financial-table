@@ -17,6 +17,7 @@ export function FinancialTable({ tab, mode, data }: FinancialTableProps) {
   return (
     <div
       className={css({
+        position: "relative",
         maxWidth: "full",
         maxHeight: "75vh",
         overflowX: "auto",

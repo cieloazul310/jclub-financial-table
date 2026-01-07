@@ -32,14 +32,13 @@ export function DocsMenu({
   menu,
   currentGroup,
   currentSlug,
-  p = 1,
   ...rest
 }: HTMLStyledProps<"nav"> & {
   menu: DocsMenuGroup[];
   currentGroup: string;
   currentSlug: string[];
 }) {
-  const props = { p, ...rest };
+  const props = { ...rest };
 
   return (
     <styled.nav {...props}>
