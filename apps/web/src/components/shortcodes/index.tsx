@@ -13,6 +13,7 @@ import { WorkInProgress, Written } from "./annotation";
 import { Details } from "./details";
 import { LeadingText } from "./leading-text";
 import { PanelLink, PanelLinkShorthand } from "./panel-link";
+import { SimpleTable } from "./simple-table";
 import { SummaryTable, SummaryTableRow } from "./summary-table";
 
 export const Ad = () => (
@@ -25,16 +26,8 @@ const Red = ({ color = "error.2", ...props }: HTMLStyledProps<"span">) => (
   <styled.span color={color} {...props} />
 );
 
-const Green = ({ color = "success.2", ...props }: HTMLStyledProps<"span">) => (
-  <styled.span color={color} {...props} />
-);
-
 export const shortcodes = {
   Ad,
-  /**
-   * @deprecated
-   */
-  AppLink: Link,
   Blockquote: ({ className, ...props }) => (
     <Blockquote {...props} my={8} className={cx(className, withArticle)} />
   ),
@@ -42,24 +35,19 @@ export const shortcodes = {
     <Details {...props} my={8} className={cx(className, withArticle)} />
   ),
   Diff,
-  Green,
   LeadingText,
   PanelLink: ({ className, ...props }) => (
     <PanelLink {...props} my={8} className={cx(className, withArticle)} />
   ),
   PanelLinkShorthand,
   Red,
+  SimpleTable,
   SummaryTable: ({ className, ...props }) => (
     <SummaryTable {...props} my={8} className={cx(className, withArticle)} />
   ),
   SummaryTableRow,
   WorkInProgress,
   Written,
-  /**
-   * @deprecated
-   */
-  Typography: () => null,
-  SimpleTable: () => null,
   SubParagraph: ({ ...props }) => (
     <Paragraph textStyle="std-16N-170" {...props} />
   ),
