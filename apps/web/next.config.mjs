@@ -11,6 +11,8 @@ const withMdx = createMDX({
  * @type {import("next").NextConfig}
  */
 const nextConfig = {
+  output: "export",
+  basePath: "/jclub-financial-next",
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 };
 
