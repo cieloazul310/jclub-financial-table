@@ -1,5 +1,8 @@
+"use client";
+
 /* eslint @typescript-eslint/no-explicit-any: "off" */
-import { useId } from "react";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { css } from "styled-system/css";
 
 declare global {
@@ -21,18 +24,24 @@ function AdScript() {
 }
 
 export function AdInArticle() {
-  const { pathname } = useLocation();
-  React.useEffect(() => {
+  const pathname = usePathname();
+  useEffect(() => {
     if (window) {
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.push({});
     }
   }, [pathname]);
   return (
-    <Box overflow="hidden" py={2}>
-      <Typography variant="caption" color="text.secondary">
+    <div className={css({ py: 2, overflow: "hidden" })}>
+      <span
+        className={css({
+          display: "block",
+          textStyle: "oln-14N-100",
+          color: "solid-gray.536",
+        })}
+      >
         [Advertisement]
-      </Typography>
+      </span>
       {typeof window === "object" && (
         <ins
           className="adsbygoogle"
@@ -44,13 +53,13 @@ export function AdInArticle() {
           data-ad-slot="9174058264"
         />
       )}
-    </Box>
+    </div>
   );
 }
 
 function Ad({ slot }: { slot: string }) {
-  const { pathname } = useLocation();
-  React.useEffect(() => {
+  const pathname = usePathname();
+  useEffect(() => {
     if (window) {
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.push({});
@@ -58,8 +67,16 @@ function Ad({ slot }: { slot: string }) {
   }, [pathname, slot]);
 
   return (
-    <Box overflow="hidden">
-      <Typography variant="caption">[Advertisement]</Typography>
+    <div className={css({ overflow: "hidden" })}>
+      <span
+        className={css({
+          display: "block",
+          textStyle: "oln-14N-100",
+          color: "solid-gray.536",
+        })}
+      >
+        [Advertisement]
+      </span>
       {typeof window === "object" && (
         <ins
           key={pathname}
@@ -71,7 +88,7 @@ function Ad({ slot }: { slot: string }) {
           data-full-width-responsive="true"
         />
       )}
-    </Box>
+    </div>
   );
 }
 
@@ -100,9 +117,5 @@ export function AdInSectionDividerTwo() {
 }
 
 export function AdInFooter() {
-  return (
-    <InView>
-      <Ad slot="3332658358" />
-    </InView>
-  );
+  return <Ad slot="3332658358" />;
 }

@@ -22,7 +22,7 @@ function useInitializeTab() {
   return useEffect(() => {
     const breakpointsMd = parseInt(token("breakpoints.md"), 10);
 
-    if (windowWidth > breakpointsMd && value === "preview") {
+    if (windowWidth && windowWidth > breakpointsMd && value === "preview") {
       setValue("item-filter");
     }
   }, [windowWidth, value, setValue]);

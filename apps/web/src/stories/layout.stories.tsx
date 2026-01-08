@@ -6,20 +6,8 @@ import { Heading2, Paragraph } from "@/components/article";
 const meta = {
   title: "Components/Layout",
   component: Layout,
-  argTypes: {
-    breakpoint: {
-      control: "inline-radio",
-      options: layout.variantMap.breakpoint,
-    },
-    headerAlways: {
-      control: "boolean",
-      options: layout.variantMap.headerAlways,
-    },
-  },
-  args: {
-    breakpoint: "lg",
-    headerAlways: false,
-  },
+  argTypes: {},
+  args: {},
   parameters: {
     layout: "fullscreen",
   },

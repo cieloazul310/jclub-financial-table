@@ -9,11 +9,13 @@ export function Blockquote({
   children,
   url,
   title,
-  ...props
+  mx = { base: 4, sm: 8 },
+  ...rest
 }: DigitalGoBlockquoteProps & {
   url?: string;
   title?: string;
 }) {
+  const props = { mx, ...rest };
   return (
     <DigitalGoBlockquote {...props} asChild>
       <div>

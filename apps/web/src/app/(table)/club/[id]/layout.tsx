@@ -5,6 +5,7 @@ import { getClubById } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { layout } from "styled-system/recipes";
 import { Layout as BaseLayout } from "@/components/layout";
+import { PageBottomNav } from "@/components/page-bottom-nav";
 import { Header } from "@/components/layout/header";
 import { Menu } from "@/components/layout/menu";
 import { SidebarTitle } from "@/components/layout/sidebar-title";
@@ -55,6 +56,11 @@ export default async function Layout({
       sidebarContent={sidebarContent}
     >
       {children}
+      <PageBottomNav
+        mx="auto"
+        px={{ base: 4, md: 6, lg: 8 }}
+        maxWidth="common-main-width"
+      />
     </BaseLayout>
   );
 }

@@ -99,6 +99,7 @@ export function SeriesTable({
           width: "fit-content",
           maxWidth: "full",
           maxHeight: "70vh",
+          position: "relative",
           overflowX: "auto",
           overflowY: "auto",
         })}

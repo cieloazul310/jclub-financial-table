@@ -37,7 +37,7 @@ const children = (
     />
     <CardTableBase>
       {pl.map(
-        ({ key, sortable, value, diff, separator, redIfMinus, ...rest }) =>
+        ({ key, sortable, value, diff, redIfMinus, ...rest }) =>
           value !== null && (
             <CardTableRow
               key={key}
@@ -60,7 +60,7 @@ const children = (
                   {getLabel(key)}
                 </button>
               }
-              value={format(value, { separator })}
+              value={format(value)}
               delta={diff && <Diff>{diff}</Diff>}
               red={redIfMinus && value < 0}
               {...rest}

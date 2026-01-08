@@ -1,4 +1,6 @@
-export const tags = [
+import type { PostTag } from "@/utils/types";
+
+export const tags: PostTag[] = [
   {
     id: "settlement",
     title: "決算",

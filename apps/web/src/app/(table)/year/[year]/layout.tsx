@@ -6,6 +6,7 @@ import { layout } from "styled-system/recipes";
 import { Layout as BaseLayout } from "@/components/layout";
 import { Header } from "@/components/layout/header";
 import { Menu } from "@/components/layout/menu";
+import { PageBottomNav } from "@/components/page-bottom-nav";
 import { SidebarTitle } from "@/components/layout/sidebar-title";
 
 export default async function Layout({
@@ -53,6 +54,11 @@ export default async function Layout({
       sidebarContent={sidebarContent}
     >
       {children}
+      <PageBottomNav
+        mx="auto"
+        px={{ base: 4, md: 6, lg: 8 }}
+        maxWidth="common-main-width"
+      />
     </BaseLayout>
   );
 }

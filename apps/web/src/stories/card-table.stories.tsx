@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const Basic: Story = {
   args: {
     children: pl.map(
-      ({ key, sortable, value, diff, separator, redIfMinus, ...rest }) =>
+      ({ key, sortable, value, diff, redIfMinus, ...rest }) =>
         value !== null && (
           <CardTableRow
             key={key}
@@ -41,7 +41,7 @@ export const Basic: Story = {
                 {getLabel(key)}
               </button>
             }
-            value={format(value, { separator })}
+            value={format(value)}
             delta={diff && <Diff>{diff}</Diff>}
             red={redIfMinus && value < 0}
             {...rest}

@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "react";
 import type { MDXComponents } from "mdx/types";
+import { Tweet, TweetSkeleton } from "react-tweet";
 import { cx, css } from "styled-system/css";
 import { styled } from "styled-system/jsx";
 import type { HTMLStyledProps } from "styled-system/types";
@@ -82,5 +83,10 @@ export const shortcodes = {
   SimpleTable: () => null,
   SubParagraph: ({ ...props }) => (
     <Paragraph textStyle="std-16N-170" {...props} />
+  ),
+  Tweet: ({ ...props }) => (
+    <div className="light">
+      <Tweet fallback={<TweetSkeleton />} {...props} />
+    </div>
   ),
 } satisfies MDXComponents;

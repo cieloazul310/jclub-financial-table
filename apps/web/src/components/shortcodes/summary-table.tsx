@@ -9,6 +9,7 @@ export function SummaryTable({
   children,
   caption,
   disableDiff = false,
+  position = "relative",
   maxWidth = "full",
   overflowX = "auto",
   ...rest
@@ -16,9 +17,9 @@ export function SummaryTable({
   disableDiff?: boolean;
   caption?: ReactNode;
 }) {
-  const props = { maxWidth, overflowX };
+  const props = { position, maxWidth, overflowX, ...rest };
   return (
-    <styled.div {...props} {...rest}>
+    <styled.div {...props}>
       <Table.Root dense>
         <colgroup>
           <col className={css({ minWidth: "180px" })} />
