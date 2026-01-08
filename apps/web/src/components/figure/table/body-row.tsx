@@ -176,7 +176,10 @@ export function RevenueTableRow({
           <DataTableCell value={datum.other_revs} colSpan={3} align="center" />
         </>
       );
-    if (datum.transfer_int_rev === null && datum.transfer_dom_rev === null) {
+    if (
+      typeof datum.transfer_int_rev?.value !== "number" ||
+      typeof datum.transfer_dom_rev?.value !== "number"
+    ) {
       return (
         <>
           <DataTableCell value={datum.academy_rev} align="center" />
@@ -279,7 +282,10 @@ export function ExpenseTableRow({
         </>
       );
 
-    if (datum.transfer_int_exp === null && datum.transfer_dom_exp === null) {
+    if (
+      typeof datum.transfer_int_exp?.value !== "number" ||
+      typeof datum.transfer_dom_exp?.value !== "number"
+    ) {
       return (
         <>
           <DataTableCell value={datum.salary} />

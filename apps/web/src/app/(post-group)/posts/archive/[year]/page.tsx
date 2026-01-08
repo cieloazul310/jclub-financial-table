@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/page-header";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
+import { PageBottomNav } from "@/components/page-bottom-nav";
 import { post, type PostMetadata } from "@/content";
 import { getAllPostYears } from "@/utils/post";
 
@@ -68,7 +69,11 @@ export default async function Page({ params }: Props) {
           </PostList>
         </section>
       ))}
-      <PrevNextLink leftSlot={next} rightSlot={prev} />
+      <PrevNextLink leftSlot={next} rightSlot={prev} mb={4} />
+      <PageBottomNav
+        items={[{ title: "年別記事一覧", href: "/posts/archive" }]}
+        disableTopPageLink
+      />
     </>
   );
 }

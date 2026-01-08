@@ -1,13 +1,12 @@
-import type { PropsWithChildren } from "react";
 import type { MDXComponents } from "mdx/types";
 import { Tweet, TweetSkeleton } from "react-tweet";
 import { cx, css } from "styled-system/css";
 import { styled } from "styled-system/jsx";
 import type { HTMLStyledProps } from "styled-system/types";
-import { NotificationBanner } from "@/components/ui/notification-banner";
 import { Paragraph } from "@/components/article";
 import { Link } from "@/components/link";
 import { withArticle } from "@/styles/with-article";
+import { notificationBanner } from "./alert";
 import { Blockquote } from "./blockquote";
 import { Diff } from "./diff";
 import { WorkInProgress, Written } from "./annotation";
@@ -30,32 +29,12 @@ const Green = ({ color = "success.2", ...props }: HTMLStyledProps<"span">) => (
   <styled.span color={color} {...props} />
 );
 
-export const Alert = ({
-  children,
-  title,
-  severity = "warning",
-}: PropsWithChildren<{
-  title?: string;
-  severity?: NotificationBanner.RootProps["type"];
-}>) => (
-  <NotificationBanner.Root type={severity} my={8}>
-    <NotificationBanner.Icon />
-    {title && (
-      <NotificationBanner.Header>
-        <NotificationBanner.Heading>{title}</NotificationBanner.Heading>
-      </NotificationBanner.Header>
-    )}
-    <NotificationBanner.Body>{children}</NotificationBanner.Body>
-  </NotificationBanner.Root>
-);
-
 export const shortcodes = {
   Ad,
-  Alert,
   /**
    * @deprecated
    */
-  AppLink: (props) => <Link {...props} />,
+  AppLink: Link,
   Blockquote: ({ className, ...props }) => (
     <Blockquote {...props} my={8} className={cx(className, withArticle)} />
   ),
@@ -89,4 +68,5 @@ export const shortcodes = {
       <Tweet fallback={<TweetSkeleton />} {...props} />
     </div>
   ),
+  ...notificationBanner,
 } satisfies MDXComponents;

@@ -22,7 +22,6 @@ export function CategoryFilter({
   chipClassName = css({
     minHeight: "unset",
     py: 0.5,
-    textStyle: "oln-14B-100",
   }),
   chipLabel = (category) => (category === "others" ? "その他" : category),
   ...rest
