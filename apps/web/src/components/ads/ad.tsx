@@ -80,7 +80,7 @@ export function Ad({
         key={pathname}
         className="adsbygoogle"
         style={{ display: "block", textAlign: "center" }}
-        data-ad-client={process.env.PUBLISHER_ID}
+        data-ad-client={process.env.NEXT_PUBLIC_PUBLISHER_ID}
         data-ad-slot={slot}
         data-ad-format="auto"
         data-full-width-responsive="true"
