@@ -50,14 +50,8 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      - name: Write .env
-        run: |
-          echo ${{ secrets.NEXT_PUBLIC_GA_ID }} >> ${{env.BUILD_PATH}}/.env
-          echo ${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }} >> ${{env.BUILD_PATH}}/.env
-          cat ${{env.BUILD_PATH}}/.env
-
-      - name: Build Packages and app
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build --filter="./packages/*" --filter="./${{env.BUILD_PATH}}"
+      - name: Build Packages
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build:package
 
       - name: Test
         run: ${{ steps.detect-package-manager.outputs.manager }} run test

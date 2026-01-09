@@ -6,8 +6,8 @@
   "scripts": {
     "prepare": "panda codegen",
     "dev": "next dev",
-    "_prebuild": "tsx ./scripts/copy-dataset.ts",
-    "_build": "next build",
+    "prebuild": "tsx ./scripts/copy-dataset.ts",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "snippet": "npx @cieloazul310/digital-go-pandacss-cli",

@@ -85,8 +85,8 @@ jobs:
 
       - name: Write .env
         run: |
-          echo ${{ secrets.NEXT_PUBLIC_GA_ID }} >> ${{env.BUILD_PATH}}/.env
-          echo ${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }} >> ${{env.BUILD_PATH}}/.env
+          echo "NEXT_PUBLIC_GA_ID=${{ secrets.NEXT_PUBLIC_GA_ID }}" >> ${{env.BUILD_PATH}}/.env
+          echo "NEXT_PUBLIC_PUBLISHER_ID=${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }}" >> ${{env.BUILD_PATH}}/.env
           cat ${{env.BUILD_PATH}}/.env
 
       - name: Build Packages and app
