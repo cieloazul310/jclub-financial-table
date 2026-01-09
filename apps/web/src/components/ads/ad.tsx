@@ -13,6 +13,7 @@ declare global {
 }
 
 export function AdInArticle({
+  maxWidth = "full",
   overflow = "hidden",
   ...rest
 }: Omit<HTMLStyledProps<"div">, "children">) {
@@ -23,7 +24,7 @@ export function AdInArticle({
       window.adsbygoogle.push({});
     }
   }, [pathname]);
-  const props = { overflow, ...rest };
+  const props = { maxWidth, overflow, ...rest };
 
   return (
     <styled.div {...props}>
@@ -51,6 +52,7 @@ export function AdInArticle({
 
 export function Ad({
   slot = "6963353890",
+  maxWidth = "full",
   overflow = "hidden",
   ...rest
 }: { slot?: string } & Omit<HTMLStyledProps<"div">, "children">) {
@@ -61,7 +63,7 @@ export function Ad({
       window.adsbygoogle.push({});
     }
   }, [pathname]);
-  const props = { overflow, ...rest };
+  const props = { overflow, maxWidth, ...rest };
   return (
     <styled.div {...props}>
       <span

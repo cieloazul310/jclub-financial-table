@@ -56,9 +56,9 @@ jobs:
       - name: Test
         run: ${{ steps.detect-package-manager.outputs.manager }} run test
 
-      #- name: Build with Next.js
-      #  run: ${{ steps.detect-package-manager.outputs.manager }} run build -- --debug
-      #  env:
-      #    NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
-      #    NEXT_PUBLIC_PUBLISHER_ID: ${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }}
-      #  working-directory: ${{ env.BUILD_PATH }}
+      - name: Build with Next.js
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build -- --debug
+        env:
+          NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
+          NEXT_PUBLIC_PUBLISHER_ID: ${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }}
+          working-directory: ${{ env.BUILD_PATH }}

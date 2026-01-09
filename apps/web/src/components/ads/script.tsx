@@ -9,7 +9,7 @@ export function AdScript() {
   return (
     <Script
       async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${process.env.PUBLISHER_ID}`}
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.PUBLISHER_ID}`}
       crossOrigin="anonymous"
       strategy="afterInteractive"
     />
