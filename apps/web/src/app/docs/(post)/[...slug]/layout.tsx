@@ -7,6 +7,7 @@ import { PageHeader } from "@/components/page-header";
 import { ArticleGrid } from "@/components/article-grid";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { PostFooterBase } from "@/components/post/footer";
+import { AdInLayout, AdInSide } from "@/components/ads";
 import { DocsMenu, createDocsMenuGroup } from "@/components/docs/menu";
 import { docs } from "@/content";
 import { parseFrontmatterDate } from "@/utils/datestring";
@@ -35,7 +36,21 @@ export default async function Layout({
         </PageHeader>
         <ArticleGrid
           side={
-            <DocsMenu currentGroup={group} currentSlug={slug} menu={docsMenu} />
+            <div
+              className={css({
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                gap: 8,
+                pb: 4,
+              })}
+            >
+              <DocsMenu
+                currentGroup={group}
+                currentSlug={slug}
+                menu={docsMenu}
+              />
+              <AdInSide px={4} />
+            </div>
           }
         >
           <section className={css({ mb: 12 })}>{children}</section>
@@ -60,8 +75,9 @@ export default async function Layout({
       <PrevNextLink
         leftSlot={{ href: older?.href, title: older?.frontmatter.title }}
         rightSlot={{ href: newer?.href, title: newer?.frontmatter.title }}
-        mb={8}
+        mb={4}
       />
+      <AdInLayout mb={4} />
       <PageBottomNav items={[{ title: "経営情報の見方", href: "/docs" }]} />
     </BaseLayout>
   );

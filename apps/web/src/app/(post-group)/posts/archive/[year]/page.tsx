@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import { css } from "styled-system/css";
 import { Heading3 } from "@/components/article";
@@ -6,6 +7,7 @@ import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { PageBottomNav } from "@/components/page-bottom-nav";
+import { AdInLayout, AdInPage } from "@/components/ads";
 import { post, type PostMetadata } from "@/content";
 import { getAllPostYears } from "@/utils/post";
 
@@ -23,9 +25,9 @@ function getPostsByMonths(posts: PostMetadata[]) {
 }
 
 export async function generateStaticParams() {
-  const allYears = await getAllPostYears();
+  const allPostYears = await getAllPostYears();
 
-  return allYears.map((year) => ({ year: year.toString() }));
+  return allPostYears.map((year) => ({ year: year.toString() }));
 }
 
 type Props = {
@@ -59,16 +61,22 @@ export default async function Page({ params }: Props) {
   return (
     <>
       <PageHeader title={`${year}年の記事一覧`} />
-      {postsByMonth.map(({ month, posts }) => (
-        <section key={month.toString()} className={css({ mb: 12 })}>
-          <Heading3>{month}月の記事</Heading3>
-          <PostList>
-            {posts.map((post) => (
-              <PostListItem key={post.href} post={post} />
-            ))}
-          </PostList>
-        </section>
+      {postsByMonth.map(({ month, posts }, index) => (
+        <Fragment key={month.toString()}>
+          <section className={css({ mb: 12 })}>
+            <Heading3>{month}月の記事</Heading3>
+            <PostList>
+              {posts.map((post) => (
+                <PostListItem key={post.href} post={post} />
+              ))}
+            </PostList>
+            {index + 1 === Math.ceil(postsByMonth.length / 2) && (
+              <AdInPage mt={4} />
+            )}
+          </section>
+        </Fragment>
       ))}
+      <AdInLayout mb={8} />
       <PrevNextLink leftSlot={next} rightSlot={prev} mb={4} />
       <PageBottomNav
         items={[{ title: "年別記事一覧", href: "/posts/archive" }]}

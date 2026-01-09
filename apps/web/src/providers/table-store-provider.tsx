@@ -4,6 +4,7 @@ import {
   createContext,
   useRef,
   useContext,
+  useLayoutEffect,
   type PropsWithChildren,
 } from "react";
 import { useStore, type StoreApi } from "zustand";
@@ -13,6 +14,7 @@ import {
   createTableStore,
   type TableStore,
 } from "@/stores/table-store";
+import { useWindowSize } from "@/utils/use-window-resize";
 
 export const TableStoreContext = createContext<StoreApi<TableStore> | null>(
   null,
@@ -21,18 +23,23 @@ export const TableStoreContext = createContext<StoreApi<TableStore> | null>(
 export type TableStoreProviderProps = PropsWithChildren;
 
 export function TableStoreProvider({ children }: TableStoreProviderProps) {
-  const initialState = {
-    ...defaultInitState,
-    cardMode: true,
-  };
+  const { windowWidth } = useWindowSize();
 
-  const storeRef = useRef<StoreApi<TableStore>>(createTableStore());
-  /*
-  const storeRef = useRef<StoreApi<TableStore>>(null);
-  if (!storeRef.current) {
-    storeRef.current = createTableStore();
-  }
-  */
+  // SSR時はモバイルファースト（cardMode: true）でレンダリング
+  // ハイドレーション後、useLayoutEffect で正確な値に更新
+  const storeRef = useRef<StoreApi<TableStore>>(
+    createTableStore({
+      ...defaultInitState,
+      cardMode: windowWidth === undefined ? true : windowWidth < 600,
+    }),
+  );
+
+  // ペイント前に state を同期更新（ユーザーに見えない）
+  useLayoutEffect(() => {
+    if (windowWidth !== undefined) {
+      storeRef.current.setState({ cardMode: windowWidth < 600 });
+    }
+  }, [windowWidth]);
 
   return (
     <TableStoreContext.Provider value={storeRef.current}>

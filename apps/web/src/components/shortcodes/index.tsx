@@ -1,11 +1,11 @@
 import type { MDXComponents } from "mdx/types";
 import { Tweet, TweetSkeleton } from "react-tweet";
-import { cx, css } from "styled-system/css";
+import { cx } from "styled-system/css";
 import { styled } from "styled-system/jsx";
 import type { HTMLStyledProps } from "styled-system/types";
 import { Paragraph } from "@/components/article";
-import { Link } from "@/components/link";
 import { withArticle } from "@/styles/with-article";
+import { AdInArticle } from "@/components/ads";
 import { notificationBanner } from "./alert";
 import { Blockquote } from "./blockquote";
 import { Diff } from "./diff";
@@ -16,18 +16,12 @@ import { PanelLink, PanelLinkShorthand } from "./panel-link";
 import { SimpleTable } from "./simple-table";
 import { SummaryTable, SummaryTableRow } from "./summary-table";
 
-export const Ad = () => (
-  <div className={css({ my: 8, minHeight: "120px", bg: "solid-gray.bg" })}>
-    Ad
-  </div>
-);
-
 const Red = ({ color = "error.2", ...props }: HTMLStyledProps<"span">) => (
   <styled.span color={color} {...props} />
 );
 
 export const shortcodes = {
-  Ad,
+  Ad: AdInArticle,
   Blockquote: ({ className, ...props }) => (
     <Blockquote {...props} my={8} className={cx(className, withArticle)} />
   ),

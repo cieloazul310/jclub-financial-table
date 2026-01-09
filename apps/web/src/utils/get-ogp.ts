@@ -9,7 +9,7 @@ export async function getOgp(url: string) {
     const { result } = await ogs({ url });
     return result;
   } catch (error) {
-    console.warn("Error fetching OGP:", error);
+    console.warn("Error fetching OGP:", url);
     return null;
   }
 }

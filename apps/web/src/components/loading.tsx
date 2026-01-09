@@ -1,9 +1,14 @@
-import { center } from "styled-system/patterns";
+import { Center, type CenterProps } from "styled-system/jsx";
 import { Progress } from "@/components/ui/progress";
 
-export function Loading() {
+export function Loading({
+  width = "full",
+  height = "full",
+  ...rest
+}: CenterProps) {
+  const props = { width, height, ...rest };
   return (
-    <div className={center({ width: "full", minHeight: "80vh" })}>
+    <Center {...props}>
       <Progress.Root value={null}>
         <Progress.Circle>
           <Progress.CircleTrack />
@@ -11,6 +16,10 @@ export function Loading() {
         </Progress.Circle>
         <Progress.Label>読み込み中</Progress.Label>
       </Progress.Root>
-    </div>
+    </Center>
   );
+}
+
+export function PageLoading() {
+  return <Loading minHeight="80vh" />;
 }

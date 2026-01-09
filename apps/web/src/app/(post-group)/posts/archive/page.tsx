@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/page-header";
 import { PostList } from "@/components/post/list";
 import { PostListItemBase } from "@/components/post/list-item";
+import { AdInPage } from "@/components/ads";
 import { getAllPostYears } from "@/utils/post";
 
 export default async function Page() {
@@ -9,7 +10,7 @@ export default async function Page() {
   return (
     <>
       <PageHeader title="年別記事" />
-      <PostList>
+      <PostList mb={4}>
         {allPostYears.map((year) => (
           <PostListItemBase
             key={year.toString()}
@@ -18,6 +19,7 @@ export default async function Page() {
           />
         ))}
       </PostList>
+      <AdInPage />
     </>
   );
 }

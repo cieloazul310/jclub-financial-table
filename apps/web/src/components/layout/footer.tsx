@@ -1,6 +1,7 @@
 import { css } from "styled-system/css";
-import { title } from "@/data/site-metadata";
-import { Link } from "../link";
+import { title, repo } from "@/data/site-metadata";
+import { Link } from "@/components/link";
+import { AdInFooter } from "@/components/ads";
 
 export function Footer() {
   return (
@@ -52,10 +53,7 @@ export function Footer() {
           })}
         >
           <li>
-            <Link
-              href="https://github.com/cieloazul310/digital-go-design-system-with-panda"
-              color="inherit"
-            >
+            <Link href={repo} color="inherit">
               GitHub
             </Link>
           </li>
@@ -68,6 +66,9 @@ export function Footer() {
             </Link>
           </li>
         </ul>
+      </div>
+      <div className={css({ mt: 8, width: "full" })}>
+        <AdInFooter />
       </div>
       <p
         className={css({

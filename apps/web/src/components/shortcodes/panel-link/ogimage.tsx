@@ -17,11 +17,14 @@ export async function OGImage({
 
   const ogp = await getOgp(href);
   if (!ogp?.ogImage) return fallback;
-  const promises = ogp.ogImage.map(async (imageObject) =>
-    (await isImageURL(imageObject.url)) ? imageObject : null,
-  );
-  const results = await Promise.all(promises);
-  const image = results.find((imageObject) => imageObject !== null);
+
+  let image = null;
+  for (const imageObject of ogp.ogImage) {
+    if (await isImageURL(imageObject.url)) {
+      image = imageObject;
+      break;
+    }
+  }
   if (!image) return fallback;
 
   return (

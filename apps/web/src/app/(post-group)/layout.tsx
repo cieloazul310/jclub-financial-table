@@ -6,7 +6,7 @@ export default function Layout({ children }: PropsWithChildren) {
   return (
     <BaseLayout>
       {children}
-      <PageBottomNav mt={12} />
+      <PageBottomNav mt={8} />
     </BaseLayout>
   );
 }

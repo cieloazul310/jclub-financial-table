@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/page-header";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
+import { AdInLayout } from "@/components/ads";
 import { post } from "@/content";
 import { getPrevNext } from "@/utils/clubs";
 
@@ -44,14 +45,15 @@ export default async function Page({ params }: Props) {
     <>
       <PageHeader title={`${club.name}の記事一覧`} />
       {posts.length ? (
-        <PostList mb={12}>
+        <PostList mb={4}>
           {posts.map((post) => (
             <PostListItem key={post.href} post={post} />
           ))}
         </PostList>
       ) : (
-        <div className={css({ mb: 12 })}>{club.name}の記事はありません</div>
+        <div className={css({ mb: 4 })}>{club.name}の記事はありません</div>
       )}
+      <AdInLayout mb={4} />
       <PrevNextLink
         leftSlot={
           prev && {
