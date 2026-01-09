@@ -50,7 +50,6 @@ export const layout = defineSlotRecipe({
       display: "grid",
       gridTemplateRows: "1fr auto",
       minHeight: "calc(100vh - {sizes.header-height})",
-      overflow: "hidden",
     },
     sidebar: {
       gridArea: "sidebar",
