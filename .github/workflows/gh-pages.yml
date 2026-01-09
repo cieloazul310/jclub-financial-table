@@ -93,7 +93,7 @@ jobs:
           cat ${{env.BUILD_PATH}}/.env
 
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build -- --filter="${{env.BUILD_PATH}}"
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build --filter="${{env.BUILD_PATH}}"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
