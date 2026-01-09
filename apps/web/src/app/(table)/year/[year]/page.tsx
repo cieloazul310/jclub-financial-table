@@ -5,11 +5,12 @@ import { getExtendedDataByYear } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
 import { Figure } from "@/components/figure";
-import { Loading } from "@/components/loading";
+import { PageLoading } from "@/components/loading";
 import { YearSummary } from "@/components/year-summary";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { SelectLink } from "@/components/select-link";
 import { Heading2 } from "@/components/article";
+import { AdInPage } from "@/components/ads";
 
 function getPrevNext(currentYear: number) {
   const allYears = getAllYears();
@@ -49,7 +50,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<PageLoading />}>
         <Figure data={data} mode="year" />
       </Suspense>
       <PrevNextLink
@@ -67,6 +68,7 @@ export default async function Page({ params }: Props) {
           <Heading2>{title}</Heading2>
           <YearSummary year={parseInt(year, 10)} />
         </article>
+        <AdInPage mb={8} />
         <section className={css({ mb: 12 })}>
           <SelectLink />
           <PrevNextLink
@@ -76,7 +78,7 @@ export default async function Page({ params }: Props) {
             rightSlot={
               next && { href: `/year/${next.year}`, title: `${next.year}年度` }
             }
-            mt={12}
+            mt={8}
           />
         </section>
       </div>

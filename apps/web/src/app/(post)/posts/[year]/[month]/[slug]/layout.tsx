@@ -10,6 +10,7 @@ import { ClubChip } from "@/components/post/club-chip";
 import { TagChip } from "@/components/post/tag-chip";
 import { PostListItemBase } from "@/components/post/list-item";
 import { PostFooter } from "@/components/post/footer";
+import { AdInLayout, AdInSide } from "@/components/ads";
 import { post } from "@/content";
 import { parseFrontmatterDate } from "@/utils/datestring";
 import { getSpecifiedClub, getClubsFromArray } from "@/utils/clubs";
@@ -74,6 +75,7 @@ export default async function Layout({
                 display: "grid",
                 gridTemplateColumns: "1fr",
                 gap: 8,
+                pb: 4,
               })}
             >
               <PostFooter
@@ -105,6 +107,7 @@ export default async function Layout({
                   />
                 )}
               </nav>
+              <AdInSide px={4} />
             </div>
           }
         >
@@ -124,8 +127,9 @@ export default async function Layout({
       <PrevNextLink
         leftSlot={{ href: newer?.href, title: newer?.frontmatter.title }}
         rightSlot={{ href: older?.href, title: older?.frontmatter.title }}
-        mb={8}
+        mb={4}
       />
+      <AdInLayout mb={4} />
       <PageBottomNav items={[{ title: "記事一覧", href: "/posts" }]} />
     </BaseLayout>
   );

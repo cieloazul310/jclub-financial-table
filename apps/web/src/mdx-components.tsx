@@ -46,7 +46,7 @@ export function useMDXComponents(
     tbody: (props) => <Table.Body {...props} />,
     tr: (props) => <Table.Row {...props} />,
     th: (props) => <Table.Header {...props} />,
-    td: (props) => <Table.Cell {...props} />,
+    td: (props) => <Table.Cell minWidth="6em" {...props} />,
     blockquote: (props) => <Blockquote my={8} {...props} />,
     pre: Pre,
     code: Code,

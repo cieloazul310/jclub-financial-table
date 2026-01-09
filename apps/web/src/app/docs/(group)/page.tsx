@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/page-header";
 import { Heading3, Paragraph } from "@/components/article";
 import { PostList } from "@/components/post/list";
 import { PostListItemBase } from "@/components/post/list-item";
+import { AdInPage } from "@/components/ads";
 import { docs, type DocsMetadata } from "@/content";
 import { docsGroup } from "@/data/docs";
 
@@ -37,6 +38,7 @@ export default async function Page() {
           </PostList>
         </section>
       ))}
+      <AdInPage />
     </>
   );
 }

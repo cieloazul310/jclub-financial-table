@@ -1,12 +1,15 @@
 import type { PropsWithChildren } from "react";
 import NextLink from "next/link";
 import { HomeIcon } from "lucide-react";
-import { css } from "styled-system/css";
+import { cx, css } from "styled-system/css";
+import { container, cq } from "styled-system/patterns";
 import { layout } from "styled-system/recipes";
 import { Layout as BaseLayout } from "@/components/layout";
 import { Header } from "@/components/layout/header";
 import { Menu } from "@/components/layout/menu";
 import { PageBottomNav } from "@/components/page-bottom-nav";
+import { AdInPage } from "@/components/ads";
+import Attribution from "@/mdx/attribution.mdx";
 import { SeriesStoreProvider } from "@/providers/series-store-provider";
 
 export default function Layout({ children }: PropsWithChildren) {
@@ -40,6 +43,12 @@ export default function Layout({ children }: PropsWithChildren) {
       })}
     >
       <SeriesStoreProvider>{children}</SeriesStoreProvider>
+      <AdInPage my={12} mx="auto" maxWidth="common-main-width" />
+      <article
+        className={cx(container({ maxWidth: "common-main-width" }), cq())}
+      >
+        <Attribution />
+      </article>
       <PageBottomNav mt={12} mx="auto" maxWidth="common-main-width" />
     </BaseLayout>
   );

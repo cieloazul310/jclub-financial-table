@@ -2,7 +2,6 @@
 
 import { FilterIcon } from "lucide-react";
 import { css } from "styled-system/css";
-import type { HTMLStyledProps } from "styled-system/jsx";
 import { Button } from "@/components/ui/button";
 import { ClubFilter } from "@/components/filter/club";
 import { YearFilter } from "@/components/filter/year";
@@ -92,12 +91,13 @@ export function Filter() {
           <FilterIcon />
         </Button>
       </DrawerBottom>
-      <YearFilter
-        className={css({ display: { base: "none", md: "flex" } })}
-        visibleYears={visibleYears}
-        setVisibleYearFrom={setVisibleYearFrom}
-        setVisibleYearTo={setVisibleYearTo}
-      />
+      <div className={css({ display: { base: "none", md: "flex" } })}>
+        <YearFilter
+          visibleYears={visibleYears}
+          setVisibleYearFrom={setVisibleYearFrom}
+          setVisibleYearTo={setVisibleYearTo}
+        />
+      </div>
     </>
   );
 }

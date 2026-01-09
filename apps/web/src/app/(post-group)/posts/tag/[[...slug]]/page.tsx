@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { css } from "styled-system/css";
 import { PageHeader } from "@/components/page-header";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
+import { AdInPage, AdInLayout } from "@/components/ads";
 import { post } from "@/content";
 import { postsPerPage } from "@/data/site-metadata";
 import { tags } from "@/data/tags";
@@ -51,6 +53,7 @@ export default async function Page({ params }: Props) {
       (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
     );
   const numAllPostsPages = Math.ceil(tagPosts.length / postsPerPage);
+  const postsInsAd = Math.ceil(postsPerPage / 2);
   const multiplePages = numAllPostsPages > 1;
 
   const prev =
@@ -77,11 +80,18 @@ export default async function Page({ params }: Props) {
       <PageHeader title={`タグ: ${currentTag.title}`}>
         {multiplePages && `${currentPage}/${numAllPostsPages}`}
       </PageHeader>
-      <PostList mb={12}>
-        {posts.map((post) => (
+      <PostList mb={4}>
+        {posts.slice(0, postsInsAd).map((post) => (
+          <PostListItem key={post.href} post={post} />
+        ))}
+        {posts.length > postsInsAd && (
+          <AdInPage gridColumn={{ base: "1", md: "1 / 3" }} />
+        )}
+        {posts.slice(postsInsAd).map((post) => (
           <PostListItem key={post.href} post={post} />
         ))}
       </PostList>
+      <AdInLayout mb={4} />
       <PrevNextLink leftSlot={prev} rightSlot={next} />
     </>
   );

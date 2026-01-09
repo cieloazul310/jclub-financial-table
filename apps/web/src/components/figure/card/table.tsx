@@ -38,6 +38,7 @@ export function CardTableRow({
       <Table.Header
         className={inset ? css({ pl: 6 }) : undefined}
         fontWeight="N"
+        lineHeight="140"
         verticalAlign="middle"
         p={1}
         scope="row"

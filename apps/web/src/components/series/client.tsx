@@ -6,7 +6,7 @@ import { css } from "styled-system/css";
 import { Button } from "@/components/ui/button";
 import { Toast, toaster } from "@/components/toast";
 import { Tooltip } from "@/components/tooltip";
-import { Loading } from "@/components/loading";
+import { PageLoading } from "@/components/loading";
 import { useCopyTable } from "@/utils/use-copy";
 import { Filter } from "./filter";
 import { SeriesSelect } from "./select";
@@ -58,7 +58,7 @@ export function SeriesClient({ dataset }: SeriesClientProps) {
         <Toast />
         <Filter />
       </div>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<PageLoading />}>
         <SeriesTable tableId={id} dataset={dataset} />
       </Suspense>
     </div>

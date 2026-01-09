@@ -7,6 +7,7 @@ import { SelectLink } from "@/components/select-link";
 import { PostList } from "@/components/post/list";
 import { PostListItem, PostListItemBase } from "@/components/post/list-item";
 import { Heading2, Paragraph } from "@/components/article";
+import { AdInPage } from "@/components/ads";
 import { post } from "@/content";
 import { title, description } from "@/data/site-metadata";
 import { contentMenu } from "@/data/menu";
@@ -62,6 +63,7 @@ export default async function Home() {
           ))}
         </PostList>
       </section>
+      <AdInPage mb={12} />
       <section className={css({ mb: 12 })}>
         <article className={cq()}>
           <Attribution />

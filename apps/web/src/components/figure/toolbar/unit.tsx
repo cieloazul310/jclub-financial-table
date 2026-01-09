@@ -1,6 +1,6 @@
 "use client";
 
-import { css } from "styled-system/css";
+import { cx, css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
 import { getSortState } from "@/utils/sort-state";
 import type { Mode, Tab } from "@/utils/types";
@@ -42,7 +42,9 @@ export function Unit({ mode, tab }: { mode: Mode; tab: Tab }) {
           <strong>{label}</strong> {sortState}
         </span>
       )}
-      <span>{unitString}</span>
+      <span className={cx(mode === "year" && css({ hideBelow: "sm" }))}>
+        {unitString}
+      </span>
     </div>
   );
 }
