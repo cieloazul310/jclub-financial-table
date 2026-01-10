@@ -14,7 +14,7 @@ function createBeakpointStyle(breakpoint: "sm" | "md" | "lg" | "xl" | "2xl") {
             "sidebar footer"
           `,
       gridTemplateColumns: {
-        base: "0 1fr",
+        base: "0 minmax(0, 1fr)",
         [breakpoint]: "{sizes.sidebar-width} minmax(0, 1fr)",
       },
     },

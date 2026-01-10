@@ -26,6 +26,7 @@ export const row = {
         index={index}
       />
     ),
+    length: 12,
   },
   bs: {
     head: (mode: Mode) => <BSTableHeadRow mode={mode} />,
@@ -37,6 +38,7 @@ export const row = {
         index={index}
       />
     ),
+    length: 11,
   },
   revenue: {
     head: (mode: Mode) => <RevenueTableHeadRow mode={mode} />,
@@ -48,6 +50,7 @@ export const row = {
         index={index}
       />
     ),
+    length: 11,
   },
   expense: {
     head: (mode: Mode) => <ExpenseTableHeadRow mode={mode} />,
@@ -59,6 +62,7 @@ export const row = {
         index={index}
       />
     ),
+    length: 11,
   },
   attd: {
     head: (mode: Mode) => <AttdTableHeadRow mode={mode} />,
@@ -70,5 +74,6 @@ export const row = {
         index={index}
       />
     ),
+    length: 7,
   },
 };
