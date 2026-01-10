@@ -34,10 +34,13 @@ export function TableStoreProvider({ children }: TableStoreProviderProps) {
     }),
   );
 
-  // ペイント前に state を同期更新（ユーザーに見えない）
+  // 初回ロード（ハイドレーション直後）にのみ state を同期更新
+  const initializedRef = useRef(false);
   useLayoutEffect(() => {
+    if (initializedRef.current) return;
     if (windowWidth !== undefined) {
       storeRef.current.setState({ cardMode: windowWidth < 600 });
+      initializedRef.current = true;
     }
   }, [windowWidth]);
 

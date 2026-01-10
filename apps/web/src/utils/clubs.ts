@@ -18,11 +18,12 @@ export function getClubsFromArray<T extends keyof ClubInfo>(
     .filter((clubInfo): clubInfo is ClubInfo => Boolean(clubInfo));
 }
 
-export function getSpecifiedClub(
-  key: keyof ClubInfo,
-  array: any[] | undefined | null,
+export function getSpecifiedClub<T extends keyof ClubInfo>(
+  key: T,
+  array: ClubInfo[T][] | undefined | null,
 ) {
   if (!array || array.length !== 1) return null;
+  if (!array[0]) return null;
   const specificClub = getClubInfo(key, array[0]);
   return specificClub;
 }

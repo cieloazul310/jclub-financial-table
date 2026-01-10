@@ -21,8 +21,7 @@ const tbodyLabelStyle = css({
 function TableHeaderLabel({
   mode,
   position = "sticky",
-  minWidth = "8em",
-  width = "100px",
+  minWidth = "6em",
   borderRightWidth = "1px",
   borderColor = "solid-gray.200",
   verticalAlign = "middle",
@@ -34,7 +33,6 @@ function TableHeaderLabel({
   const props = {
     position,
     minWidth,
-    width,
     borderRightWidth,
     borderColor,
     verticalAlign,
