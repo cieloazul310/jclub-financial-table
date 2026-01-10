@@ -22,11 +22,6 @@ type XLegendProps = {
   itemWidth: number;
 };
 
-function getYearLabel(year: number) {
-  if (year % 5 === 0) return year.toString();
-  return year.toString().slice(2);
-}
-
 function XLegend({ year, category, height, itemWidth }: XLegendProps) {
   return (
     <g
@@ -37,16 +32,18 @@ function XLegend({ year, category, height, itemWidth }: XLegendProps) {
         x={itemWidth / 2}
         dy="4px"
         alignmentBaseline="hanging"
+        fontWeight="bold"
         fill="currentColor"
       >
-        {getYearLabel(year)}
+        {year}
       </text>
       <text
         x={itemWidth / 2}
-        y={14}
+        y={18}
         dy="4px"
         alignmentBaseline="hanging"
         fill="currentColor"
+        fontSize=".95em"
       >
         {category}
       </text>
@@ -143,12 +140,15 @@ function BSBar({
         }
       />
       <text
-        className={css({ display: { base: "none", _groupHover: "block" } })}
+        className={css({
+          color: { base: "solid-gray.700", _groupHover: "solid-gray.900" },
+        })}
         x={itemWidth / 2}
         y={net_worth.value < 0 ? scale(0) : scale(net_worth.value)}
         dy="-.4em"
         textAnchor="middle"
         fontWeight="bold"
+        fill="currentColor"
       >
         {net_worth.value}
       </text>
@@ -236,12 +236,16 @@ function AttdBar({
         fill={fill}
       />
       <text
-        className={css({ display: { base: "none", _groupHover: "block" } })}
+        className={css({
+          color: { base: "solid-gray.420", _groupHover: "solid-gray.900" },
+        })}
         x={itemWidth / 2}
         y={scale(average_attd.value)}
         dy="-.4em"
+        fontSize="90%"
         textAnchor="middle"
         fontWeight="bold"
+        fill="currentColor"
       >
         {average_attd.value}
       </text>
