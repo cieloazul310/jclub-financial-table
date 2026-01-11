@@ -10,6 +10,8 @@ import {
   Tokurei2026,
 } from "@/components/docs/figures/license-tokurei";
 import { FigureWrapper } from "@/components/docs/figures/wrapper";
+import { RevenueListRaw, RevenueList } from "@/components/docs/figures/revenue";
+import { ExpenseListRaw, ExpenseList } from "@/components/docs/figures/expense";
 
 const meta = {
   title: "Docs/Figures",
@@ -107,6 +109,30 @@ export const TokureiSochi2026InArticle: Story = {
       <FigureWrapper my={8}>
         <Tokurei2026 />
       </FigureWrapper>
+    </WithArticle>
+  ),
+};
+
+export const RevenueTable: Story = {
+  render: () => <RevenueListRaw />,
+};
+
+export const RevenueTableInArticle: Story = {
+  render: () => (
+    <WithArticle>
+      <RevenueList my={8} />
+    </WithArticle>
+  ),
+};
+
+export const ExpenseTable: Story = {
+  render: () => <ExpenseListRaw />,
+};
+
+export const ExpenseTableInArticle: Story = {
+  render: () => (
+    <WithArticle>
+      <ExpenseList my={8} />
     </WithArticle>
   ),
 };
