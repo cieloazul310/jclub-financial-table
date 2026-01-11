@@ -35,7 +35,9 @@ export const shortcodes = {
   ),
   PanelLinkShorthand,
   Red,
-  SimpleTable,
+  SimpleTable: ({ className, ...props }) => (
+    <SimpleTable {...props} my={8} className={cx(className, withArticle)} />
+  ),
   SummaryTable: ({ className, ...props }) => (
     <SummaryTable {...props} my={8} className={cx(className, withArticle)} />
   ),

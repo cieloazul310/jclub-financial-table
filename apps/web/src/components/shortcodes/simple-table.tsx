@@ -1,6 +1,9 @@
 import { cx, css } from "styled-system/css";
 import { Table } from "@/components/ui/table";
-import { TableWrapper } from "@/components/docs/figures/table-wrapper";
+import {
+  TableWrapper,
+  type TableWrapperProps,
+} from "@/components/docs/figures/table-wrapper";
 import { format } from "@/utils/format";
 import { Diff } from "./diff";
 
@@ -17,7 +20,7 @@ type SimpleTableProps = {
   diffLabel?: string;
   separator?: boolean;
   decimal?: number;
-};
+} & TableWrapperProps;
 
 export function SimpleTable({
   cols,
@@ -32,7 +35,9 @@ export function SimpleTable({
   diffLabel,
   separator = false,
   decimal = 0,
+  ...rest
 }: SimpleTableProps) {
+  const props = { ...rest };
   const diffData = data[data.length - 1]?.map((value, index) => {
     const prevValue = data?.[data.length - 2]?.[index];
     if (!prevValue) return null;
@@ -40,7 +45,7 @@ export function SimpleTable({
   });
 
   return (
-    <TableWrapper>
+    <TableWrapper {...props}>
       <Table.Root dense>
         <Table.Head>
           <Table.Row>
