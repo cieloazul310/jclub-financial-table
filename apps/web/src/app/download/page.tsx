@@ -4,19 +4,15 @@ import { getDataByClub } from "@cieloazul310/jclub-financial/data";
 import { DownloadClient } from "@/components/download/client";
 import type { Dataset } from "@/components/download/utils/types";
 
-export function metadata(): Metadata {
-  const title = "データダウンロード";
-
-  return {
-    title,
-    openGraph: {
-      title,
-    },
-    twitter: {
-      title,
-    },
-  };
-}
+export const metadata: Metadata = {
+  title: "データダウンロード",
+  openGraph: {
+    title: "データダウンロード",
+  },
+  twitter: {
+    title: "データダウンロード",
+  },
+};
 
 export default async function Page() {
   const allClubs = getAllClubs();
