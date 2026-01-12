@@ -22,8 +22,14 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { page } = await params;
+  const currentPage = page && page?.[0] ? parseInt(page[0], 10) : 1;
+  const allPosts = (await post.getAll()).sort(
+    (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
+  );
+  const numAllPostsPages = Math.ceil(allPosts.length / postsPerPage);
+  const title = `記事一覧 (${currentPage} / ${numAllPostsPages})`;
 
-  return {};
+  return { title, openGraph: { title }, twitter: { title } };
 }
 
 export default async function Page({ params }: Props) {

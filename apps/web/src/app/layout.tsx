@@ -3,12 +3,36 @@ import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { AdScript } from "@/components/ads/script";
 import { notoSansJp, notoSansMono } from "@/styles/fonts";
-import { title, description } from "@/data/site-metadata";
+import { title, description, siteUrl } from "@/data/site-metadata";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title,
+  title: {
+    template: `%s - ${title}`,
+    default: title, // a default is required when creating a template
+  },
   description,
+  authors: [{ name: "cieloazul310", url: "https://cieloazul310.github.io" }],
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    // images: "/og-image.png",
+    title: {
+      template: `%s - ${title}`,
+      default: title,
+    },
+    description,
+    url: siteUrl,
+    siteName: title,
+  },
+  twitter: {
+    card: "summary",
+    title: {
+      template: `%s - ${title}`,
+      default: title,
+    },
+    description,
+    images: ["https://nextjs.org/og.png"], // Must be an absolute URL
+  },
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {

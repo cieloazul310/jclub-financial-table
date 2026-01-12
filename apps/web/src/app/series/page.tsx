@@ -1,6 +1,17 @@
+import type { Metadata } from "next";
 import { getAllClubs, getAllYears } from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
 import { SeriesClient } from "@/components/series/client";
+
+export const metadata: Metadata = {
+  title: "項目別表示",
+  openGraph: {
+    title: "項目別表示",
+  },
+  twitter: {
+    title: "項目別表示",
+  },
+};
 
 export default async function Page() {
   const allClubs = getAllClubs();

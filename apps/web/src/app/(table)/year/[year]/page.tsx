@@ -35,10 +35,20 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { year } = await params;
+  const title = `${year}年度の経営情報`;
+  const description = `${year}年度のJクラブ経営情報を損益計算書、貸借対照表、営業収入、営業費用、入場者数に分類して表示`;
 
   return {
-    title: `${year}年度の経営情報`,
-    description: `${year}年度の経営情報`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+    },
+    twitter: {
+      title,
+      description,
+    },
   };
 }
 

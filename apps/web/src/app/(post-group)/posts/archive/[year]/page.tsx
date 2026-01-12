@@ -36,8 +36,9 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { year } = await params;
+  const title = `${year}年の記事一覧`;
 
-  return {};
+  return { title, openGraph: { title }, twitter: { title } };
 }
 
 export default async function Page({ params }: Props) {

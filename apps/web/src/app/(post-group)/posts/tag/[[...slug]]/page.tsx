@@ -32,8 +32,12 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const [tag] = slug;
+  const currentTag = tags.find(({ id }) => tag === id);
+  if (!currentTag) return {};
+  const title = `タグ:${currentTag.title}の記事一覧`;
 
-  return {};
+  return { title, openGraph: { title }, twitter: { title } };
 }
 
 export default async function Page({ params }: Props) {
