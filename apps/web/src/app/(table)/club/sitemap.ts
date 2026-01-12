@@ -7,10 +7,19 @@ export const revalidate = false;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const allClubs = getAllClubs();
-  return allClubs.map(({ id }) => ({
+  const tableSitemap = allClubs.map(({ id }) => ({
     url: `${siteUrl}/club/${id}`,
     lastModified: lastUpdate,
     changeFrequency: "yearly",
     priority: 1,
-  }));
+  })) satisfies MetadataRoute.Sitemap;
+
+  const postSitemap = allClubs.map(({ id }) => ({
+    url: `${siteUrl}/club/${id}/posts`,
+    lastModified: lastUpdate,
+    changeFrequency: "monthly",
+    priority: 0.1,
+  })) satisfies MetadataRoute.Sitemap;
+
+  return [...tableSitemap, ...postSitemap];
 }

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { css } from "styled-system/css";
 import { PageHeader } from "@/components/page-header";
 import { Heading3, Paragraph } from "@/components/article";
@@ -13,6 +14,16 @@ function getDocsGroup(allDocs: DocsMetadata[]) {
     ...rest,
     posts: allDocs.filter(({ frontmatter }) => frontmatter.group === id),
   }));
+}
+
+export function metadata(): Metadata {
+  const title = "経営情報の見方";
+
+  return {
+    title,
+    openGraph: { title },
+    twitter: { title },
+  };
 }
 
 export default async function Page() {

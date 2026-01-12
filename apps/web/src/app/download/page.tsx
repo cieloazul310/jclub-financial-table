@@ -1,7 +1,22 @@
+import type { Metadata } from "next";
 import { getAllClubs } from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
 import { DownloadClient } from "@/components/download/client";
 import type { Dataset } from "@/components/download/utils/types";
+
+export function metadata(): Metadata {
+  const title = "データダウンロード";
+
+  return {
+    title,
+    openGraph: {
+      title,
+    },
+    twitter: {
+      title,
+    },
+  };
+}
 
 export default async function Page() {
   const allClubs = getAllClubs();
