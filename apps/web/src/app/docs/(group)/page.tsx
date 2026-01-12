@@ -16,15 +16,11 @@ function getDocsGroup(allDocs: DocsMetadata[]) {
   }));
 }
 
-export function metadata(): Metadata {
-  const title = "経営情報の見方";
-
-  return {
-    title,
-    openGraph: { title },
-    twitter: { title },
-  };
-}
+export const metadata: Metadata = {
+  title: "経営情報の見方",
+  openGraph: { title: "経営情報の見方" },
+  twitter: { title: "経営情報の見方" },
+};
 
 export default async function Page() {
   const allDocs = await docs.getAll();
