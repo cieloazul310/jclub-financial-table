@@ -1,5 +1,8 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Jクラブ経営情報ポータル",
@@ -11,5 +14,3 @@ export default function manifest(): MetadataRoute.Manifest {
     icons: [],
   };
 }
-
-export const dynamic = "force-static";

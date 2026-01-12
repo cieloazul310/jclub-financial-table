@@ -8,6 +8,7 @@ export const title = "ダミー情報ポータルZ";
 export const description =
   "これはダミーのサイト説明です。実際の内容とは異なります。";
 
+export const lastUpdate = new Date("2026-01-12");
 export const siteUrl = "https://cieloazul310.github.io/jclub-financial-next";
 export const repo = "https://github.com/cieloazul310/jclub-financial-next";
 
