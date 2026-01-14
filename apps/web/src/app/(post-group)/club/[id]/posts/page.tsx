@@ -1,4 +1,4 @@
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { getAllClubs, getClubById } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { PageHeader } from "@/components/page-header";
@@ -19,10 +19,7 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const club = getClubById(id);
 

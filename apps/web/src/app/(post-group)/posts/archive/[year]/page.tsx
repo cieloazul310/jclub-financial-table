@@ -77,6 +77,9 @@ export default async function Page({ params }: Props) {
           </section>
         </Fragment>
       ))}
+      {!postsByMonth.length && (
+        <div className={css({ mb: 12 })}>この年の記事はありません</div>
+      )}
       <AdInLayout mb={8} />
       <PrevNextLink leftSlot={next} rightSlot={prev} mb={4} />
       <PageBottomNav

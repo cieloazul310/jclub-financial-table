@@ -1,72 +1,47 @@
-import type { PropsWithChildren } from "react";
 import { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { container } from "styled-system/patterns";
-import { Paragraph, Heading3 } from "@/components/article";
-import { PLFigure, PLFigureRaw } from "@/components/docs/figures/pl";
-import { BSFigure, BSFigureRaw } from "@/components/docs/figures/bs";
+import { PLFigure } from "@/components/docs/figures/pl";
+import { BSFigure } from "@/components/docs/figures/bs";
 import {
   Tokurei2020,
   Tokurei2023,
   Tokurei2026,
 } from "@/components/docs/figures/license-tokurei";
 import { FigureWrapper } from "@/components/docs/figures/wrapper";
-import { RevenueListRaw, RevenueList } from "@/components/docs/figures/revenue";
-import { ExpenseListRaw, ExpenseList } from "@/components/docs/figures/expense";
+import { RevenueList } from "@/components/docs/figures/revenue";
+import { ExpenseList } from "@/components/docs/figures/expense";
+import { WithArticle } from "./with-article";
 
 const meta = {
-  title: "Docs/Figures",
+  title: "Docs/Figures/Basic",
 } satisfies Meta;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-function WithArticle({ children }: PropsWithChildren) {
-  return (
-    <div className={container({ maxWidth: "common-main-width" })}>
-      <Paragraph>
-        今日は二百二十日だが、九月一日の関東大震災記念日や、二百十日から、この日にかけては、寅彦先生の名言「天災は忘れた頃来る」という言葉が、いくつかの新聞に必ず引用されることになっている。
-      </Paragraph>
-      <Heading3>一体どこにあるのか</Heading3>
-      <Paragraph>
-        ところで、よく聞かれるのであるが、この言葉は、先生のどの随筆にあるのかが、問題になっている。寅彦のファンは日本中にたくさんあって、先生の全集は隅から隅まで、何回となく繰り返して読んだという熱心な人がよくある。そういう人から、どうもおかしいが、この言葉は、どこにも見当らない。一体どこにあるのか、という質問をよく受ける。
-      </Paragraph>
-      {children}
-      <Paragraph>
-        実はこの言葉は、先生の書かれたものの中には、ないのである。しかし話の間には、しばしば出た言葉で、かつ先生の代表的な随筆の一つとされている「天災と国防」の中には、これと全く同じことが、少しちがった表現で出ている。
-      </Paragraph>
-      <Paragraph>
-        それで、文明が進むほど天災による損害の程度も累進する傾向があるという事実を充分に自覚して、そして平生からそれに対する防御策を講じなければならないはずであるのに、それがいっこうにできていないのはどういうわけであるか。そのおもなる原因は、畢竟そういう天災がきわめてまれにしか起こらないで、ちょうど人間が前車の顛覆を忘れたころにそろそろ後車を引き出すようになるからであろう。
-      </Paragraph>
-      <Paragraph>
-        それで私も、この言葉が先生の書かれたものの中にあるものと思い込んでいた。もう十五年ばかりも昔の話になるが、たしか東京日日新聞だったかに頼まれて「天災」という短文を書いたことがある。その文章の中で、私はこの言葉を引用（？）して「天災は忘れた頃来る」という寅彦先生の言葉は、まさに千古の名言であると書いておいた。
-      </Paragraph>
-      <Paragraph>
-        ところが、この言葉が、その後方々で引用されるようになり、とうとう朝日新聞が、戦争中に、一日一訓というようなものを編集した時、九月一日の分に、この言葉が採用されることになった。
-      </Paragraph>
-    </div>
-  );
-}
-
 export const PL: Story = {
-  render: () => <PLFigureRaw />,
+  render: () => <PLFigure />,
 };
 
 export const PLWithArticle: Story = {
   render: () => (
     <WithArticle>
-      <PLFigure caption="表: 損益計算書" my={8} />
+      <FigureWrapper caption="表: 損益計算書" my={8}>
+        <PLFigure />
+      </FigureWrapper>
     </WithArticle>
   ),
 };
 
 export const BS: Story = {
-  render: () => <BSFigureRaw />,
+  render: () => <BSFigure />,
 };
 
 export const BSWithArticle: Story = {
   render: () => (
     <WithArticle>
-      <BSFigure caption="表: 貸借対照表" my={8} />
+      <FigureWrapper caption="表: 貸借対照表" my={8}>
+        <BSFigure />
+      </FigureWrapper>
     </WithArticle>
   ),
 };
@@ -114,25 +89,29 @@ export const TokureiSochi2026InArticle: Story = {
 };
 
 export const RevenueTable: Story = {
-  render: () => <RevenueListRaw />,
+  render: () => <RevenueList />,
 };
 
 export const RevenueTableInArticle: Story = {
   render: () => (
     <WithArticle>
-      <RevenueList my={8} />
+      <FigureWrapper my={8}>
+        <RevenueList />
+      </FigureWrapper>
     </WithArticle>
   ),
 };
 
 export const ExpenseTable: Story = {
-  render: () => <ExpenseListRaw />,
+  render: () => <ExpenseList />,
 };
 
 export const ExpenseTableInArticle: Story = {
   render: () => (
     <WithArticle>
-      <ExpenseList my={8} />
+      <FigureWrapper my={8}>
+        <ExpenseList />
+      </FigureWrapper>
     </WithArticle>
   ),
 };

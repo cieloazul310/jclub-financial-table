@@ -1,9 +1,8 @@
 import { css } from "styled-system/css";
 import { Table } from "@/components/ui/table";
 import { TableWrapper, type TableWrapperProps } from "./table-wrapper";
-import { FigureWrapper, FigureWrapperProps } from "./wrapper";
 
-export function RevenueListRaw({ ...rest }: TableWrapperProps) {
+export function RevenueList({ ...rest }: TableWrapperProps) {
   const props = { ...rest };
   return (
     <TableWrapper {...props}>
@@ -84,13 +83,5 @@ export function RevenueListRaw({ ...rest }: TableWrapperProps) {
         </Table.Body>
       </Table.Root>
     </TableWrapper>
-  );
-}
-
-export function RevenueList(props: FigureWrapperProps) {
-  return (
-    <FigureWrapper {...props}>
-      <RevenueListRaw />
-    </FigureWrapper>
   );
 }

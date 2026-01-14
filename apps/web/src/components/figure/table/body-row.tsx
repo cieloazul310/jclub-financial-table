@@ -78,7 +78,8 @@ function DataTableCell({
   align = "right",
   ...props
 }: DataTableCellProps) {
-  const red = redIfMinus && typeof value === "number" && value < 0;
+  const red =
+    redIfMinus && typeof value?.value === "number" && value?.value < 0;
 
   return (
     <Table.Cell

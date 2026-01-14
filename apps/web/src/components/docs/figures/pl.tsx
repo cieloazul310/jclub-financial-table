@@ -1,8 +1,7 @@
 import { Table } from "@/components/ui/table";
 import { TableWrapper } from "./table-wrapper";
-import { FigureWrapper, type FigureWrapperProps } from "./wrapper";
 
-export function PLFigureRaw({ dense = true, ...rest }: Table.RootProps) {
+export function PLFigure({ dense = true, ...rest }: Table.RootProps) {
   const props = { dense, ...rest };
   return (
     <TableWrapper>
@@ -81,13 +80,5 @@ export function PLFigureRaw({ dense = true, ...rest }: Table.RootProps) {
         </Table.Body>
       </Table.Root>
     </TableWrapper>
-  );
-}
-
-export function PLFigure(props: FigureWrapperProps) {
-  return (
-    <FigureWrapper {...props}>
-      <PLFigureRaw />
-    </FigureWrapper>
   );
 }
