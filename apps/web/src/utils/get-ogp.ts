@@ -6,6 +6,12 @@ import ogs from "open-graph-scraper";
 
 export async function getOgp(url: string) {
   try {
+    if (
+      process.env.NODE_ENV === "production" &&
+      process.env.DISABLE_OGP_FETCH === "true"
+    )
+      return null;
+
     const { result } = await ogs({ url });
     return result;
   } catch (error) {
