@@ -39,7 +39,7 @@ export function useMDXComponents(
           my: 8,
         })}
       >
-        <Table.Root dense={{ base: true, sm: false }} {...props} />
+        <Table.Root dense {...props} />
       </div>
     ),
     thead: (props) => <Table.Head {...props} />,

@@ -1,6 +1,5 @@
 import { css } from "styled-system/css";
 import { styled, type HTMLStyledProps } from "styled-system/jsx";
-import { FigureWrapper, FigureWrapperProps } from "./wrapper";
 
 function BSItem({
   p = 4,
@@ -28,7 +27,7 @@ function BSItemHeading({
   return <styled.h3 {...props} />;
 }
 
-export function BSFigureRaw() {
+export function BSFigure() {
   return (
     <div
       className={css({
@@ -90,13 +89,5 @@ export function BSFigureRaw() {
         </BSItem>
       </div>
     </div>
-  );
-}
-
-export function BSFigure({ ...props }: FigureWrapperProps) {
-  return (
-    <FigureWrapper {...props}>
-      <BSFigureRaw />
-    </FigureWrapper>
   );
 }
