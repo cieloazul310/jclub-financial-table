@@ -2,7 +2,7 @@ import { css } from "styled-system/css";
 import { Table } from "@/components/ui/table";
 import { UnorderedList, type UnorderedListProps } from "@/components/ui/list";
 import { List } from "@/components/ui/list";
-import { TableWrapper } from "./table-wrapper";
+import { TableWrapper, type TableWrapperProps } from "./table-wrapper";
 
 export function SpecialCase({
   ...props
@@ -38,13 +38,13 @@ export function Normal({ ...props }: Omit<UnorderedListProps, "children">) {
   );
 }
 
-export function Tokurei2020() {
+export function Tokurei2020(props: TableWrapperProps) {
   return (
-    <TableWrapper>
+    <TableWrapper {...props}>
       <Table.Root>
         <Table.Caption>2020年当初の特例措置</Table.Caption>
         <colgroup>
-          <col span={5} className={css({ minWidth: "10em" })} />
+          <col span={5} className={css({ minWidth: "12em" })} />
         </colgroup>
         <Table.Head>
           <Table.Row>
@@ -84,14 +84,14 @@ export function Tokurei2020() {
   );
 }
 
-export function Tokurei2023() {
+export function Tokurei2023(props: TableWrapperProps) {
   return (
-    <TableWrapper>
+    <TableWrapper {...props}>
       <Table.Root>
         <Table.Caption>2023年改定後の特例措置</Table.Caption>
         <colgroup>
-          <col />
-          <col span={6} className={css({ minWidth: "10em" })} />
+          <col className={css({ minWidth: "6em" })} />
+          <col span={6} className={css({ minWidth: "12em" })} />
         </colgroup>
         <Table.Head>
           <Table.Row>
@@ -162,13 +162,13 @@ export function Tokurei2023() {
   );
 }
 
-export function Tokurei2026() {
+export function Tokurei2026(props: TableWrapperProps) {
   return (
-    <TableWrapper>
+    <TableWrapper {...props}>
       <Table.Root>
         <Table.Caption>シーズン移行に伴う特例措置</Table.Caption>
         <colgroup>
-          <col span={5} className={css({ minWidth: "10em" })} />
+          <col span={5} className={css({ minWidth: "12em" })} />
         </colgroup>
         <Table.Head>
           <Table.Row>

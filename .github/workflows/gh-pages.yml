@@ -88,6 +88,7 @@ jobs:
         env:
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
           NEXT_PUBLIC_PUBLISHER_ID: ${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }}
+          DISABLE_OGP_FETCH: ${{ secrets.DISABLE_OGP_FETCH }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
