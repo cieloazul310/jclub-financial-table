@@ -5,7 +5,8 @@ import { Card } from "@/components/ui/card";
 import { Link } from "@/components/link";
 import { CategoryLabel } from "@/components/category-label";
 import { useTableStore } from "@/providers/table-store-provider";
-import type { Mode, Tab } from "@/utils/types";
+import { useTab } from "@/utils/tabs";
+import type { Mode } from "@/utils/types";
 import { CardTable } from "./table";
 
 type CardItemBaseProps = Card.RootProps;
@@ -67,20 +68,14 @@ const tabLabelMap = {
 type CardItemProps = {
   datum: ExtendedFinancialDatum;
   mode: Mode;
-  tab: Tab;
   index: number;
   totalCount: number;
 };
 
-export function CardItem({
-  datum,
-  mode,
-  tab,
-  index,
-  totalCount,
-}: CardItemProps) {
+export function CardItem({ datum, mode, index, totalCount }: CardItemProps) {
   const { year, clubId, name, short_name, category, rank, elevation } = datum;
   const { sortField, setSortKey, toggleSort } = useTableStore((store) => store);
+  const tab = useTab();
   const onRankClick = () => {
     if (mode === "club") return;
     if (sortField === "rank") {

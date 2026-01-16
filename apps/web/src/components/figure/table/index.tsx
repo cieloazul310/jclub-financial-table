@@ -1,18 +1,19 @@
 import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { Table } from "@/components/ui/table";
-import type { Mode, Tab } from "@/utils/types";
+import { useTab } from "@/utils/tabs";
+import type { Mode } from "@/utils/types";
 import { row } from "./row";
 import { useTableId } from "../utils/use-table-id";
 
 type FinancialTableProps = {
-  tab: Tab;
   mode: Mode;
   data: ExtendedFinancialDatum[];
 };
 
-export function FinancialTable({ tab, mode, data }: FinancialTableProps) {
+export function FinancialTable({ mode, data }: FinancialTableProps) {
   const tableId = useTableId();
+  const tab = useTab();
   const { head, renderRow } = row[tab];
   return (
     <div

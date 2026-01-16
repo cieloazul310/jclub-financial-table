@@ -42,7 +42,7 @@ type FinancialCardProps = {
 };
 
 export function FinancialCard({ mode, data }: FinancialCardProps) {
-  const { tab, sortAsc, sortField } = useTableStore((store) => store);
+  const { sortAsc, sortField } = useTableStore((store) => store);
   const [timer, setTimer] = useState<NodeJS.Timeout>();
   const [swiper, setSwiper] = useState<SwiperCore | null>(null);
   const initialIndex = useInitialIndex(data, mode);
@@ -124,7 +124,6 @@ export function FinancialCard({ mode, data }: FinancialCardProps) {
               <CardItem
                 datum={datum}
                 mode={mode}
-                tab={tab}
                 index={index}
                 totalCount={data.length}
               />

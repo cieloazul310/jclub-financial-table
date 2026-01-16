@@ -5,10 +5,9 @@ import {
   type SortableFields,
 } from "@cieloazul310/jclub-financial";
 import { AllCategories } from "@/utils/category";
-import type { Tab, Category } from "@/utils/types";
+import type { Category } from "@/utils/types";
 
 export type TableState = {
-  tab: Tab;
   sortField: SortableFields;
   sortAsc: boolean;
   visibleCategories: Category[];
@@ -18,7 +17,6 @@ export type TableState = {
 };
 
 export type TableActions = {
-  setTab: (tab: Tab) => void;
   setSortKey: (sortField: SortableFields) => void;
   toggleSort: () => void;
   toggleVisibleCategory: (category: Category) => void;
@@ -33,7 +31,6 @@ export type TableActions = {
 export type TableStore = TableState & TableActions;
 
 export const defaultInitState: TableState = {
-  tab: "pl",
   sortField: "revenue",
   sortAsc: false,
   visibleCategories: [...AllCategories],
@@ -47,7 +44,6 @@ export const createTableStore = (initState: TableState = defaultInitState) =>
     persist(
       (set) => ({
         ...initState,
-        setTab: (tab: Tab) => set(() => ({ tab })),
         setSortKey: (sortField: SortableFields) => set(() => ({ sortField })),
         toggleSort: () => set((prevState) => ({ sortAsc: !prevState.sortAsc })),
         toggleVisibleCategory: (category) =>

@@ -8,6 +8,7 @@ import { cx, css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
 import { Table } from "@/components/ui/table";
 import { Diff } from "@/components/shortcodes/diff";
+import { useTab } from "@/utils/tabs";
 import { format } from "@/utils/format";
 import type { Mode, Tab } from "@/utils/types";
 import { cardValues } from "./values";
@@ -151,9 +152,10 @@ type CardTableProps = {
 };
 
 export function CardTable({ datum, mode }: CardTableProps) {
-  const { tab, sortField, sortAsc, setSortKey, toggleSort } = useTableStore(
+  const { sortField, sortAsc, setSortKey, toggleSort } = useTableStore(
     (store) => store,
   );
+  const tab = useTab();
   const onClick = (id: SortableFields) => () => {
     if (mode === "club") return;
     if (sortField === id) {

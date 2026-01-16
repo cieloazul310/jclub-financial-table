@@ -1,11 +1,10 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import { getAllYears } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByYear } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
+import { TabList } from "@/components/figure/tab-list";
 import { Figure } from "@/components/figure";
-import { PageLoading } from "@/components/loading";
 import { YearSummary } from "@/components/year-summary";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { SelectLink } from "@/components/select-link";
@@ -60,9 +59,8 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <Suspense fallback={<PageLoading />}>
-        <Figure data={data} mode="year" />
-      </Suspense>
+      <TabList />
+      <Figure data={data} mode="year" />
       <PrevNextLink
         leftSlot={
           prev && { href: `/year/${prev.year}`, title: `${prev.year}年度` }

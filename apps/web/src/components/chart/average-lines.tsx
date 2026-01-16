@@ -5,6 +5,7 @@ import {
 import { line as d3Line, Line, ScaleLinear } from "d3";
 import { css } from "styled-system/css";
 import { useTableStore } from "@/providers/table-store-provider";
+import { useTab } from "@/utils/tabs";
 import type { Tab } from "@/utils/types";
 import type { Averages, AverageValues } from "./get-averages";
 
@@ -101,7 +102,8 @@ export function AverageLines({
   itemWidth,
   averages,
 }: AverageLinesTypes) {
-  const { tab } = useTableStore((store) => store);
+  // const { tab } = useTableStore((store) => store);
+  const tab = useTab();
   const dataYears = data.map(({ year }) => year.value);
   const line = useAverageLine(scale, dataYears, itemWidth);
   if (tab === "bs") return null;
