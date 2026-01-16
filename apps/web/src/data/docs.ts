@@ -1,4 +1,5 @@
 export const docsGroupIds = [
+  "fundamental",
   "pl",
   "bs",
   "revenue",
@@ -8,6 +9,11 @@ export const docsGroupIds = [
 ] as const;
 
 export const docsGroup = [
+  {
+    id: "fundamental",
+    title: "会計の基礎",
+    description: "会計の基本的な考え方を確認します",
+  },
   {
     id: "pl",
     title: "損益計算書(P/L)",

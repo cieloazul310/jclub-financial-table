@@ -1,10 +1,12 @@
 "use client";
 
 import { css } from "styled-system/css";
-import { useTableStore } from "@/providers/table-store-provider";
+// import { useTableStore } from "@/providers/table-store-provider";
+import { useTab } from "@/utils/tabs";
 
 export function useChartTitle() {
-  const { tab } = useTableStore((store) => store);
+  // onst { tab } = useTableStore((store) => store);
+  const tab = useTab();
   if (tab === "bs") return "資産の部、負債の部、純資産の部推移";
   if (tab === "expense") return "チーム人件費推移";
   if (tab === "attd") return "平均入場者数推移";

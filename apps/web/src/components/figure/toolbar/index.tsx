@@ -1,11 +1,11 @@
 import { css } from "styled-system/css";
-import type { Mode, Tab } from "@/utils/types";
+import type { Mode } from "@/utils/types";
 import { ModeHandler } from "./mode-handler";
 import { CopyButton } from "./copy-button";
 import { Filter } from "./filter";
 import { Unit } from "./unit";
 
-export function Toolbar({ mode, tab }: { mode: Mode; tab: Tab }) {
+export function Toolbar({ mode }: { mode: Mode }) {
   return (
     <div
       className={css({
@@ -21,7 +21,7 @@ export function Toolbar({ mode, tab }: { mode: Mode; tab: Tab }) {
         <CopyButton />
         <Filter mode={mode} />
       </div>
-      <Unit mode={mode} tab={tab} />
+      <Unit mode={mode} />
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
 import { scaleLinear } from "d3";
 import { css } from "styled-system/css";
-import { useTableStore } from "@/providers/table-store-provider";
+import { useTab } from "@/utils/tabs";
 import type { Tab } from "@/utils/types";
 import { AxisY } from "./axis-y";
 import { ChartMain } from "./chart-main";
@@ -26,7 +26,7 @@ export function ChartClient({
   extentMap,
   averages,
 }: ChartClientProps) {
-  const { tab } = useTableStore((store) => store);
+  const tab = useTab();
   const [min, max] = extentMap[tab];
   const scale = scaleLinear().domain([min, max]).range([height, 0]).nice();
 

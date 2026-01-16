@@ -1,4 +1,4 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.1 (commit: f4833b6c4447a8e5eeac4e4c8491960122be65be)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.2 (commit: 2eb83c698aaf218336e60755b416f00a73d6402f)
 export { useTabs, useTabsContext } from "@ark-ui/react/tabs";
 
 export type { UseTabsProps, UseTabsReturn } from "@ark-ui/react/tabs";

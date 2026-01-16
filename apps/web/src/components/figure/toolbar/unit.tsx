@@ -1,7 +1,9 @@
 "use client";
 
 import { cx, css } from "styled-system/css";
+import { useTabsContext } from "@/components/ui/tabs";
 import { useTableStore } from "@/providers/table-store-provider";
+import { valueToTab } from "@/utils/tabs";
 import { getSortState } from "@/utils/sort-state";
 import type { Mode, Tab } from "@/utils/types";
 
@@ -22,10 +24,11 @@ export function useUnitString(tab: Tab): string {
   return `単位: ${unit}`;
 }
 
-export function Unit({ mode, tab }: { mode: Mode; tab: Tab }) {
+export function Unit({ mode }: { mode: Mode }) {
   const { sortAsc, sortField } = useTableStore((store) => store);
   const { label, sortState } = getSortState({ sortAsc, sortField });
-  const unitString = useUnitString(tab);
+  const { value } = useTabsContext();
+  const unitString = useUnitString(valueToTab(value));
 
   return (
     <div

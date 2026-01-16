@@ -12,6 +12,7 @@ import type {
   FinancialDatum,
 } from "@cieloazul310/jclub-financial";
 import { cx, css } from "styled-system/css";
+import { useTab } from "@/utils/tabs";
 import { useTableStore } from "@/providers/table-store-provider";
 import { categoryBarFill } from "./bar-gradient";
 
@@ -261,7 +262,8 @@ type BarsProps = {
 };
 
 export function Bars({ data, scale, height, itemWidth }: BarsProps) {
-  const { tab } = useTableStore((store) => store);
+  // const { tab } = useTableStore((store) => store);
+  const tab = useTab();
   const barPadding = 0.2;
   const barWidth = itemWidth * (1 - barPadding);
 

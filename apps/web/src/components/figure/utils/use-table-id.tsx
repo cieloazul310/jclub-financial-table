@@ -1,8 +1,8 @@
 import { usePathname } from "next/navigation";
-import { useTableStore } from "@/providers/table-store-provider";
+import { useTab } from "@/utils/tabs";
 
 export function useTableId() {
-  const { tab } = useTableStore((store) => store);
+  const tab = useTab();
   const pathname = usePathname();
   return `${pathname.split("/").join("")}${tab}`;
 }
