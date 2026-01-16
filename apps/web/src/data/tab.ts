@@ -7,3 +7,5 @@ export const tabOptions: { id: Tab; label: string }[] = [
   { id: "expense", label: "営業費用" },
   { id: "attd", label: "入場者数" },
 ];
+
+export const allTabs: Tab[] = ["pl", "bs", "revenue", "expense", "attd"];

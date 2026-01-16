@@ -1,10 +1,9 @@
 import { useTabsContext } from "@/components/ui/tabs";
+import { allTabs } from "@/data/tab";
 import type { Tab } from "./types";
 
 export function valueIsTab(value: string): value is Tab {
-  return ["pl", "bs", "revenue", "expense", "attd"].some(
-    (item) => item === value,
-  );
+  return allTabs.some((item) => item === value);
 }
 
 export function valueToTab(value: string | null): Tab {
