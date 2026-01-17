@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, type PropsWithChildren } from "react";
+import { useEffect, useSyncExternalStore, type PropsWithChildren } from "react";
 import { usePathname } from "next/navigation";
 import { useTabs, Tabs } from "@/components/ui/tabs";
 import { valueToTab, valueIsTab } from "@/utils/tabs";
 import type { Tab } from "@/utils/types";
 
-const getInitialTab = (): Tab => {
-  if (typeof window === "undefined") return "pl";
+const getInitialTab = (isServer: boolean = false): Tab => {
+  if (isServer) return "pl";
   const urlTab = new URLSearchParams(window.location.search).get("tab");
   if (urlTab && valueIsTab(urlTab)) {
     return urlTab;
@@ -21,9 +21,19 @@ const getInitialTab = (): Tab => {
   return "pl";
 };
 
+function useInitialTab() {
+  const initialTab = useSyncExternalStore(
+    () => () => {},
+    () => getInitialTab(),
+    () => getInitialTab(true),
+  );
+  return initialTab;
+}
+
 export function TabsProvider({ children }: PropsWithChildren) {
   const pathname = usePathname();
-  const initialTab = getInitialTab();
+  const initialTab = useInitialTab();
+
   const tabs = useTabs({
     defaultValue: "pl",
     onValueChange: (details: Tabs.ValueChangeDetails) => {
@@ -42,8 +52,12 @@ export function TabsProvider({ children }: PropsWithChildren) {
   });
 
   useEffect(() => {
-    tabs.setValue(initialTab);
-  }, []);
+    console.log("useEffect");
+    if (tabs.value !== initialTab) {
+      console.log("useEffect setValue");
+      tabs.setValue(initialTab);
+    }
+  }, [initialTab]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && initialTab !== "pl") {

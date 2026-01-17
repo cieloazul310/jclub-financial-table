@@ -1,7 +1,5 @@
-import { Suspense } from "react";
 import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial/types";
 import { css } from "styled-system/css";
-import { Loading } from "@/components/loading";
 import type { Mode } from "@/utils/types";
 import { FigureMain } from "./main";
 import { Toolbar } from "./toolbar";
@@ -23,9 +21,7 @@ export function Figure({
       })}
     >
       <Toolbar mode={mode} />
-      <Suspense fallback={<Loading />}>
-        <FigureMain mode={mode} data={data} />
-      </Suspense>
+      <FigureMain mode={mode} data={data} />
     </div>
   );
 }

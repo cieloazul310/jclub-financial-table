@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { css } from "styled-system/css";
 import type { LinkProps } from "@/components/ui/link";
 import { title } from "@/data/site-metadata";
@@ -9,6 +10,12 @@ export function ImagePlaceholder({
   href: NonNullable<LinkProps["href"]>;
   internal: boolean;
 }) {
+  if (internal) {
+    return (
+      <Image src="/ogp.png" alt={title} width={600} height={315} unoptimized />
+    );
+  }
+
   return (
     <div
       className={css({
@@ -20,14 +27,14 @@ export function ImagePlaceholder({
         justifyContent: "center",
         textStyle: "std-20B-150",
         overflow: "hidden",
-        bg: "keyColor.400",
+        bg: "keyColor.500",
         color: "keyColor.bg",
         whiteSpace: "nowrap",
         transition: "transform",
         _groupHover: { transform: "scale(1.05)" },
       })}
     >
-      {internal ? title : new URL(href).hostname}
+      {new URL(href).hostname}
     </div>
   );
 }

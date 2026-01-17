@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   authors: [{ name: "cieloazul310", url: "https://cieloazul310.github.io" }],
   metadataBase: new URL(siteUrl),
   openGraph: {
-    // images: "/og-image.png",
+    images: "/ogp.png",
     title: {
       template: `%s - ${title}`,
       default: title,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       default: title,
     },
     description,
-    images: ["https://nextjs.org/og.png"], // Must be an absolute URL
+    images: [`${siteUrl}/ogp.png`], // Must be an absolute URL
   },
 };
 

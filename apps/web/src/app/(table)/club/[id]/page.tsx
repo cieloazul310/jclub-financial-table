@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { getAllClubs, getClubById } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByClub } from "@cieloazul310/jclub-financial/data";
@@ -5,7 +6,6 @@ import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
 import { Link } from "@/components/link";
 import { Figure } from "@/components/figure";
-import { TabList } from "@/components/figure/tab-list";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { ClubSummary } from "@/components/club-summary";
 import { Chart } from "@/components/chart";
@@ -13,6 +13,7 @@ import { Heading3 } from "@/components/article";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { SelectLink } from "@/components/select-link";
+import { Loading } from "@/components/loading";
 import { AdInPage } from "@/components/ads";
 import { post } from "@/content";
 import { getPrevNext } from "@/utils/clubs";
@@ -68,8 +69,9 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <TabList />
-      <Figure data={data} mode="club" />
+      <Suspense fallback={<Loading />}>
+        <Figure data={data} mode="club" />
+      </Suspense>
       <PrevNextLink
         leftSlot={{ href: `/club/${prev?.id}`, title: prev?.name }}
         rightSlot={{ href: `/club/${next?.id}`, title: next?.name }}
