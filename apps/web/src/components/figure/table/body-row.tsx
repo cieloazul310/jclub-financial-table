@@ -230,11 +230,7 @@ export function ExpenseTableRow({
     if (year <= 2005 && !datum.salary)
       return (
         <>
-          <DataTableCell
-            value={datum.general_exp}
-            align="center"
-            colSpan={10}
-          />
+          <DataTableCell value={datum.general_exp} align="center" colSpan={9} />
           <DataTableCell value={datum.sga} align="center" />
         </>
       );
@@ -242,7 +238,7 @@ export function ExpenseTableRow({
       return (
         <>
           <DataTableCell value={datum.salary} colSpan={3} align="center" />
-          <DataTableCell value={datum.manage_exp} align="center" colSpan={7} />
+          <DataTableCell value={datum.manage_exp} align="center" colSpan={6} />
           <DataTableCell value={datum.sga} align="center" />
         </>
       );
@@ -254,7 +250,7 @@ export function ExpenseTableRow({
           <DataTableCell value={datum.team_exp} />
           <DataTableCell value={datum.academy_exp} />
           <DataTableCell value={datum.women_exp} />
-          <DataTableCell value={datum.sga} align="center" colSpan={4} />
+          <DataTableCell value={datum.sga} align="center" colSpan={5} />
         </>
       );
     if (year <= 2021)
@@ -266,7 +262,7 @@ export function ExpenseTableRow({
           <DataTableCell value={datum.academy_exp} />
           <DataTableCell value={datum.women_exp} />
           <DataTableCell value={datum.goods_exp} />
-          <DataTableCell value={datum.sga} align="center" colSpan={3} />
+          <DataTableCell value={datum.sga} align="center" colSpan={2} />
         </>
       );
     if (year <= 2023)
@@ -279,7 +275,7 @@ export function ExpenseTableRow({
           <DataTableCell value={datum.women_exp} />
           <DataTableCell value={datum.goods_exp} />
           <DataTableCell value={datum.other_cost} />
-          <DataTableCell value={datum.sga} align="center" colSpan={2} />
+          <DataTableCell value={datum.sga} align="center" />
         </>
       );
 

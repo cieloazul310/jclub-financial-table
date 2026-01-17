@@ -68,7 +68,7 @@ export function BSTableHeadRow({ mode }: TableHeadRowProps) {
     <Table.Row>
       <TableHeadHeader mode={mode} />
       <TableHeadCell mode={mode} sortableKey="assets">
-        総資産
+        資産の部
       </TableHeadCell>
       <TableHeadCell mode={mode} sortableKey="curr_assets">
         流動資産
@@ -77,7 +77,7 @@ export function BSTableHeadRow({ mode }: TableHeadRowProps) {
         固定資産等
       </TableHeadCell>
       <TableHeadCell mode={mode} sortableKey="liabilities">
-        総負債
+        負債の部
       </TableHeadCell>
       <TableHeadCell mode={mode} sortableKey="curr_liabilities">
         流動負債
@@ -86,7 +86,7 @@ export function BSTableHeadRow({ mode }: TableHeadRowProps) {
         固定負債
       </TableHeadCell>
       <TableHeadCell mode={mode} sortableKey="net_worth">
-        純資産
+        純資産の部
       </TableHeadCell>
       <TableHeadCell mode={mode} sortableKey="capital_stock">
         資本金
@@ -189,8 +189,9 @@ export function ExpenseTableHeadRow({ mode }: TableHeadRowProps) {
         <wbr />
         売上原価
       </TableHeadCell>
-      <TableHeadCell mode={mode}>販売費</TableHeadCell>
-      <TableHeadCell mode={mode}>一般管理費</TableHeadCell>
+      <TableHeadCell mode={mode} sortableKey="sga">
+        販管費
+      </TableHeadCell>
     </Table.Row>
   );
 }
