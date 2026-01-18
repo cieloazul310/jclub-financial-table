@@ -12,6 +12,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  repository_dispatch:
+    types: [update_contents]
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -20,6 +23,7 @@ permissions:
 
 env:
   BUILD_PATH: apps/web
+  CLONED_PATH: mdx-contents
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -30,6 +34,8 @@ concurrency:
 jobs:
   # Build job
   build:
+    environment:
+      name: production
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -83,12 +89,28 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
+      - name: Clone contents repository
+        uses: actions/checkout@v4
+        with:
+          repository: cieloazul310/jclub-financial-post
+          path: ${{ env.CLONED_PATH }}
+          fetch-depth: 0
+          token: ${{ secrets.PAT }}
+      
+      - name: Move to content collection
+        run: |
+          rm -rf ${{ env.BUILD_PATH }}/content
+          mv ${{ env.CLONED_PATH }}/src ${{ env.BUILD_PATH }}/content
+      
+      - name: Build packages
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build:package
+
       - name: Build Packages and app
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build --filter="./packages/*" --filter="./${{env.BUILD_PATH}}"
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build:app
         env:
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
           NEXT_PUBLIC_PUBLISHER_ID: ${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }}
-          DISABLE_OGP_FETCH: ${{ secrets.DISABLE_OGP_FETCH }}
+          FAST_BUILD: ${{ secrets.FAST_BUILD }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
