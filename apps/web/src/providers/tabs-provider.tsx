@@ -52,9 +52,7 @@ export function TabsProvider({ children }: PropsWithChildren) {
   });
 
   useEffect(() => {
-    console.log("useEffect");
     if (tabs.value !== initialTab) {
-      console.log("useEffect setValue");
       tabs.setValue(initialTab);
     }
   }, [initialTab]);

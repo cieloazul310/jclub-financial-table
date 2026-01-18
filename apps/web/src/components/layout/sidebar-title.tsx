@@ -21,7 +21,9 @@ export function SidebarTitle({
       })}
       {...rest}
     >
-      {children}
+      Jクラブ経営情報
+      <br />
+      ポータル
     </Link>
   );
 }

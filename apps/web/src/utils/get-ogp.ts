@@ -12,7 +12,12 @@ export async function getOgp(url: string) {
     )
       return null;
 
-    const { result } = await ogs({ url });
+    const userAgent =
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36";
+    const { result } = await ogs({
+      url,
+      fetchOptions: { mode: "cors", headers: { "User-Agent": userAgent } },
+    });
     return result;
   } catch (error) {
     console.warn("Error fetching OGP:", url);
