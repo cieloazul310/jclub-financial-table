@@ -53,12 +53,6 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      - name: Build Packages
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build:package
-
-      - name: Test
-        run: ${{ steps.detect-package-manager.outputs.manager }} run test
-
       - name: Clone contents repository
         uses: actions/checkout@v4
         with:
@@ -78,3 +72,6 @@ jobs:
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
           NEXT_PUBLIC_PUBLISHER_ID: ${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }}
           FAST_BUILD: ${{ secrets.FAST_BUILD }}
+
+      - name: Test
+        run: ${{ steps.detect-package-manager.outputs.manager }} run test
