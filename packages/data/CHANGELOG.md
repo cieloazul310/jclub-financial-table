@@ -1,5 +1,13 @@
 # @cieloazul310/jclub-financial-data
 
+## 0.0.1-alpha.9
+
+### Patch Changes
+
+- 2c549a4: BREAKING CHANGE!: データのキー名を大幅に変更
+- Updated dependencies [2c549a4]
+  - @cieloazul310/jclub-financial-utils@0.0.1-alpha.9
+
 ## 0.0.1-alpha.8
 
 ### Patch Changes
