@@ -26,7 +26,7 @@ export function getLabel(key: string): string {
  * @returns 日本語ラベル
  */
 export function getLabelWithOptions(
-  key: keyof Omit<FinancialDatum, "clubId">,
+  key: string,
   options?: {
     /** キーが未定義の場合のフォールバック。省略時はキー名を返す */
     fallback?: string;
@@ -34,6 +34,7 @@ export function getLabelWithOptions(
     transform?: (label: string) => string;
   },
 ): string {
+  if (!isDirectoryKey(key)) return options?.fallback ?? key;
   const label = dictionary[key].label_ja ?? options?.fallback ?? key;
   return options?.transform ? options.transform(label) : label;
 }

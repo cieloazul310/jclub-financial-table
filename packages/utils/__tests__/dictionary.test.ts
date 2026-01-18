@@ -7,7 +7,7 @@ describe("getLabel", () => {
     expect(label).toBe("営業収入");
   });
 
-  it("should return undefined for an invalid key", () => {
+  it("should return input value for an invalid key", () => {
     const label = getLabel("invalid-key");
     expect(label).toBe("invalid-key");
   });
@@ -19,8 +19,20 @@ describe("getLabelWithOptions", () => {
     expect(label).toBe("営業費用");
   });
 
-  it("should return undefined for an invalid key", () => {
-    const label = getLabelWithOptions("invalid-key" as any);
+  it("should return input value for an invalid key", () => {
+    const label = getLabelWithOptions("invalid-key");
     expect(label).toBe("invalid-key");
+  });
+
+  it("with fallback", () => {
+    const label = getLabelWithOptions("invalid-key", { fallback: "prepared" });
+    expect(label).toBe("prepared");
+  });
+
+  it("with transform", () => {
+    const label = getLabelWithOptions("team_wages", {
+      transform: (label) => `${label}(移籍関連費用を含む)`,
+    });
+    expect(label).toBe("チーム人件費(移籍関連費用を含む)");
   });
 });
