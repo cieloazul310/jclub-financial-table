@@ -15,7 +15,7 @@ function isDirectoryKey(
  * @returns 日本語ラベル。未定義のキーの場合はキー名をそのまま返す
  */
 export function getLabel(key: string): string {
-  if (isDirectoryKey(key)) return dictionary[key];
+  if (isDirectoryKey(key)) return dictionary[key].label_ja;
   return key;
 }
 
@@ -34,6 +34,6 @@ export function getLabelWithOptions(
     transform?: (label: string) => string;
   },
 ): string {
-  const label = dictionary[key] ?? options?.fallback ?? key;
+  const label = dictionary[key].label_ja ?? options?.fallback ?? key;
   return options?.transform ? options.transform(label) : label;
 }

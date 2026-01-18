@@ -50,14 +50,14 @@ export function createRevenueRow() {
       category,
       rank,
       revenue,
-      sponsor,
-      ticket,
-      broadcast,
-      academy_rev,
-      women_rev,
-      goods_rev,
-      other_revs,
-      related_revenue,
+      sponsor_revenue,
+      ticket_revenue,
+      jleague_distribution,
+      academy_revenue,
+      womens_team_revenue,
+      retail_revenue,
+      other_revenue,
+      related_companies_revenue,
     } = data;
 
     const rowHead = (
@@ -71,17 +71,17 @@ export function createRevenueRow() {
       if (inputYear <= 2010)
         return (
           <Table.Cell className={valueStyle({ centerize: true })} colSpan={4}>
-            {other_revs}
+            {other_revenue}
           </Table.Cell>
         );
       if (inputYear <= 2015)
         return (
           <>
             <Table.Cell className={valueStyle({ centerize: true })}>
-              {academy_rev}
+              {academy_revenue}
             </Table.Cell>
             <Table.Cell className={valueStyle({ centerize: true })} colSpan={3}>
-              {other_revs}
+              {other_revenue}
             </Table.Cell>
           </>
         );
@@ -89,29 +89,29 @@ export function createRevenueRow() {
         return (
           <>
             <Table.Cell className={valueStyle({ centerize: true })}>
-              {academy_rev}
+              {academy_revenue}
             </Table.Cell>
             <Table.Cell className={valueStyle({ centerize: true })}>
-              {goods_rev}
+              {retail_revenue}
             </Table.Cell>
             <Table.Cell colSpan={2} className={valueStyle({ centerize: true })}>
-              {other_revs}
+              {other_revenue}
             </Table.Cell>
           </>
         );
       return (
         <>
           <Table.Cell className={valueStyle({ centerize: true })}>
-            {academy_rev}
+            {academy_revenue}
           </Table.Cell>
           <Table.Cell className={valueStyle({ centerize: true })}>
-            {goods_rev}
+            {retail_revenue}
           </Table.Cell>
           <Table.Cell className={valueStyle({ centerize: true })}>
-            {women_rev}
+            {womens_team_revenue}
           </Table.Cell>
           <Table.Cell className={valueStyle({ centerize: true })}>
-            {other_revs}
+            {other_revenue}
           </Table.Cell>
         </>
       );
@@ -123,11 +123,13 @@ export function createRevenueRow() {
         <Table.Cell className={valueStyle({ strong: true })}>
           {revenue}
         </Table.Cell>
-        <Table.Cell className={valueStyle()}>{sponsor}</Table.Cell>
-        <Table.Cell className={valueStyle()}>{ticket}</Table.Cell>
-        <Table.Cell className={valueStyle()}>{broadcast}</Table.Cell>
+        <Table.Cell className={valueStyle()}>{sponsor_revenue}</Table.Cell>
+        <Table.Cell className={valueStyle()}>{ticket_revenue}</Table.Cell>
+        <Table.Cell className={valueStyle()}>{jleague_distribution}</Table.Cell>
         {otherRevs(year)}
-        <Table.Cell className={valueStyle()}>{related_revenue}</Table.Cell>
+        <Table.Cell className={valueStyle()}>
+          {related_companies_revenue}
+        </Table.Cell>
       </Table.Row>
     );
   };

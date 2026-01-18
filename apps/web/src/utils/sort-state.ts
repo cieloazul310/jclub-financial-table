@@ -29,7 +29,7 @@ export function getUnit(field: SortableFields) {
     return "百万円";
   }
   if (field === "unit_price") return "円";
-  if (/_attd$/.test(field)) return "人";
+  if (/_attendance$/.test(field)) return "人";
   if (/_games$/.test(field)) return "試合";
   return "百万円";
 }

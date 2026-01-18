@@ -1,19 +1,19 @@
 import { describe, it, expect } from "vitest";
 import {
   getAllClubs,
-  getClubBySlug,
+  getClubById,
   getClubsByCategory,
 } from "../dist/index.mjs";
 
 describe("getClubById", () => {
   it("should return the correct club for a valid ID", () => {
-    const club = getClubBySlug("cerezo");
+    const club = getClubById("cerezo");
     expect(club).toBeDefined();
     expect(club?.name).toBe("セレッソ大阪");
   });
 
   it("should return undefined for an invalid ID", () => {
-    const club = getClubBySlug("invalid-id");
+    const club = getClubById("invalid-id");
     expect(club).toBeUndefined();
   });
 });

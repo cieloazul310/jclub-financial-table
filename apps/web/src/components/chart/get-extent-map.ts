@@ -14,8 +14,8 @@ async function getExtentByCategory(categories: string[]) {
   const extentMap: Record<Tab, [number, number]> = {
     pl: [0, getMax("revenue")],
     revenue: [0, getMax("revenue")],
-    expense: [0, getMax("salary")],
-    attd: [0, getMax("average_attd")],
+    expense: [0, getMax("team_wages")],
+    attd: [0, getMax("average_attendance")],
     bs: [0, 0],
   };
 
@@ -33,7 +33,7 @@ export async function getExtentMap(data: ExtendedFinancialDatum[]) {
     0,
   );
   const minNetWorth = data.reduce(
-    (accum, d) => Math.min(accum, d.net_worth?.value ?? 0),
+    (accum, d) => Math.min(accum, d.net_assets?.value ?? 0),
     0,
   );
 
@@ -42,11 +42,11 @@ export async function getExtentMap(data: ExtendedFinancialDatum[]) {
     0,
   );
   const expenseMax = data.reduce(
-    (accum, d) => Math.max(accum, d.expense.value),
+    (accum, d) => Math.max(accum, d.expenses.value),
     0,
   );
   const attdMax = data.reduce(
-    (accum, d) => Math.max(accum, d.average_attd.value),
+    (accum, d) => Math.max(accum, d.average_attendance.value),
     0,
   );
 

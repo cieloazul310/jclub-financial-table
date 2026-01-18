@@ -15,7 +15,7 @@ describe("getLabel", () => {
 
 describe("getLabelWithOptions", () => {
   it("should return the correct label with options for a valid key", () => {
-    const label = getLabelWithOptions("expense", { fallback: "ああ" });
+    const label = getLabelWithOptions("expenses", { fallback: "ああ" });
     expect(label).toBe("営業費用");
   });
 

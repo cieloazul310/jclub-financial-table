@@ -1,71 +1,330 @@
 {
-  "id": "id",
-  "name": "呼称",
-  "short_name": "略称",
-  "year": "年",
-  "category": "所属",
-  "license": "ライセンス",
-  "revenue": "営業収入",
-  "sponsor": "スポンサー収入",
-  "ticket": "入場料収入",
-  "broadcast": "Jリーグ配分金",
-  "academy_rev": "アカデミー関連収入",
-  "women_rev": "女子チーム関連収入",
-  "goods_rev": "物販収入",
-  "transfer_rev": "移籍補償金等収入",
-  "transfer_int_rev": "国外クラブからの収入",
-  "transfer_dom_rev": "国内クラブからの収入",
-  "other_revs": "その他収入",
-  "expense": "営業費用",
-  "salary": "チーム人件費",
-  "transfer_exp": "移籍関連費用",
-  "transfer_int_exp": "国外クラブからの移籍に関する費用",
-  "transfer_dom_exp": "国内クラブからの移籍に関する費用",
-  "manage_exp": "事業費(チーム人件費を除く)",
-  "general_exp": "総事業費",
-  "game_exp": "試合関連経費",
-  "team_exp": "トップチーム運営経費",
-  "academy_exp": "アカデミー運営経費",
-  "women_exp": "女子チーム運営経費",
-  "goods_exp": "物販関連費",
-  "other_cost": "その他売上原価",
-  "sga": "販売費および一般管理費",
-  "op_profit": "営業利益",
-  "no_rev": "営業外収益",
-  "no_exp": "営業外費用",
-  "ordinary_profit": "経常利益",
-  "sp_rev": "特別利益",
-  "sp_exp": "特別損失",
-  "profit_before_tax": "税引前当期利益",
-  "related_revenue": "関連する法人の営業収入",
-  "tax": "法人税および住民税等",
-  "profit": "当期純利益",
-  "curr_assets": "流動資産",
-  "fixed_assets": "固定資産等",
-  "assets": "総資産(資産の部)",
-  "curr_liabilities": "流動負債",
-  "fixed_liabilities": "固定負債",
-  "liabilities": "総負債(負債の部)",
-  "capital_stock": "資本金",
-  "capital_surplus": "資本剰余金等",
-  "retained_earnings": "利益剰余金",
-  "net_worth": "純資産(純資産の部)",
-  "rank": "順位",
-  "points": "勝ち点",
-  "ppg": "PPG",
-  "elevation": "昇降格",
-  "league_attd": "リーグ戦入場者数",
-  "league_games": "リーグ戦ホーム試合数",
-  "leaguecup_attd": "リーグカップ入場者数",
-  "leaguecup_games": "リーグカップホーム試合数",
-  "po_attd": "PO入場者数",
-  "po_games": "POホーム試合数",
-  "acl_attd": "ACL入場者数",
-  "acl_games": "ACLホーム試合数",
-  "second_attd": "セカンドチーム入場者数",
-  "second_games": "セカンドチームホーム試合数",
-  "all_attd": "年間総入場者数",
-  "all_games": "年間ホーム試合数",
-  "average_attd": "リーグ戦平均入場者数",
-  "unit_price": "客単価"
+  "id": {
+    "label_ja": "id"
+  },
+  "name": {
+    "label_ja": "呼称"
+  },
+  "short_name": {
+    "label_ja": "略称"
+  },
+  "year": {
+    "label_ja": "年"
+  },
+  "category": {
+    "label_ja": "所属"
+  },
+  "license": {
+    "label_ja": "ライセンス"
+  },
+  "reporting_period_months": {
+    "label_ja": "事業期間（月数）"
+  },
+  "rank": {
+    "label_ja": "順位"
+  },
+  "points": {
+    "label_ja": "勝ち点"
+  },
+  "ppg": {
+    "label_ja": "一試合あたり平均勝ち点"
+  },
+  "elevation": {
+    "label_ja": "昇降格"
+  },
+  "revenue": {
+    "label_ja": "営業収入",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "sponsor_revenue": {
+    "label_ja": "スポンサー収入",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "ticket_revenue": {
+    "label_ja": "入場料収入",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "jleague_distribution": {
+    "label_ja": "Jリーグ配分金",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "academy_revenue": {
+    "label_ja": "アカデミー関連収入",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "womens_team_revenue": {
+    "label_ja": "女子チーム関連収入",
+    "available_from": 2022,
+    "available_to": null
+  },
+  "retail_revenue": {
+    "label_ja": "物販収入",
+    "available_from": 2016,
+    "available_to": null
+  },
+  "transfer_revenue": {
+    "label_ja": "移籍補償金等収入",
+    "available_from": 2024,
+    "available_to": null
+  },
+  "transfer_revenue_international": {
+    "label_ja": "国外クラブからの収入",
+    "available_from": 2024,
+    "available_to": null
+  },
+  "transfer_revenue_domestic": {
+    "label_ja": "国内クラブからの収入",
+    "available_from": 2024,
+    "available_to": null
+  },
+  "other_revenue": {
+    "label_ja": "その他収入",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "expenses": {
+    "label_ja": "営業費用",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "team_wages": {
+    "label_ja": "チーム人件費",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "transfer_expenses": {
+    "label_ja": "移籍関連費用",
+    "available_from": 2024,
+    "available_to": null
+  },
+  "transfer_expenses_international": {
+    "label_ja": "国外クラブからの移籍に関する費用",
+    "available_from": 2024,
+    "available_to": null
+  },
+  "transfer_expenses_domestic": {
+    "label_ja": "国内クラブからの移籍に関する費用",
+    "available_from": 2024,
+    "available_to": null
+  },
+  "manage_expenses": {
+    "label_ja": "事業費(チーム人件費を除く)",
+    "available_from": 2005,
+    "available_to": 2010
+  },
+  "general_expenses": {
+    "label_ja": "総事業費",
+    "available_from": 2005,
+    "available_to": 2010
+  },
+  "match_expenses": {
+    "label_ja": "試合関連経費",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "topteam_expenses": {
+    "label_ja": "トップチーム運営経費",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "academy_expenses": {
+    "label_ja": "アカデミー運営経費",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "womens_team_expenses": {
+    "label_ja": "女子チーム運営経費",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "retail_expenses": {
+    "label_ja": "物販関連費",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "other_costs": {
+    "label_ja": "その他売上原価",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "selling_general_admin_expenses": {
+    "label_ja": "販売費および一般管理費",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "operating_profit": {
+    "label_ja": "営業利益",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "non_operating_income": {
+    "label_ja": "営業外収益",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "non_operating_expenses": {
+    "label_ja": "営業外費用",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "ordinary_profit": {
+    "label_ja": "経常利益",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "extraordinary_income": {
+    "label_ja": "特別利益",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "extraordinary_loss": {
+    "label_ja": "特別損失",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "profit_before_tax": {
+    "label_ja": "税引前当期利益",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "tax": {
+    "label_ja": "法人税および住民税等",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "net_profit": {
+    "label_ja": "当期純利益",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "related_companies_revenue": {
+    "label_ja": "関連する法人の営業収入",
+    "available_from": 2018,
+    "available_to": null
+  },
+  "current_assets": {
+    "label_ja": "流動資産",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "non_current_assets": {
+    "label_ja": "固定資産等",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "assets": {
+    "label_ja": "資産の部",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "current_liabilities": {
+    "label_ja": "流動負債",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "non_current_liabilities": {
+    "label_ja": "固定負債",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "liabilities": {
+    "label_ja": "負債の部",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "share_capital": {
+    "label_ja": "資本金",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "capital_surplus": {
+    "label_ja": "資本剰余金等",
+    "available_from": 2011,
+    "available_to": null
+  },
+  "retained_earnings": {
+    "label_ja": "利益剰余金",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "net_assets": {
+    "label_ja": "純資産の部",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "league_attendance": {
+    "label_ja": "リーグ戦入場者数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "league_games": {
+    "label_ja": "リーグ戦ホーム試合数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "leaguecup_attendance": {
+    "label_ja": "リーグカップ入場者数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "leaguecup_games": {
+    "label_ja": "リーグカップホーム試合数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "playoffs_attendance": {
+    "label_ja": "プレーオフ入場者数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "playoffs_games": {
+    "label_ja": "プレーオフホーム試合数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "acl_attendance": {
+    "label_ja": "ACL入場者数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "acl_games": {
+    "label_ja": "ACLホーム試合数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "second_attendance": {
+    "label_ja": "セカンドチーム入場者数",
+    "available_from": 2016,
+    "available_to": null
+  },
+  "second_games": {
+    "label_ja": "セカンドチームホーム試合数",
+    "available_from": 2016,
+    "available_to": null
+  },
+  "all_attendance": {
+    "label_ja": "年間総入場者数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "all_games": {
+    "label_ja": "年間ホーム試合数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "average_attendance": {
+    "label_ja": "リーグ戦平均入場者数",
+    "available_from": 2005,
+    "available_to": null
+  },
+  "unit_price": {
+    "label_ja": "客単価",
+    "available_from": 2005,
+    "available_to": null
+  }
 }
