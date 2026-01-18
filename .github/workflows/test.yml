@@ -53,6 +53,12 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
+      - name: Build Packages
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build:package
+
+      - name: Test
+        run: ${{ steps.detect-package-manager.outputs.manager }} run test
+
       - name: Clone contents repository
         uses: actions/checkout@v4
         with:
@@ -66,11 +72,8 @@ jobs:
           rm -rf ${{ env.BUILD_PATH }}/content
           mv ${{ env.CLONED_PATH }}/src ${{ env.BUILD_PATH }}/content
 
-      - name: Test
-        run: ${{ steps.detect-package-manager.outputs.manager }} run test
-
       - name: Build Packages and app
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build --filter="./packages/*" --filter="./${{env.BUILD_PATH}}"
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build --filter="./${{env.BUILD_PATH}}"
         env:
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
           NEXT_PUBLIC_PUBLISHER_ID: ${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }}
