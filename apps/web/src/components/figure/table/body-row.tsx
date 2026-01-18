@@ -24,7 +24,13 @@ type TableBodyHeaderProps = {
   datum: Extended<
     Pick<
       General & SeasonResult,
-      "category" | "rank" | "elevation" | "clubId" | "year" | "short_name"
+      | "category"
+      | "rank"
+      | "elevation"
+      | "clubId"
+      | "year"
+      | "short_name"
+      | "reporting_period_months"
     >
   >;
   // selected?: boolean;

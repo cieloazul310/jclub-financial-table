@@ -21,7 +21,7 @@ transfer_expenses: 3
 transfer_expenses_international: 0
 transfer_expenses_domestic: 3
 match_expenses: 80
-team_exp: 49
+topteam_expenses: 49
 academy_expenses: 16
 womens_team_expenses: 0
 retail_expenses: 2
