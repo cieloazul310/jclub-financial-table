@@ -1,5 +1,13 @@
 # jclub-financial-vercel-api
 
+## 0.0.1-beta.10
+
+### Patch Changes
+
+- 64e513e: update to beta version
+- Updated dependencies [64e513e]
+  - @cieloazul310/jclub-financial@0.0.1-beta.10
+
 ## 0.0.1-alpha.9
 
 ### Patch Changes
