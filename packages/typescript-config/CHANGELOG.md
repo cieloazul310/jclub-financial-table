@@ -1,5 +1,11 @@
 # @repo/typescript-config
 
+## 0.0.1-beta.10
+
+### Patch Changes
+
+- 64e513e: update to beta version
+
 ## 0.0.1-alpha.9
 
 ### Patch Changes

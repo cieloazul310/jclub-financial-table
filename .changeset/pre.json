@@ -12,6 +12,7 @@
     "@cieloazul310/jclub-financial-utils": "0.0.1-alpha.9"
   },
   "changesets": [
+    "busy-actors-write",
     "eighty-schools-press",
     "free-dodos-trade",
     "fuzzy-coats-tan",

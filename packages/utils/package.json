@@ -1,6 +1,6 @@
 {
   "name": "@cieloazul310/jclub-financial-utils",
-  "version": "0.0.1-alpha.9",
+  "version": "0.0.1-beta.10",
   "license": "MIT",
   "homepage": "https://github.com/cieloazul310/jclub-financial-table",
   "author": {
@@ -52,8 +52,8 @@
     "dev": "npm run build -- --watch"
   },
   "devDependencies": {
-    "@repo/eslint-config": "^0.0.1-alpha.9",
-    "@repo/typescript-config": "^0.0.1-alpha.9",
+    "@repo/eslint-config": "^0.0.1-beta.10",
+    "@repo/typescript-config": "^0.0.1-beta.10",
     "@types/node": "^25.0.3",
     "eslint": "^9.39.2",
     "tsdown": "^0.18.2",
