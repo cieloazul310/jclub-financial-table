@@ -49,17 +49,17 @@ export function createExpenseRow() {
       name,
       category,
       rank,
-      expense,
-      salary,
-      game_exp,
-      team_exp,
-      academy_exp,
-      women_exp,
-      goods_exp,
-      other_cost,
-      sga,
-      general_exp,
-      manage_exp,
+      expenses,
+      team_wages,
+      match_expenses,
+      topteam_expenses,
+      academy_expenses,
+      womens_team_expenses,
+      retail_expenses,
+      other_costs,
+      selling_general_admin_expenses,
+      general_expenses,
+      manage_expenses,
     } = data;
 
     const rowHead = (
@@ -70,64 +70,74 @@ export function createExpenseRow() {
       </>
     );
     const expenseData = (inputYear: number) => {
-      if (inputYear <= 2005 && !salary)
+      if (inputYear <= 2005 && !team_wages)
         return (
           <>
             <Table.Cell align="center" colSpan={8}>
-              {general_exp}
+              {general_expenses}
             </Table.Cell>
-            <Table.Cell align="center">{sga}</Table.Cell>
+            <Table.Cell align="center">
+              {selling_general_admin_expenses}
+            </Table.Cell>
           </>
         );
       if (inputYear <= 2010)
         return (
           <>
-            <Table.Cell className={valueStyle()}>{salary}</Table.Cell>
+            <Table.Cell className={valueStyle()}>{team_wages}</Table.Cell>
             <Table.Cell align="center" colSpan={7}>
-              {manage_exp}
+              {manage_expenses}
             </Table.Cell>
-            <Table.Cell align="center">{sga}</Table.Cell>
+            <Table.Cell align="center">
+              {selling_general_admin_expenses}
+            </Table.Cell>
           </>
         );
       if (inputYear <= 2015)
         return (
           <>
-            <Table.Cell className={valueStyle()}>{salary}</Table.Cell>
-            <Table.Cell className={valueStyle()}>{game_exp}</Table.Cell>
-            <Table.Cell className={valueStyle()}>{team_exp}</Table.Cell>
-            <Table.Cell className={valueStyle()}>{academy_exp}</Table.Cell>
-            <Table.Cell className={valueStyle()}>{women_exp}</Table.Cell>
+            <Table.Cell className={valueStyle()}>{team_wages}</Table.Cell>
+            <Table.Cell className={valueStyle()}>{match_expenses}</Table.Cell>
+            <Table.Cell className={valueStyle()}>{topteam_expenses}</Table.Cell>
+            <Table.Cell className={valueStyle()}>{academy_expenses}</Table.Cell>
+            <Table.Cell className={valueStyle()}>
+              {womens_team_expenses}
+            </Table.Cell>
             <Table.Cell align="center" colSpan={4}>
-              {sga}
+              {selling_general_admin_expenses}
             </Table.Cell>
           </>
         );
       if (inputYear <= 2021)
         return (
           <>
-            <Table.Cell className={valueStyle()}>{salary}</Table.Cell>
-            <Table.Cell className={valueStyle()}>{game_exp}</Table.Cell>
-            <Table.Cell className={valueStyle()}>{team_exp}</Table.Cell>
-            <Table.Cell className={valueStyle()}>{academy_exp}</Table.Cell>
-            <Table.Cell className={valueStyle()}>{women_exp}</Table.Cell>
-            <Table.Cell className={valueStyle()}>{goods_exp}</Table.Cell>
+            <Table.Cell className={valueStyle()}>{team_wages}</Table.Cell>
+            <Table.Cell className={valueStyle()}>{match_expenses}</Table.Cell>
+            <Table.Cell className={valueStyle()}>{topteam_expenses}</Table.Cell>
+            <Table.Cell className={valueStyle()}>{academy_expenses}</Table.Cell>
+            <Table.Cell className={valueStyle()}>
+              {womens_team_expenses}
+            </Table.Cell>
+            <Table.Cell className={valueStyle()}>{retail_expenses}</Table.Cell>
             <Table.Cell align="center" colSpan={3}>
-              {sga}
+              {selling_general_admin_expenses}
             </Table.Cell>
           </>
         );
 
       return (
         <>
-          <Table.Cell className={valueStyle()}>{salary}</Table.Cell>
-          <Table.Cell className={valueStyle()}>{game_exp}</Table.Cell>
-          <Table.Cell className={valueStyle()}>{team_exp}</Table.Cell>
-          <Table.Cell className={valueStyle()}>{academy_exp}</Table.Cell>
-          <Table.Cell className={valueStyle()}>{women_exp}</Table.Cell>
-          <Table.Cell className={valueStyle()}>{goods_exp}</Table.Cell>
-          <Table.Cell className={valueStyle()}>{other_cost}</Table.Cell>
+          <Table.Cell className={valueStyle()}>{team_wages}</Table.Cell>
+          <Table.Cell className={valueStyle()}>{match_expenses}</Table.Cell>
+          <Table.Cell className={valueStyle()}>{topteam_expenses}</Table.Cell>
+          <Table.Cell className={valueStyle()}>{academy_expenses}</Table.Cell>
+          <Table.Cell className={valueStyle()}>
+            {womens_team_expenses}
+          </Table.Cell>
+          <Table.Cell className={valueStyle()}>{retail_expenses}</Table.Cell>
+          <Table.Cell className={valueStyle()}>{other_costs}</Table.Cell>
           <Table.Cell align="center" colSpan={2}>
-            {sga}
+            {selling_general_admin_expenses}
           </Table.Cell>
         </>
       );
@@ -137,7 +147,7 @@ export function createExpenseRow() {
       <Table.Row key={`${name}${year.toString()}`}>
         {rowHead}
         <Table.Cell className={valueStyle({ strong: true })}>
-          {expense}
+          {expenses}
         </Table.Cell>
         {expenseData(year)}
       </Table.Row>

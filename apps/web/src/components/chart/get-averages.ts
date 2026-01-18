@@ -14,25 +14,25 @@ function getAverageValues(arr: (StatsResult | null)[]) {
 
 export type AverageValuesByCategory = {
   revenue: AverageValues[];
-  salary: AverageValues[];
-  average_attd: AverageValues[];
+  team_wages: AverageValues[];
+  average_attendance: AverageValues[];
 };
 
 async function getStatisticsByCategory(category: "J1" | "J2" | "J3") {
   const revenue = getAverageValues(
     await getCategoryYearSeries(category, "revenue"),
   );
-  const salary = getAverageValues(
-    await getCategoryYearSeries(category, "salary"),
+  const team_wages = getAverageValues(
+    await getCategoryYearSeries(category, "team_wages"),
   );
-  const average_attd = getAverageValues(
-    await getCategoryYearSeries(category, "average_attd"),
+  const average_attendance = getAverageValues(
+    await getCategoryYearSeries(category, "average_attendance"),
   );
 
   return {
     revenue,
-    salary,
-    average_attd,
+    team_wages,
+    average_attendance,
   } satisfies AverageValuesByCategory;
 }
 

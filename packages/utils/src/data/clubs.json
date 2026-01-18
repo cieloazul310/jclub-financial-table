@@ -47,6 +47,9 @@
     "settlement": "https://www.urawa-reds.co.jp/club/managdata.php",
     "relatedCompanies": [
       "一般社団法人レッズランド"
+    ],
+    "annotation": [
+      "2005年度は決算期の変更により10ヶ月間"
     ]
   },
   {
@@ -133,7 +136,10 @@
     "area": "神奈川県",
     "period": 1,
     "website": "https://www.frontale.co.jp",
-    "settlement": "https://www.frontale.co.jp/about/kk/"
+    "settlement": "https://www.frontale.co.jp/about/kk/",
+    "annotation": [
+      "2005年度は決算期の変更により10ヶ月間"
+    ]
   },
   {
     "id": "fmarinos",
@@ -455,6 +461,9 @@
     "settlement": "https://www.bellmare.co.jp/club_business",
     "relatedCompanies": [
       "NPO法人湘南ベルマーレスポーツクラブ"
+    ],
+    "annotation": [
+      "2018年度は決算期の変更により14ヶ月間"
     ]
   },
   {
@@ -575,7 +584,10 @@
     "hometown": "鳥栖市",
     "area": "佐賀県",
     "period": 1,
-    "website": "https://www.sagan-tosu.net"
+    "website": "https://www.sagan-tosu.net",
+    "annotation": [
+      "2012年度は決算期の変更により11ヶ月間"
+    ]
   },
   {
     "id": "trinita",
@@ -588,7 +600,10 @@
     "hometown": "大分市、別府市、佐伯市を中心とする全県",
     "area": "大分県",
     "period": 1,
-    "website": "https://www.oita-trinita.co.jp"
+    "website": "https://www.oita-trinita.co.jp",
+    "annotation": [
+      "2005年度は決算期の変更により10ヶ月間"
+    ]
   },
   {
     "id": "tegevajaro",

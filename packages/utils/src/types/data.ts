@@ -6,6 +6,7 @@ export const AllGeneralFields = [
   "year",
   "category",
   "license",
+  "reporting_period_months",
 ] as const;
 export type GeneralFields = (typeof AllGeneralFields)[number];
 export type General = {
@@ -24,6 +25,7 @@ export type General = {
   year: number;
   category: string;
   license?: string | null;
+  reporting_period_months?: number;
 };
 
 export const AllSeasonResultFields = [
@@ -42,222 +44,222 @@ export type SeasonResult = {
 
 export const AllPLFields = [
   "revenue",
-  "expense",
-  "op_profit",
-  "no_rev",
-  "no_exp",
+  "expenses",
+  "operating_profit",
+  "non_operating_income",
+  "non_operating_expenses",
   "ordinary_profit",
-  "sp_rev",
-  "sp_exp",
+  "extraordinary_income",
+  "extraordinary_loss",
   "profit_before_tax",
   "tax",
-  "profit",
-  "related_revenue",
+  "net_profit",
+  "related_companies_revenue",
 ] as const;
 export type PLFields = (typeof AllPLFields)[number];
 export type PL = {
   /** 営業収入 */
   revenue: number;
   /** 営業費用 */
-  expense: number;
+  expenses: number;
   /** 営業利益 */
-  op_profit: number;
+  operating_profit: number;
   /** 営業外収入 */
-  no_rev?: number | null;
+  non_operating_income?: number | null;
   /** 営業外費用 */
-  no_exp?: number | null;
+  non_operating_expenses?: number | null;
   /** 経常利益 */
   ordinary_profit: number;
   /** 特別利益 */
-  sp_rev?: number | null;
+  extraordinary_income?: number | null;
   /** 特別損失 */
-  sp_exp?: number | null;
+  extraordinary_loss?: number | null;
   /** 税引前当期利益 */
   profit_before_tax?: number | null;
   /** 法人税および住民税等 */
   tax?: number | null;
   /** 当期純利益 */
-  profit: number;
+  net_profit: number;
   /** 関連する法人の営業収入 */
-  related_revenue?: number | null;
+  related_companies_revenue?: number | null;
 };
 
 export const AllBSFields = [
   "assets",
-  "curr_assets",
-  "fixed_assets",
+  "current_assets",
+  "non_current_assets",
   "liabilities",
-  "curr_liabilities",
-  "fixed_liabilities",
-  "net_worth",
-  "capital_stock",
+  "current_liabilities",
+  "non_current_liabilities",
+  "net_assets",
+  "share_capital",
   "capital_surplus",
   "retained_earnings",
-  "profit",
+  "net_profit",
 ] as const;
 export type BSFields = (typeof AllBSFields)[number];
 export type BS = {
   /** 流動資産 */
-  curr_assets?: number | null;
+  current_assets?: number | null;
   /** 固定資産等 */
-  fixed_assets?: number | null;
+  non_current_assets?: number | null;
   /** 総資産 */
   assets?: number | null;
   /** 流動負債 */
-  curr_liabilities?: number | null;
+  current_liabilities?: number | null;
   /** 固定負債 */
-  fixed_liabilities?: number | null;
+  non_current_liabilities?: number | null;
   /** 総負債 */
   liabilities?: number | null;
   /** 純資産 */
-  net_worth?: number | null;
+  net_assets?: number | null;
   /** 資本金 */
-  capital_stock?: number | null;
+  share_capital?: number | null;
   /** 資本剰余金 */
   capital_surplus?: number | null;
   /** 利益剰余金 */
   retained_earnings?: number | null;
   /** 当期純利益 */
-  profit: number;
+  net_profit: number;
 };
 
 export const AllRevenueFields = [
   "revenue",
-  "sponsor",
-  "ticket",
-  "broadcast",
-  "academy_rev",
-  "women_rev",
-  "goods_rev",
-  "transfer_rev",
-  "transfer_int_rev",
-  "transfer_dom_rev",
-  "other_revs",
-  "related_revenue",
+  "sponsor_revenue",
+  "ticket_revenue",
+  "jleague_distribution",
+  "academy_revenue",
+  "womens_team_revenue",
+  "retail_revenue",
+  "transfer_revenue",
+  "transfer_revenue_international",
+  "transfer_revenue_domestic",
+  "other_revenue",
+  "related_companies_revenue",
 ] as const;
 export type RevenueFields = (typeof AllRevenueFields)[number];
 export type Revenue = {
   /** 営業収入 */
   revenue: number;
   /** 広告料収入 */
-  sponsor?: number | null;
+  sponsor_revenue?: number | null;
   /** 入場料収入 */
-  ticket?: number | null;
+  ticket_revenue?: number | null;
   /** Jリーグ配分金 */
-  broadcast?: number | null;
+  jleague_distribution?: number | null;
   /** アカデミー関連収入 */
-  academy_rev?: number | null;
+  academy_revenue?: number | null;
   /** 女子チーム関連収入 */
-  women_rev?: number | null;
+  womens_team_revenue?: number | null;
   /** 物販収入 */
-  goods_rev?: number | null;
+  retail_revenue?: number | null;
   /** 移籍補償金等収入 */
-  transfer_rev?: number | null;
+  transfer_revenue?: number | null;
   /** 国外クラブからの収入 */
-  transfer_int_rev?: number | null;
+  transfer_revenue_international?: number | null;
   /** 国内クラブからの収入 */
-  transfer_dom_rev?: number | null;
+  transfer_revenue_domestic?: number | null;
   /** その他収入 */
-  other_revs?: number | null;
+  other_revenue?: number | null;
   /** 関連する法人の営業収入 */
-  related_revenue?: number | null;
+  related_companies_revenue?: number | null;
 };
 
 export const AllExpenseFields = [
-  "expense",
-  "salary",
-  "transfer_exp",
-  "transfer_int_exp",
-  "transfer_dom_exp",
-  "manage_exp",
-  "general_exp",
-  "game_exp",
-  "team_exp",
-  "academy_exp",
-  "women_exp",
-  "goods_exp",
-  "other_cost",
-  "sga",
+  "expenses",
+  "team_wages",
+  "transfer_expenses",
+  "transfer_expenses_international",
+  "transfer_expenses_domestic",
+  "manage_expenses",
+  "general_expenses",
+  "match_expenses",
+  "topteam_expenses",
+  "academy_expenses",
+  "womens_team_expenses",
+  "retail_expenses",
+  "other_costs",
+  "selling_general_admin_expenses",
 ] as const;
 export type ExpenseFields = (typeof AllExpenseFields)[number];
 export type Expense = {
   /** 営業費用 */
-  expense: number;
+  expenses: number;
   /** チーム人件費 */
-  salary?: number | null;
+  team_wages?: number | null;
   /** 移籍関連費用 */
-  transfer_exp?: number | null;
+  transfer_expenses?: number | null;
   /** 国外クラブからの移籍に関する費用 */
-  transfer_int_exp?: number | null;
+  transfer_expenses_international?: number | null;
   /** 国内クラブからの移籍に関する費用 */
-  transfer_dom_exp?: number | null;
+  transfer_expenses_domestic?: number | null;
   /** 事業費 */
-  manage_exp?: number | null;
+  manage_expenses?: number | null;
   /** 総事業費 */
-  general_exp?: number | null;
+  general_expenses?: number | null;
   /** 試合関連経費 */
-  game_exp?: number | null;
+  match_expenses?: number | null;
   /** トップチーム運営経費 */
-  team_exp?: number | null;
+  topteam_expenses?: number | null;
   /** アカデミー関連経費 */
-  academy_exp?: number | null;
+  academy_expenses?: number | null;
   /** 女子チーム運営経費 */
-  women_exp?: number | null;
+  womens_team_expenses?: number | null;
   /** 物販関連費 */
-  goods_exp?: number | null;
+  retail_expenses?: number | null;
   /** その他売上原価 */
-  other_cost?: number | null;
+  other_costs?: number | null;
   /** 販売費および一般管理費 */
-  sga?: number | null;
+  selling_general_admin_expenses?: number | null;
 };
 
 export const AllAttdFields = [
-  "ticket",
-  "all_attd",
+  "ticket_revenue",
+  "all_attendance",
   "all_games",
-  "average_attd",
+  "average_attendance",
   "unit_price",
-  "league_attd",
+  "league_attendance",
   "league_games",
-  "leaguecup_attd",
+  "leaguecup_attendance",
   "leaguecup_games",
-  "po_attd",
-  "po_games",
-  "acl_attd",
+  "playoffs_attendance",
+  "playoffs_games",
+  "acl_attendance",
   "acl_games",
-  "second_attd",
+  "second_attendance",
   "second_games",
 ] as const;
 export type AttdFields = (typeof AllAttdFields)[number];
 export type Attd = {
   /** 入場料収入 */
-  ticket?: number | null;
+  ticket_revenue?: number | null;
   /** リーグ戦入場者数 */
-  league_attd: number;
+  league_attendance: number;
   /** リーグ戦ホーム試合数 */
   league_games: number;
   /** リーグカップ入場者数 */
-  leaguecup_attd?: number | null;
+  leaguecup_attendance?: number | null;
   /** リーグカップホーム試合数 */
   leaguecup_games?: number | null;
   /** PO入場者数 */
-  po_attd?: number | null;
+  playoffs_attendance?: number | null;
   /** POホーム試合数 */
-  po_games?: number | null;
+  playoffs_games?: number | null;
   /** ACL入場者数 */
-  acl_attd?: number | null;
+  acl_attendance?: number | null;
   /** ACLホーム試合数 */
   acl_games?: number | null;
   /** セカンドチーム入場者数 */
-  second_attd?: number | null;
+  second_attendance?: number | null;
   /** セカンドチームホーム試合数 */
   second_games?: number | null;
   /** 総入場者数 */
-  all_attd: number;
+  all_attendance: number;
   /** ホーム総試合数 */
   all_games: number;
   /** リーグ戦平均入場者数 */
-  average_attd: number;
+  average_attendance: number;
   /** 客単価 */
   unit_price?: number | null;
 };

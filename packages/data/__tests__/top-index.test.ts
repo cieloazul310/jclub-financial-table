@@ -54,8 +54,8 @@ describe("Get datum", async () => {
     if (!datum) return;
     expect(datum.category).toBe("J2");
     expect(datum.revenue).toBe(310);
-    expect(datum.ticket).toBe(50);
-    expect(datum.all_attd).toBe(73339);
+    expect(datum.ticket_revenue).toBe(50);
+    expect(datum.all_attendance).toBe(73339);
   });
 
   it("kochi 2005", async () => {
@@ -63,8 +63,8 @@ describe("Get datum", async () => {
     if (!datum) return;
     expect(datum.category).toBe("JFL");
     expect(datum.revenue).toBe(200);
-    expect(datum.ticket).toBe(20);
-    expect(datum.average_attd).toBe(2272);
+    expect(datum.ticket_revenue).toBe(20);
+    expect(datum.average_attendance).toBe(2272);
   });
 });
 
@@ -74,10 +74,10 @@ describe("Get extended club data", async () => {
     const datum = data.find(({ year }) => year.value === 2024);
     expect(datum?.revenue.value).toBe(1224);
     expect(datum?.revenue.delta).toBe(120);
-    expect(datum?.expense.value).toBe(1224);
-    expect(datum?.expense.delta).toBe(125);
+    expect(datum?.expenses.value).toBe(1224);
+    expect(datum?.expenses.delta).toBe(125);
 
-    expect(datum?.average_attd.delta).toBe(680);
+    expect(datum?.average_attendance.delta).toBe(680);
     expect(datum?.unit_price?.delta).toBe(232);
   });
 
@@ -86,11 +86,11 @@ describe("Get extended club data", async () => {
     const datum = data.find(({ year }) => year.value === 2020);
     expect(datum?.assets?.value).toBe(480);
     expect(datum?.assets?.delta).toBe(-218);
-    expect(datum?.net_worth?.value).toBe(-399);
-    expect(datum?.net_worth?.delta).toBe(-439);
+    expect(datum?.net_assets?.value).toBe(-399);
+    expect(datum?.net_assets?.delta).toBe(-439);
 
-    expect(datum?.sponsor?.delta).toBe(-239);
-    expect(datum?.all_attd.delta).toBe(-61774);
+    expect(datum?.sponsor_revenue?.delta).toBe(-239);
+    expect(datum?.all_attendance.delta).toBe(-61774);
   });
 });
 
@@ -100,10 +100,10 @@ describe("Get extended year data", async () => {
     const datum = data.find(({ clubId }) => clubId.value === "mitohollyhock");
     expect(datum?.revenue.value).toBe(1224);
     expect(datum?.revenue.delta).toBe(120);
-    expect(datum?.expense.value).toBe(1224);
-    expect(datum?.expense.delta).toBe(125);
+    expect(datum?.expenses.value).toBe(1224);
+    expect(datum?.expenses.delta).toBe(125);
 
-    expect(datum?.average_attd.delta).toBe(680);
+    expect(datum?.average_attendance.delta).toBe(680);
     expect(datum?.unit_price?.delta).toBe(232);
   });
 
@@ -112,10 +112,10 @@ describe("Get extended year data", async () => {
     const datum = data.find(({ clubId }) => clubId.value === "verdy");
     expect(datum?.assets?.value).toBe(480);
     expect(datum?.assets?.delta).toBe(-218);
-    expect(datum?.net_worth?.value).toBe(-399);
-    expect(datum?.net_worth?.delta).toBe(-439);
+    expect(datum?.net_assets?.value).toBe(-399);
+    expect(datum?.net_assets?.delta).toBe(-439);
 
-    expect(datum?.sponsor?.delta).toBe(-239);
-    expect(datum?.all_attd.delta).toBe(-61774);
+    expect(datum?.sponsor_revenue?.delta).toBe(-239);
+    expect(datum?.all_attendance.delta).toBe(-61774);
   });
 });

@@ -15,7 +15,7 @@ describe("Get Statistics", () => {
   });
 
   it("statistics should always same values for each build", async () => {
-    const stats = await getStatistics(2021, "J2", "expense");
+    const stats = await getStatistics(2021, "J2", "expenses");
     expect(stats.totalCount).toEqual(22);
     expect(stats.average).toEqual(1555);
     expect(stats.sum).toEqual(34211);
@@ -44,7 +44,7 @@ describe("Get Category Year Series", () => {
 
 describe("Get Stats By Year", () => {
   it("should get statistics for all categories for a specific year", async () => {
-    const statsByCategory = await getStatsByYear(2020, "expense");
+    const statsByCategory = await getStatsByYear(2020, "expenses");
     expect(statsByCategory).toHaveProperty("J1");
     expect(statsByCategory).toHaveProperty("J2");
     expect(statsByCategory).toHaveProperty("J3");
@@ -62,7 +62,7 @@ describe("Get Stats By Year with Array arguments", () => {
   it("should get statistics for all categories for a specific year", async () => {
     const statsByCategory = await getStatsByYear(2024, [
       "revenue",
-      "average_attd",
+      "average_attendance",
     ]);
     expect(statsByCategory).toHaveProperty("J1");
     expect(statsByCategory).toHaveProperty("J2");
@@ -70,10 +70,10 @@ describe("Get Stats By Year with Array arguments", () => {
 
     const stats_j2 = statsByCategory?.["J2"];
     expect(stats_j2).toHaveProperty("revenue");
-    expect(stats_j2).toHaveProperty("average_attd");
-    expect(stats_j2).not.toHaveProperty("expense");
+    expect(stats_j2).toHaveProperty("average_attendance");
+    expect(stats_j2).not.toHaveProperty("expenses");
 
-    expect(stats_j2?.average_attd?.average).toBe(7667);
-    expect(stats_j2?.average_attd?.max).toBe(17750);
+    expect(stats_j2?.average_attendance?.average).toBe(7667);
+    expect(stats_j2?.average_attendance?.max).toBe(17750);
   });
 });
