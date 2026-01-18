@@ -14,6 +14,7 @@ export async function isImageURL(url: string | URL | null): Promise<boolean> {
 
     const request = new Request(parsedURL, {
       method: "HEAD",
+      mode: "cors",
     });
 
     return fetch(request)

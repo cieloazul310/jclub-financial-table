@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { css } from "styled-system/css";
 import type { LinkProps } from "@/components/ui/link";
-import { title } from "@/data/site-metadata";
+import { title, basePath } from "@/data/site-metadata";
 
 export function ImagePlaceholder({
   href,
@@ -12,7 +12,13 @@ export function ImagePlaceholder({
 }) {
   if (internal) {
     return (
-      <Image src="/ogp.png" alt={title} width={600} height={315} unoptimized />
+      <Image
+        src={`${basePath}/ogp.png`}
+        alt={title}
+        width={600}
+        height={315}
+        unoptimized
+      />
     );
   }
 

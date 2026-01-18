@@ -52,11 +52,7 @@ export function YearFilter({
 
   return (
     <Fieldset.Root className={cx(classes.root, className)} {...props}>
-      <Field.Root
-        id="filter-year-from"
-        className={classes.item}
-        size={selectSize}
-      >
+      <Field.Root className={classes.item} size={selectSize}>
         <Field.Label textWrapMode="nowrap">開始年</Field.Label>
         <Field.Select
           className={classes.select}
@@ -73,11 +69,7 @@ export function YearFilter({
           </select>
         </Field.Select>
       </Field.Root>
-      <Field.Root
-        id="filter-year-to"
-        className={classes.item}
-        size={selectSize}
-      >
+      <Field.Root className={classes.item} size={selectSize}>
         <Field.Label textWrapMode="nowrap">終了年</Field.Label>
         <Field.Select
           className={classes.select}

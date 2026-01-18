@@ -58,11 +58,13 @@ export function Footer() {
             </Link>
           </li>
           <li>
-            <Link
-              href="https://cieloazul310.github.io/digital-go-design-system-with-panda"
-              color="inherit"
-            >
-              Storybook
+            <Link href="https://www.jleague.jp/" color="inherit">
+              Jリーグ
+            </Link>
+          </li>
+          <li>
+            <Link href="https://aboutj.jleague.jp/corporate/" color="inherit">
+              Jリーグコーポレートサイト
             </Link>
           </li>
         </ul>

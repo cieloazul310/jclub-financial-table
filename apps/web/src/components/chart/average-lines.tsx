@@ -4,14 +4,13 @@ import {
 } from "@cieloazul310/jclub-financial";
 import { line as d3Line, Line, ScaleLinear } from "d3";
 import { css } from "styled-system/css";
-import { useTableStore } from "@/providers/table-store-provider";
 import { useTab } from "@/utils/tabs";
 import type { Tab } from "@/utils/types";
 import type { Averages, AverageValues } from "./get-averages";
 
 function detectStatisticsField(tab: Tab) {
-  if (tab === "attd") return "average_attd";
-  if (tab === "expense") return "salary";
+  if (tab === "attd") return "average_attendance";
+  if (tab === "expense") return "team_wages";
   return "revenue";
 }
 

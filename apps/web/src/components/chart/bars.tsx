@@ -13,7 +13,6 @@ import type {
 } from "@cieloazul310/jclub-financial";
 import { cx, css } from "styled-system/css";
 import { useTab } from "@/utils/tabs";
-import { useTableStore } from "@/providers/table-store-provider";
 import { categoryBarFill } from "./bar-gradient";
 
 type XLegendProps = {
@@ -102,12 +101,12 @@ function BSBar({
   itemWidth,
   barWidth,
   barPadding,
-}: BarProps<Pick<BS, "assets" | "liabilities" | "net_worth">>) {
-  const { assets, liabilities, net_worth } = datum;
+}: BarProps<Pick<BS, "assets" | "liabilities" | "net_assets">>) {
+  const { assets, liabilities, net_assets } = datum;
   if (
     typeof assets?.value !== "number" ||
     typeof liabilities?.value !== "number" ||
-    typeof net_worth?.value !== "number"
+    typeof net_assets?.value !== "number"
   )
     return null;
 
@@ -129,13 +128,13 @@ function BSBar({
       />
       <rect
         x={itemWidth / 2}
-        y={net_worth.value < 0 ? scale(0) : scale(net_worth.value)}
-        width={barWidth / (net_worth.value < 0 ? 4 : 2)}
+        y={net_assets.value < 0 ? scale(0) : scale(net_assets.value)}
+        width={barWidth / (net_assets.value < 0 ? 4 : 2)}
         height={
-          (net_worth.value < 0 ? -1 : 1) * (scale(0) - scale(net_worth.value))
+          (net_assets.value < 0 ? -1 : 1) * (scale(0) - scale(net_assets.value))
         }
         className={
-          net_worth.value < 0
+          net_assets.value < 0
             ? css({ fill: "{colors.error.1}" })
             : css({ fill: "{colors.success.1}" })
         }
@@ -145,13 +144,13 @@ function BSBar({
           color: { base: "solid-gray.700", _groupHover: "solid-gray.900" },
         })}
         x={itemWidth / 2}
-        y={net_worth.value < 0 ? scale(0) : scale(net_worth.value)}
+        y={net_assets.value < 0 ? scale(0) : scale(net_assets.value)}
         dy="-.4em"
         textAnchor="middle"
         fontWeight="bold"
         fill="currentColor"
       >
-        {net_worth.value}
+        {net_assets.value}
       </text>
     </>
   );
@@ -163,27 +162,27 @@ function ExpenseBar({
   itemWidth,
   barWidth,
   barPadding,
-}: BarProps<Pick<Expense, "expense" | "salary">>) {
+}: BarProps<Pick<Expense, "expenses" | "team_wages">>) {
   const fill = categoryBarFill({ category: datum.category.value });
-  const { expense, salary } = datum;
-  const othersExp = expense.value - (salary?.value ?? 0);
+  const { expenses, team_wages } = datum;
+  const othersExp = expenses.value - (team_wages?.value ?? 0);
 
   return (
     <>
       <rect
         x={(itemWidth * barPadding) / 2}
-        y={scale(expense.value)}
+        y={scale(expenses.value)}
         width={barWidth}
         height={scale(0) - scale(othersExp) - 1}
         className={css({ fill: "{colors.solid-gray.100}" })}
       />
-      {salary?.value && (
+      {team_wages?.value && (
         <>
           <rect
             x={(itemWidth * barPadding) / 2}
-            y={scale(salary.value)}
+            y={scale(team_wages.value)}
             width={barWidth}
-            height={scale(0) - scale(salary.value) - 1}
+            height={scale(0) - scale(team_wages.value) - 1}
             fill={fill}
           />
           <text
@@ -191,13 +190,13 @@ function ExpenseBar({
               color: { base: "solid-gray.420", _groupHover: "solid-gray.900" },
             })}
             x={itemWidth / 2}
-            y={scale(salary.value)}
+            y={scale(team_wages.value)}
             dy="-.4em"
             textAnchor="middle"
             fontWeight="bold"
             fill="currentColor"
           >
-            {salary.value}
+            {team_wages.value}
           </text>
         </>
       )}
@@ -206,13 +205,13 @@ function ExpenseBar({
           color: { base: "solid-gray.300", _groupHover: "solid-gray.900" },
         })}
         x={itemWidth / 2}
-        y={scale(expense.value)}
+        y={scale(expenses.value)}
         dy="-.4em"
         textAnchor="middle"
         fontWeight="bold"
         fill="currentColor"
       >
-        {expense.value}
+        {expenses.value}
       </text>
     </>
   );
@@ -224,16 +223,16 @@ function AttdBar({
   itemWidth,
   barWidth,
   barPadding,
-}: BarProps<Pick<Attd, "average_attd">>) {
-  const { average_attd, category } = datum;
+}: BarProps<Pick<Attd, "average_attendance">>) {
+  const { average_attendance, category } = datum;
   const fill = categoryBarFill({ category: category.value });
   return (
     <>
       <rect
         x={(itemWidth * barPadding) / 2}
-        y={scale(average_attd.value)}
+        y={scale(average_attendance.value)}
         width={barWidth}
-        height={scale(0) - scale(average_attd.value)}
+        height={scale(0) - scale(average_attendance.value)}
         fill={fill}
       />
       <text
@@ -241,14 +240,14 @@ function AttdBar({
           color: { base: "solid-gray.420", _groupHover: "solid-gray.900" },
         })}
         x={itemWidth / 2}
-        y={scale(average_attd.value)}
+        y={scale(average_attendance.value)}
         dy="-.4em"
         fontSize="90%"
         textAnchor="middle"
         fontWeight="bold"
         fill="currentColor"
       >
-        {average_attd.value}
+        {average_attendance.value}
       </text>
     </>
   );

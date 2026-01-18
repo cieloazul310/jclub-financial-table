@@ -14,7 +14,7 @@ export const tags: PostTag[] = [
     title: "クラブライセンス",
   },
   {
-    id: "broadcast",
+    id: "jleague_distribution",
     title: "配分金",
   },
   {

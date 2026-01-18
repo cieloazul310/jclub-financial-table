@@ -47,8 +47,8 @@ describe("Get specific extended data", async () => {
     expect(datum.year.value).toBe(2015);
     expect(datum.revenue.value).toBe(561);
     expect(datum.revenue.delta).toBe(43);
-    expect(datum.all_attd.value).toBe(101132);
-    expect(datum.net_worth?.delta).toBe(3);
+    expect(datum.all_attendance.value).toBe(101132);
+    expect(datum.net_assets?.delta).toBe(3);
   });
 });
 
@@ -88,7 +88,7 @@ describe("Get specific tegevajaro extended data", async () => {
     expect(datum.year.value).toBe(2024);
     expect(datum.revenue.value).toBe(510);
     expect(datum.revenue.delta).toBe(292);
-    expect(datum.all_attd.value).toBe(22837);
-    expect(datum.transfer_exp?.value).toBe(3);
+    expect(datum.all_attendance.value).toBe(22837);
+    expect(datum.transfer_expenses?.value).toBe(3);
   });
 });

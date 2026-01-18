@@ -3,13 +3,13 @@ export type StatsCategory = (typeof CATEGORIES)[number];
 
 export const Fields = [
   "revenue",
-  "expense",
-  "net_worth",
-  "sponsor",
-  "ticket",
-  "broadcast",
-  "salary",
-  "average_attd",
+  "expenses",
+  "net_assets",
+  "sponsor_revenue",
+  "ticket_revenue",
+  "jleague_distribution",
+  "team_wages",
+  "average_attendance",
   "unit_price",
 ] as const;
 export type Fields = (typeof Fields)[number];

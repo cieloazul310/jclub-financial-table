@@ -40,24 +40,24 @@ const fieldsByTab = [
   {
     id: "bs",
     title: "貸借対照表(B/S)",
-    items: [...AllBSFields].filter((field) => field !== "profit"),
+    items: [...AllBSFields].filter((field) => field !== "net_profit"),
   },
   {
     id: "revenue",
     title: "営業収入",
     items: [...AllRevenueFields].filter(
-      (field) => field !== "revenue" && field !== "related_revenue",
+      (field) => field !== "revenue" && field !== "related_companies_revenue",
     ),
   },
   {
-    id: "expense",
+    id: "expenses",
     title: "営業費用",
-    items: [...AllExpenseFields].filter((field) => field !== "expense"),
+    items: [...AllExpenseFields].filter((field) => field !== "expenses"),
   },
   {
     id: "attd",
     title: "入場者数",
-    items: [...AllAttdFields].filter((field) => field !== "ticket"),
+    items: [...AllAttdFields].filter((field) => field !== "ticket_revenue"),
   },
 ];
 

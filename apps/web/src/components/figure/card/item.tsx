@@ -73,7 +73,16 @@ type CardItemProps = {
 };
 
 export function CardItem({ datum, mode, index, totalCount }: CardItemProps) {
-  const { year, clubId, name, short_name, category, rank, elevation } = datum;
+  const {
+    year,
+    clubId,
+    name,
+    short_name,
+    category,
+    rank,
+    elevation,
+    reporting_period_months,
+  } = datum;
   const { sortField, setSortKey, toggleSort } = useTableStore((store) => store);
   const tab = useTab();
   const onRankClick = () => {
@@ -85,7 +94,7 @@ export function CardItem({ datum, mode, index, totalCount }: CardItemProps) {
     }
   };
 
-  const cardTitle =
+  const cardTitleLink =
     mode === "club" ? (
       <Link href={`/year/${year.value}/`} color="inherit">
         {year.value}年度決算
@@ -95,6 +104,22 @@ export function CardItem({ datum, mode, index, totalCount }: CardItemProps) {
         {name.value}
       </Link>
     );
+  const cardTitle = (
+    <>
+      {cardTitleLink}
+      {reporting_period_months && reporting_period_months?.value !== 12 && (
+        <small
+          className={css({
+            textStyle: "std-16N-170",
+            color: "solid-gray.700",
+            ml: 2,
+          })}
+        >
+          ※{reporting_period_months.value}ヶ月間
+        </small>
+      )}
+    </>
+  );
 
   const rankButton = (
     <button

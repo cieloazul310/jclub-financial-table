@@ -1,9 +1,12 @@
+import type { PropsWithChildren } from "react";
 import type { Extended, General } from "@cieloazul310/jclub-financial/types";
 import { cx, css } from "styled-system/css";
+import { circle } from "styled-system/patterns";
 import type { ComponentProps } from "styled-system/types";
 import { Table } from "@/components/ui/table";
 import { Mode } from "@/utils/types";
 import { Link } from "@/components/link";
+import { Tooltip } from "@/components/tooltip";
 
 const theadLabelStyle = css({
   textStyle: "dns-16B-120",
@@ -84,10 +87,44 @@ export function TableHeadLabel({ mode }: { mode: Mode }) {
   );
 }
 
+export function WithPeriodMonth({
+  datum,
+  children,
+}: PropsWithChildren<{
+  datum: Extended<Pick<General, "reporting_period_months">>;
+}>) {
+  const { reporting_period_months } = datum;
+  if (!reporting_period_months || reporting_period_months.value === 12)
+    return children;
+
+  return (
+    <Tooltip content={`決算期変更により${reporting_period_months.value}ヶ月間`}>
+      <span className={css({ position: "relative" })}>
+        {children}
+        <span
+          className={circle({
+            bg: "success.1",
+            color: "white",
+            position: "absolute",
+            top: 0,
+            right: 0,
+            transform: "translate(6px, -2px)",
+            size: "8px",
+            p: 1,
+            zIndex: 1,
+          })}
+        />
+      </span>
+    </Tooltip>
+  );
+}
+
 interface TableBodyLabelProps {
   mode: Mode;
   index: number;
-  datum: Extended<Pick<General, "short_name" | "clubId" | "year">>;
+  datum: Extended<
+    Pick<General, "short_name" | "clubId" | "year" | "reporting_period_months">
+  >;
 }
 
 export function TableBodyLabel({ mode, index, datum }: TableBodyLabelProps) {
@@ -98,9 +135,11 @@ export function TableBodyLabel({ mode, index, datum }: TableBodyLabelProps) {
         className={cx(tbodyLabelStyle, css({ textAlign: "center" }))}
         scope="row"
       >
-        <Link href={`/year/${datum.year.value}/`} color="inherit">
-          {datum.year.value}
-        </Link>
+        <WithPeriodMonth datum={datum}>
+          <Link href={`/year/${datum.year.value}/`} color="inherit">
+            {datum.year.value}
+          </Link>
+        </WithPeriodMonth>
       </TableHeaderLabel>
     );
 
@@ -117,9 +156,11 @@ export function TableBodyLabel({ mode, index, datum }: TableBodyLabelProps) {
         className={cx(tbodyLabelStyle, css({ textAlign: "right" }))}
         scope="row"
       >
-        <Link href={`/club/${datum.clubId.value}/`} color="inherit">
-          {datum.short_name.value}
-        </Link>
+        <WithPeriodMonth datum={datum}>
+          <Link href={`/club/${datum.clubId.value}/`} color="inherit">
+            {datum.short_name.value}
+          </Link>
+        </WithPeriodMonth>
       </TableHeaderLabel>
     </>
   );

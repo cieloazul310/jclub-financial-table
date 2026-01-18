@@ -16,13 +16,13 @@ await fs.mkdir(outDir, { recursive: true });
 type Fields = Exclude<keyof FinancialDatum, keyof General | keyof SeasonResult>;
 const fields: Fields[] = [
   "revenue",
-  "expense",
-  "net_worth",
-  "sponsor",
-  "ticket",
-  "broadcast",
-  "salary",
-  "average_attd",
+  "expenses",
+  "net_assets",
+  "sponsor_revenue",
+  "ticket_revenue",
+  "jleague_distribution",
+  "team_wages",
+  "average_attendance",
   "unit_price",
 ];
 

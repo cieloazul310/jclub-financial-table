@@ -15,11 +15,11 @@ export async function YearSummary({
   const props = { position, maxWidth, overflowX, ...rest };
   const fields = [
     "revenue",
-    "expense",
-    "net_worth",
-    "salary",
-    "ticket",
-    "average_attd",
+    "expenses",
+    "net_assets",
+    "team_wages",
+    "ticket_revenue",
+    "average_attendance",
     "unit_price",
   ] as const;
   const allYears = getAllYears();
