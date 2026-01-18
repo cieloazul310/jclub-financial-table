@@ -13,6 +13,7 @@ const withMdx = createMDX({
 const nextConfig = {
   output: "export",
   basePath: "/jclub-financial-table",
+  trailingSlash: true,
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 };
 
