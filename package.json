@@ -12,6 +12,7 @@
   "scripts": {
     "prepare": "git config --local core.hooksPath .githooks",
     "build": "turbo run build",
+    "build:app": "turbo run build --filter='./apps/web'",
     "build:package": "turbo run build --filter='./packages/*'",
     "dev": "turbo run dev",
     "test": "vitest",

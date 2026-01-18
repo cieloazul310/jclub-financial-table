@@ -101,9 +101,12 @@ jobs:
         run: |
           rm -rf ${{ env.BUILD_PATH }}/content
           mv ${{ env.CLONED_PATH }}/src ${{ env.BUILD_PATH }}/content
+      
+      - name: Build packages
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build:package
 
       - name: Build Packages and app
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build --filter="./packages/*" --filter="./${{env.BUILD_PATH}}"
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build:app
         env:
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
           NEXT_PUBLIC_PUBLISHER_ID: ${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }}

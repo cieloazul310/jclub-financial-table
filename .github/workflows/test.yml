@@ -73,7 +73,7 @@ jobs:
           mv ${{ env.CLONED_PATH }}/src ${{ env.BUILD_PATH }}/content
 
       - name: Build Packages and app
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build --filter="./${{env.BUILD_PATH}}"
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build:app
         env:
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
           NEXT_PUBLIC_PUBLISHER_ID: ${{ secrets.NEXT_PUBLIC_PUBLISHER_ID }}
