@@ -4,7 +4,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["NODE_ENV", "GA_ID", "PUBLISHER_ID", "DISABLE_OGP_FETCH"],
+      "env": ["NODE_ENV", "NEXT_PUBLIC_GA_ID", "NEXT_PUBLIC_PUBLISHER_ID", "FAST_BUILD"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**", "dist"]
     },

@@ -8,7 +8,7 @@ export async function getOgp(url: string) {
   try {
     if (
       process.env.NODE_ENV === "production" &&
-      process.env.DISABLE_OGP_FETCH === "true"
+      process.env.FAST_BUILD === "true"
     )
       return null;
 
