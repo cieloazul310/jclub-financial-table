@@ -6,6 +6,7 @@ export const docsGroupIds = [
   "expense",
   "attd",
   "license",
+  "appendix",
 ] as const;
 
 export const docsGroup = [
@@ -45,5 +46,10 @@ export const docsGroup = [
     id: "license",
     title: "クラブライセンス関連",
     description: "Jリーグクラブライセンス制度の財務基準に関する説明",
+  },
+  {
+    id: "appendix",
+    title: "付録",
+    description: "会見発言録などのリンク、資料集",
   },
 ];
