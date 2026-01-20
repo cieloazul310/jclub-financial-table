@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { css } from "styled-system/css";
 import { PageHeader } from "@/components/page-header";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
@@ -35,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const [tag] = slug;
   const currentTag = tags.find(({ id }) => tag === id);
   if (!currentTag) return {};
-  const title = `タグ:${currentTag.title}の記事一覧`;
+  const title = `タグ: ${currentTag.title}の記事一覧`;
 
   return { title, openGraph: { title }, twitter: { title } };
 }
