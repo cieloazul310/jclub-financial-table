@@ -18,6 +18,7 @@ net_profit: 20
 assets: 516
 liabilities: 112
 share_capital: 409
+retained_earnings: -5
 net_assets: 403
 rank: 9
 points: 52
