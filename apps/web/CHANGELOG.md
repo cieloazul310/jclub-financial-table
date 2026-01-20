@@ -1,5 +1,13 @@
 # jclub-financial-app
 
+## 0.0.1-beta.11
+
+### Patch Changes
+
+- 607efbb: 2005年度のデータに利益剰余金（当期未処分利益）を追加
+- Updated dependencies [607efbb]
+  - @cieloazul310/jclub-financial@0.0.1-beta.11
+
 ## 0.0.1-beta.10
 
 ### Patch Changes
