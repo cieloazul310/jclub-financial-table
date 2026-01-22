@@ -22,6 +22,11 @@ async function loadJsonSync(file: string): Promise<FinancialDatum | null> {
 
 export const clubIds = getAllClubs().map(({ id }) => id);
 
+/**
+ * 指定されたクラブIDのデータを取得する
+ * @param clubId クラブID
+ * @returns `Promise<FinancialDatum[]>` 指定されたクラブIDのデータの配列
+ */
 export async function getDataByClub(clubId: string): Promise<FinancialDatum[]> {
   const dir = join(base, clubId);
   try {
@@ -47,6 +52,11 @@ export async function getExtendedDataByClub(
   return extendClubData(data);
 }
 
+/**
+ * 年度を指定してデータを取得する
+ * @param year 年度
+ * @returns `Promise<FinancialDatum[]>` 指定された年度のデータの配列
+ */
 export async function getDataByYear(year: number): Promise<FinancialDatum[]> {
   const output = [];
   for (const clubId of clubIds) {
@@ -66,6 +76,12 @@ export async function getExtendedDataByYear(
   return extendYearData(data, prevData);
 }
 
+/**
+ * 年度とクラブを指定してデータを取得する
+ * @param clubId クラブID
+ * @param year 年度
+ * @returns `Promise<FinancialDatum | null>` 指定された年度範囲のデータ
+ */
 export async function getDatum(
   clubId: string,
   year: number,

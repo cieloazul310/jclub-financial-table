@@ -1,3 +1,6 @@
+/**
+ * Jクラブの基本情報を表す型
+ */
 export type ClubInfo = {
   id: string;
   code: string;

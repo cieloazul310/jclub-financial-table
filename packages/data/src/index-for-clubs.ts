@@ -6,6 +6,12 @@ import type {
   ExtendedFinancialDatum,
 } from "@cieloazul310/jclub-financial-utils/types";
 
+/**
+ * 年度範囲を指定してデータを取得する
+ * @param from 開始年度
+ * @param to 終了年度
+ * @returns `Promise<FinancialDatum[]>` 指定された年度範囲のデータの配列
+ */
 export async function getData(
   from: number = -Infinity,
   to: number = Infinity,

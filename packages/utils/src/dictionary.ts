@@ -13,6 +13,7 @@ function isDirectoryKey(
  * プロパティ名から日本語ラベルを取得する
  * @param key FinancialDatum のプロパティ名
  * @returns 日本語ラベル。未定義のキーの場合はキー名をそのまま返す
+ * @see {@link https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml dictionary.yml}
  */
 export function getLabel(key: string): string {
   if (isDirectoryKey(key)) return dictionary[key].label_ja;
@@ -24,6 +25,7 @@ export function getLabel(key: string): string {
  * @param key FinancialDatum のプロパティ名
  * @param options fallback や後処理のオプション
  * @returns 日本語ラベル
+ * @see {@link https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml dictionary.yml}
  */
 export function getLabelWithOptions(
   key: string,
