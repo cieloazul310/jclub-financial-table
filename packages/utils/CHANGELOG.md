@@ -1,5 +1,11 @@
 # @cieloazul310/jclub-financial-utils
 
+## 0.0.1-beta.12
+
+### Patch Changes
+
+- 906d67e: ドキュメントのアップデート
+
 ## 0.0.1-beta.11
 
 ### Patch Changes

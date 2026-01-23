@@ -1,6 +1,6 @@
 {
   "name": "@cieloazul310/jclub-financial-data",
-  "version": "0.0.1-beta.11",
+  "version": "0.0.1-beta.12",
   "license": "MIT",
   "homepage": "https://cieloazul310.github.io/jclub-financial-table",
   "author": {
@@ -65,11 +65,11 @@
     "build:types": "tsx ./scripts/build-types.ts"
   },
   "dependencies": {
-    "@cieloazul310/jclub-financial-utils": "^0.0.1-beta.11"
+    "@cieloazul310/jclub-financial-utils": "^0.0.1-beta.12"
   },
   "devDependencies": {
-    "@repo/eslint-config": "^0.0.1-beta.11",
-    "@repo/typescript-config": "^0.0.1-beta.11",
+    "@repo/eslint-config": "^0.0.1-beta.12",
+    "@repo/typescript-config": "^0.0.1-beta.12",
     "@types/node": "^25.0.3",
     "eslint": "^9.39.2",
     "tsdown": "^0.18.2",

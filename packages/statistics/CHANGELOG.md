@@ -1,5 +1,14 @@
 # @cieloazul310/jclub-financial-statistics
 
+## 0.0.1-beta.12
+
+### Patch Changes
+
+- 906d67e: ドキュメントのアップデート
+- Updated dependencies [906d67e]
+  - @cieloazul310/jclub-financial-utils@0.0.1-beta.12
+  - @cieloazul310/jclub-financial-data@0.0.1-beta.12
+
 ## 0.0.1-beta.11
 
 ### Patch Changes
