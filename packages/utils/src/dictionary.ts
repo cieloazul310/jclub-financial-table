@@ -12,8 +12,10 @@ function isDirectoryKey(
 /**
  * プロパティ名から日本語ラベルを取得する
  *
- * @param {string} key - `FinancialDatum` のプロパティ名 {@link https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/data.ts FinancialDatum}
- * @returns {string} - 日本語ラベル。未定義のキーの場合はキー名をそのまま返す
+ * @param {string} key - `FinancialDatum` のプロパティ名
+ *
+ * @returns {string} 日本語ラベル。未定義のキーの場合はキー名をそのまま返す
+ * @see {@link https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/data.ts FinancialDatum}
  * @see {@link https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml dictionary.yml}
  */
 export function getLabel(key: string): string {
@@ -24,10 +26,13 @@ export function getLabel(key: string): string {
 /**
  * プロパティ名から日本語ラベルを取得する（オプションつき）
  *
- * @param {string} key - `FinancialDatum` のプロパティ名 {@link https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/data.ts FinancialDatum}
+ * @param {string} key - `FinancialDatum` のプロパティ名
  * @param {Object} [options] - fallback や後処理のオプション
  * @param {string} [options.fallback] - キーが未定義の場合のフォールバック。省略時はキー名を返す
- * @returns {string} - 日本語ラベル
+ *
+ * @returns {string} 日本語ラベル
+ *
+ * @see {@link https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/data.ts FinancialDatum}
  * @see {@link https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml dictionary.yml}
  */
 export function getLabelWithOptions(

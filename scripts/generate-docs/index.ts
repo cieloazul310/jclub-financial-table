@@ -1,39 +1,15 @@
-import { resolve, join, dirname } from "path";
+import { resolve, join } from "path";
 import { fileURLToPath } from "url";
-import jsdocToMd from "jsdoc-to-markdown";
 
+import { generateApiDocs } from "./generate-api-docs";
 import {
   createClubTable,
   createDictionaryTable,
   insertToDocs,
 } from "./create-table";
 
-export const __dirname = dirname(fileURLToPath(import.meta.url));
-
-type GenerateApiDocsOptions = Partial<
-  Omit<jsdocToMd.JsdocOptions, "files" | "configure"> & jsdocToMd.RenderOptions
->;
-
-async function generateApiDocs(
-  basePath: string,
-  files: string[],
-  options: GenerateApiDocsOptions = {},
-) {
-  const defaultProps = {
-    "heading-depth": 3,
-  } satisfies GenerateApiDocsOptions;
-  const opt = { ...defaultProps, ...options };
-  const { ...rest } = opt;
-  const docs = await jsdocToMd.render({
-    files: files.map((filename) => join(basePath, filename)),
-    configure: resolve(__dirname, "./jsdoc2md.json"),
-    ...rest,
-  });
-  return docs;
-}
-
 async function main() {
-  const packages = resolve(__dirname, "../packages");
+  const packages = resolve(__dirname, "../../packages");
 
   // ユーティリティパッケージのAPIドキュメントを生成
   const utilsDocs = await generateApiDocs(
@@ -46,13 +22,13 @@ async function main() {
 
   // コアパッケージのREADMEにAPIドキュメントを挿入
   await insertToDocs(
-    resolve(__dirname, "../packages/core/README.md"),
+    resolve(__dirname, "../../packages/core/README.md"),
     utilsDocs,
     "api-docs",
   );
   // ユーティリティパッケージのREADMEにAPIドキュメントを挿入
   await insertToDocs(
-    resolve(__dirname, "../packages/utils/README.md"),
+    resolve(__dirname, "../../packages/utils/README.md"),
     utilsDocs,
     "api-docs",
   );
@@ -68,14 +44,14 @@ async function main() {
 
   // コアパッケージのREADMEにAPIドキュメントを挿入
   await insertToDocs(
-    resolve(__dirname, "../packages/core/README.md"),
+    resolve(__dirname, "../../packages/core/README.md"),
     dataDocs,
     "api-docs-index",
   );
 
   // データパッケージのREADMEにAPIドキュメントを挿入
   await insertToDocs(
-    resolve(__dirname, "../packages/data/README.md"),
+    resolve(__dirname, "../../packages/data/README.md"),
     dataDocs,
     "api-docs-index",
   );
@@ -89,7 +65,7 @@ async function main() {
     },
   );
   await insertToDocs(
-    resolve(__dirname, "../packages/data/README.md"),
+    resolve(__dirname, "../../packages/data/README.md"),
     dataForClubsDocs,
     "api-docs-for-clubs",
   );
@@ -99,20 +75,20 @@ async function main() {
 
   // ユーティリティパッケージのREADMEにテーブルを挿入
   await insertToDocs(
-    resolve(__dirname, "../packages/utils/README.md"),
+    resolve(__dirname, "../../packages/utils/README.md"),
     clubTable,
     "club-table",
   );
   // ユーティリティパッケージのREADMEにテーブルを挿入
   await insertToDocs(
-    resolve(__dirname, "../packages/utils/README.md"),
+    resolve(__dirname, "../../packages/utils/README.md"),
     dictionaryTable,
     "dictionary-table",
   );
 
   // コアパッケージのREADMEにテーブルを挿入
   await insertToDocs(
-    resolve(__dirname, "../packages/core/README.md"),
+    resolve(__dirname, "../../packages/core/README.md"),
     clubTable,
     "club-table",
   );

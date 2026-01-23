@@ -14,14 +14,14 @@
     "build": "turbo run build",
     "build:app": "turbo run build --filter='./packages/*' --filter='./apps/web'",
     "build:package": "turbo run build --filter='./packages/*'",
-    "generate:docs": "tsx ./scripts/generate-docs.ts",
+    "generate:docs": "tsx ./scripts/generate-docs/index.ts",
     "dev": "turbo run dev",
     "test": "vitest",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint-staged": "lint-staged",
     "changeset": "changeset",
-    "publish-packages": "npm run build:package && changeset version && changeset publish",
+    "publish-packages": "npm run generate:docs && npm run build:package && changeset version && changeset publish",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {

@@ -1,14 +1,12 @@
 import { readFile, writeFile } from "fs/promises";
-import { resolve, dirname } from "path";
-import { fileURLToPath } from "url";
+import { resolve } from "path";
 import { parse } from "yaml";
-import type { ClubInfo } from "../packages/utils/src/types";
-
-export const __dirname = dirname(fileURLToPath(import.meta.url));
+import { __dirname } from "./dirname";
+import type { ClubInfo } from "../../packages/utils/src/types";
 
 export async function createClubTable() {
   const file = await readFile(
-    resolve(__dirname, "../packages/utils/clubs.yml"),
+    resolve(__dirname, "../../packages/utils/clubs.yml"),
     "utf8",
   );
   const allClubs = parse(file) as ClubInfo[];
@@ -27,7 +25,7 @@ export async function createClubTable() {
 
 export async function createDictionaryTable() {
   const file = await readFile(
-    resolve(__dirname, "../packages/utils/dictionary.yml"),
+    resolve(__dirname, "../../packages/utils/dictionary.yml"),
     "utf8",
   );
   const dictionary = parse(file) as Record<

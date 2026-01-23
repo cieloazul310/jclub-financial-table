@@ -64,10 +64,12 @@ import {
 <p>利用可能なすべてのJクラブ情報を取得する関数。ソートはカテゴリ順(J1, J2, J3, その他)。</p>
 
 **Kind**: global function  
-**Returns**: <code>Array.&lt;ClubInfo&gt;</code> - <ul>
-<li>すべてのクラブの情報の配列を返します [ClubInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts)</li>
-</ul>  
-**See**: [clubs.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/clubs.yml)  
+**Returns**: <code>Array.&lt;ClubInfo&gt;</code> - <p>すべてのクラブの情報の配列を返します</p>  
+**See**
+
+- [ClubInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts)
+- [clubs.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/clubs.yml)
+
 <a name="getClubBySlug"></a>
 
 #### ~~getClubBySlug()~~
@@ -80,10 +82,12 @@ import {
 <p>指定した<code>clubId</code>のJクラブ情報を取得する関数</p>
 
 **Kind**: global function  
-**Returns**: <code>ClubInfo</code> \| <code>undefined</code> - <ul>
-<li>指定したクラブの情報を返します [ClubInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts)</li>
-</ul>  
-**See**: [clubs.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/clubs.yml)  
+**Returns**: <code>ClubInfo</code> \| <code>undefined</code> - <p>指定したクラブの情報を返します。存在しない場合は<code>undefined</code>を返します。</p>  
+**See**
+
+- [ClubInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts)
+- [clubs.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/clubs.yml)
+
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -95,10 +99,12 @@ import {
 <p>指定したカテゴリのすべてのJクラブ情報を取得する</p>
 
 **Kind**: global function  
-**Returns**: <code>Array.&lt;ClubInfo&gt;</code> - <ul>
-<li>指定したカテゴリのクラブの情報の配列を返します [ClubInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts)</li>
-</ul>  
-**See**: [clubs.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/clubs.yml)  
+**Returns**: <code>Array.&lt;ClubInfo&gt;</code> - <p>指定したカテゴリのクラブの情報の配列を返します</p>  
+**See**
+
+- [ClubInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts)
+- [clubs.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/clubs.yml)
+
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -110,14 +116,16 @@ import {
 <p>プロパティ名から日本語ラベルを取得する</p>
 
 **Kind**: global function  
-**Returns**: <code>string</code> - <ul>
-<li>日本語ラベル。未定義のキーの場合はキー名をそのまま返す</li>
-</ul>  
-**See**: [dictionary.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml)  
+**Returns**: <code>string</code> - <p>日本語ラベル。未定義のキーの場合はキー名をそのまま返す</p>  
+**See**
+
+- [FinancialDatum](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/data.ts)
+- [dictionary.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml)
+
 
 | Param | Type | Description |
 | --- | --- | --- |
-| key | <code>string</code> | <p><code>FinancialDatum</code> のプロパティ名 [FinancialDatum](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/data.ts)</p> |
+| key | <code>string</code> | <p><code>FinancialDatum</code> のプロパティ名</p> |
 
 <a name="getLabelWithOptions"></a>
 
@@ -125,14 +133,16 @@ import {
 <p>プロパティ名から日本語ラベルを取得する（オプションつき）</p>
 
 **Kind**: global function  
-**Returns**: <code>string</code> - <ul>
-<li>日本語ラベル</li>
-</ul>  
-**See**: [dictionary.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml)  
+**Returns**: <code>string</code> - <p>日本語ラベル</p>  
+**See**
+
+- [FinancialDatum](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/data.ts)
+- [dictionary.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml)
+
 
 | Param | Type | Description |
 | --- | --- | --- |
-| key | <code>string</code> | <p><code>FinancialDatum</code> のプロパティ名 [FinancialDatum](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/data.ts)</p> |
+| key | <code>string</code> | <p><code>FinancialDatum</code> のプロパティ名</p> |
 | [options] | <code>Object</code> | <p>fallback や後処理のオプション</p> |
 | [options.fallback] | <code>string</code> | <p>キーが未定義の場合のフォールバック。省略時はキー名を返す</p> |
 
@@ -142,20 +152,24 @@ import {
 <p>利用可能なすべての年度情報を取得する。ソートは年度昇順</p>
 
 **Kind**: global function  
-**Returns**: <code>Array.&lt;YearInfo&gt;</code> - <ul>
-<li>年度情報の配列 [YearInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/year.ts)</li>
-</ul>  
-**See**: [years.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/years.yml)  
+**Returns**: <code>Array.&lt;YearInfo&gt;</code> - <p>年度情報の配列</p>  
+**See**
+
+- [YearInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/year.ts)
+- [years.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/years.yml)
+
 <a name="getYearInfo"></a>
 
 #### getYearInfo(year) ⇒ <code>YearInfo</code> \| <code>undefined</code>
 <p>指定された年度の情報を取得する</p>
 
 **Kind**: global function  
-**Returns**: <code>YearInfo</code> \| <code>undefined</code> - <ul>
-<li>年度情報。該当する年度が存在しない場合は undefined</li>
-</ul>  
-**See**: [years.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/years.yml)  
+**Returns**: <code>YearInfo</code> \| <code>undefined</code> - <p>年度情報。該当する年度が存在しない場合は undefined</p>  
+**See**
+
+- [YearInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/year.ts)
+- [years.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/years.yml)
+
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -315,4 +329,8 @@ import {
 | 客単価 | unit_price |
 <!-- @dictionary-table-end -->
 
-**Source**: [dictionary.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/dictionary.yml)
+**Source**: [dictionary.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml)
+
+## License
+
+MIT © [cieloazul310](https://github.com/cieloazul310)

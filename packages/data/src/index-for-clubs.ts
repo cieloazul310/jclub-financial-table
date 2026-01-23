@@ -8,9 +8,13 @@ import type {
 
 /**
  * 年度範囲を指定してデータを取得する
- * @param from 開始年度
- * @param to 終了年度
- * @returns `Promise<FinancialDatum[]>` 指定された年度範囲のデータの配列
+ *
+ * @param {number} from 開始年度
+ * @param {number} to 終了年度
+ *
+ * @returns {Promise<FinancialDatum[]>} 指定された年度範囲のデータの配列
+ *
+ * @see {@link https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/src/types/data.ts FinancialDatum}
  */
 export async function getData(
   from: number = -Infinity,
