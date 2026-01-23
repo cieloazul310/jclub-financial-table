@@ -10,6 +10,7 @@ import { DocsMenu, createDocsMenuGroup } from "@/components/docs/menu";
 import { docsFigures } from "@/components/docs/figures";
 import { useMDXComponents } from "@/mdx-components";
 import { docs } from "@/content";
+import { mergeOpenGraph } from "@/utils/merge-opengraph";
 import { parseFrontmatterDate } from "@/utils/datestring";
 
 export async function generateStaticParams() {
@@ -30,10 +31,14 @@ export async function generateMetadata(
   const doc = await docs.get(slug);
   if (!doc) return {};
   const { title } = doc.frontmatter;
+  const openGraph = await mergeOpenGraph(
+    { title, pathname: `/docs/${slug.join("/")}/` },
+    parent,
+  );
 
   return {
     title,
-    openGraph: { title },
+    openGraph,
     twitter: { title },
   };
 }

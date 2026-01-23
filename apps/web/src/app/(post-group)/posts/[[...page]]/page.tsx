@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { AdInLayout, AdInPage } from "@/components/ads";
 import { postsPerPage } from "@/data/site-metadata";
+import { mergeOpenGraph } from "@/utils/merge-opengraph";
 import { post } from "@/content";
 
 export async function generateStaticParams() {
@@ -20,7 +21,10 @@ type Props = {
   params: Promise<{ page?: string[] }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const { page } = await params;
   const currentPage = page && page?.[0] ? parseInt(page[0], 10) : 1;
   const allPosts = (await post.getAll()).sort(
@@ -28,8 +32,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   );
   const numAllPostsPages = Math.ceil(allPosts.length / postsPerPage);
   const title = `記事一覧 (${currentPage} / ${numAllPostsPages})`;
+  const openGraph = await mergeOpenGraph(
+    { title, pathname: `/posts/${page?.join("/") ?? ""}` },
+    parent,
+  );
 
-  return { title, openGraph: { title }, twitter: { title } };
+  return {
+    title,
+    openGraph,
+    twitter: { title },
+  };
 }
 
 export default async function Page({ params }: Props) {

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { getAllClubs, getClubById } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByClub } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
@@ -16,6 +16,7 @@ import { SelectLink } from "@/components/select-link";
 import { Loading } from "@/components/loading";
 import { AdInPage } from "@/components/ads";
 import { post } from "@/content";
+import { mergeOpenGraph } from "@/utils/merge-opengraph";
 import { getPrevNext } from "@/utils/clubs";
 
 export function generateStaticParams() {
@@ -27,21 +28,29 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const { id } = await params;
   const club = getClubById(id);
   if (!club) return {};
 
   const title = `${club.name}の経営情報`;
   const description = `${club?.name}の経営情報を損益計算書、貸借対照表、営業収入、営業費用、入場者数に分類して表示`;
+  const openGraph = await mergeOpenGraph(
+    {
+      title,
+      description,
+      pathname: `/club/${id}/`,
+    },
+    parent,
+  );
 
   return {
     title,
     description,
-    openGraph: {
-      title,
-      description,
-    },
+    openGraph,
     twitter: {
       title,
       description,

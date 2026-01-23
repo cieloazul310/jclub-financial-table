@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { css } from "styled-system/css";
 import { Heading3 } from "@/components/article";
 import { PageHeader } from "@/components/page-header";
@@ -10,6 +10,7 @@ import { PageBottomNav } from "@/components/page-bottom-nav";
 import { AdInLayout, AdInPage } from "@/components/ads";
 import { post, type PostMetadata } from "@/content";
 import { getAllPostYears } from "@/utils/post";
+import { mergeOpenGraph } from "@/utils/merge-opengraph";
 
 function getPostsByMonths(posts: PostMetadata[]) {
   const allMonths = Array.from(
@@ -34,11 +35,22 @@ type Props = {
   params: Promise<{ year: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const { year } = await params;
   const title = `${year}年の記事一覧`;
+  const openGraph = await mergeOpenGraph(
+    { title, pathname: `/posts/archive/${year}/` },
+    parent,
+  );
 
-  return { title, openGraph: { title }, twitter: { title } };
+  return {
+    title,
+    openGraph,
+    twitter: { title },
+  };
 }
 
 export default async function Page({ params }: Props) {

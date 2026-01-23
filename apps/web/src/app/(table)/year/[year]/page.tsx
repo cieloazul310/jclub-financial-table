@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { getAllYears } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByYear } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
@@ -11,6 +11,7 @@ import { SelectLink } from "@/components/select-link";
 import { Heading2 } from "@/components/article";
 import { Loading } from "@/components/loading";
 import { AdInPage } from "@/components/ads";
+import { mergeOpenGraph } from "@/utils/merge-opengraph";
 
 function getPrevNext(currentYear: number) {
   const allYears = getAllYears();
@@ -33,18 +34,22 @@ type Props = {
   params: Promise<{ year: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const { year } = await params;
   const title = `${year}年度の経営情報`;
   const description = `${year}年度のJクラブ経営情報を損益計算書、貸借対照表、営業収入、営業費用、入場者数に分類して表示`;
+  const openGraph = await mergeOpenGraph(
+    { title, description, pathname: `/year/${year}/` },
+    parent,
+  );
 
   return {
     title,
     description,
-    openGraph: {
-      title,
-      description,
-    },
+    openGraph,
     twitter: {
       title,
       description,
