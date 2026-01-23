@@ -1,5 +1,13 @@
 # jclub-financial-app
 
+## 0.0.1-beta.12
+
+### Patch Changes
+
+- 906d67e: ドキュメントのアップデート
+- Updated dependencies [906d67e]
+  - @cieloazul310/jclub-financial@0.0.1-beta.12
+
 ## 0.0.1-beta.11
 
 ### Patch Changes
