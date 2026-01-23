@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import { getAllClubs, getAllYears } from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
 import { SeriesClient } from "@/components/series/client";
+import { siteUrl, title as siteName } from "@/data/site-metadata";
 
 export const metadata: Metadata = {
   title: "項目別表示",
   openGraph: {
     title: "項目別表示",
+    images: "/ogp.png",
+    url: siteUrl,
+    siteName,
   },
   twitter: {
     title: "項目別表示",

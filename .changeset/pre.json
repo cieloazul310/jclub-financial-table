@@ -2,14 +2,14 @@
   "mode": "pre",
   "tag": "beta",
   "initialVersions": {
-    "jclub-financial-vercel-api": "0.0.1-alpha.9",
-    "jclub-financial-app": "0.0.1-alpha.9",
-    "@cieloazul310/jclub-financial": "0.0.1-alpha.9",
-    "@cieloazul310/jclub-financial-data": "0.0.1-alpha.9",
-    "@repo/eslint-config": "0.0.1-alpha.9",
-    "@cieloazul310/jclub-financial-statistics": "0.0.1-alpha.9",
-    "@repo/typescript-config": "0.0.1-alpha.9",
-    "@cieloazul310/jclub-financial-utils": "0.0.1-alpha.9"
+    "jclub-financial-vercel-api": "0.0.1-beta.11",
+    "jclub-financial-app": "0.0.1-beta.11",
+    "@cieloazul310/jclub-financial": "0.0.1-beta.11",
+    "@cieloazul310/jclub-financial-data": "0.0.1-beta.11",
+    "@repo/eslint-config": "0.0.1-beta.11",
+    "@cieloazul310/jclub-financial-statistics": "0.0.1-beta.11",
+    "@repo/typescript-config": "0.0.1-beta.11",
+    "@cieloazul310/jclub-financial-utils": "0.0.1-beta.11"
   },
   "changesets": [
     "busy-actors-write",

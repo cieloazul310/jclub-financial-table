@@ -7,6 +7,7 @@ import { PostListItemBase } from "@/components/post/list-item";
 import { AdInPage } from "@/components/ads";
 import { docs, type DocsMetadata } from "@/content";
 import { docsGroup } from "@/data/docs";
+import { siteUrl } from "@/data/site-metadata";
 
 function getDocsGroup(allDocs: DocsMetadata[]) {
   return docsGroup.map(({ id, ...rest }) => ({
@@ -18,7 +19,11 @@ function getDocsGroup(allDocs: DocsMetadata[]) {
 
 export const metadata: Metadata = {
   title: "経営情報の見方",
-  openGraph: { title: "経営情報の見方" },
+  openGraph: {
+    title: "経営情報の見方",
+    images: "/ogp.png",
+    url: `${siteUrl}/docs/`,
+  },
   twitter: { title: "経営情報の見方" },
 };
 
@@ -39,7 +44,6 @@ export default async function Page() {
                 key={doc.href}
                 title={doc.frontmatter.title}
                 href={doc.href}
-                // footerText={footerText}
               />
             ))}
           </PostList>

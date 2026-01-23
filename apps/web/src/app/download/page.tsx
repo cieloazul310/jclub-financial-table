@@ -3,11 +3,15 @@ import { getAllClubs } from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
 import { DownloadClient } from "@/components/download/client";
 import type { Dataset } from "@/components/download/utils/types";
+import { siteUrl, title as siteName } from "@/data/site-metadata";
 
 export const metadata: Metadata = {
   title: "データダウンロード",
   openGraph: {
     title: "データダウンロード",
+    images: "/ogp.png",
+    url: siteUrl,
+    siteName,
   },
   twitter: {
     title: "データダウンロード",

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { getAllClubs, getClubById } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
 import { PageHeader } from "@/components/page-header";
@@ -7,6 +7,7 @@ import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { AdInLayout } from "@/components/ads";
 import { post } from "@/content";
+import { mergeOpenGraph } from "@/utils/merge-opengraph";
 import { getPrevNext } from "@/utils/clubs";
 
 export async function generateStaticParams() {
@@ -19,18 +20,23 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const { id } = await params;
   const club = getClubById(id);
 
   if (!club) return {};
   const title = `${club.name}の記事一覧`;
+  const openGraph = await mergeOpenGraph(
+    { title, pathname: `/${club}/posts/` },
+    parent,
+  );
 
   return {
     title,
-    openGraph: {
-      title,
-    },
+    openGraph,
     twitter: {
       title,
     },

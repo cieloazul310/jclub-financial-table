@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { AdInPage, AdInLayout } from "@/components/ads";
 import { post } from "@/content";
-import { postsPerPage } from "@/data/site-metadata";
+import { postsPerPage, siteUrl } from "@/data/site-metadata";
 import { tags } from "@/data/tags";
 
 export async function generateStaticParams() {
@@ -29,14 +29,26 @@ type Props = {
   params: Promise<{ slug: string[] }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const { slug } = await params;
+  const { openGraph } = await parent;
   const [tag] = slug;
   const currentTag = tags.find(({ id }) => tag === id);
   if (!currentTag) return {};
   const title = `タグ: ${currentTag.title}の記事一覧`;
 
-  return { title, openGraph: { title }, twitter: { title } };
+  return {
+    title,
+    openGraph: {
+      ...openGraph,
+      title,
+      url: `${siteUrl}/posts/tag/${tag}/`,
+    },
+    twitter: { title },
+  };
 }
 
 export default async function Page({ params }: Props) {

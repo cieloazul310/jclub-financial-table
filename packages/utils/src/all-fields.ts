@@ -15,8 +15,26 @@ export function getGeneral<T extends FinancialDatum | ExtendedFinancialDatum>(
 ): {
   [key in GeneralFields]: T[key];
 } {
-  const { id, clubId, name, short_name, year, license, category } = datum;
-  return { id, clubId, name, short_name, year, license, category };
+  const {
+    id,
+    clubId,
+    name,
+    short_name,
+    year,
+    license,
+    category,
+    reporting_period_months,
+  } = datum;
+  return {
+    id,
+    clubId,
+    name,
+    short_name,
+    year,
+    license,
+    category,
+    reporting_period_months,
+  };
 }
 
 export function getSeasonResult<
@@ -37,7 +55,7 @@ export function getPL<T extends FinancialDatum | ExtendedFinancialDatum>(
 } {
   const {
     revenue,
-    expense,
+    expenses,
     operating_profit,
     non_operating_income,
     non_operating_expenses,
@@ -46,12 +64,12 @@ export function getPL<T extends FinancialDatum | ExtendedFinancialDatum>(
     extraordinary_loss,
     profit_before_tax,
     tax,
-    profit,
+    net_profit,
     related_companies_revenue,
   } = datum;
   return {
     revenue,
-    expense,
+    expenses,
     operating_profit,
     non_operating_income,
     non_operating_expenses,
@@ -60,7 +78,7 @@ export function getPL<T extends FinancialDatum | ExtendedFinancialDatum>(
     extraordinary_loss,
     profit_before_tax,
     tax,
-    profit,
+    net_profit,
     related_companies_revenue,
   };
 }
@@ -81,7 +99,7 @@ export function getBS<T extends FinancialDatum | ExtendedFinancialDatum>(
     share_capital,
     capital_surplus,
     retained_earnings,
-    profit,
+    net_profit,
   } = datum;
   return {
     assets,
@@ -94,7 +112,7 @@ export function getBS<T extends FinancialDatum | ExtendedFinancialDatum>(
     share_capital,
     capital_surplus,
     retained_earnings,
-    profit,
+    net_profit,
   };
 }
 
@@ -139,7 +157,7 @@ export function getExpense<T extends FinancialDatum | ExtendedFinancialDatum>(
   [key in ExpenseFields]: T[key];
 } {
   const {
-    expense,
+    expenses,
     general_expenses,
     team_wages,
     transfer_expenses,
@@ -155,7 +173,7 @@ export function getExpense<T extends FinancialDatum | ExtendedFinancialDatum>(
     selling_general_admin_expenses,
   } = datum;
   return {
-    expense,
+    expenses,
     general_expenses,
     team_wages,
     transfer_expenses,

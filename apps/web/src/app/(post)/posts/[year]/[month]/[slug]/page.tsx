@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import remarkGfm from "remark-gfm";
 import { css } from "styled-system/css";
 import { PageHeader } from "@/components/page-header";
@@ -19,6 +19,7 @@ import { post } from "@/content";
 import { parseFrontmatterDate } from "@/utils/datestring";
 import { getSpecifiedClub, getClubsFromArray } from "@/utils/clubs";
 import { getCurrentTag } from "@/utils/tags";
+import { mergeOpenGraph } from "@/utils/merge-opengraph";
 
 export async function generateStaticParams() {
   const allPost = await post.getAll();
@@ -34,23 +35,31 @@ type Props = {
   slug: string;
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<Props>;
-}): Promise<Metadata> {
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: Promise<Props>;
+  },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const { year, month, slug } = await params;
   const currentSlug = [year, month, slug];
   const postMetadata = await post.get(currentSlug);
   if (!postMetadata) return {};
   const { frontmatter } = postMetadata;
   const { title } = frontmatter;
+  const openGraph = await mergeOpenGraph(
+    {
+      title,
+      pathname: `/${year}/${month}/${slug}/`,
+    },
+    parent,
+  );
 
   return {
     title,
-    openGraph: {
-      title,
-    },
+    openGraph,
     twitter: {
       title,
     },

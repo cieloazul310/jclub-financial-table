@@ -22,6 +22,15 @@ async function loadJsonSync(file: string): Promise<FinancialDatum | null> {
 
 export const clubIds = getAllClubs().map(({ id }) => id);
 
+/**
+ * 指定されたクラブIDのデータを取得する
+ *
+ * @param {string} clubId - クラブID
+ *
+ * @returns {Promise<FinancialDatum[]>} 指定されたクラブIDのデータの配列
+ *
+ * @see {@link https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/src/types/data.ts FinancialDatum}
+ */
 export async function getDataByClub(clubId: string): Promise<FinancialDatum[]> {
   const dir = join(base, clubId);
   try {
@@ -47,6 +56,13 @@ export async function getExtendedDataByClub(
   return extendClubData(data);
 }
 
+/**
+ * 年度を指定してデータを取得する
+ *
+ * @param {number} year 年度
+ *
+ * @returns {Promise<FinancialDatum[]>} 指定された年度のデータの配列
+ */
 export async function getDataByYear(year: number): Promise<FinancialDatum[]> {
   const output = [];
   for (const clubId of clubIds) {
@@ -66,6 +82,16 @@ export async function getExtendedDataByYear(
   return extendYearData(data, prevData);
 }
 
+/**
+ * 年度とクラブを指定してデータを取得する
+ *
+ * @param {string} clubId クラブID
+ * @param {number} year 年度
+ *
+ * @returns {Promise<FinancialDatum | null>} 指定された年度範囲のデータ
+ *
+ * @see {@link https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/src/types/data.ts FinancialDatum}
+ */
 export async function getDatum(
   clubId: string,
   year: number,
