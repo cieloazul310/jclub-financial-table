@@ -1,135 +1,172 @@
 # Jクラブ経営情報ポータル ユーティリティパッケージ
 
+[![npm version](https://badge.fury.io/js/@cieloazul310%2Fjclub-financial-utils.svg)](https://badge.fury.io/js/@cieloazul310%2Fjclub-financial-utils)
+
 > [!NOTE]
 > このパッケージはコアパッケージに含まれています
 
-## 内容
+## 概要
 
 - Jクラブ経営情報ポータルに搭載している60+3クラブの情報を搭載
 - Jクラブ経営情報ポータルで表示できる年度の情報を搭載
 - Jクラブ経営情報ポータルで表示しているデータのキーと日本語表記の対応表を搭載
 
-## インストール
+## 使い方
+
+### インストール
 
 ```sh
+npm install @cieloazul310/jclub-financial
+// or indivisual
 npm install @cieloazul310/jclub-financial-utils
 ```
 
-## API
+### API
+
+```ts
+import {
+  getAllClubs,
+  getClubById,
+  getClubsByCategory,
+  getAllYears,
+  getYearInfo,
+  getLabel,
+  getLabelWithOptions,
+} from "@cieloazul310/jclub-financial";
+// or from "@cieloazul310/jclub-financial-utils";
+```
+
 <!-- @api-docs-start -->
-### Functions
+#### Functions
 
 <dl>
-<dt><a href="#getAllClubs">getAllClubs()</a> ⇒</dt>
-<dd><p>利用可能なすべてのJクラブ情報を取得する。ソートはカテゴリ順(J1, J2, J3, その他)。</p></dd>
+<dt><a href="#getAllClubs">getAllClubs()</a> ⇒ <code>Array.&lt;ClubInfo&gt;</code></dt>
+<dd><p>利用可能なすべてのJクラブ情報を取得する関数。ソートはカテゴリ順(J1, J2, J3, その他)。</p></dd>
 <dt><del><a href="#getClubBySlug">getClubBySlug()</a></del></dt>
 <dd></dd>
-<dt><a href="#getClubById">getClubById(clubId)</a> ⇒</dt>
-<dd><p>指定されたclubIdのJクラブ情報を取得する</p></dd>
-<dt><a href="#getClubsByCategory">getClubsByCategory(category)</a> ⇒</dt>
-<dd><p>指定されたカテゴリのすべてのJクラブ情報を取得する</p></dd>
-<dt><a href="#getLabel">getLabel(key)</a> ⇒</dt>
+<dt><a href="#getClubById">getClubById(clubId)</a> ⇒ <code>ClubInfo</code> | <code>undefined</code></dt>
+<dd><p>指定した<code>clubId</code>のJクラブ情報を取得する関数</p></dd>
+<dt><a href="#getClubsByCategory">getClubsByCategory(category)</a> ⇒ <code>Array.&lt;ClubInfo&gt;</code></dt>
+<dd><p>指定したカテゴリのすべてのJクラブ情報を取得する</p></dd>
+<dt><a href="#getLabel">getLabel(key)</a> ⇒ <code>string</code></dt>
 <dd><p>プロパティ名から日本語ラベルを取得する</p></dd>
-<dt><a href="#getLabelWithOptions">getLabelWithOptions(key, options)</a> ⇒</dt>
+<dt><a href="#getLabelWithOptions">getLabelWithOptions(key, [options])</a> ⇒ <code>string</code></dt>
 <dd><p>プロパティ名から日本語ラベルを取得する（オプションつき）</p></dd>
-<dt><a href="#getAllYears">getAllYears()</a> ⇒</dt>
-<dd><p>利用可能なすべての年度情報を取得する。ソートは年度昇順。</p></dd>
-<dt><a href="#getYearInfo">getYearInfo(year)</a> ⇒</dt>
+<dt><a href="#getAllYears">getAllYears()</a> ⇒ <code>Array.&lt;YearInfo&gt;</code></dt>
+<dd><p>利用可能なすべての年度情報を取得する。ソートは年度昇順</p></dd>
+<dt><a href="#getYearInfo">getYearInfo(year)</a> ⇒ <code>YearInfo</code> | <code>undefined</code></dt>
 <dd><p>指定された年度の情報を取得する</p></dd>
 </dl>
 
 <a name="getAllClubs"></a>
 
-### getAllClubs() ⇒
-<p>利用可能なすべてのJクラブ情報を取得する。ソートはカテゴリ順(J1, J2, J3, その他)。</p>
+#### getAllClubs() ⇒ <code>Array.&lt;ClubInfo&gt;</code>
+<p>利用可能なすべてのJクラブ情報を取得する関数。ソートはカテゴリ順(J1, J2, J3, その他)。</p>
 
 **Kind**: global function  
-**Returns**: <p>ClubInfo[]</p>  
+**Returns**: <code>Array.&lt;ClubInfo&gt;</code> - <ul>
+<li>すべてのクラブの情報の配列を返します [ClubInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts)</li>
+</ul>  
 **See**: [clubs.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/clubs.yml)  
 <a name="getClubBySlug"></a>
 
-### ~~getClubBySlug()~~
+#### ~~getClubBySlug()~~
 ***use `getClubById`***
 
 **Kind**: global function  
 <a name="getClubById"></a>
 
-### getClubById(clubId) ⇒
-<p>指定されたclubIdのJクラブ情報を取得する</p>
+#### getClubById(clubId) ⇒ <code>ClubInfo</code> \| <code>undefined</code>
+<p>指定した<code>clubId</code>のJクラブ情報を取得する関数</p>
 
 **Kind**: global function  
-**Returns**: <p>ClubInfo | undefined</p>  
+**Returns**: <code>ClubInfo</code> \| <code>undefined</code> - <ul>
+<li>指定したクラブの情報を返します [ClubInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts)</li>
+</ul>  
 **See**: [clubs.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/clubs.yml)  
 
-| Param | Description |
-| --- | --- |
-| clubId | <p>クラブID</p> |
+| Param | Type | Description |
+| --- | --- | --- |
+| clubId | <code>string</code> | <p>クラブID</p> |
 
 <a name="getClubsByCategory"></a>
 
-### getClubsByCategory(category) ⇒
-<p>指定されたカテゴリのすべてのJクラブ情報を取得する</p>
+#### getClubsByCategory(category) ⇒ <code>Array.&lt;ClubInfo&gt;</code>
+<p>指定したカテゴリのすべてのJクラブ情報を取得する</p>
 
 **Kind**: global function  
-**Returns**: <p>ClubInfo[]</p>  
+**Returns**: <code>Array.&lt;ClubInfo&gt;</code> - <ul>
+<li>指定したカテゴリのクラブの情報の配列を返します [ClubInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts)</li>
+</ul>  
 **See**: [clubs.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/clubs.yml)  
 
-| Param | Description |
-| --- | --- |
-| category | <p>カテゴリ(J1, J2, J3, JFL)</p> |
+| Param | Type | Description |
+| --- | --- | --- |
+| category | <code>string</code> | <p>カテゴリ(J1, J2, J3, JFL)</p> |
 
 <a name="getLabel"></a>
 
-### getLabel(key) ⇒
+#### getLabel(key) ⇒ <code>string</code>
 <p>プロパティ名から日本語ラベルを取得する</p>
 
 **Kind**: global function  
-**Returns**: <p>日本語ラベル。未定義のキーの場合はキー名をそのまま返す</p>  
+**Returns**: <code>string</code> - <ul>
+<li>日本語ラベル。未定義のキーの場合はキー名をそのまま返す</li>
+</ul>  
 **See**: [dictionary.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml)  
 
-| Param | Description |
-| --- | --- |
-| key | <p>FinancialDatum のプロパティ名</p> |
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | <p><code>FinancialDatum</code> のプロパティ名 [FinancialDatum](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/data.ts)</p> |
 
 <a name="getLabelWithOptions"></a>
 
-### getLabelWithOptions(key, options) ⇒
+#### getLabelWithOptions(key, [options]) ⇒ <code>string</code>
 <p>プロパティ名から日本語ラベルを取得する（オプションつき）</p>
 
 **Kind**: global function  
-**Returns**: <p>日本語ラベル</p>  
+**Returns**: <code>string</code> - <ul>
+<li>日本語ラベル</li>
+</ul>  
 **See**: [dictionary.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/dictionary.yml)  
 
-| Param | Description |
-| --- | --- |
-| key | <p>FinancialDatum のプロパティ名</p> |
-| options | <p>fallback や後処理のオプション</p> |
+| Param | Type | Description |
+| --- | --- | --- |
+| key | <code>string</code> | <p><code>FinancialDatum</code> のプロパティ名 [FinancialDatum](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/data.ts)</p> |
+| [options] | <code>Object</code> | <p>fallback や後処理のオプション</p> |
+| [options.fallback] | <code>string</code> | <p>キーが未定義の場合のフォールバック。省略時はキー名を返す</p> |
 
 <a name="getAllYears"></a>
 
-### getAllYears() ⇒
-<p>利用可能なすべての年度情報を取得する。ソートは年度昇順。</p>
+#### getAllYears() ⇒ <code>Array.&lt;YearInfo&gt;</code>
+<p>利用可能なすべての年度情報を取得する。ソートは年度昇順</p>
 
 **Kind**: global function  
-**Returns**: <p>YearInfo[]</p>  
+**Returns**: <code>Array.&lt;YearInfo&gt;</code> - <ul>
+<li>年度情報の配列 [YearInfo](https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/year.ts)</li>
+</ul>  
 **See**: [years.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/years.yml)  
 <a name="getYearInfo"></a>
 
-### getYearInfo(year) ⇒
+#### getYearInfo(year) ⇒ <code>YearInfo</code> \| <code>undefined</code>
 <p>指定された年度の情報を取得する</p>
 
 **Kind**: global function  
-**Returns**: <p>YearInfo | undefined</p>  
+**Returns**: <code>YearInfo</code> \| <code>undefined</code> - <ul>
+<li>年度情報。該当する年度が存在しない場合は undefined</li>
+</ul>  
 **See**: [years.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/packages/utils/years.yml)  
 
-| Param | Description |
-| --- | --- |
-| year | <p>年度</p> |
+| Param | Type | Description |
+| --- | --- | --- |
+| year | <code>number</code> | <p>年度</p> |
 
 
 <!-- @api-docs-end -->
 
-## クラブ一覧
+## 対応表
+
+### クラブ一覧
 
 <!-- @club-table-start -->
 | 略称 | 呼称 | clubId |
@@ -199,7 +236,9 @@ npm install @cieloazul310/jclub-financial-utils
 | 沼津 | アスルクラロ沼津 | azulclaro |
 <!-- @club-table-end -->
 
-## データのプロパティ
+**Source**: [clubs.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/clubs.yml)
+
+### データのプロパティ
 
 <!-- @dictionary-table-start -->
 | 日本語ラベル | key |
@@ -275,3 +314,5 @@ npm install @cieloazul310/jclub-financial-utils
 | リーグ戦平均入場者数 | average_attendance |
 | 客単価 | unit_price |
 <!-- @dictionary-table-end -->
+
+**Source**: [dictionary.yml](https://github.com/cieloazul310/jclub-financial-table/blob/main/dictionary.yml)

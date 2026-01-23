@@ -25,8 +25,10 @@ function isDirectoryKey(key: string): key is keyof ClubInfo {
 
 /**
  * プロパティ名から日本語ラベルを取得する
- * @param key FinancialDatum のプロパティ名
- * @returns 日本語ラベル。未定義のキーの場合はキー名をそのまま返す
+ *
+ * @param {string} key - `ClubInfo` のプロパティ名 {@link https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts ClubInfo}
+ * @returns {string} - 日本語ラベル。未定義のキーの場合はキー名をそのまま返す
+ * @see {@link https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/club-dictionary.ts club-dictionary.ts}
  */
 export function getClubInfoLabel(key: string): string {
   if (isDirectoryKey(key)) return clubInfoDictionary[key];
@@ -35,9 +37,12 @@ export function getClubInfoLabel(key: string): string {
 
 /**
  * プロパティ名から日本語ラベルを取得する（オプションつき）
- * @param key FinancialDatum のプロパティ名
- * @param options fallback や後処理のオプション
- * @returns 日本語ラベル
+ *
+ * @param {string} key - `ClubInfo` のプロパティ名 {@link https://github.com/cieloazul310/jclub-financial-table/blob/develop/packages/utils/src/types/club.ts ClubInfo}
+ * @param {Object} [options] - fallback や後処理のオプション
+ * @param {string} [options.fallback] - キーが未定義の場合のフォールバック。省略時はキー名を返す
+ * @param {(label: string) => string} [options.transform] - ラベルに対する後処理
+ * @returns {string} - 日本語ラベル
  */
 export function getClubInfoLabelWithOptions(
   key: keyof ClubInfo,
