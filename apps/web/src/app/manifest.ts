@@ -12,6 +12,12 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#ffffff",
     theme_color: "#0017c1",
     display: "minimal-ui",
-    icons: [],
+    icons: [
+      {
+        src: "/jclub-financial-table/icon.png",
+        sizes: "360x360",
+        type: "image/png",
+      },
+    ],
   };
 }

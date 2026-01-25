@@ -1,6 +1,10 @@
 {
   "name": "@cieloazul310/jclub-financial-data",
   "version": "0.0.1-beta.12",
+  "description": "Jクラブ経営情報ポータルのデータパッケージ",
+  "keywords": [
+    "jleague"
+  ],
   "license": "MIT",
   "homepage": "https://cieloazul310.github.io/jclub-financial-table",
   "author": {
@@ -11,6 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/cieloazul310/jclub-financial-table.git",
     "directory": "packages/data"
+  },
+  "bugs": {
+    "url": "https://github.com/cieloazul310/jclub-financial-table/issues"
   },
   "publishConfig": {
     "access": "public",
