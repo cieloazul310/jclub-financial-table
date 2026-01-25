@@ -1,5 +1,27 @@
 # @cieloazul310/jclub-financial-utils
 
+## 0.0.1
+
+### Patch Changes
+
+- 64e513e: update to beta version
+- ea2bf31: 修正
+- 607efbb: 2005年度のデータに利益剰余金（当期未処分利益）を追加
+- 906d67e: ドキュメントのアップデート
+- 0520f12: update
+- 5af8fea: - 依存パッケージの更新
+  - クラブのデータを2026シーズンのものに更新
+- 12a8862: データに前年差を格納する`getExtentedDataByClub`, `getExtendedDataByYear`関数を追加
+- 5294d70: `getAllClubs`と`getAllYears`の挙動を修正
+- d6d0dab: Update
+- 2c549a4: BREAKING CHANGE!: データのキー名を大幅に変更
+- 12f9d9a: alpha version
+- 160e1e7: - (data): 呼称を`fullname`から`name`に、略称を`name`から`short_name`に変更
+  - (utils): クラブの`id`を変更、クラブに`code`を追加
+  - (utils): クラブのラベルを取得する関数を追加
+- 52b587f: パッケージの改善
+- e7ceac9: アップデート
+
 ## 0.0.1-beta.12
 
 ### Patch Changes
