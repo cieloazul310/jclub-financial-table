@@ -6,15 +6,16 @@ import { ArticleGrid } from "@/components/article-grid";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { PostFooterBase } from "@/components/post/footer";
 import { AdInSide } from "@/components/ads";
-import { DocsMenu, createDocsMenuGroup } from "@/components/docs/menu";
-import { docsFigures } from "@/components/docs/figures";
 import { useMDXComponents } from "@/mdx-components";
 import { docs } from "@/content";
 import { mergeOpenGraph } from "@/utils/merge-opengraph";
 import { parseFrontmatterDate } from "@/utils/datestring";
+import { getAllDocs } from "@/utils/with-cache";
+import { DocsMenu, createDocsMenuGroup } from "../_components/menu";
+import { docsFigures } from "../_components/figures";
 
 export async function generateStaticParams() {
-  const allDocs = await docs.getAll();
+  const allDocs = await getAllDocs();
 
   return allDocs;
 }
@@ -61,7 +62,7 @@ export default async function Page({ params }: Props) {
   const { title, group } = frontmatter;
   const { older, newer } = context;
   const { lastmod } = parseFrontmatterDate(frontmatter);
-  const allDocs = await docs.getAll();
+  const allDocs = await getAllDocs();
   const docsMenu = createDocsMenuGroup(allDocs);
   const groupMenu = docsMenu.find(({ id }) => id === group);
 

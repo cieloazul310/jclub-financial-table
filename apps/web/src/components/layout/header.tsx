@@ -28,7 +28,6 @@ export function Header({
         mx: "auto",
         display: "flex",
         width: "full",
-        maxWidth: "90em",
         alignItems: "center",
         justifyContent: "space-between",
         px: { base: 4, md: 8 },

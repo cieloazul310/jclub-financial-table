@@ -1,3 +1,4 @@
+import { cache } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { getAllClubs, getClubById } from "@cieloazul310/jclub-financial";
 import { css } from "styled-system/css";
@@ -6,8 +7,8 @@ import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { AdInLayout } from "@/components/ads";
-import { post } from "@/content";
 import { mergeOpenGraph } from "@/utils/merge-opengraph";
+import { getAllPosts } from "@/utils/with-cache";
 import { getPrevNext } from "@/utils/clubs";
 
 export async function generateStaticParams() {
@@ -15,6 +16,10 @@ export async function generateStaticParams() {
 
   return allClubs;
 }
+
+const getClub = cache((clubId: string) => {
+  return getClubById(clubId);
+});
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -25,7 +30,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { id } = await params;
-  const club = getClubById(id);
+  const club = getClub(id);
 
   if (!club) return {};
   const title = `${club.name}の記事一覧`;
@@ -45,10 +50,10 @@ export async function generateMetadata(
 
 export default async function Page({ params }: Props) {
   const { id } = await params;
-  const club = getClubById(id);
+  const club = getClub(id);
   if (!club) return null;
 
-  const allPosts = await post.getAll();
+  const allPosts = await getAllPosts();
   const posts = allPosts
     .filter(({ frontmatter }) =>
       frontmatter.club?.some((clubTag) => clubTag === club.short_name),

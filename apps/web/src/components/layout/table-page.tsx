@@ -6,9 +6,9 @@ import { layout } from "styled-system/recipes";
 import { Layout as BaseLayout } from "@/components/layout";
 import { Header } from "@/components/layout/header";
 import { Menu } from "@/components/layout/menu";
-import { TabList } from "@/components/figure/tab-list";
 import { PageBottomNav } from "@/components/page-bottom-nav";
 import { SidebarTitle } from "@/components/layout/sidebar-title";
+import { TabList } from "./tab-list";
 
 type TablePageLayoutProps = PropsWithChildren<{
   title: string;

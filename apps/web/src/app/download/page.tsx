@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getAllClubs } from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
-import { DownloadClient } from "@/components/download/client";
-import type { Dataset } from "@/components/download/utils/types";
 import { siteUrl, title as siteName } from "@/data/site-metadata";
+import { DownloadClient } from "./_components/client";
+import type { Dataset } from "./_components/utils/types";
 
 export const metadata: Metadata = {
   title: "データダウンロード",

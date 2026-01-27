@@ -1,3 +1,4 @@
+import { cache } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import remarkGfm from "remark-gfm";
 import { css } from "styled-system/css";
@@ -9,20 +10,16 @@ import { TagChip } from "@/components/post/tag-chip";
 import { PostListItemBase } from "@/components/post/list-item";
 import { PostFooter } from "@/components/post/footer";
 import { AdInSide } from "@/components/ads";
-import {
-  Tokurei2020,
-  Tokurei2023,
-  Tokurei2026,
-} from "@/components/docs/figures/license-tokurei";
 import { useMDXComponents } from "@/mdx-components";
 import { post } from "@/content";
 import { parseFrontmatterDate } from "@/utils/datestring";
 import { getSpecifiedClub, getClubsFromArray } from "@/utils/clubs";
 import { getCurrentTag } from "@/utils/tags";
+import { getAllPosts } from "@/utils/with-cache";
 import { mergeOpenGraph } from "@/utils/merge-opengraph";
 
 export async function generateStaticParams() {
-  const allPost = await post.getAll();
+  const allPost = await getAllPosts();
   return allPost.map((post) => {
     const [year, month, slug] = post.slug;
     return { year, month, slug };
@@ -35,6 +32,10 @@ type Props = {
   slug: string;
 };
 
+const getPost = cache(async (slug: string[]) => {
+  return await post.get(slug);
+});
+
 export async function generateMetadata(
   {
     params,
@@ -44,8 +45,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { year, month, slug } = await params;
-  const currentSlug = [year, month, slug];
-  const postMetadata = await post.get(currentSlug);
+  const postMetadata = await getPost([year, month, slug]);
   if (!postMetadata) return {};
   const { frontmatter } = postMetadata;
   const { title } = frontmatter;
@@ -69,7 +69,7 @@ export async function generateMetadata(
 export default async function Page({ params }: { params: Promise<Props> }) {
   const { year, month, slug } = await params;
   const currentSlug = [year, month, slug];
-  const currentPost = await post.get(currentSlug);
+  const currentPost = await getPost(currentSlug);
 
   if (!currentPost) return null;
 
@@ -81,11 +81,7 @@ export default async function Page({ params }: { params: Promise<Props> }) {
   const specifiedClub = getSpecifiedClub("short_name", club);
   const currentTag = getCurrentTag("title", tag);
   /* eslint-disable-next-line react-hooks/rules-of-hooks */
-  const components = useMDXComponents({
-    Tokurei2020,
-    Tokurei2023,
-    Tokurei2026,
-  });
+  const components = useMDXComponents();
   const mdx = await post.useMdx(currentSlug, {
     components,
     mdxOptions: {

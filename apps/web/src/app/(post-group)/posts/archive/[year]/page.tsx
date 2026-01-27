@@ -8,9 +8,10 @@ import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { PageBottomNav } from "@/components/page-bottom-nav";
 import { AdInLayout, AdInPage } from "@/components/ads";
-import { post, type PostMetadata } from "@/content";
+import type { PostMetadata } from "@/content";
 import { getAllPostYears } from "@/utils/post";
 import { mergeOpenGraph } from "@/utils/merge-opengraph";
+import { getAllPosts } from "@/utils/with-cache";
 
 function getPostsByMonths(posts: PostMetadata[]) {
   const allMonths = Array.from(
@@ -56,7 +57,7 @@ export async function generateMetadata(
 export default async function Page({ params }: Props) {
   const year = parseInt((await params).year, 10);
 
-  const allPosts = await post.getAll();
+  const allPosts = await getAllPosts();
   const postsByYear = allPosts.filter(
     ({ frontmatter }) => frontmatter.date.getFullYear() === year,
   );

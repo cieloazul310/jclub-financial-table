@@ -4,9 +4,9 @@ import type { ExtendedFinancialDatum } from "@cieloazul310/jclub-financial";
 import { center } from "styled-system/patterns";
 import { useTableStore } from "@/providers/table-store-provider";
 import { sortAndFilter } from "@/utils/sort-and-filter";
+import type { Mode } from "@/utils/types";
 import { FinancialTable } from "./table";
 import { FinancialCard } from "./card";
-import type { Mode } from "@/utils/types";
 
 type TabContentProps = {
   data: ExtendedFinancialDatum[];

@@ -4,14 +4,14 @@ import { getAllYears } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByYear } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
-import { Figure } from "@/components/figure";
-import { YearSummary } from "@/components/year-summary";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { SelectLink } from "@/components/select-link";
 import { Heading2 } from "@/components/article";
 import { Loading } from "@/components/loading";
 import { AdInPage } from "@/components/ads";
 import { mergeOpenGraph } from "@/utils/merge-opengraph";
+import { Figure } from "../../_components/figure";
+import { YearSummary } from "../../_components/summary/year";
 
 function getPrevNext(currentYear: number) {
   const allYears = getAllYears();

@@ -31,6 +31,8 @@ export const layout = defineSlotRecipe({
   base: {
     root: {
       minHeight: "screen",
+      maxWidth: "calc({sizes.breakpoint-2xl} + {sizes.sidebar-width})",
+      mx: "auto",
     },
     header: {
       /**
@@ -40,6 +42,7 @@ export const layout = defineSlotRecipe({
       top: 0,
       zIndex: "docked",
       width: "full",
+      maxWidth: "calc({sizes.breakpoint-2xl} + {sizes.sidebar-width})",
       height: "header-height",
       bg: "white/85",
       backdropFilter: "blur(4px)",

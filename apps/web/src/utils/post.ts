@@ -1,7 +1,7 @@
-import { post } from "@/content";
+import { getAllPosts } from "./with-cache";
 
 export async function getAllPostYears() {
-  const allPosts = await post.getAll();
+  const allPosts = await getAllPosts();
   const allYears = Array.from(
     new Set(allPosts.map(({ frontmatter }) => frontmatter.date.getFullYear())),
   ).sort((a, b) => a - b);

@@ -1,15 +1,14 @@
 import { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { PLFigure } from "@/components/docs/figures/pl";
-import { BSFigure } from "@/components/docs/figures/bs";
+import { docsFigures } from "@/app/docs/(post)/_components/figures";
 import {
   Tokurei2020,
   Tokurei2023,
   Tokurei2026,
-} from "@/components/docs/figures/license-tokurei";
-import { FigureWrapper } from "@/components/docs/figures/wrapper";
-import { RevenueList } from "@/components/docs/figures/revenue";
-import { ExpenseList } from "@/components/docs/figures/expense";
+} from "@/components/shortcodes/license-tokurei";
 import { WithArticle } from "./with-article";
+
+const { PLFigure, BSFigure, RevenueList, ExpenseList, FigureWrapper } =
+  docsFigures;
 
 const meta = {
   title: "Docs/Figures/Basic",

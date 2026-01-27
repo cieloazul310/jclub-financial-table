@@ -33,7 +33,7 @@
     "zustand": "^5.0.9"
   },
   "devDependencies": {
-    "@cieloazul310/digital-go-pandacss-preset": "^0.2.2",
+    "@cieloazul310/digital-go-pandacss-preset": "^0.2.3",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.1.1",

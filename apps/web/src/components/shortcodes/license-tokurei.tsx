@@ -2,7 +2,10 @@ import { css } from "styled-system/css";
 import { Table } from "@/components/ui/table";
 import { UnorderedList, type UnorderedListProps } from "@/components/ui/list";
 import { List } from "@/components/ui/list";
-import { TableWrapper, type TableWrapperProps } from "./table-wrapper";
+import {
+  TableWrapper,
+  type TableWrapperProps,
+} from "@/components/table-wrapper";
 
 export function SpecialCase({
   ...props
@@ -42,14 +45,21 @@ export function Tokurei2020(props: TableWrapperProps) {
   return (
     <TableWrapper {...props}>
       <Table.Root>
-        <Table.Caption>2020年当初の特例措置</Table.Caption>
+        <Table.Caption className={css({ textAlign: "start" })}>
+          2020年当初の特例措置
+        </Table.Caption>
         <colgroup>
           <col span={5} className={css({ minWidth: "12em" })} />
         </colgroup>
         <Table.Head>
           <Table.Row>
             {Array.from({ length: 5 }).map((_, index) => (
-              <Table.Cell key={index.toString()} scope="column" align="center">
+              <Table.Cell
+                key={index.toString()}
+                className={css({ minWidth: "12em" })}
+                scope="column"
+                align="center"
+              >
                 {index + 2020}年度
               </Table.Cell>
             ))}
@@ -88,16 +98,23 @@ export function Tokurei2023(props: TableWrapperProps) {
   return (
     <TableWrapper {...props}>
       <Table.Root>
-        <Table.Caption>2023年改定後の特例措置</Table.Caption>
+        <Table.Caption className={css({ textAlign: "start" })}>
+          2023年改定後の特例措置
+        </Table.Caption>
         <colgroup>
           <col className={css({ minWidth: "6em" })} />
           <col span={6} className={css({ minWidth: "12em" })} />
         </colgroup>
         <Table.Head>
           <Table.Row>
-            <Table.Cell />
+            <Table.Cell className={css({ minWidth: "6em" })} />
             {Array.from({ length: 6 }).map((_, index) => (
-              <Table.Cell key={index.toString()} scope="column" align="center">
+              <Table.Cell
+                key={index.toString()}
+                className={css({ minWidth: "12em" })}
+                scope="column"
+                align="center"
+              >
                 {index + 2020}年度
               </Table.Cell>
             ))}
@@ -166,7 +183,9 @@ export function Tokurei2026(props: TableWrapperProps) {
   return (
     <TableWrapper {...props}>
       <Table.Root>
-        <Table.Caption>シーズン移行に伴う特例措置</Table.Caption>
+        <Table.Caption className={css({ textAlign: "start" })}>
+          シーズン移行に伴う特例措置
+        </Table.Caption>
         <colgroup>
           <col span={5} className={css({ minWidth: "12em" })} />
         </colgroup>
@@ -179,7 +198,12 @@ export function Tokurei2026(props: TableWrapperProps) {
               "27/28シーズン",
               "28/29シーズン",
             ].map((value) => (
-              <Table.Cell key={value} scope="column" align="center">
+              <Table.Cell
+                key={value}
+                className={css({ minWidth: "12em" })}
+                scope="column"
+                align="center"
+              >
                 {value}
               </Table.Cell>
             ))}
