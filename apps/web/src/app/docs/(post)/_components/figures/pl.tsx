@@ -1,5 +1,5 @@
 import { Table } from "@/components/ui/table";
-import { TableWrapper } from "./table-wrapper";
+import { TableWrapper } from "@/components/table-wrapper";
 
 export function PLFigure({ dense = true, ...rest }: Table.RootProps) {
   const props = { dense, ...rest };

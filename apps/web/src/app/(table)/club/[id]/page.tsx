@@ -1,28 +1,32 @@
-import { Suspense } from "react";
+import { cache, Suspense } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { getAllClubs, getClubById } from "@cieloazul310/jclub-financial";
 import { getExtendedDataByClub } from "@cieloazul310/jclub-financial/data";
 import { css } from "styled-system/css";
 import { container } from "styled-system/patterns";
 import { Link } from "@/components/link";
-import { Figure } from "@/components/figure";
 import { PrevNextLink } from "@/components/prev-next-link";
-import { ClubSummary } from "@/components/club-summary";
-import { Chart } from "@/components/chart";
 import { Heading3 } from "@/components/article";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { SelectLink } from "@/components/select-link";
 import { Loading } from "@/components/loading";
 import { AdInPage } from "@/components/ads";
-import { post } from "@/content";
 import { mergeOpenGraph } from "@/utils/merge-opengraph";
 import { getPrevNext } from "@/utils/clubs";
+import { getAllPosts } from "@/utils/with-cache";
+import { Figure } from "../../_components/figure";
+import { ClubSummary } from "../../_components/summary/club";
+import { Chart } from "../../_components//chart";
 
 export function generateStaticParams() {
   const clubs = getAllClubs();
   return clubs;
 }
+
+const getClub = cache((clubId: string) => {
+  return getClubById(clubId);
+});
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -33,7 +37,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { id } = await params;
-  const club = getClubById(id);
+  const club = getClub(id);
   if (!club) return {};
 
   const title = `${club.name}の経営情報`;
@@ -60,14 +64,14 @@ export async function generateMetadata(
 
 export default async function Page({ params }: Props) {
   const { id } = await params;
-  const club = getClubById(id);
+  const club = getClub(id);
 
   if (!club) return null;
 
   const data = await getExtendedDataByClub(club.id);
   const { prev, next } = getPrevNext(id);
 
-  const allPosts = await post.getAll();
+  const allPosts = await getAllPosts();
   const posts = allPosts
     .filter(({ frontmatter }) =>
       frontmatter.club?.some((clubTag) => clubTag === club.short_name),

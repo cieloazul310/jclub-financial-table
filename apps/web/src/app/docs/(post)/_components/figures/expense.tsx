@@ -1,6 +1,9 @@
 import { css } from "styled-system/css";
 import { Table } from "@/components/ui/table";
-import { TableWrapper, type TableWrapperProps } from "./table-wrapper";
+import {
+  TableWrapper,
+  type TableWrapperProps,
+} from "@/components/table-wrapper";
 
 export function ExpenseList({ ...rest }: TableWrapperProps) {
   const props = { ...rest };

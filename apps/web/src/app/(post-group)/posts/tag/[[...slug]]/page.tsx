@@ -1,15 +1,16 @@
+import { cache } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { PostList } from "@/components/post/list";
 import { PostListItem } from "@/components/post/list-item";
 import { PrevNextLink } from "@/components/prev-next-link";
 import { AdInPage, AdInLayout } from "@/components/ads";
-import { post } from "@/content";
 import { postsPerPage, siteUrl } from "@/data/site-metadata";
 import { tags } from "@/data/tags";
+import { getAllPosts } from "@/utils/with-cache";
 
 export async function generateStaticParams() {
-  const allPosts = await post.getAll();
+  const allPosts = await getAllPosts();
 
   return tags
     .map(({ id, title }) => {
@@ -25,6 +26,16 @@ export async function generateStaticParams() {
     .flat();
 }
 
+const getPageDetails = cache(async (slug: string[]) => {
+  const [tag, page] = slug;
+  const currentTag = tags.find(({ id }) => tag === id);
+  const currentPage = page && page?.[0] ? parseInt(page[0], 10) : 1;
+  const limit = postsPerPage;
+  const skip = postsPerPage * (currentPage - 1);
+
+  return { tag: currentTag, currentPage, limit, skip };
+});
+
 type Props = {
   params: Promise<{ slug: string[] }>;
 };
@@ -35,17 +46,17 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params;
   const { openGraph } = await parent;
-  const [tag] = slug;
-  const currentTag = tags.find(({ id }) => tag === id);
-  if (!currentTag) return {};
-  const title = `タグ: ${currentTag.title}の記事一覧`;
+  const { tag } = await getPageDetails(slug);
+
+  if (!tag) return {};
+  const title = `タグ: ${tag.title}の記事一覧`;
 
   return {
     title,
     openGraph: {
       ...openGraph,
       title,
-      url: `${siteUrl}/posts/tag/${tag}/`,
+      url: `${siteUrl}/posts/tag/${slug.join("/")}/`,
     },
     twitter: { title },
   };
@@ -53,17 +64,13 @@ export async function generateMetadata(
 
 export default async function Page({ params }: Props) {
   const { slug } = await params;
-  const [tag, page] = slug;
+  // const [tag, page] = slug;
+  const { tag, currentPage, limit, skip } = await getPageDetails(slug);
 
-  const currentPage = page && page?.[0] ? parseInt(page[0], 10) : 1;
-  const limit = postsPerPage;
-  const skip = postsPerPage * (currentPage - 1);
-
-  const currentTag = tags.find(({ id }) => tag === id);
-  if (!currentTag) return null;
-  const allPosts = await post.getAll();
+  if (!tag) return null;
+  const allPosts = await getAllPosts();
   const tagPosts = allPosts
-    .filter(({ frontmatter }) => frontmatter.tag === currentTag.title)
+    .filter(({ frontmatter }) => frontmatter.tag === tag.title)
     .sort(
       (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
     );
@@ -74,25 +81,25 @@ export default async function Page({ params }: Props) {
   const prev =
     currentPage !== 1
       ? {
-          title: `${currentTag.title} ${currentPage - 1}/${numAllPostsPages}`,
+          title: `${tag.title} ${currentPage - 1}/${numAllPostsPages}`,
           href:
             currentPage > 2
-              ? `/posts/tag/${currentTag.id}/${currentPage - 1}`
-              : `/posts/tag/${currentTag.id}`,
+              ? `/posts/tag/${tag.id}/${currentPage - 1}`
+              : `/posts/tag/${tag.id}`,
         }
       : undefined;
   const next =
     currentPage !== numAllPostsPages
       ? {
-          title: `${currentTag.title} ${currentPage + 1}/${numAllPostsPages}`,
-          href: `/posts/tag/${currentTag.id}/${currentPage + 1}`,
+          title: `${tag.title} ${currentPage + 1}/${numAllPostsPages}`,
+          href: `/posts/tag/${tag.id}/${currentPage + 1}`,
         }
       : undefined;
 
   const posts = [...tagPosts].slice(skip, skip + limit);
   return (
     <>
-      <PageHeader title={`タグ: ${currentTag.title}`}>
+      <PageHeader title={`タグ: ${tag.title}`}>
         {multiplePages && `${currentPage}/${numAllPostsPages}`}
       </PageHeader>
       <PostList mb={4}>

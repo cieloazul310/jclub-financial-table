@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { FigureWrapper } from "@/components/docs/figures/wrapper";
+import { FigureWrapper } from "@/app/docs/(post)/_components/figures/wrapper";
 import {
   RinenKyoukaByFan,
   RinenKyoukaByYearNewer,
@@ -8,7 +8,7 @@ import {
   RinenKyoukaGeneralByYearOlder,
   RinenKyoukaGeneralByYearNewer,
   RinenKyoukaGeneralByFan,
-} from "@/components/docs/figures/rinen-kyouka";
+} from "@/app/docs/(post)/_components/figures/rinen-kyouka";
 import { WithArticle } from "./with-article";
 
 const meta = {

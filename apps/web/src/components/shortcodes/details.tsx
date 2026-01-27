@@ -38,12 +38,7 @@ export const Details = ({
   );
 
   const main = asBlockquote ? (
-    <div
-      className={cx(
-        blockquote(),
-        css({ mx: 0, maxHeight: "50vh", overflowY: "auto" }),
-      )}
-    >
+    <div className={cx(blockquote(), css({ mx: 0 }))}>
       <blockquote>{children}</blockquote>
       {cite}
     </div>

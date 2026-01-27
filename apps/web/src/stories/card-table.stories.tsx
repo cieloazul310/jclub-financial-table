@@ -2,7 +2,10 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { fn } from "storybook/test";
 import { getLabel } from "@cieloazul310/jclub-financial";
 import { cx, css } from "styled-system/css";
-import { CardTableBase, CardTableRow } from "@/components/figure/card/table";
+import {
+  CardTableBase,
+  CardTableRow,
+} from "@/app/(table)/_components/figure/card/table";
 import { Diff } from "@/components/shortcodes/diff";
 import { format } from "@/utils/format";
 import { pl } from "./card-values";

@@ -2,8 +2,14 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { fn } from "storybook/test";
 import { getLabel } from "@cieloazul310/jclub-financial";
 import { cx, css } from "styled-system/css";
-import { CardItemBase, CardItemHeader } from "@/components/figure/card/item";
-import { CardTableBase, CardTableRow } from "@/components/figure/card/table";
+import {
+  CardItemBase,
+  CardItemHeader,
+} from "@/app/(table)/_components/figure/card/item";
+import {
+  CardTableBase,
+  CardTableRow,
+} from "@/app/(table)/_components/figure/card/table";
 import { CategoryLabel } from "@/components/category-label";
 import { Link } from "@/components/link";
 import { Diff } from "@/components/shortcodes/diff";

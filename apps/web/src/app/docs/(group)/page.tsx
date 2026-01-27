@@ -5,9 +5,10 @@ import { Heading3, Paragraph } from "@/components/article";
 import { PostList } from "@/components/post/list";
 import { PostListItemBase } from "@/components/post/list-item";
 import { AdInPage } from "@/components/ads";
-import { docs, type DocsMetadata } from "@/content";
+import type { DocsMetadata } from "@/content";
 import { docsGroup } from "@/data/docs";
 import { siteUrl } from "@/data/site-metadata";
+import { getAllDocs } from "@/utils/with-cache";
 
 function getDocsGroup(allDocs: DocsMetadata[]) {
   return docsGroup.map(({ id, ...rest }) => ({
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const allDocs = await docs.getAll();
+  const allDocs = await getAllDocs();
   const group = getDocsGroup(allDocs);
 
   return (

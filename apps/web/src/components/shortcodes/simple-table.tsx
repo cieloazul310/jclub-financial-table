@@ -3,7 +3,7 @@ import { Table } from "@/components/ui/table";
 import {
   TableWrapper,
   type TableWrapperProps,
-} from "@/components/docs/figures/table-wrapper";
+} from "@/components/table-wrapper";
 import { format } from "@/utils/format";
 import { Diff } from "./diff";
 

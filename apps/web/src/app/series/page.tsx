@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getAllClubs, getAllYears } from "@cieloazul310/jclub-financial";
 import { getDataByClub } from "@cieloazul310/jclub-financial/data";
-import { SeriesClient } from "@/components/series/client";
 import { siteUrl, title as siteName } from "@/data/site-metadata";
+import { SeriesClient } from "./_components/client";
 
 export const metadata: Metadata = {
   title: "項目別表示",

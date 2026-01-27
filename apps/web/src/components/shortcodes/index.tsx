@@ -12,6 +12,7 @@ import { Diff } from "./diff";
 import { WorkInProgress, Written } from "./annotation";
 import { Details } from "./details";
 import { LeadingText } from "./leading-text";
+import { Tokurei2020, Tokurei2023, Tokurei2026 } from "./license-tokurei";
 import { PanelLink, PanelLinkShorthand } from "./panel-link";
 import { SimpleTable } from "./simple-table";
 import { SummaryTable, SummaryTableRow } from "./summary-table";
@@ -53,4 +54,7 @@ export const shortcodes = {
     </div>
   ),
   ...notificationBanner,
+  Tokurei2020,
+  Tokurei2023,
+  Tokurei2026,
 } satisfies MDXComponents;

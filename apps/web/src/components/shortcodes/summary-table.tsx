@@ -22,12 +22,16 @@ export function SummaryTable({
     <styled.div {...props}>
       <Table.Root dense>
         <colgroup>
-          <col className={css({ minWidth: "180px" })} />
+          <col className={css({ minWidth: "140px" })} />
           <col span={2} />
         </colgroup>
         <Table.Head>
           <Table.Row>
-            <Table.Header align="right" scope="col">
+            <Table.Header
+              className={css({ minWidth: "140px" })}
+              align="right"
+              scope="col"
+            >
               項目
             </Table.Header>
             <Table.Header align="right" scope="col">

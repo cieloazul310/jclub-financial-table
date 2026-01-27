@@ -6,7 +6,7 @@ import { AdInLayout } from "@/components/ads";
 
 export default async function Layout({ children }: PropsWithChildren) {
   return (
-    <BaseLayout classes={layout({ contentWidth: "full" })}>
+    <BaseLayout classes={layout()}>
       {children}
       <AdInLayout mb={4} />
       <PageBottomNav items={[{ title: "記事一覧", href: "/posts" }]} />

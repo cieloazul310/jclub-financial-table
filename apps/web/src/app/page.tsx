@@ -8,9 +8,9 @@ import { PostList } from "@/components/post/list";
 import { PostListItem, PostListItemBase } from "@/components/post/list-item";
 import { Heading2, Paragraph } from "@/components/article";
 import { AdInPage } from "@/components/ads";
-import { post } from "@/content";
 import { title, description } from "@/data/site-metadata";
 import { contentMenu } from "@/data/menu";
+import { getAllPosts } from "@/utils/with-cache";
 import Attribution from "@/mdx/attribution.mdx";
 import AboutArticle from "@/mdx/about-article.mdx";
 import Reference from "@/mdx/reference.mdx";
@@ -18,7 +18,7 @@ import Update from "@/mdx/update.mdx";
 import About from "@/mdx/about.mdx";
 
 export default async function Home() {
-  const allPosts = await post.getAll();
+  const allPosts = await getAllPosts();
 
   return (
     <Layout>

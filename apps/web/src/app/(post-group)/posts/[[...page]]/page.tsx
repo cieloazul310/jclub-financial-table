@@ -1,3 +1,4 @@
+import { cache } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { PostList } from "@/components/post/list";
@@ -6,16 +7,28 @@ import { PrevNextLink } from "@/components/prev-next-link";
 import { AdInLayout, AdInPage } from "@/components/ads";
 import { postsPerPage } from "@/data/site-metadata";
 import { mergeOpenGraph } from "@/utils/merge-opengraph";
-import { post } from "@/content";
+import { getAllPosts } from "@/utils/with-cache";
 
 export async function generateStaticParams() {
-  const allPosts = await post.getAll();
+  const allPosts = await getAllPosts();
   const numAllPostsPages = Math.ceil(allPosts.length / postsPerPage);
 
   return Array.from({ length: numAllPostsPages }, (_, index) => ({
     page: index === 0 ? undefined : [(index + 1).toString()],
   }));
 }
+
+const getPageDetails = cache(async (page?: string[]) => {
+  const currentPage = page && page?.[0] ? parseInt(page[0], 10) : 1;
+  const limit = postsPerPage;
+  const skip = postsPerPage * (currentPage - 1);
+  const allPosts = (await getAllPosts()).sort(
+    (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
+  );
+  const numAllPostsPages = Math.ceil(allPosts.length / postsPerPage);
+
+  return { currentPage, limit, skip, numAllPostsPages, allPosts };
+});
 
 type Props = {
   params: Promise<{ page?: string[] }>;
@@ -26,11 +39,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { page } = await params;
-  const currentPage = page && page?.[0] ? parseInt(page[0], 10) : 1;
-  const allPosts = (await post.getAll()).sort(
-    (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
-  );
-  const numAllPostsPages = Math.ceil(allPosts.length / postsPerPage);
+  const { currentPage, numAllPostsPages } = await getPageDetails(page);
+
   const title = `記事一覧 (${currentPage} / ${numAllPostsPages})`;
   const openGraph = await mergeOpenGraph(
     { title, pathname: `/posts/${page?.join("/") ?? ""}` },
@@ -46,13 +56,8 @@ export async function generateMetadata(
 
 export default async function Page({ params }: Props) {
   const { page } = await params;
-  const currentPage = page && page?.[0] ? parseInt(page[0], 10) : 1;
-  const limit = postsPerPage;
-  const skip = postsPerPage * (currentPage - 1);
-  const allPosts = (await post.getAll()).sort(
-    (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
-  );
-  const numAllPostsPages = Math.ceil(allPosts.length / postsPerPage);
+  const { currentPage, limit, skip, numAllPostsPages, allPosts } =
+    await getPageDetails(page);
   const postsInsAd = Math.ceil(postsPerPage / 2);
 
   const prev =

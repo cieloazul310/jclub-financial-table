@@ -8,7 +8,7 @@ export const revalidate = false;
 export default function sitemap(): MetadataRoute.Sitemap {
   const years = getAllYears();
   return years.map(({ year }) => ({
-    url: `${siteUrl}/year/${year}`,
+    url: `${siteUrl}/year/${year}/`,
     lastModified: lastUpdate,
     changeFrequency: "yearly",
     priority: 1,

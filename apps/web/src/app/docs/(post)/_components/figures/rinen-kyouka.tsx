@@ -1,7 +1,10 @@
 import { css } from "styled-system/css";
 import { Table } from "@/components/ui/table";
 import { Tabs } from "@/components/ui/tabs";
-import { TableWrapper, type TableWrapperProps } from "./table-wrapper";
+import {
+  TableWrapper,
+  type TableWrapperProps,
+} from "@/components/table-wrapper";
 
 function toValue(num: number | null) {
   if (num === null) return;
@@ -35,17 +38,25 @@ export function RinenKyoukaByYear({
       <Table.Root dense>
         <colgroup>
           <col />
-          {!disableClub && <col className={css({ minWidth: "5em" })} />}
-          <col className={css({ bg: "solid-gray.bg" })} />
-          <col span={3} />
+          {!disableClub && <col className={css({ minWidth: "6em" })} />}
+          <col className={css({ bg: "solid-gray.bg", minWidth: "4em" })} />
+          <col className={css({ minWidth: "4em" })} span={3} />
         </colgroup>
         <Table.Head>
           <Table.Row>
             <Table.Header scope="column">順位</Table.Header>
-            {!disableClub && <Table.Header scope="column">クラブ</Table.Header>}
+            {!disableClub && (
+              <Table.Header className={css({ minWidth: "6em" })} scope="column">
+                クラブ
+              </Table.Header>
+            )}
             <Table.Header scope="column">総額</Table.Header>
             {columns.map((column) => (
-              <Table.Header key={`${id}-${column}`} scope="column">
+              <Table.Header
+                key={`${id}-${column}`}
+                className={css({ minWidth: "4em" })}
+                scope="column"
+              >
                 {column}
               </Table.Header>
             ))}
@@ -153,16 +164,24 @@ export function RinenKyoukaByClub({
     <TableWrapper {...props}>
       <Table.Root dense>
         <colgroup>
-          <col className={css({ minWidth: "5em" })} />
-          <col className={css({ bg: "solid-gray.bg" })} />
-          <col span={5} />
+          <col className={css({ minWidth: "6em" })} />
+          <col className={css({ bg: "solid-gray.bg", minWidth: "4em" })} />
+          <col className={css({ minWidth: "4em" })} span={5} />
         </colgroup>
         <Table.Head>
           <Table.Row>
-            <Table.Header scope="column">クラブ</Table.Header>
-            <Table.Header scope="column">総額</Table.Header>
+            <Table.Header className={css({ minWidth: "6em" })} scope="column">
+              クラブ
+            </Table.Header>
+            <Table.Header scope="column" className={css({ minWidth: "4em" })}>
+              総額
+            </Table.Header>
             {data.columns.map((id) => (
-              <Table.Header key={id.toString()} scope="column">
+              <Table.Header
+                key={id.toString()}
+                className={css({ minWidth: "4em" })}
+                scope="column"
+              >
                 {id}
               </Table.Header>
             ))}
