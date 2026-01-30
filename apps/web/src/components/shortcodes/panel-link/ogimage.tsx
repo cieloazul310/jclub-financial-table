@@ -2,8 +2,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import type { LinkProps } from "@/components/ui/link";
 import { isInternal } from "@/utils/is-internal";
-import { getOgp } from "@/utils/get-ogp";
-import { isImageURL } from "@/utils/image-url-varidator";
+import { getOGImage } from "./get-ogimage";
 
 export async function OGImage({
   href,
@@ -15,16 +14,8 @@ export async function OGImage({
   const internal = isInternal(href);
   if (internal) return fallback;
 
-  const ogp = await getOgp(href);
-  if (!ogp?.ogImage) return fallback;
+  const image = await getOGImage(href);
 
-  let image = null;
-  for (const imageObject of ogp.ogImage) {
-    if (await isImageURL(imageObject.url)) {
-      image = imageObject;
-      break;
-    }
-  }
   if (!image) return fallback;
 
   return (

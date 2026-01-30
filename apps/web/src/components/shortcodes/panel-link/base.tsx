@@ -8,11 +8,16 @@ export async function PanelLinkBase({
   children,
   href,
   image,
+  imageOverlay,
   footerText,
   className,
   ...props
 }: Pick<LinkBaseProps, "href"> &
-  Card.RootProps & { image: ReactNode; footerText?: ReactNode }) {
+  Card.RootProps & {
+    image: ReactNode;
+    imageOverlay?: ReactNode;
+    footerText?: ReactNode;
+  }) {
   return (
     <Card.Root
       className={cx("group", className)}
@@ -32,6 +37,7 @@ export async function PanelLinkBase({
     >
       <Card.Image aspectRatio={{ base: 16 / 9, "@/md": 1, "@/lg": 16 / 9 }}>
         {image}
+        {imageOverlay}
       </Card.Image>
       <Card.Main>
         <Card.Title
