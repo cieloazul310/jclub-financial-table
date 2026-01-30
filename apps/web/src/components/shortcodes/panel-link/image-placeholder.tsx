@@ -5,10 +5,10 @@ import { title, basePath } from "@/data/site-metadata";
 
 export function ImagePlaceholder({
   href,
-  internal,
+  internal = false,
 }: {
   href: NonNullable<LinkProps["href"]>;
-  internal: boolean;
+  internal?: boolean;
 }) {
   if (internal) {
     return (
@@ -33,7 +33,9 @@ export function ImagePlaceholder({
         justifyContent: "center",
         textStyle: "std-20B-150",
         overflow: "hidden",
-        bg: "keyColor.500",
+        bgGradient: "to-br",
+        gradientFrom: "keyColor.700",
+        gradientTo: "keyColor.900",
         color: "keyColor.bg",
         whiteSpace: "nowrap",
         transition: "transform",

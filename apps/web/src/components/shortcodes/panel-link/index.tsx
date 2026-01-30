@@ -1,5 +1,7 @@
+import { FileIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { type LinkProps as LinkBaseProps } from "@/components/ui/link";
+import { ChipLabel } from "@/components/ui/chip-label";
 import { isInternal } from "@/utils/is-internal";
 import { PanelLinkBase } from "./base";
 import { OGImage } from "./ogimage";
@@ -18,10 +20,24 @@ export async function PanelLink({
       fallback={<ImagePlaceholder href={href} internal={internal} />}
     />
   );
+  const isPdf = /\.[pP][dD][fF]$/.test(href);
+  const imageOverlay = isPdf && (
+    <ChipLabel position="absolute" top={2} right={2} variant="ghost">
+      <FileIcon />
+      PDF
+    </ChipLabel>
+  );
+
   const footerText = !internal && new URL(href).hostname;
 
   return (
-    <PanelLinkBase href={href} image={image} footerText={footerText} {...props}>
+    <PanelLinkBase
+      href={href}
+      image={image}
+      imageOverlay={imageOverlay}
+      footerText={footerText}
+      {...props}
+    >
       {children}
     </PanelLinkBase>
   );

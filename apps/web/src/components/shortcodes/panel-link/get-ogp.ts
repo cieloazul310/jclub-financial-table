@@ -18,6 +18,7 @@ export async function getOgp(url: string) {
       url,
       fetchOptions: { mode: "cors", headers: { "User-Agent": userAgent } },
     });
+
     return result;
   } catch (error) {
     console.warn("Error fetching OGP:", url);
