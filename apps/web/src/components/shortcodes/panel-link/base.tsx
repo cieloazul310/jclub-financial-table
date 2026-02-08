@@ -40,10 +40,7 @@ export async function PanelLinkBase({
         {imageOverlay}
       </Card.Image>
       <Card.Main>
-        <Card.Title
-          textStyle={{ base: "std-17B-170", md: "std-18B-160" }}
-          asChild
-        >
+        <Card.Title textStyle={{ base: "std-17B-170", md: "std-18B-160" }}>
           <Link color="inherit" href={href}>
             {children}
           </Link>
