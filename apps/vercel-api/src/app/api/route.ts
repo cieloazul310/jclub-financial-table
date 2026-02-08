@@ -1,60 +1,182 @@
+import * as path from "path";
 import { NextResponse } from "next/server";
-/*
-import fs from "fs/promises";
-import path from "path";
+import {
+  getAllClubs,
+  getAllYears,
+  AllFinancialDatumFields,
+  AllGeneralFields,
+  AllSeasonResultFields,
+  AllPLFields,
+  AllBSFields,
+  AllRevenueFields,
+  AllExpenseFields,
+  AllAttdFields,
+  type FinancialDatum,
+} from "@cieloazul310/jclub-financial";
+import { siteUrl } from "@/data/site-metadata";
 
-async function findDatasetDir(): Promise<string | null> {
-  // Prefer static public dataset (copied at build time). Fallback to package dist for local dev.
-  const candidates = [
-    path.resolve(process.cwd(), "public", "dataset"),
-    path.resolve(process.cwd(), "packages", "data", "dist", "dataset"),
-    path.resolve(process.cwd(), "packages", "statistics", "dist", "dataset"),
-  ];
-  for (const c of candidates) {
-    try {
-      const s = await fs.stat(c);
-      if (s.isDirectory()) return c;
-    } catch (err) {
-      // ignore
-    }
+const has = Object.prototype.hasOwnProperty;
+/**
+ * year: number[] | string (ex.2005-2024) | "all"
+ */
+function parseVisibleYears(url: URL) {
+  const allYears = getAllYears().map(({ year }) => year);
+  const params = url.searchParams.get("year");
+  if (!params) return [];
+  if (params === "all") return allYears;
+  if (params.split("-").length === 2) {
+    const [from, to] = params.split("-");
+    if (!from || !to) return [];
+
+    return allYears.filter(
+      (year) => year >= parseInt(from, 10) && year <= parseInt(to, 10),
+    );
   }
+
+  const paramsArray = params.split(",").map((v) => parseInt(v, 10));
+
+  return allYears.filter((year) => paramsArray.includes(year));
+}
+
+function parseVisibleCategories(url: URL) {
+  const allCategories = ["J1", "J2", "J3", "others"];
+  const params = url.searchParams.get("category");
+  if (!params) return allCategories;
+  if (params === "all") return allCategories;
+  const paramsArray = params.split(",");
+
+  return allCategories.filter((cat) => paramsArray.includes(cat));
+}
+
+function parseVisibleClubs(url: URL) {
+  const allClubs = getAllClubs().map(({ id }) => id);
+  const params = url.searchParams.get("club");
+  if (!params) return [];
+  if (params === "all") return allClubs;
+  const paramsArray = params.split(",");
+
+  return allClubs.filter((id) => paramsArray.includes(id));
+}
+
+function parseGroupBy(url: URL) {
+  const params = url.searchParams.get("groupBy");
+  if (!params) return null;
+  if (params === "club" || params === "year") return params;
   return null;
 }
 
-export const runtime = "nodejs";
-*/
+const requredFields = [
+  "clubId",
+  "name",
+  "year",
+  "category",
+] satisfies (keyof FinancialDatum)[];
 
+const fieldGroupMap = {
+  generalGroup: AllGeneralFields,
+  seasonResult: AllSeasonResultFields,
+  plGroup: AllPLFields,
+  bsGroup: AllBSFields,
+  revenueGroup: AllRevenueFields,
+  expenseGroup: AllExpenseFields,
+  attendanceGroup: AllAttdFields,
+};
+
+function isFieldGroup(key: string): key is keyof typeof fieldGroupMap {
+  return has.call(fieldGroupMap, key);
+}
+
+function isDatumField(key: string): key is keyof FinancialDatum {
+  return AllFinancialDatumFields.some((field) => field === key);
+}
+
+/**
+ * fields: ((keyof FinancialDatum) | "plGroup" | "bsGroup" | "revenueGroup" | "expensesGroup" | "attendanceGroup")[] | "all"
+ */
+function parseFields(url: URL): (keyof FinancialDatum)[] {
+  const params = url.searchParams.get("fields");
+  if (!params) return AllFinancialDatumFields;
+  if (params === "all") return AllFinancialDatumFields;
+
+  const fields: (keyof FinancialDatum)[] = [...requredFields];
+  const args = params.split(",");
+  args.forEach((arg) => {
+    if (isFieldGroup(arg)) {
+      const fieldGroup = fieldGroupMap[arg];
+      fields.push(...fieldGroup);
+    }
+    if (isDatumField(arg)) fields.push(arg);
+  });
+  return Array.from(new Set(fields)).sort(
+    (a, b) =>
+      AllFinancialDatumFields.indexOf(a) - AllFinancialDatumFields.indexOf(b),
+  );
+}
+
+function createDataFieldsFilter(fields: (keyof FinancialDatum)[]) {
+  return (datum: FinancialDatum) => {
+    const converted: Record<string, any> = {};
+    fields.forEach((key) => {
+      const value = datum[key];
+      if (typeof value === "string" || typeof value === "number") {
+        converted[key] = value;
+      }
+    });
+    return converted;
+  };
+}
+
+const baseUrl =
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : siteUrl;
+
+async function fetchData(url: string) {
+  return fetch(url)
+    .then((res) => res.json())
+    .catch(() => null) as Promise<FinancialDatum | null>;
+}
+
+async function getData({
+  year,
+  club,
+  groupBy,
+}: {
+  year: number[];
+  club: string[];
+  groupBy: "club" | "year" | null;
+}) {
+  const urls = club
+    .map((clubId) =>
+      year.map((val) =>
+        fetchData(path.join(baseUrl, "dataset", clubId, `${val}.json`)),
+      ),
+    )
+    .flat();
+  const data = await Promise.all(urls)
+    .then((arr) => arr.filter((datum) => datum !== null))
+    .catch((err) => {
+      console.warn(err);
+      return [];
+    });
+
+  return data;
+}
+
+/**
+ * reference:
+ * https://zenn.dev/kikiki_kiki/articles/f6bef96f84ed6c
+ */
 export async function GET(req: Request) {
   const url = new URL(req.url);
-  const year = url.searchParams.get("year");
-  const category = url.searchParams.get("category");
-  const club = url.searchParams.get("club");
+  const year = parseVisibleYears(url);
+  const category = parseVisibleCategories(url);
+  const club = parseVisibleClubs(url);
+  const groupBy = parseGroupBy(url);
+  const fields = parseFields(url);
+  const dataFieldsFilter = createDataFieldsFilter(fields);
 
-  return NextResponse.json({ year, category, club }, { status: 200 });
-  /*
+  const query = { year, category, club, groupBy, fields };
+  const raw = await getData({ year, club, groupBy });
+  const data = raw.map(dataFieldsFilter);
 
-  if (!year || !category) {
-    return NextResponse.json({ error: "missing year or category" }, { status: 400 });
-  }
-
-  const dir = await findDatasetDir();
-  if (!dir) return NextResponse.json({ error: "dataset not available" }, { status: 500 });
-
-  const filename = `${year}-${category}.json`;
-  try {
-    const raw = await fs.readFile(path.join(dir, filename), "utf8");
-    const json = JSON.parse(raw);
-    // optional club filter
-    const cacheHeaders = { "Cache-Control": "public, max-age=60, s-maxage=86400, stale-while-revalidate=3600" };
-    if (club) {
-      const entry = (json.stats ? json : json).stats; // tolerate different shapes
-      // find club in values for each field is consumer's responsibility; here return whole file
-      // but indicate requested club in meta
-      return NextResponse.json({ meta: { year, category, club }, data: json }, { status: 200, headers: cacheHeaders });
-    }
-    return NextResponse.json(json, { status: 200, headers: cacheHeaders });
-  } catch (err) {
-    return NextResponse.json({ error: "not found" }, { status: 404 });
-  }
-  */
+  return NextResponse.json({ query, data }, { status: 200 });
 }
