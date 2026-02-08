@@ -2,16 +2,8 @@ import * as fs from "fs/promises";
 import * as path from "path";
 
 async function copyDataset(): Promise<void> {
-  const src = path.resolve(
-    process.cwd(),
-    "..",
-    "..",
-    "packages",
-    "data",
-    "dist",
-    "dataset",
-  );
-  const dest = path.resolve(process.cwd(), "public", "dataset");
+  const src = path.resolve(process.cwd(), "../../packages/data/dist");
+  const dest = path.resolve(process.cwd(), "./public/dataset");
   try {
     const s = await fs.stat(src);
     if (!s.isDirectory()) throw new Error("source is not a directory");
@@ -24,9 +16,8 @@ async function copyDataset(): Promise<void> {
     await fs.rm(dest, { recursive: true, force: true });
     await fs.mkdir(path.dirname(dest), { recursive: true });
     // Use fs.cp if available
-    const anyFs = fs as any;
-    if (typeof anyFs.cp === "function") {
-      await anyFs.cp(src, dest, { recursive: true });
+    if (typeof fs.cp === "function") {
+      await fs.cp(src, dest, { recursive: true });
     } else {
       // fallback: copy files manually
       const entries = await fs.readdir(src);
@@ -43,4 +34,9 @@ async function copyDataset(): Promise<void> {
   }
 }
 
-void copyDataset();
+// run generator
+try {
+  await copyDataset();
+} catch (e) {
+  console.error("failed to generate top-level index", e);
+}

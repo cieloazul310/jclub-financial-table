@@ -33,13 +33,11 @@ export function PostListItemBase({
         <ResourceList.Main py={4}>
           <ResourceList.Content gap={2}>
             {headerText}
-            <Link href={href}>
-              <ResourceList.Title
-                textStyle={{ base: "std-16B-170", md: "std-18B-160" }}
-              >
-                {title}
-              </ResourceList.Title>
-            </Link>
+            <ResourceList.Title
+              textStyle={{ base: "std-16B-170", md: "std-18B-160" }}
+            >
+              <Link href={href}>{title}</Link>
+            </ResourceList.Title>
             {footerText}
           </ResourceList.Content>
         </ResourceList.Main>
