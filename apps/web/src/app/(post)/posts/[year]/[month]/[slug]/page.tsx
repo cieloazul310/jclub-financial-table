@@ -10,6 +10,7 @@ import { TagChip } from "@/components/post/tag-chip";
 import { PostListItemBase } from "@/components/post/list-item";
 import { PostFooter } from "@/components/post/footer";
 import { AdInSide } from "@/components/ads";
+import { docsFigures } from "@/app/docs/(post)/_components/figures";
 import { useMDXComponents } from "@/mdx-components";
 import { post } from "@/content";
 import { parseFrontmatterDate } from "@/utils/datestring";
@@ -81,7 +82,7 @@ export default async function Page({ params }: { params: Promise<Props> }) {
   const specifiedClub = getSpecifiedClub("short_name", club);
   const currentTag = getCurrentTag("title", tag);
   /* eslint-disable-next-line react-hooks/rules-of-hooks */
-  const components = useMDXComponents();
+  const components = useMDXComponents(docsFigures);
   const mdx = await post.useMdx(currentSlug, {
     components,
     mdxOptions: {
