@@ -22,9 +22,7 @@ const getPageDetails = cache(async (page?: string[]) => {
   const currentPage = page && page?.[0] ? parseInt(page[0], 10) : 1;
   const limit = postsPerPage;
   const skip = postsPerPage * (currentPage - 1);
-  const allPosts = (await getAllPosts()).sort(
-    (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
-  );
+  const allPosts = await getAllPosts();
   const numAllPostsPages = Math.ceil(allPosts.length / postsPerPage);
 
   return { currentPage, limit, skip, numAllPostsPages, allPosts };
