@@ -20,9 +20,11 @@ function getPostsByMonths(posts: PostMetadata[]) {
 
   return allMonths.map((month) => ({
     month,
-    posts: posts.filter(
-      ({ frontmatter }) => frontmatter.date.getMonth() + 1 === month,
-    ),
+    posts: [
+      ...posts.filter(
+        ({ frontmatter }) => frontmatter.date.getMonth() + 1 === month,
+      ),
+    ].reverse(),
   }));
 }
 

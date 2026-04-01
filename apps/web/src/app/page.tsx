@@ -36,15 +36,9 @@ export default async function Home() {
           クラブ公式発表や報道などを基にしたJクラブの経営に関する記事
         </Paragraph>
         <PostList mb={8}>
-          {allPosts
-            .sort(
-              (a, b) =>
-                b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
-            )
-            .slice(0, 8)
-            .map((post) => (
-              <PostListItem key={post.href} post={post} />
-            ))}
+          {allPosts.slice(0, 8).map((post) => (
+            <PostListItem key={post.href} post={post} />
+          ))}
         </PostList>
         <div className={css({ textAlign: "right" })}>
           <Link href="/posts">記事一覧</Link>

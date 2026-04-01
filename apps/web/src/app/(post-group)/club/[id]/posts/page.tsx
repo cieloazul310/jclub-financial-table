@@ -54,13 +54,9 @@ export default async function Page({ params }: Props) {
   if (!club) return null;
 
   const allPosts = await getAllPosts();
-  const posts = allPosts
-    .filter(({ frontmatter }) =>
-      frontmatter.club?.some((clubTag) => clubTag === club.short_name),
-    )
-    .sort(
-      (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
-    );
+  const posts = allPosts.filter(({ frontmatter }) =>
+    frontmatter.club?.some((clubTag) => clubTag === club.short_name),
+  );
 
   const { prev, next } = getPrevNext(id);
 

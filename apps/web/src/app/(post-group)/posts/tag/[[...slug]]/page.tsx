@@ -69,11 +69,9 @@ export default async function Page({ params }: Props) {
 
   if (!tag) return null;
   const allPosts = await getAllPosts();
-  const tagPosts = allPosts
-    .filter(({ frontmatter }) => frontmatter.tag === tag.title)
-    .sort(
-      (a, b) => b.frontmatter.date.getTime() - a.frontmatter.date.getTime(),
-    );
+  const tagPosts = allPosts.filter(
+    ({ frontmatter }) => frontmatter.tag === tag.title,
+  );
   const numAllPostsPages = Math.ceil(tagPosts.length / postsPerPage);
   const postsInsAd = Math.ceil(postsPerPage / 2);
   const multiplePages = numAllPostsPages > 1;
