@@ -1,5 +1,13 @@
 # jclub-financial-app
 
+## 0.0.2
+
+### Patch Changes
+
+- d0cc5d5: chore(utils): 水戸ホーリーホックのホームタウンを追加
+- Updated dependencies [d0cc5d5]
+  - @cieloazul310/jclub-financial@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes

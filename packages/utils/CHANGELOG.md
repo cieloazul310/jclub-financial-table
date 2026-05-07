@@ -1,5 +1,11 @@
 # @cieloazul310/jclub-financial-utils
 
+## 0.0.2
+
+### Patch Changes
+
+- d0cc5d5: chore(utils): 水戸ホーリーホックのホームタウンを追加
+
 ## 0.0.1
 
 ### Patch Changes
