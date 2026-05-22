@@ -2,6 +2,7 @@
 
 import type { PropsWithChildren, ReactNode } from "react";
 import { Portal } from "@ark-ui/react";
+import { css } from "styled-system/css";
 import { Drawer } from "@/components/ui/drawer";
 import {
   HamburgerMenuButton,
@@ -42,6 +43,28 @@ export function DrawerBottom({
             maxHeight="85vh"
           >
             <Drawer.Content roundedTop={16}>
+              <Drawer.Grabber
+                className={css({
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexShrink: 0,
+                  width: "full",
+                  paddingY: "20px",
+                  cursor: { base: "grab", _active: "grabbing" },
+                  touchAction: "none",
+                  userSelect: "none",
+                })}
+              >
+                <Drawer.GrabberIndicator
+                  className={css({
+                    width: "40px",
+                    height: "4px",
+                    bg: { base: "solid-gray.420", _hover: "solid-gray.536" },
+                    borderRadius: "1000px",
+                  })}
+                />
+              </Drawer.Grabber>
               <Drawer.Header>
                 {title && <Drawer.Title>{title}</Drawer.Title>}
                 <Drawer.CloseTrigger

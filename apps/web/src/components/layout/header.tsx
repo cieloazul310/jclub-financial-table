@@ -50,7 +50,7 @@ export function Header({
         {title}
       </h1>
       {drawerContent && (
-        <Drawer.Root placement="right">
+        <Drawer.Root swipeDirection="end">
           <Drawer.Trigger asChild>
             <HamburgerMenuButton>
               <HamburgerIcon />
