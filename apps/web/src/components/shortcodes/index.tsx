@@ -1,5 +1,4 @@
 import type { MDXComponents } from "mdx/types";
-import { Tweet, TweetSkeleton } from "react-tweet";
 import { cx } from "styled-system/css";
 import { styled } from "styled-system/jsx";
 import type { HTMLStyledProps } from "styled-system/types";
@@ -16,6 +15,7 @@ import { Tokurei2020, Tokurei2023, Tokurei2026 } from "./license-tokurei";
 import { PanelLink, PanelLinkShorthand } from "./panel-link";
 import { SimpleTable } from "./simple-table";
 import { SummaryTable, SummaryTableRow } from "./summary-table";
+import { Tweet } from "./tweet";
 
 const Red = ({ color = "error.2", ...props }: HTMLStyledProps<"span">) => (
   <styled.span color={color} {...props} />
@@ -48,11 +48,7 @@ export const shortcodes = {
   SubParagraph: ({ ...props }) => (
     <Paragraph textStyle="std-16N-170" {...props} />
   ),
-  Tweet: ({ ...props }) => (
-    <div className="light">
-      <Tweet fallback={<TweetSkeleton />} {...props} />
-    </div>
-  ),
+  Tweet,
   ...notificationBanner,
   Tokurei2020,
   Tokurei2023,
