@@ -107,7 +107,7 @@
     "@repo/eslint-config": "^0.0.2",
     "@repo/typescript-config": "^0.0.2",
     "eslint": "^9.39.2",
-    "tsdown": "^0.18.2",
-    "tsx": "^4.21.0"
+    "tsdown": "^0.22.0",
+    "tsx": "^4.22.3"
   }
 }

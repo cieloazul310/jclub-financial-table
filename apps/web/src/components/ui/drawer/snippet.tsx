@@ -1,10 +1,10 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.1 (commit: f4833b6c4447a8e5eeac4e4c8491960122be65be)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.4.0 (commit: bcc735b9ff8b1fd3aaabce4f0f3263380ccc575d)
 /**
  * source:
  * https://github.com/cschroeter/park-ui/blob/main/components/react/src/components/ui/styled/drawer.tsx
  */
 "use client";
-import { Dialog } from "@ark-ui/react/dialog";
+import { Drawer } from "@ark-ui/react/drawer";
 import { ark } from "@ark-ui/react/factory";
 import { drawer } from "styled-system/recipes";
 import { createStyleContext } from "styled-system/jsx";
@@ -13,24 +13,31 @@ import type { ComponentProps } from "styled-system/types";
 const { withRootProvider, withContext } = createStyleContext(drawer);
 
 export type RootProviderProps = ComponentProps<typeof RootProvider>;
-export const RootProvider = withRootProvider(Dialog.RootProvider);
+export const RootProvider = withRootProvider(Drawer.RootProvider);
 
 export type RootProps = ComponentProps<typeof Root>;
-export const Root = withRootProvider(Dialog.Root);
+export const Root = withRootProvider(Drawer.Root);
 
-export const Backdrop = withContext(Dialog.Backdrop, "backdrop");
+export const Backdrop = withContext(Drawer.Backdrop, "backdrop");
 
-export const CloseTrigger = withContext(Dialog.CloseTrigger, "closeTrigger");
+export const CloseTrigger = withContext(Drawer.CloseTrigger, "closeTrigger");
 
-export const Content = withContext(Dialog.Content, "content");
+export const Content = withContext(Drawer.Content, "content");
 
-export const Description = withContext(Dialog.Description, "description");
+export const Grabber = withContext(Drawer.Grabber, "grabber");
 
-export const Positioner = withContext(Dialog.Positioner, "positioner");
+export const GrabberIndicator = withContext(
+  Drawer.GrabberIndicator,
+  "grabberIndicator",
+);
 
-export const Title = withContext(Dialog.Title, "title");
+export const Description = withContext(Drawer.Description, "description");
 
-export const Trigger = withContext(Dialog.Trigger, "trigger");
+export const Positioner = withContext(Drawer.Positioner, "positioner");
+
+export const Title = withContext(Drawer.Title, "title");
+
+export const Trigger = withContext(Drawer.Trigger, "trigger");
 
 export const Header = withContext(ark.div, "header");
 
