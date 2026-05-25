@@ -39,7 +39,7 @@ export async function converter({
     ([key, { label_ja }]) => [key, label_ja] as const,
   );
 
-  const stringFileds = ["name", "fullname", "clubId", "category", "license"];
+  const stringFileds = ["name", "short_name", "clubId", "category", "license"];
   const csvSource = await readFile(filepath, "utf8");
 
   const data: Record<string, string>[] = parse(csvSource, {
@@ -53,8 +53,9 @@ export async function converter({
       if (!currentClub) return null;
 
       const obj: Record<string, string | number> = {
-        slug: currentClub.id,
-        name: currentClub.short_name,
+        clubId: currentClub.id,
+        short_name: currentClub.short_name,
+        name: currentClub.name,
       };
       dictList.forEach(([key, label]) => {
         if (typeof row?.[label] !== "string") return;
@@ -67,7 +68,6 @@ export async function converter({
         }
       });
       obj.id = `${currentClub.id}${obj.year}`;
-      obj.fullname = currentClub.name;
 
       return obj;
     })
@@ -78,8 +78,8 @@ export async function converter({
 
   await Promise.all(
     formattedData.filter(Boolean).map(async (datum) => {
-      const { slug, year } = datum;
-      const dirPath = join(outDir, slug as string);
+      const { clubId, year } = datum;
+      const dirPath = join(outDir, clubId as string);
       try {
         await access(dirPath);
       } catch {
@@ -87,6 +87,7 @@ export async function converter({
       }
 
       await writeFile(join(dirPath, `${year}.yml`), yaml.stringify(datum));
+      console.log(`Created: ${join(dirPath, `${year}.yml`)}`);
     }),
   );
 }
