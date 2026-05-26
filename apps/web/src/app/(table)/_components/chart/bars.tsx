@@ -165,13 +165,13 @@ function ExpenseBar({
 }: BarProps<Pick<Expense, "expenses" | "team_wages">>) {
   const fill = categoryBarFill({ category: datum.category.value });
   const { expenses, team_wages } = datum;
-  const othersExp = expenses.value - (team_wages?.value ?? 0);
+  const othersExp = (expenses?.value ?? 0) - (team_wages?.value ?? 0);
 
   return (
     <>
       <rect
         x={(itemWidth * barPadding) / 2}
-        y={scale(expenses.value)}
+        y={scale(expenses?.value ?? 0)}
         width={barWidth}
         height={scale(0) - scale(othersExp) - 1}
         className={css({ fill: "{colors.solid-gray.100}" })}
@@ -200,19 +200,21 @@ function ExpenseBar({
           </text>
         </>
       )}
-      <text
-        className={css({
-          color: { base: "solid-gray.300", _groupHover: "solid-gray.900" },
-        })}
-        x={itemWidth / 2}
-        y={scale(expenses.value)}
-        dy="-.4em"
-        textAnchor="middle"
-        fontWeight="bold"
-        fill="currentColor"
-      >
-        {expenses.value}
-      </text>
+      {expenses?.value && (
+        <text
+          className={css({
+            color: { base: "solid-gray.300", _groupHover: "solid-gray.900" },
+          })}
+          x={itemWidth / 2}
+          y={scale(expenses.value)}
+          dy="-.4em"
+          textAnchor="middle"
+          fontWeight="bold"
+          fill="currentColor"
+        >
+          {expenses.value}
+        </text>
+      )}
     </>
   );
 }

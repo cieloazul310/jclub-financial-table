@@ -42,7 +42,7 @@ export async function getExtentMap(data: ExtendedFinancialDatum[]) {
     0,
   );
   const expenseMax = data.reduce(
-    (accum, d) => Math.max(accum, d.expenses.value),
+    (accum, d) => Math.max(accum, d.expenses?.value ?? 0),
     0,
   );
   const attdMax = data.reduce(

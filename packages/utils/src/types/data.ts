@@ -1,3 +1,8 @@
+/**
+ * 2025年度先行発表では売上高、スポンサー収入、入場料収入のみが公開されたため、
+ * 営業費用（expenses）、営業利益（operating_profit）、経常利益（ordinary_profit）、当期純利益（net_profit）をnullishな型に変更した。
+ */
+
 export const AllGeneralFields = [
   "id",
   "clubId",
@@ -61,15 +66,15 @@ export type PL = {
   /** 営業収入 */
   revenue: number;
   /** 営業費用 */
-  expenses: number;
+  expenses?: number | null;
   /** 営業利益 */
-  operating_profit: number;
+  operating_profit?: number | null;
   /** 営業外収入 */
   non_operating_income?: number | null;
   /** 営業外費用 */
   non_operating_expenses?: number | null;
   /** 経常利益 */
-  ordinary_profit: number;
+  ordinary_profit?: number | null;
   /** 特別利益 */
   extraordinary_income?: number | null;
   /** 特別損失 */
@@ -79,7 +84,7 @@ export type PL = {
   /** 法人税および住民税等 */
   tax?: number | null;
   /** 当期純利益 */
-  net_profit: number;
+  net_profit?: number | null;
   /** 関連する法人の営業収入 */
   related_companies_revenue?: number | null;
 };
@@ -120,7 +125,7 @@ export type BS = {
   /** 利益剰余金 */
   retained_earnings?: number | null;
   /** 当期純利益 */
-  net_profit: number;
+  net_profit?: number | null;
 };
 
 export const AllRevenueFields = [
@@ -184,7 +189,7 @@ export const AllExpenseFields = [
 export type ExpenseFields = (typeof AllExpenseFields)[number];
 export type Expense = {
   /** 営業費用 */
-  expenses: number;
+  expenses?: number | null;
   /** チーム人件費 */
   team_wages?: number | null;
   /** 移籍関連費用 */
