@@ -37,7 +37,7 @@ export function checkData(input: any) {
     clubId: z.string(),
     name: z.string(),
     short_name: z.string(),
-    year: z.int().gte(2005).lte(2024),
+    year: z.int().gte(2005).lte(2025),
     category: z.string(),
 
     rank: z.int().positive(),
@@ -45,10 +45,12 @@ export function checkData(input: any) {
     ppg: z.number().nonnegative().lte(3),
 
     revenue: z.int().nonnegative(),
-    expenses: z.int().nonnegative(),
-    operating_profit: z.int(),
-    ordinary_profit: z.int(),
-    net_profit: z.int(),
+
+    /** 2025-early */
+    expenses: z.int().nonnegative().nullish(),
+    operating_profit: z.int().nullish(),
+    ordinary_profit: z.int().nullish(),
+    net_profit: z.int().nullish(),
 
     league_attendance: z.int().nonnegative(),
     league_games: z.int().nonnegative(),

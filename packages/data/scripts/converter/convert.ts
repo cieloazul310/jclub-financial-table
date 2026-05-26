@@ -13,7 +13,7 @@ const __dirname = dirname(__filename);
 
 export async function converter({
   filepath,
-  outDir = resolve(__dirname, "../../data"),
+  outDir = resolve(__dirname, "../../dataset"),
 }: {
   filepath: string;
   outDir?: string;
@@ -39,7 +39,14 @@ export async function converter({
     ([key, { label_ja }]) => [key, label_ja] as const,
   );
 
-  const stringFileds = ["name", "short_name", "clubId", "category", "license"];
+  const stringFileds = [
+    "name",
+    "short_name",
+    "clubId",
+    "category",
+    "license",
+    "elevation",
+  ];
   const csvSource = await readFile(filepath, "utf8");
 
   const data: Record<string, string>[] = parse(csvSource, {
@@ -64,6 +71,7 @@ export async function converter({
         if (stringFileds.includes(key)) {
           obj[key] = row[label];
         } else {
+          if (row[label] === "") return;
           obj[key] = parseFloat(row[label] ?? "0");
         }
       });
