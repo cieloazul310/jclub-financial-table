@@ -11,7 +11,7 @@ describe("Get data by club", async () => {
   const data = await getDataByClub("mitohollyhock");
 
   it("check data length", () => {
-    const length = 20;
+    const length = 21;
 
     expect(data.length).toBe(length);
     expect(data.filter(({ clubId }) => clubId === "mitohollyhock").length).toBe(
@@ -74,8 +74,8 @@ describe("Get extended club data", async () => {
     const datum = data.find(({ year }) => year.value === 2024);
     expect(datum?.revenue.value).toBe(1224);
     expect(datum?.revenue.delta).toBe(120);
-    expect(datum?.expenses.value).toBe(1224);
-    expect(datum?.expenses.delta).toBe(125);
+    expect(datum?.expenses?.value).toBe(1224);
+    expect(datum?.expenses?.delta).toBe(125);
 
     expect(datum?.average_attendance.delta).toBe(680);
     expect(datum?.unit_price?.delta).toBe(232);
@@ -100,8 +100,8 @@ describe("Get extended year data", async () => {
     const datum = data.find(({ clubId }) => clubId.value === "mitohollyhock");
     expect(datum?.revenue.value).toBe(1224);
     expect(datum?.revenue.delta).toBe(120);
-    expect(datum?.expenses.value).toBe(1224);
-    expect(datum?.expenses.delta).toBe(125);
+    expect(datum?.expenses?.value).toBe(1224);
+    expect(datum?.expenses?.delta).toBe(125);
 
     expect(datum?.average_attendance.delta).toBe(680);
     expect(datum?.unit_price?.delta).toBe(232);

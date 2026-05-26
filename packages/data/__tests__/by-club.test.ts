@@ -7,7 +7,7 @@ describe("Get all data", async () => {
   const data = await getData();
 
   it("check data length", () => {
-    const length = 20;
+    const length = 21;
 
     expect(data.length).toBe(length);
     expect(data.filter(({ clubId }) => clubId === "mitohollyhock").length).toBe(
@@ -56,7 +56,7 @@ describe("Get all data albirex", async () => {
   const data = await getAlbirexData();
 
   it("check data length", () => {
-    const length = 20;
+    const length = 21;
 
     expect(data.length).toBe(length);
     expect(data.filter(({ clubId }) => clubId === "albirex").length).toBe(
@@ -72,7 +72,7 @@ describe("Get specific tegevajaro extended data", async () => {
   const data = await getExtendedTegevaData();
 
   it("check data length", () => {
-    const length = 5;
+    const length = 6;
     expect(data.length).toBe(length);
     expect(
       data.filter(({ clubId }) => clubId.value === "tegevajaro").length,
@@ -85,10 +85,10 @@ describe("Get specific tegevajaro extended data", async () => {
   it("check datum", () => {
     const datum = data[data.length - 1];
     if (!datum) return;
-    expect(datum.year.value).toBe(2024);
-    expect(datum.revenue.value).toBe(510);
-    expect(datum.revenue.delta).toBe(292);
-    expect(datum.all_attendance.value).toBe(22837);
-    expect(datum.transfer_expenses?.value).toBe(3);
+    expect(datum.year.value).toBe(2025);
+    expect(datum.revenue.value).toBe(761);
+    expect(datum.revenue.delta).toBe(251);
+    expect(datum.all_attendance.value).toBe(52707);
+    expect(datum.transfer_expenses?.value).toBe(undefined);
   });
 });
