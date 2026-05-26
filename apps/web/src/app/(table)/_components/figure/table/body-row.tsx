@@ -154,10 +154,16 @@ export function RevenueTableRow({
   mode,
   index,
 }: TableRowProps<Revenue>) {
+  const maxColSpan = 5;
+
   const otherRevs = (year: number) => {
     if (year <= 2010)
       return (
-        <DataTableCell value={datum.other_revenue} align="center" colSpan={6} />
+        <DataTableCell
+          value={datum.other_revenue}
+          align="center"
+          colSpan={maxColSpan}
+        />
       );
     if (year <= 2015)
       return (
@@ -166,7 +172,7 @@ export function RevenueTableRow({
           <DataTableCell
             value={datum.other_revenue}
             align="center"
-            colSpan={5}
+            colSpan={maxColSpan - 1}
           />
         </>
       );
@@ -177,7 +183,7 @@ export function RevenueTableRow({
           <DataTableCell value={datum.retail_revenue} align="center" />
           <DataTableCell
             value={datum.other_revenue}
-            colSpan={4}
+            colSpan={maxColSpan - 2}
             align="center"
           />
         </>
@@ -190,11 +196,12 @@ export function RevenueTableRow({
           <DataTableCell value={datum.womens_team_revenue} align="center" />
           <DataTableCell
             value={datum.other_revenue}
-            colSpan={3}
+            colSpan={maxColSpan - 3}
             align="center"
           />
         </>
       );
+    /*
     if (
       typeof datum.transfer_revenue_international?.value !== "number" ||
       typeof datum.transfer_revenue_domestic?.value !== "number"
@@ -213,17 +220,20 @@ export function RevenueTableRow({
         </>
       );
     }
-
+    */
     return (
       <>
         <DataTableCell value={datum.academy_revenue} align="center" />
         <DataTableCell value={datum.retail_revenue} align="center" />
         <DataTableCell value={datum.womens_team_revenue} align="center" />
-        <DataTableCell
+        <DataTableCell value={datum.transfer_revenue} align="center" />
+        {/*
+          <DataTableCell
           value={datum.transfer_revenue_international}
           align="center"
         />
         <DataTableCell value={datum.transfer_revenue_domestic} align="center" />
+        */}
         <DataTableCell value={datum.other_revenue} align="center" />
       </>
     );
@@ -247,6 +257,8 @@ export function ExpenseTableRow({
   mode,
   index,
 }: TableRowProps<Expense>) {
+  const maxColSpan = 8;
+
   const expenseData = (year: number) => {
     if (year <= 2005 && !datum.team_wages)
       return (
@@ -254,7 +266,7 @@ export function ExpenseTableRow({
           <DataTableCell
             value={datum.general_expenses}
             align="center"
-            colSpan={9}
+            colSpan={maxColSpan}
           />
           <DataTableCell
             value={datum.selling_general_admin_expenses}
@@ -265,11 +277,11 @@ export function ExpenseTableRow({
     if (year <= 2010)
       return (
         <>
-          <DataTableCell value={datum.team_wages} colSpan={3} align="center" />
+          <DataTableCell value={datum.team_wages} colSpan={2} align="center" />
           <DataTableCell
             value={datum.manage_expenses}
             align="center"
-            colSpan={6}
+            colSpan={maxColSpan - 2}
           />
           <DataTableCell
             value={datum.selling_general_admin_expenses}
@@ -280,7 +292,7 @@ export function ExpenseTableRow({
     if (year <= 2015)
       return (
         <>
-          <DataTableCell value={datum.team_wages} colSpan={3} align="center" />
+          <DataTableCell value={datum.team_wages} colSpan={2} align="center" />
           <DataTableCell value={datum.match_expenses} />
           <DataTableCell value={datum.topteam_expenses} />
           <DataTableCell value={datum.academy_expenses} />
@@ -288,14 +300,14 @@ export function ExpenseTableRow({
           <DataTableCell
             value={datum.selling_general_admin_expenses}
             align="center"
-            colSpan={5}
+            colSpan={3}
           />
         </>
       );
     if (year <= 2021)
       return (
         <>
-          <DataTableCell value={datum.team_wages} colSpan={3} align="center" />
+          <DataTableCell value={datum.team_wages} colSpan={2} align="center" />
           <DataTableCell value={datum.match_expenses} />
           <DataTableCell value={datum.topteam_expenses} />
           <DataTableCell value={datum.academy_expenses} />
@@ -311,7 +323,7 @@ export function ExpenseTableRow({
     if (year <= 2023)
       return (
         <>
-          <DataTableCell value={datum.team_wages} colSpan={3} align="center" />
+          <DataTableCell value={datum.team_wages} colSpan={2} align="center" />
           <DataTableCell value={datum.match_expenses} />
           <DataTableCell value={datum.topteam_expenses} />
           <DataTableCell value={datum.academy_expenses} />
@@ -324,7 +336,7 @@ export function ExpenseTableRow({
           />
         </>
       );
-
+    /*
     if (
       typeof datum.transfer_expenses_international?.value !== "number" ||
       typeof datum.transfer_expenses_domestic?.value !== "number"
@@ -351,12 +363,15 @@ export function ExpenseTableRow({
         </>
       );
     }
-
+    */
     return (
       <>
         <DataTableCell value={datum.team_wages} />
+        <DataTableCell value={datum.transfer_expenses} />
+        {/*
         <DataTableCell value={datum.transfer_expenses_international} />
         <DataTableCell value={datum.transfer_expenses_domestic} />
+        */}
         <DataTableCell value={datum.match_expenses} />
         <DataTableCell value={datum.topteam_expenses} />
         <DataTableCell value={datum.academy_expenses} />
@@ -366,7 +381,6 @@ export function ExpenseTableRow({
         <DataTableCell
           value={datum.selling_general_admin_expenses}
           align="center"
-          colSpan={2}
         />
       </>
     );

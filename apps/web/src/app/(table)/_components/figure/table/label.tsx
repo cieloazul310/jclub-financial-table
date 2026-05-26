@@ -97,27 +97,65 @@ export function WithPeriodMonth({
   if (!reporting_period_months || reporting_period_months.value === 12)
     return children;
 
+  const isLonger = reporting_period_months.value > 12;
+
   return (
     <Tooltip content={`決算期変更により${reporting_period_months.value}ヶ月間`}>
       <span className={css({ position: "relative" })}>
         {children}
         <span
-          className={circle({
-            bg: "success.1",
-            color: "white",
-            position: "absolute",
-            top: 0,
-            right: 0,
-            transform: "translate(6px, -2px)",
-            size: "8px",
-            p: 1,
-            zIndex: 1,
-          })}
+          className={cx(
+            circle({
+              color: "white",
+              position: "absolute",
+              top: 0,
+              right: 0,
+              transform: "translate(6px, -2px)",
+              size: "8px",
+              p: 1,
+              zIndex: 1,
+            }),
+            isLonger ? css({ bg: "success.1" }) : css({ bg: "error.1" }),
+          )}
         />
       </span>
     </Tooltip>
   );
 }
+
+const useTooltip = (reporting_period_months?: number) => {
+  if (!reporting_period_months || reporting_period_months === 12)
+    return {
+      Wrapper: ({ children }: PropsWithChildren) => children,
+      Marker: () => null,
+    };
+
+  const isLonger = reporting_period_months > 12;
+
+  return {
+    Wrapper: ({ children }: PropsWithChildren) => (
+      <Tooltip content={`決算期変更により${reporting_period_months}ヶ月間`}>
+        {children}
+      </Tooltip>
+    ),
+    Marker: () => (
+      <span
+        className={cx(
+          css({
+            top: 0,
+            right: 0,
+            width: ".8em",
+            height: ".8em",
+            position: "absolute",
+            zIndex: 1,
+            clipPath: "polygon(0 0, 100% 0, 100% 100%)",
+          }),
+          isLonger ? css({ bg: "success.1" }) : css({ bg: "error.1" }),
+        )}
+      />
+    ),
+  };
+};
 
 interface TableBodyLabelProps {
   mode: Mode;
@@ -128,19 +166,22 @@ interface TableBodyLabelProps {
 }
 
 export function TableBodyLabel({ mode, index, datum }: TableBodyLabelProps) {
+  const { Wrapper, Marker } = useTooltip(datum.reporting_period_months?.value);
+
   if (mode === "club")
     return (
-      <TableHeaderLabel
-        mode={mode}
-        className={cx(tbodyLabelStyle, css({ textAlign: "center" }))}
-        scope="row"
-      >
-        <WithPeriodMonth datum={datum}>
+      <Wrapper>
+        <TableHeaderLabel
+          mode={mode}
+          className={cx(tbodyLabelStyle, css({ textAlign: "center" }))}
+          scope="row"
+        >
           <Link href={`/year/${datum.year.value}/`} color="inherit">
             {datum.year.value}
           </Link>
-        </WithPeriodMonth>
-      </TableHeaderLabel>
+          <Marker />
+        </TableHeaderLabel>
+      </Wrapper>
     );
 
   return (
@@ -151,17 +192,18 @@ export function TableBodyLabel({ mode, index, datum }: TableBodyLabelProps) {
       >
         {index + 1}
       </TableHeaderIndex>
-      <TableHeaderLabel
-        mode={mode}
-        className={cx(tbodyLabelStyle, css({ textAlign: "right" }))}
-        scope="row"
-      >
-        <WithPeriodMonth datum={datum}>
+      <Wrapper>
+        <TableHeaderLabel
+          mode={mode}
+          className={cx(tbodyLabelStyle, css({ textAlign: "right" }))}
+          scope="row"
+        >
           <Link href={`/club/${datum.clubId.value}/`} color="inherit">
             {datum.short_name.value}
           </Link>
-        </WithPeriodMonth>
-      </TableHeaderLabel>
+          <Marker />
+        </TableHeaderLabel>
+      </Wrapper>
     </>
   );
 }

@@ -129,12 +129,17 @@ export function RevenueTableHeadRow({ mode }: TableHeadRowProps) {
       <TableHeadCell mode={mode} sortableKey="womens_team_revenue">
         女子チーム
       </TableHeadCell>
-      <TableHeadCell mode={mode} sortableKey="transfer_revenue_international">
+      <TableHeadCell mode={mode} sortableKey="transfer_revenue">
+        移籍補償金
+      </TableHeadCell>
+      {/*
+        <TableHeadCell mode={mode} sortableKey="transfer_revenue_international">
         国際移籍
       </TableHeadCell>
       <TableHeadCell mode={mode} sortableKey="transfer_revenue_domestic">
         国内移籍
       </TableHeadCell>
+      */}
       <TableHeadCell mode={mode} sortableKey="other_revenue">
         その他
       </TableHeadCell>
@@ -157,12 +162,17 @@ export function ExpenseTableHeadRow({ mode }: TableHeadRowProps) {
         <wbr />
         人件費
       </TableHeadCell>
-      <TableHeadCell mode={mode} sortableKey="transfer_expenses_international">
+      <TableHeadCell mode={mode} sortableKey="transfer_expenses">
+        移籍関連
+      </TableHeadCell>
+      {/*
+        <TableHeadCell mode={mode} sortableKey="transfer_expenses_international">
         国際移籍
       </TableHeadCell>
       <TableHeadCell mode={mode} sortableKey="transfer_expenses_domestic">
         国内移籍
       </TableHeadCell>
+      */}
       <TableHeadCell mode={mode} sortableKey="match_expenses">
         試合関連
       </TableHeadCell>
