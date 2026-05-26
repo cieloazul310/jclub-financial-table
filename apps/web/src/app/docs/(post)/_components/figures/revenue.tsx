@@ -20,7 +20,7 @@ export function RevenueList({ ...rest }: TableWrapperProps) {
             <Table.Header scope="column">2016-2017</Table.Header>
             <Table.Header scope="column">2018-2021</Table.Header>
             <Table.Header scope="column">2022-23</Table.Header>
-            <Table.Header scope="column">2024</Table.Header>
+            <Table.Header scope="column">2024-</Table.Header>
           </Table.Row>
         </Table.Head>
         <Table.Body>
