@@ -14,8 +14,15 @@ sponsor_revenue: 2371
 ticket_revenue: 891
 ordinary_profit: 309
 net_profit: 205
+current_assets: 1414
+non_current_assets: 415
 assets: 1828
+current_liabilities: 799
+non_current_liabilities: 40
 liabilities: 840
+share_capital: 50
+capital_surplus: 556
+retained_earnings: 383
 net_assets: 988
 league_attendance: 314220
 league_games: 19

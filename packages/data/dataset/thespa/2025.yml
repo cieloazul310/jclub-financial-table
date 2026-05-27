@@ -16,7 +16,15 @@ expenses: 1096
 operating_profit: -316
 ordinary_profit: -302
 net_profit: -307
+current_assets: 148
+non_current_assets: 86
 assets: 235
+current_liabilities: 174
+non_current_liabilities: 44
+liabilities: 218
+share_capital: 478
+capital_surplus: 321
+retained_earnings: -783
 net_assets: 16
 league_attendance: 67539
 league_games: 19

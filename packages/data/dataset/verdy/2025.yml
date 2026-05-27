@@ -12,6 +12,17 @@ ppg: 1.1316
 revenue: 4510
 sponsor_revenue: 1331
 ticket_revenue: 784
+net_profit: 45
+current_assets: 819
+non_current_assets: 393
+assets: 1212
+current_liabilities: 830
+non_current_liabilities: 286
+liabilities: 1116
+share_capital: 20
+capital_surplus: 0
+retained_earnings: 76
+net_assets: 96
 league_attendance: 401300
 league_games: 19
 leaguecup_attendance: 8377

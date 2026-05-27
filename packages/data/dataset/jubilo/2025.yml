@@ -12,6 +12,14 @@ ppg: 1.6842
 revenue: 5668
 sponsor_revenue: 3437
 ticket_revenue: 597
+expenses: 5087
+selling_general_admin_expenses: 1820
+operating_profit: 581
+non_operating_income: 79
+non_operating_expenses: 18
+ordinary_profit: 642
+profit_before_tax: 641
+tax: 117
 net_profit: 523
 league_attendance: 234190
 league_games: 19

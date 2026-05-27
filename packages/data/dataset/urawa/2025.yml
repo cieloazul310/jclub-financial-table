@@ -18,7 +18,11 @@ expenses: 11532
 operating_profit: -222
 ordinary_profit: -79
 net_profit: -100
+current_assets: 1238
+non_current_assets: 2598
 assets: 3836
+current_liabilities: 1843
+non_current_liabilities: 172
 liabilities: 2015
 share_capital: 273
 capital_surplus: 113

@@ -13,6 +13,17 @@ elevation: 昇格
 revenue: 3927
 sponsor_revenue: 2081
 ticket_revenue: 701
+net_profit: 89
+current_assets: 1185
+non_current_assets: 885
+assets: 2070
+current_liabilities: 1086
+non_current_liabilities: 497
+liabilities: 1583
+share_capital: 490
+capital_surplus: 390
+retained_earnings: -393
+net_assets: 487
 league_attendance: 295431
 league_games: 19
 leaguecup_attendance: 0
