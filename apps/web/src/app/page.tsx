@@ -25,9 +25,7 @@ export default async function Home() {
       <PageHeader title={title}>{description}</PageHeader>
       <section className={css({ mb: 12 })}>
         <Heading2>経営情報</Heading2>
-        <Paragraph>
-          2005年度から2025年度までのJクラブの経営情報をクラブ別、年度別に表示
-        </Paragraph>
+        <Paragraph>Jクラブの経営情報をクラブ別、年度別に表示</Paragraph>
         <SelectLink />
       </section>
       <section className={css({ mb: 12 })}>

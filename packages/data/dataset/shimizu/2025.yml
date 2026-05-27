@@ -22,6 +22,9 @@ assets: 1387
 current_liabilities: 1009
 non_current_liabilities: 154
 liabilities: 1164
+share_capital: 90
+capital_surplus: 0
+retained_earnings: 132
 net_assets: 222
 league_attendance: 357263
 league_games: 19

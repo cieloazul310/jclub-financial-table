@@ -29,6 +29,16 @@ extraordinary_loss: 5
 profit_before_tax: 494
 tax: 218
 net_profit: 276
+current_assets: 2897
+non_current_assets: 929
+assets: 3826
+current_liabilities: 1203
+non_current_liabilities: 675
+liabilities: 1878
+share_capital: 100
+capital_surplus: 612
+retained_earnings: 1235
+net_assets: 1948
 league_attendance: 429418
 league_games: 19
 leaguecup_attendance: 8416
