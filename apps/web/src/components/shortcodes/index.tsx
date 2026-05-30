@@ -14,6 +14,7 @@ import { LeadingText } from "./leading-text";
 import { Tokurei2020, Tokurei2023, Tokurei2026 } from "./license-tokurei";
 import { PanelLink, PanelLinkShorthand } from "./panel-link";
 import { SimpleTable } from "./simple-table";
+import { Source2025Club, Source2025Kanpo } from "./source-2025";
 import { SummaryTable, SummaryTableRow } from "./summary-table";
 import { Tweet } from "./tweet";
 
@@ -48,6 +49,10 @@ export const shortcodes = {
   SubParagraph: ({ ...props }) => (
     <Paragraph textStyle="std-16N-170" {...props} />
   ),
+
+  Source2025Club,
+  Source2025Kanpo,
+
   Tweet,
   ...notificationBanner,
   Tokurei2020,
