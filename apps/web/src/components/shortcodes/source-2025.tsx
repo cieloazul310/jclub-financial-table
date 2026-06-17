@@ -4,7 +4,7 @@ import { Details } from "./details";
 
 export function Source2025Club() {
   return (
-    <Details summary="クラブ発表によるソース（2026年5月31日現在）" my={8}>
+    <Details summary="クラブ発表によるソース（2026年6月17日現在）" my={8}>
       <ClubSource />
     </Details>
   );
@@ -12,7 +12,7 @@ export function Source2025Club() {
 
 export function Source2025Kanpo() {
   return (
-    <Details summary="官報によるソース（2026年5月31日現在）" my={8}>
+    <Details summary="官報によるソース（2026年6月17日現在）" my={8}>
       <KanpoSource />
     </Details>
   );
