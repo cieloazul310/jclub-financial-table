@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@cieloazul310/digital-go-pandacss-preset": "^0.4.0",
-    "@pandacss/dev": "^1.11.1",
+    "@pandacss/dev": "^1.11.3",
     "@repo/eslint-config": "^0.0.2",
     "@repo/typescript-config": "^0.0.2",
     "@types/node": "^25.9.1",
