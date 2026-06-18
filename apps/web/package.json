@@ -28,7 +28,7 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-intersection-observer": "^10.0.3",
-    "react-tweet": "^3.3.0",
+    "react-tweet": "^3.3.1",
     "swiper": "^12.1.4",
     "zustand": "^5.0.13"
   },
