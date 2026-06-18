@@ -53,22 +53,10 @@ export async function Tweet({
   }
 
   if (tweet) {
-    if (Array.isArray(tweet.entities)) {
-      return (
-        <div className={cx("light", css({ my: 8 }))}>
-          <EmbeddedTweet tweet={tweet} />
-        </div>
-      );
-    }
-
-    const { user, text, created_at } = tweet;
-    const title = `${user.name} @${user.screen_name} ${datestring(new Date(created_at))}`;
-    const url = `https://x.com/${user.screen_name}/status/${id}`;
-
     return (
-      <Blockquote title={title} url={url} my={8}>
-        <p>{text}</p>
-      </Blockquote>
+      <div className={cx("light", css({ my: 8 }))}>
+        <EmbeddedTweet tweet={tweet} />
+      </div>
     );
   }
 
