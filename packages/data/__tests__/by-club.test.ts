@@ -89,6 +89,6 @@ describe("Get specific tegevajaro extended data", async () => {
     expect(datum.revenue.value).toBe(761);
     expect(datum.revenue.delta).toBe(251);
     expect(datum.all_attendance.value).toBe(52707);
-    expect(datum.transfer_expenses?.value).toBe(undefined);
+    expect(datum.transfer_expenses?.value).toBe(9);
   });
 });
