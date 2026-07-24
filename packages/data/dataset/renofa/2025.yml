@@ -26,8 +26,8 @@ match_expenses: 125
 topteam_expenses: 150
 academy_expenses: 139
 womens_team_expenses: 35
-retail_expenses: 79
-other_costs: -8
+retail_expenses: 71
+other_costs: 0
 selling_general_admin_expenses: 366
 operating_profit: -17
 non_operating_income: 19
@@ -38,8 +38,9 @@ extraordinary_loss: 0
 profit_before_tax: 1
 tax: 0
 net_profit: 1
+related_companies_revenue: 125
 current_assets: 387
-non_current_assets: 84
+non_current_assets: 83
 assets: 470
 current_liabilities: 223
 non_current_liabilities: 6

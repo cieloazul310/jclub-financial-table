@@ -93,7 +93,7 @@ function createStats(data: FinancialDatum[], key: Fields) {
 }
 
 async function buildStatistics() {
-  const years = Array.from({ length: 20 }, (_, i) => 2005 + i);
+  const years = Array.from({ length: 21 }, (_, i) => 2005 + i);
 
   for (const year of years) {
     const data = await getDataByYear(year);
