@@ -10,7 +10,7 @@ function toValue(num: number | null) {
   if (num === null) return;
   return (
     <>
-      {`${(num / 100).toFixed(1)}`}
+      {`${(num / 100).toFixed(2)}`}
       <span className={css({ fontSize: ".8em" })}>億円</span>
     </>
   );
@@ -298,9 +298,9 @@ export function RinenKyoukaByYearNewer(props: Tabs.RootProps) {
       id: "2024",
       columns: ["2025", "26特別", "26/27"],
       clubs: [
-        { rank: 1, name: "神戸", values: [250, 125, null] },
-        { rank: 2, name: "広島", values: [180, 90, null] },
-        { rank: 3, name: "町田", values: [150, 35, null] },
+        { rank: 1, name: "神戸", values: [250, 125, 125] },
+        { rank: 2, name: "広島", values: [180, 90, 90] },
+        { rank: 3, name: "町田", values: [150, 35, 35] },
         { rank: 4, name: "G大阪", values: [150, null, null] },
         { rank: 5, name: "鹿島", values: [120, null, null] },
         { rank: 6, name: "東京V", values: [90, null, null] },
@@ -314,16 +314,32 @@ export function RinenKyoukaByYearNewer(props: Tabs.RootProps) {
       id: "2025",
       columns: ["26特別", "26/27", "27/28"],
       clubs: [
-        { rank: 1, name: "鹿島", values: [125, null, null] },
-        { rank: 2, name: "柏", values: [90, null, null] },
-        { rank: 3, name: "京都", values: [75, null, null] },
-        { rank: 4, name: "広島", values: [75, null, null] },
-        { rank: 5, name: "神戸", values: [60, null, null] },
-        { rank: 6, name: "町田", values: [45, null, null] },
-        { rank: 7, name: "浦和", values: [30, null, null] },
-        { rank: 8, name: "川崎", values: [25, null, null] },
-        { rank: 9, name: "G大阪", values: [20, null, null] },
-        { rank: 10, name: "C大阪", values: [15, null, null] },
+        { rank: 1, name: "鹿島", values: [125, 250, 125] },
+        { rank: 2, name: "柏", values: [90, 180, 90] },
+        { rank: 3, name: "京都", values: [75, 110, 35] },
+        { rank: 4, name: "広島", values: [75, 75, null] },
+        { rank: 5, name: "神戸", values: [60, 60, null] },
+        { rank: 6, name: "町田", values: [45, 45, null] },
+        { rank: 7, name: "浦和", values: [30, 30, null] },
+        { rank: 8, name: "川崎", values: [25, 25, null] },
+        { rank: 9, name: "G大阪", values: [20, 20, null] },
+        { rank: 10, name: "C大阪", values: [15, 15, null] },
+      ],
+    },
+    {
+      id: "2026特別",
+      columns: ["26/27", "27/28"],
+      clubs: [
+        { rank: 1, name: "神戸", values: [125, 125] },
+        { rank: 2, name: "鹿島", values: [90, 90] },
+        { rank: 3, name: "C大阪", values: [75, 35] },
+        { rank: 4, name: "FC東京", values: [75, null] },
+        { rank: 5, name: "町田", values: [60, null] },
+        { rank: 6, name: "名古屋", values: [45, null] },
+        { rank: 7, name: "広島", values: [30, null] },
+        { rank: 8, name: "川崎", values: [25, null] },
+        { rank: 9, name: "G大阪", values: [20, null] },
+        { rank: 10, name: "東京V", values: [15, null] },
       ],
     },
   ];
@@ -370,16 +386,16 @@ export function RinenKyoukaByFan(props: Tabs.RootProps) {
       id: "2025",
       columns: ["26特別", "26/27"],
       clubs: [
-        { rank: 1, name: "浦和", values: [85, null] },
-        { rank: 2, name: "鹿島", values: [60, null] },
-        { rank: 3, name: "横浜FM", values: [35, null] },
-        { rank: 4, name: "G大阪", values: [25, null] },
-        { rank: 5, name: "川崎", values: [20, null] },
-        { rank: 6, name: "神戸", values: [15, null] },
-        { rank: 7, name: "広島", values: [10, null] },
-        { rank: 8, name: "名古屋", values: [10, null] },
-        { rank: 9, name: "清水", values: [5, null] },
-        { rank: 10, name: "FC東京", values: [5, null] },
+        { rank: 1, name: "浦和", values: [85, 85] },
+        { rank: 2, name: "鹿島", values: [60, 60] },
+        { rank: 3, name: "横浜FM", values: [35, 35] },
+        { rank: 4, name: "G大阪", values: [25, 25] },
+        { rank: 5, name: "川崎", values: [20, 20] },
+        { rank: 6, name: "神戸", values: [15, 15] },
+        { rank: 7, name: "広島", values: [10, 10] },
+        { rank: 8, name: "名古屋", values: [10, 10] },
+        { rank: 9, name: "清水", values: [5, 5] },
+        { rank: 10, name: "FC東京", values: [5, 5] },
       ],
     },
   ];
