@@ -398,6 +398,22 @@ export function RinenKyoukaByFan(props: Tabs.RootProps) {
         { rank: 10, name: "FC東京", values: [5, 5] },
       ],
     },
+    {
+      id: "2026特別",
+      columns: ["26/27"],
+      clubs: [
+        { rank: 1, name: "鹿島", values: [85] },
+        { rank: 2, name: "浦和", values: [60] },
+        { rank: 3, name: "神戸", values: [35] },
+        { rank: 4, name: "川崎", values: [25] },
+        { rank: 5, name: "G大阪", values: [20] },
+        { rank: 6, name: "横浜FM", values: [15] },
+        { rank: 7, name: "広島", values: [10] },
+        { rank: 8, name: "名古屋", values: [10] },
+        { rank: 9, name: "清水", values: [5] },
+        { rank: 10, name: "FC東京", values: [5] },
+      ],
+    },
   ];
 
   return (
