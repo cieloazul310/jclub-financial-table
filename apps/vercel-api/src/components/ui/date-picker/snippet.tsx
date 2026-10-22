@@ -1,4 +1,4 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.0 (commit: c8809a4c14c2008b2e0301bac7e5bf6f9df8f80f)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.6.2 (commit: 28e00dd4b6f1071a2ce90bff052f51433ea1fe48)
 /**
  * source:
  * https://github.com/cschroeter/park-ui/blob/main/components/react/src/components/ui/styled/date-picker.tsx
@@ -8,9 +8,9 @@
 import { DatePicker } from "@ark-ui/react/date-picker";
 import { datePicker } from "styled-system/recipes";
 import type { ComponentProps } from "styled-system/types";
-import { createStyleContext } from "styled-system/jsx";
+import { createSlotRecipeContext } from "styled-system/jsx";
 
-const { withProvider, withContext } = createStyleContext(datePicker);
+const { withProvider, withContext } = createSlotRecipeContext(datePicker);
 
 export type RootProviderProps = ComponentProps<typeof RootProvider>;
 export const RootProvider = withProvider(DatePicker.RootProvider, "root");
@@ -86,3 +86,10 @@ export const ViewTrigger = withContext(DatePicker.ViewTrigger, "viewTrigger");
 export const YearSelect = withContext(DatePicker.YearSelect, "yearSelect");
 
 export { DatePickerContext as Context } from "@ark-ui/react/date-picker";
+
+export type {
+  DatePickerFocusChangeDetails as FocusChangeDetails,
+  DatePickerOpenChangeDetails as OpenChangeDetails,
+  DatePickerValueChangeDetails as ValueChangeDetails,
+  DatePickerViewChangeDetails as ViewChangeDetails,
+} from "@ark-ui/react/date-picker";

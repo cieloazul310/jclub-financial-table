@@ -1,4 +1,4 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.2 (commit: 2eb83c698aaf218336e60755b416f00a73d6402f)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.6.2 (commit: 28e00dd4b6f1071a2ce90bff052f51433ea1fe48)
 /**
  * source:
  * https://github.com/cschroeter/park-ui/blob/main/components/react/src/components/ui/styled/tabs.tsx
@@ -6,10 +6,10 @@
 "use client";
 import { Tabs } from "@ark-ui/react/tabs";
 import { tabs } from "styled-system/recipes";
-import { createStyleContext } from "styled-system/jsx";
+import { createSlotRecipeContext } from "styled-system/jsx";
 import type { ComponentProps } from "styled-system/types";
 
-const { withProvider, withContext } = createStyleContext(tabs);
+const { withProvider, withContext } = createSlotRecipeContext(tabs);
 
 export type RootProviderProps = ComponentProps<typeof RootProvider>;
 export const RootProvider = withProvider(Tabs.RootProvider, "root");

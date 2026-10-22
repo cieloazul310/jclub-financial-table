@@ -1,11 +1,11 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.0 (commit: c8809a4c14c2008b2e0301bac7e5bf6f9df8f80f)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.6.2 (commit: 28e00dd4b6f1071a2ce90bff052f51433ea1fe48)
 "use client";
 import { Fieldset } from "@ark-ui/react/fieldset";
 import { fieldset } from "styled-system/recipes";
-import { createStyleContext } from "styled-system/jsx";
+import { createSlotRecipeContext } from "styled-system/jsx";
 import type { ComponentProps } from "styled-system/types";
 
-const { withRootProvider, withContext } = createStyleContext(fieldset);
+const { withRootProvider, withContext } = createSlotRecipeContext(fieldset);
 
 export type RootProviderProps = ComponentProps<typeof RootProvider>;
 export const RootProvider = withRootProvider(Fieldset.RootProvider);

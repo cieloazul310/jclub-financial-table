@@ -2,10 +2,10 @@
 
 import { Tooltip } from "@ark-ui/react/tooltip";
 import { tooltip } from "styled-system/recipes";
-import { createStyleContext } from "styled-system/jsx";
+import { createSlotRecipeContext } from "styled-system/jsx";
 import { ComponentProps } from "styled-system/types";
 
-const { withRootProvider, withContext } = createStyleContext(tooltip);
+const { withRootProvider, withContext } = createSlotRecipeContext(tooltip);
 
 export type RootProps = ComponentProps<typeof Root>;
 export const Root = withRootProvider(Tooltip.Root);

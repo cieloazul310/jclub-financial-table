@@ -1,4 +1,4 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.1 (commit: f4833b6c4447a8e5eeac4e4c8491960122be65be)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.6.2 (commit: 28e00dd4b6f1071a2ce90bff052f51433ea1fe48)
 /**
  * reference:
  * https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/components/select/select.tsx
@@ -7,9 +7,9 @@
 import type { JSX, RefAttributes } from "react";
 import { Select, type CollectionItem } from "@ark-ui/react/select";
 import { select, type SelectVariantProps } from "styled-system/recipes";
-import { createStyleContext } from "styled-system/jsx";
+import { createSlotRecipeContext } from "styled-system/jsx";
 
-const { withProvider, withContext } = createStyleContext(select);
+const { withProvider, withContext } = createSlotRecipeContext(select);
 
 export type RootProviderProps<T extends CollectionItem> =
   Select.RootProviderProps<T> & SelectVariantProps;

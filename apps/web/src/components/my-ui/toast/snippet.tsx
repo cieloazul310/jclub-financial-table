@@ -3,10 +3,10 @@
 import { Toast } from "@ark-ui/react/toast";
 import { XIcon } from "lucide-react";
 import { toast } from "styled-system/recipes";
-import { createStyleContext } from "styled-system/jsx";
+import { createSlotRecipeContext } from "styled-system/jsx";
 import type { ComponentProps } from "styled-system/types";
 
-const { withProvider, withContext } = createStyleContext(toast);
+const { withProvider, withContext } = createSlotRecipeContext(toast);
 
 export type RootProps = ComponentProps<typeof Root>;
 export const Root = withProvider(Toast.Root, "root");
