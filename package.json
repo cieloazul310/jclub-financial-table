@@ -21,7 +21,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint-staged": "lint-staged",
     "changeset": "changeset",
-    "publish-packages": "npm run generate:docs && npm run build:package && changeset version && changeset publish",
+    "version": "changeset version",
+    "publish-packages": "npm run generate:docs && npm run build:package && changeset publish",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
