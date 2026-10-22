@@ -23,7 +23,7 @@ jobs:
       name: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Detect package manager
         id: detect-package-manager
@@ -44,7 +44,7 @@ jobs:
           fi
 
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: lts/*
           cache: ${{ steps.detect-package-manager.outputs.manager }}
@@ -54,7 +54,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Clone contents repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: cieloazul310/jclub-financial-post
           path: ${{ env.CLONED_PATH }}
