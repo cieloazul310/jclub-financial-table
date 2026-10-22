@@ -1,8 +1,11 @@
 import { defineConfig } from "@pandacss/dev";
+import { preset } from "@pandacss/preset-panda";
 import { createPreset } from "@cieloazul310/digital-go-pandacss-preset";
 import { tokens } from "./src/theme/tokens";
 import { semanticTokens } from "./src/theme/semantic-tokens";
-import { recipes } from "./src/theme/recipes";
+import { recipes, slotRecipes } from "./src/theme/recipes";
+
+const { containers } = preset.theme;
 
 export default defineConfig({
   // Whether to use css reset
@@ -19,6 +22,7 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: {
+      containers,
       containerNames: ["article-content", "article-sidebar"],
       containerSizes: {
         xs: "320px",
@@ -36,6 +40,7 @@ export default defineConfig({
       },
       tokens,
       recipes,
+      slotRecipes,
       semanticTokens,
     },
   },

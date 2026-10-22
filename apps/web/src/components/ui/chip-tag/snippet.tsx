@@ -1,11 +1,11 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.1 (commit: f4833b6c4447a8e5eeac4e4c8491960122be65be)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.6.2 (commit: 28e00dd4b6f1071a2ce90bff052f51433ea1fe48)
 "use client";
 import { ark } from "@ark-ui/react/factory";
 import { chipTag } from "styled-system/recipes";
-import { createStyleContext } from "styled-system/jsx";
+import { createSlotRecipeContext } from "styled-system/jsx";
 import type { ComponentProps } from "styled-system/types";
 
-const { withProvider, withContext } = createStyleContext(chipTag);
+const { withProvider, withContext } = createSlotRecipeContext(chipTag);
 
 export type RootProps = ComponentProps<typeof Root>;
 export const Root = withProvider(ark.div, "root", {

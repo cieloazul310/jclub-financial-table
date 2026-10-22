@@ -1,4 +1,4 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.4.0 (commit: bcc735b9ff8b1fd3aaabce4f0f3263380ccc575d)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.6.2 (commit: 28e00dd4b6f1071a2ce90bff052f51433ea1fe48)
 /**
  * source:
  * https://github.com/cschroeter/park-ui/blob/main/components/react/src/components/ui/styled/drawer.tsx
@@ -7,10 +7,10 @@
 import { Drawer } from "@ark-ui/react/drawer";
 import { ark } from "@ark-ui/react/factory";
 import { drawer } from "styled-system/recipes";
-import { createStyleContext } from "styled-system/jsx";
+import { createSlotRecipeContext } from "styled-system/jsx";
 import type { ComponentProps } from "styled-system/types";
 
-const { withRootProvider, withContext } = createStyleContext(drawer);
+const { withRootProvider, withContext } = createSlotRecipeContext(drawer);
 
 export type RootProviderProps = ComponentProps<typeof RootProvider>;
 export const RootProvider = withRootProvider(Drawer.RootProvider);

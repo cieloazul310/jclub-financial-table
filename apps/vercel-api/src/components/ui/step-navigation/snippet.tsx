@@ -1,13 +1,13 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.0 (commit: c8809a4c14c2008b2e0301bac7e5bf6f9df8f80f)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.6.2 (commit: 28e00dd4b6f1071a2ce90bff052f51433ea1fe48)
 "use client";
 import { ark } from "@ark-ui/react/factory";
 import { Steps } from "@ark-ui/react/steps";
 import { stepNavigation } from "styled-system/recipes";
-import { createStyleContext } from "styled-system/jsx";
+import { createSlotRecipeContext } from "styled-system/jsx";
 import type { ComponentProps } from "styled-system/types";
 
 const { withRootProvider, withProvider, withContext } =
-  createStyleContext(stepNavigation);
+  createSlotRecipeContext(stepNavigation);
 
 export type RootProviderProps = ComponentProps<typeof RootProvider>;
 export const RootProvider = withRootProvider(Steps.RootProvider);
@@ -30,3 +30,5 @@ export const Title = withContext(ark.span, "title");
 export const Description = withContext(ark.p, "description");
 
 export { StepsContext as Context } from "@ark-ui/react/steps";
+
+export type { StepChangeDetails as ChangeDetails } from "@ark-ui/react/steps";

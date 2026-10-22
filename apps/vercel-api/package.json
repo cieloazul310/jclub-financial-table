@@ -21,7 +21,7 @@
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@cieloazul310/digital-go-pandacss-preset": "^0.4.0",
+    "@cieloazul310/digital-go-pandacss-preset": "^0.6.2",
     "@pandacss/dev": "^2.3.0",
     "@repo/eslint-config": "^0.0.2",
     "@repo/typescript-config": "^0.0.2",

@@ -1,4 +1,4 @@
-// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.2.0 (commit: c8809a4c14c2008b2e0301bac7e5bf6f9df8f80f)
+// Generated from digital-go-design-system-with-panda@@cieloazul310/digital-go-pandacss-cli@0.6.2 (commit: 28e00dd4b6f1071a2ce90bff052f51433ea1fe48)
 /**
  * reference:
  * https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/components/select/select.tsx
@@ -7,9 +7,9 @@
 import type { JSX, RefAttributes } from "react";
 import { Select, type CollectionItem } from "@ark-ui/react/select";
 import { select, type SelectVariantProps } from "styled-system/recipes";
-import { createStyleContext } from "styled-system/jsx";
+import { createSlotRecipeContext } from "styled-system/jsx";
 
-const { withProvider, withContext } = createStyleContext(select);
+const { withProvider, withContext } = createSlotRecipeContext(select);
 
 export type RootProviderProps<T extends CollectionItem> =
   Select.RootProviderProps<T> & SelectVariantProps;
@@ -94,4 +94,10 @@ export const ValueText = withContext(Select.ValueText, "valueText");
 export {
   SelectContext as Context,
   SelectHiddenSelect as HiddenSelect,
+} from "@ark-ui/react/select";
+
+export type {
+  SelectHighlightChangeDetails as HighlightChangeDetails,
+  SelectOpenChangeDetails as OpenChangeDetails,
+  SelectValueChangeDetails as ValueChangeDetails,
 } from "@ark-ui/react/select";
