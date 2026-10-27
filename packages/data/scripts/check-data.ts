@@ -37,7 +37,7 @@ export function checkData(input: any) {
     clubId: z.string(),
     name: z.string(),
     short_name: z.string(),
-    year: z.int().gte(2005).lte(2025),
+    year: z.int().gte(2005).lte(2026),
     category: z.string(),
 
     rank: z.int().positive(),

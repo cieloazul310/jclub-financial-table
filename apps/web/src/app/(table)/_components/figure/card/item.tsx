@@ -104,20 +104,29 @@ export function CardItem({ datum, mode, index, totalCount }: CardItemProps) {
         {name.value}
       </Link>
     );
+
+  const periodAlert = (() => {
+    if (!reporting_period_months) return null;
+    if (year.value !== 2026 && reporting_period_months?.value === 12)
+      return null;
+
+    return (
+      <small
+        className={css({
+          textStyle: "std-16N-170",
+          color: "solid-gray.700",
+          ml: 2,
+        })}
+      >
+        ※{reporting_period_months.value}ヶ月間
+      </small>
+    );
+  })();
+
   const cardTitle = (
     <>
       {cardTitleLink}
-      {reporting_period_months && reporting_period_months?.value !== 12 && (
-        <small
-          className={css({
-            textStyle: "std-16N-170",
-            color: "solid-gray.700",
-            ml: 2,
-          })}
-        >
-          ※{reporting_period_months.value}ヶ月間
-        </small>
-      )}
+      {periodAlert}
     </>
   );
 

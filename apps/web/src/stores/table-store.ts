@@ -35,7 +35,7 @@ export const defaultInitState: TableState = {
   sortAsc: false,
   visibleCategories: [...AllCategories],
   visibleClubs: getAllClubs().map(({ id }) => id),
-  visibleYears: [2005, 2025],
+  visibleYears: [2005, 2026],
   cardMode: false,
 };
 

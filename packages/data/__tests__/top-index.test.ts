@@ -11,7 +11,7 @@ describe("Get data by club", async () => {
   const data = await getDataByClub("mitohollyhock");
 
   it("check data length", () => {
-    const length = 21;
+    const length = 22;
 
     expect(data.length).toBe(length);
     expect(data.filter(({ clubId }) => clubId === "mitohollyhock").length).toBe(

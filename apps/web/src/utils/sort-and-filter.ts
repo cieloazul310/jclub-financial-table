@@ -5,9 +5,15 @@ import type {
 import type { Category, Mode } from "./types";
 
 export function getRank(
-  data: Pick<ExtendedFinancialDatum, "category" | "rank">,
+  data: Pick<ExtendedFinancialDatum, "year" | "category" | "rank">,
 ): number {
   const addition = (category: string) => {
+    if (data.year.value === 2026) {
+      if (category === "J1") return 0;
+      if (category === "J2" || category === "J3") return 100;
+      return 200;
+    }
+
     if (category === "J1") return 0;
     if (category === "J2") return 100;
     if (category === "J3") return 200;
