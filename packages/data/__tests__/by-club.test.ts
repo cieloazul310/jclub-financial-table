@@ -7,7 +7,7 @@ describe("Get all data", async () => {
   const data = await getData();
 
   it("check data length", () => {
-    const length = 21;
+    const length = 22;
 
     expect(data.length).toBe(length);
     expect(data.filter(({ clubId }) => clubId === "mitohollyhock").length).toBe(
@@ -56,7 +56,7 @@ describe("Get all data albirex", async () => {
   const data = await getAlbirexData();
 
   it("check data length", () => {
-    const length = 21;
+    const length = 22;
 
     expect(data.length).toBe(length);
     expect(data.filter(({ clubId }) => clubId === "albirex").length).toBe(
