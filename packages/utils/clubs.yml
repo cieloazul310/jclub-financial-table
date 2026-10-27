@@ -209,8 +209,10 @@
   category: J1
   hometown: 吹田市、茨木市、高槻市、豊中市、池田市、摂津市、箕面市
   area: 大阪府
-  period: 1
+  period: 6
   website: https://www.gamba-osaka.net
+  annotation:
+    - 2026年度は決算期の変更により5ヶ月間
 
 - id: cerezo
   code: "062702"
@@ -386,7 +388,7 @@
   annotation:
     - 2013年度までは公益社団法人であったため資本の内訳は表示されない
     - 2014年度以降もアカデミー事業は公益社団法人山形県スポーツ振興21世紀協会の管轄
-    - 2026年度は決算期の変更により5ヶ月間
+#    - 2026年度は決算期の変更により5ヶ月間
 
 - id: iwakifc
   code: "020702"
@@ -397,8 +399,10 @@
   category: J2
   hometown: いわき市、広野町、楢葉町、富岡町、川内村、大熊町、双葉町、葛尾村、浪江町
   area: 福島県
-  period: 12
+  period: 6
   website: https://iwakifc.com
+  annotation:
+    - 2026年度は決算期の変更により6ヶ月間
 
 - id: tochigicity
   code: "030902"
@@ -409,8 +413,10 @@
   category: J2
   hometown: 栃木市、壬生町、足利市、佐野市
   area: 栃木県
-  period: 1
+  period: 6
   website: https://tochigi-city.com/
+  annotation:
+    - 2026年度は決算期の変更により5ヶ月間
 
 - id: ardija
   code: "031102"
@@ -433,10 +439,12 @@
   category: J2
   hometown: 横浜市
   area: 神奈川県
-  period: 1
+  period: 6
   website: https://www.yokohamafc.com
   relatedCompanies:
     - 一般社団法人横浜FCスポーツクラブ
+  annotation:
+    - 2026年度は決算期の変更により5ヶ月間
 
 - id: bellmare
   code: "031405"
@@ -526,8 +534,10 @@
   category: J2
   hometown: 藤枝市、島田市、焼津市、牧之原市、吉田町、川根本町
   area: 静岡県
-  period: 1
+  period: 6
   website: https://myfc.co.jp
+  annotation:
+    - 2026年度は決算期の変更により5ヶ月間
 
 - id: vortis
   code: "083701"
@@ -601,8 +611,10 @@
   category: J2
   hometown: 宮崎市、新富町、西都市
   area: 宮崎県
-  period: 1
+  period: 6
   website: https://www.tegevajaro.com
+  #annotation:
+  #  - 2027年度は決算期の変更により17ヶ月間
 
 # J3 20 clubs
 - id: fufc
@@ -738,8 +750,10 @@
   category: J3
   hometown: 滋賀県 草津市・東近江市・彦根市を中心とする全県
   area: 滋賀県
-  period: 1
+  period: 6
   website: https://reilac-shiga.co.jp/
+  annotation:
+    - 2026年度は決算期の変更により3ヶ月間
 
 - id: fcosaka
   code: "062703"
@@ -750,8 +764,10 @@
   category: J3
   hometown: 東大阪市
   area: 大阪府
-  period: 1
+  period: 6
   website: https://fc-osaka.com
+  annotation:
+    - 2026年度は決算期の変更により5ヶ月間
 
 - id: naraclub
   code: "062901"

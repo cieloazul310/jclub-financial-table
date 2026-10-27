@@ -87,6 +87,9 @@ export function TableHeadLabel({ mode }: { mode: Mode }) {
   );
 }
 
+/**
+ * @deprecated
+ */
 export function WithPeriodMonth({
   datum,
   children,
@@ -123,18 +126,34 @@ export function WithPeriodMonth({
   );
 }
 
-const useTooltip = (reporting_period_months?: number) => {
-  if (!reporting_period_months || reporting_period_months === 12)
+const useTooltip = ({
+  year,
+  reporting_period_months,
+}: Extended<Pick<General, "year" | "reporting_period_months">>) => {
+  if (
+    !reporting_period_months ||
+    (year.value !== 2026 && reporting_period_months.value === 12)
+  )
     return {
       Wrapper: ({ children }: PropsWithChildren) => children,
       Marker: () => null,
     };
 
-  const isLonger = reporting_period_months > 12;
+  const markerColor = (() => {
+    if (year.value === 2026) {
+      if (reporting_period_months.value > 6) return css({ bg: "success.1" });
+      if (reporting_period_months.value < 5) return css({ bg: "error.1" });
+      return css({ bg: "solid-gray.420" });
+    }
+    if (reporting_period_months.value > 12) return css({ bg: "success.1" });
+    return css({ bg: "error.1" });
+  })();
 
   return {
     Wrapper: ({ children }: PropsWithChildren) => (
-      <Tooltip content={`決算期変更により${reporting_period_months}ヶ月間`}>
+      <Tooltip
+        content={`決算期変更により${reporting_period_months.value}ヶ月間`}
+      >
         {children}
       </Tooltip>
     ),
@@ -150,7 +169,7 @@ const useTooltip = (reporting_period_months?: number) => {
             zIndex: 1,
             clipPath: "polygon(0 0, 100% 0, 100% 100%)",
           }),
-          isLonger ? css({ bg: "success.1" }) : css({ bg: "error.1" }),
+          markerColor,
         )}
       />
     ),
@@ -166,7 +185,7 @@ interface TableBodyLabelProps {
 }
 
 export function TableBodyLabel({ mode, index, datum }: TableBodyLabelProps) {
-  const { Wrapper, Marker } = useTooltip(datum.reporting_period_months?.value);
+  const { Wrapper, Marker } = useTooltip(datum);
 
   if (mode === "club")
     return (
